@@ -24,8 +24,8 @@
       "https://partizanstvo.si/sl/podrobno/partizanskispomenik/6875/"
     ],
     "qr_url": "",
-    "besedilo_kratko": null,
-    "besedilo_poglobljeno": null,
+    "besedilo_kratko": "[DEMO BESEDILO — ni zgodovinski vir] Ta odstavek prikazuje, kako bo videti izpolnjeno kratko besedilo, ko ga pripravijo zgodovinarji društva ZZB NOB Novo mesto. Bunker na Drski je eden redkeje ohranjenih objektov, povezanih z okupacijskim obrambnim sistemom okoli Novega mesta — mrežo utrdb, opazovalnic in žičnih ovir, po kateri je pot dobila ime. Namesto tega odstavka bo dokončno besedilo vsebovalo preverjene podatke o gradnji, uporabi in današnjem stanju objekta, z navedbo virov in strokovnega pregleda ZVKDS oziroma Dolenjskega muzeja. Ta stran do takrat ne trdi ničesar konkretnega o datumih, osebah ali dogodkih — gre izključno za ponazoritev postavitve strani za predstavitev naročniku in financerju projekta.",
+    "besedilo_poglobljeno": "[DEMO BESEDILO — ni zgodovinski vir] Poglobljeno besedilo je namenjeno obiskovalcem, ki si želijo več konteksta kot ga ponuja kratek uvod. V končni različici bo ta razdelek predstavil širši okupacijski obrambni sistem, umestil bunker v ta sistem in navedel, na podlagi katerih virov (arhivski dokumenti, terenski pregled, pričevanja) je bila vsebina pripravljena.\n\nTrenutno besedilo služi le preizkusu postavitve: dolžine odstavkov, preloma vrstic in prostora za slikovno gradivo. Ne vsebuje nobenega dejanskega datuma, imena ali števila žrtev — vse tovrstne podatke bo pred objavo potrdil strokovni partner projekta, kot določa postopek verifikacije v projektni dokumentaciji.",
     "foto": [],
     "kviz": [],
     "status": "objavljeno",
@@ -661,8 +661,8 @@
       "https://partizanstvo.si/"
     ],
     "qr_url": "",
-    "besedilo_kratko": null,
-    "besedilo_poglobljeno": null,
+    "besedilo_kratko": "[DEMO BESEDILO — ni zgodovinski vir] Vzorčno besedilo za obeležje na novomeški gimnaziji. Plošča spominja na vlogo šole in njenih dijakov med drugo svetovno vojno — natančno besedilo o osebah in dogodkih bo dodano po pregledu virov, ki ga opravi strokovni partner projekta. Ta odstavek ne navaja nobenih konkretnih imen, datumov ali številk, ki bi jih bilo mogoče zamenjati za preverjeno zgodovinsko dejstvo — namenjen je izključno predstavitvi videza strani.",
+    "besedilo_poglobljeno": "[DEMO BESEDILO — ni zgodovinski vir] V dokončni različici bo ta razdelek povezal zgodbo šole s širšim dogajanjem v Novem mestu med okupacijo in odporom, z navedbo virov (šolska kronika, pričevanja, arhivsko gradivo). Besedilo, ki ga vidite zdaj, je samo ponazoritev dolžine in oblike — brez izmišljenih podatkov o konkretnih osebah.",
     "foto": [],
     "kviz": [],
     "status": "objavljeno",
@@ -963,8 +963,8 @@
       "https://partizanstvo.si/"
     ],
     "qr_url": "",
-    "besedilo_kratko": null,
-    "besedilo_poglobljeno": null,
+    "besedilo_kratko": "[DEMO BESEDILO — ni zgodovinski vir] Vzorčno besedilo za spominsko ploščo padlim železničarjem. Dokončna vsebina bo opisala vlogo železničarjev pri odporu proti okupatorju na podlagi preverjenih virov. Ta odstavek je samo demonstracija postavitve strani in ne vsebuje nobenih dejanskih imen, datumov ali dogodkov.",
+    "besedilo_poglobljeno": "[DEMO BESEDILO — ni zgodovinski vir] Poglobljeno besedilo bo v končni različici umestilo delovanje železničarjev v širši kontekst ilegalnega dela in logistične podpore odporniškemu gibanju, z navedbo virov. Trenutno besedilo služi le preizkusu dolžine in oblikovanja strani.",
     "foto": [],
     "kviz": [],
     "status": "objavljeno",

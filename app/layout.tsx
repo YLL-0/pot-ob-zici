@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { getBaseUrl } from "@/lib/qr";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getBaseUrl()),
   title: {
     default: "Pot ob žici — Novo mesto",
     template: "%s — Pot ob žici",

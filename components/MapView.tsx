@@ -5,6 +5,7 @@ import {
   Map as MaplibreMap,
   LngLatBounds,
   NavigationControl,
+  Popup,
   setWorkerUrl,
   type GeoJSONSource,
   type LngLatBoundsLike,
@@ -23,6 +24,7 @@ if (typeof window !== "undefined") {
 import type { Pot, Tocka } from "@/lib/types";
 import { getEtapaBarva } from "@/lib/etape";
 import { ensureVrstaIcons, vrstaIconImageId } from "@/lib/mapIcons";
+import { buildPotPopupElement, buildTockaPopupElement } from "@/lib/mapPopups";
 import { isRazsirjeniKrak } from "@/lib/filters";
 import { VSE_VRSTE } from "@/lib/vrsta";
 
@@ -68,6 +70,7 @@ export default function MapView({
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MaplibreMap | null>(null);
   const loadedRef = useRef(false);
+  const popupRef = useRef<Popup | null>(null);
   const [showFitAllButton, setShowFitAllButton] = useState(false);
 
   // --- One-time map setup -----------------------------------------------
@@ -345,6 +348,35 @@ export default function MapView({
       map.fitBounds(bounds, { padding: 64, animate: !prefersReducedMotion, duration: 600 });
     }
   }, [selectedPotSlug, poti, prefersReducedMotion]);
+
+  // --- Popup: one effect deciding for BOTH selection kinds together, so a
+  // tocka popup and a pot popup can never race to remove each other's ---
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !loadedRef.current) return;
+
+    popupRef.current?.remove();
+    popupRef.current = null;
+
+    if (selectedTockaId) {
+      const tocka = points.find((p) => p.id === selectedTockaId);
+      if (tocka) {
+        popupRef.current = new Popup({ closeButton: false, closeOnClick: false, maxWidth: "280px" })
+          .setLngLat([tocka.lon, tocka.lat])
+          .setDOMContent(buildTockaPopupElement(tocka))
+          .addTo(map);
+      }
+    } else if (selectedPotSlug) {
+      const pot = poti.find((p) => p.slug === selectedPotSlug);
+      if (pot) {
+        const anchor = pot.geometry.coordinates[Math.floor(pot.geometry.coordinates.length / 2)]!;
+        popupRef.current = new Popup({ closeButton: false, closeOnClick: false, maxWidth: "260px" })
+          .setLngLat(anchor)
+          .setDOMContent(buildPotPopupElement(pot, pot.tocke_ids.length))
+          .addTo(map);
+      }
+    }
+  }, [selectedTockaId, selectedPotSlug, points, poti]);
 
   function handleFitAll() {
     const map = mapRef.current;

@@ -23,6 +23,12 @@
  * cells ever contains something OTHER than a known status placeholder —
  * i.e. someone typed real content into the Excel — this script warns
  * loudly instead of silently discarding it (see checkForStrayContent).
+ *
+ * The one exception: NMZ-001, NMZ-016 and NMZ-023 get DEMO_BESEDILA below
+ * so one detail page can be demoed with real-length text (CLAUDE.md
+ * explicitly allows this for exactly these three, labelled as demo). It's
+ * applied here rather than hand-edited into the seed so it survives a
+ * re-import — see DEMO_BESEDILA.
  */
 
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
@@ -217,6 +223,63 @@ const VKLJUCITEV_VALUES: Vkljucitev[] = [
   "Razširjeni severovzhodni krak",
 ];
 
+const DEMO_OZNAKA = "[DEMO BESEDILO — ni zgodovinski vir]";
+
+/**
+ * Filler for exactly NMZ-001, NMZ-016, NMZ-023 (CLAUDE.md exception), so
+ * one detail page can be demoed with real-length text before the
+ * association's historians write the real thing. Deliberately written to
+ * describe the DEMO ITSELF rather than invent plausible-sounding history —
+ * no invented dates, names or casualty numbers, even as filler — so the
+ * label stays true even if someone reads only this text out of context.
+ */
+const DEMO_BESEDILA: Record<string, { kratko: string; poglobljeno: string }> = {
+  "NMZ-001": {
+    kratko:
+      `${DEMO_OZNAKA} Ta odstavek prikazuje, kako bo videti izpolnjeno kratko besedilo, ko ga pripravijo ` +
+      `zgodovinarji društva ZZB NOB Novo mesto. Bunker na Drski je eden redkeje ohranjenih objektov, ` +
+      `povezanih z okupacijskim obrambnim sistemom okoli Novega mesta — mrežo utrdb, opazovalnic in ` +
+      `žičnih ovir, po kateri je pot dobila ime. Namesto tega odstavka bo dokončno besedilo vsebovalo ` +
+      `preverjene podatke o gradnji, uporabi in današnjem stanju objekta, z navedbo virov in strokovnega ` +
+      `pregleda ZVKDS oziroma Dolenjskega muzeja. Ta stran do takrat ne trdi ničesar konkretnega o ` +
+      `datumih, osebah ali dogodkih — gre izključno za ponazoritev postavitve strani za predstavitev ` +
+      `naročniku in financerju projekta.`,
+    poglobljeno:
+      `${DEMO_OZNAKA} Poglobljeno besedilo je namenjeno obiskovalcem, ki si želijo več konteksta kot ga ` +
+      `ponuja kratek uvod. V končni različici bo ta razdelek predstavil širši okupacijski obrambni ` +
+      `sistem, umestil bunker v ta sistem in navedel, na podlagi katerih virov (arhivski dokumenti, ` +
+      `terenski pregled, pričevanja) je bila vsebina pripravljena.\n\n` +
+      `Trenutno besedilo služi le preizkusu postavitve: dolžine odstavkov, preloma vrstic in prostora ` +
+      `za slikovno gradivo. Ne vsebuje nobenega dejanskega datuma, imena ali števila žrtev — vse ` +
+      `tovrstne podatke bo pred objavo potrdil strokovni partner projekta, kot določa postopek ` +
+      `verifikacije v projektni dokumentaciji.`,
+  },
+  "NMZ-016": {
+    kratko:
+      `${DEMO_OZNAKA} Vzorčno besedilo za obeležje na novomeški gimnaziji. Plošča spominja na vlogo ` +
+      `šole in njenih dijakov med drugo svetovno vojno — natančno besedilo o osebah in dogodkih bo ` +
+      `dodano po pregledu virov, ki ga opravi strokovni partner projekta. Ta odstavek ne navaja nobenih ` +
+      `konkretnih imen, datumov ali številk, ki bi jih bilo mogoče zamenjati za preverjeno zgodovinsko ` +
+      `dejstvo — namenjen je izključno predstavitvi videza strani.`,
+    poglobljeno:
+      `${DEMO_OZNAKA} V dokončni različici bo ta razdelek povezal zgodbo šole s širšim dogajanjem v ` +
+      `Novem mestu med okupacijo in odporom, z navedbo virov (šolska kronika, pričevanja, arhivsko ` +
+      `gradivo). Besedilo, ki ga vidite zdaj, je samo ponazoritev dolžine in oblike — brez izmišljenih ` +
+      `podatkov o konkretnih osebah.`,
+  },
+  "NMZ-023": {
+    kratko:
+      `${DEMO_OZNAKA} Vzorčno besedilo za spominsko ploščo padlim železničarjem. Dokončna vsebina bo ` +
+      `opisala vlogo železničarjev pri odporu proti okupatorju na podlagi preverjenih virov. Ta odstavek ` +
+      `je samo demonstracija postavitve strani in ne vsebuje nobenih dejanskih imen, datumov ali ` +
+      `dogodkov.`,
+    poglobljeno:
+      `${DEMO_OZNAKA} Poglobljeno besedilo bo v končni različici umestilo delovanje železničarjev v ` +
+      `širši kontekst ilegalnega dela in logistične podpore odporniškemu gibanju, z navedbo virov. ` +
+      `Trenutno besedilo služi le preizkusu dolžine in oblikovanja strani.`,
+  },
+};
+
 // --- Helpers -----------------------------------------------------------------
 
 function lookup<T extends string>(map: Record<string, T>, raw: string, context: string): T {
@@ -364,8 +427,8 @@ function rowToTocka(row: unknown[], existing: Map<string, Tocka>): Tocka {
     viri: [get(COL.VIR1), get(COL.VIR2)].filter((v) => v.length > 0),
     qr_url: "", // computed at read time by lib/qr.ts, never stored meaningfully
 
-    besedilo_kratko: prev?.besedilo_kratko ?? null,
-    besedilo_poglobljeno: prev?.besedilo_poglobljeno ?? null,
+    besedilo_kratko: prev?.besedilo_kratko ?? DEMO_BESEDILA[id]?.kratko ?? null,
+    besedilo_poglobljeno: prev?.besedilo_poglobljeno ?? DEMO_BESEDILA[id]?.poglobljeno ?? null,
     foto: prev?.foto ?? [],
     kviz: prev?.kviz ?? [],
 
