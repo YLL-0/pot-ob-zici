@@ -1,5 +1,26 @@
 # Changelog
 
+## Faza 3 — navigacija (ORS + geolokacija), pravo stikalo za žico
+
+- `app/api/route/route.ts`: strežniški ovoj za OpenRouteService foot-walking/geojson. Ključ
+  (`ORS_API_KEY`) samo strežniško. Predpomnjenje v pomnilniku (~11 m natančnost, 1h) + HTTP
+  Cache-Control. Brez ključa vrne 503 z jasnim sporočilom — privzeto stanje te demo aplikacije.
+- `lib/routing.ts`: deljena logika geolokacije + klica API-ja, z jasnimi napakami
+  (zavrnjeno dovoljenje, brskalnik ne podpira, ni ključa, napaka pri izračunu).
+- "Pelji me tja" v pojavnem oknu na zemljevidu nariše črtkano traso in prikaže
+  razdaljo/čas/navodila po korakih v novi sekciji "Navigacija" v panelu, s preklicem. Zunanja
+  povezava (Google/Apple Zemljevidi) ostane vedno vidna zraven.
+- `components/PeljiMeTjaZemljevid.tsx`: isti tok na `/tocka/[slug]`, rezultat v kompaktni
+  kartici ob kontekstnem zemljevidu (ki zdaj zna narisati tudi traso).
+- Obroč žice 1942–43 dobi pravo stikalo "Prikaži obrambni obroč 1942–43" (`?zica=1`, privzeto
+  izklopljeno) — nadomesti Faza-1 začasno rešitev (klik na vrstico).
+
+Preverjeno v headless Chromiumu z mock geolokacijo: stikalo za žico, celoten tok "Pelji me tja"
+(geolokacija → klic API-ja → graceful "ni na voljo" sporočilo, ker v tem okolju ni ORS_API_KEY)
+na obeh mestih, `/api/route` neposredno vrne 503 z jasnim sporočilom. Uspešna pot skozi pravi
+ORS API ni preverjena v živo (ni ključa v tem okolju) — koda sledi dokumentiranemu ORS
+kontraktu; ko naročnik priskrbi ključ, velja preveriti uspešen primer.
+
 ## Faza 2 — pojavna okna, strani obeležij/poti, /nmz-nnn, SEO
 
 - Pojavna okna na klik (marker ali trasa, na zemljevidu ali v panelu — isto deljeno stanje iz

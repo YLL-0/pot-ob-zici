@@ -13,18 +13,20 @@ Spletna stran, na kateri je zemljevid **domača stran** — obiskovalec takoj vi
 Novega mesta z etapami poti in obeležji, ne pristajalne strani pred njim. Vsako obeležje ima
 svojo stran, na katero vodi QR-tablica na terenu.
 
-### Kje je stanje zdaj (po Fazi 2)
+### Kje je stanje zdaj (po Fazi 3)
 
-Domača stran je zemljevid: vseh 50 obeležij, vseh 8 etap in poskusna trasa nekdanje žice, z
+Domača stran je zemljevid: vseh 50 obeležij, vseh 8 etap in preklopljiv obroč nekdanje žice, z
 iskanjem, filtri in seznamom v stranskem panelu. Klik na obeležje ali etapo — na zemljevidu ali
-v seznamu — odpre pojavno okno s povzetkom in vodi na svojo stran (`/tocka/...`, `/pot/...`) s
-polnim besedilom (ali "Vsebina v pripravi", če ga zgodovinarji še niso napisali), viri, EŠD in
-kontekstnim zemljevidom. QR-tablice (`/nmz-001` … `/nmz-050`) pravilno preusmerijo na pravo stran.
+v seznamu — odpre pojavno okno in vodi na svojo stran (`/tocka/...`, `/pot/...`) s polnim
+besedilom (ali "Vsebina v pripravi"), viri, EŠD in kontekstnim zemljevidom. QR-tablice
+(`/nmz-001` … `/nmz-050`) pravilno preusmerijo na pravo stran.
 
-Kar še manjka: gumb "Pelji me tja" trenutno vodi samo v Google/Apple Zemljevide (zunanja
-aplikacija) — navigacija znotraj strani s prikazom razdalje in časa je Faza 3. Admin za vnos
-besedil in fotografij je Faza 4 — brez njega vsebin trenutno ne more vnesti nihče razen prek
-Excela/razvijalca.
+Gumb "Pelji me tja" zdaj poskusi izračunati pravo peš pot (razdalja, čas, navodila po korakih) —
+za to na strežniku potrebuje `ORS_API_KEY` (glej `.env.example`); brez njega se pošteno prikaže
+"Navigacija v aplikaciji trenutno ni na voljo" in ostane povezava do Google/Apple Zemljevidov.
+
+Kar še manjka: admin za vnos besedil in fotografij je Faza 4 — brez njega vsebin trenutno ne
+more vnesti nihče razen prek Excela/razvijalca.
 
 Aplikacija ves čas deluje tudi brez podatkovne baze (za demo na katerem koli računalniku).
 
@@ -75,6 +77,12 @@ To connect Supabase instead, copy `.env.example` to `.env.local` and fill in the
 npm run import:xlsx   # regenerate tocke.seed.json from the client's Excel (if needed)
 npm run seed          # push tocke.seed.json into Supabase (idempotent, upsert on id)
 ```
+
+To test the in-app walking route ("Pelji me tja"), also set `ORS_API_KEY` in `.env.local` (a
+free key from [openrouteservice.org](https://openrouteservice.org/dev/#/signup)). Without it,
+`app/api/route/route.ts` returns 503 and the UI shows the "route unavailable" state — that's the
+default in this repo, not a bug; the code follows ORS's documented `/v2/directions/foot-walking/geojson`
+contract but hasn't been exercised against a live key in this environment.
 
 ### Data pipeline
 
