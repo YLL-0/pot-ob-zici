@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens for "Pot ob žici".
+ *
+ * Palette: deep charcoal (map UI, dark chrome), a muted red used sparingly
+ * as the one interactive accent (never reused for etapa/story colours —
+ * see lib/etape.ts), warm off-white for content-page text surfaces, one
+ * desaturated blue-grey reserved for the 1943 historical wire layer.
+ *
+ * Tailwind v4 config lives here (CSS @theme), not in a JS config file.
+ */
+@theme {
+  --color-charcoal-950: #14171a;
+  --color-charcoal-900: #1c2024;
+  --color-charcoal-800: #262b30;
+  --color-charcoal-700: #343b42;
+  --color-charcoal-600: #4a545c;
+
+  --color-offwhite-50: #faf8f4;
+  --color-offwhite-100: #f2efe8;
+  --color-offwhite-200: #e6e1d6;
+
+  --color-accent-red: #a13d3d;
+  --color-accent-red-dark: #7f2f2f;
+
+  /* Reserved for the 1943 wire layer only — never an etapa colour. */
+  --color-historical: #6b7f8f;
+
+  --font-heading: "Neue Grotesk Fallback", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+}
+
+:root {
+  color-scheme: light;
+  --content-bg: var(--color-offwhite-50);
+  --content-fg: var(--color-charcoal-950);
+  --font-scale: 1;
+}
+
+html {
+  font-size: calc(16px * var(--font-scale));
+}
+
+/* "Večja pisava" toggle — set on <html> by a client component reading
+   lib/progress.ts. Kept as a data attribute (not a class) so it survives
+   server-rendered markup without a flash of default size. */
+html[data-vecja-pisava="true"] {
+  --font-scale: 1.25;
+}
+
+body {
+  background: var(--content-bg);
+  color: var(--content-fg);
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Visible focus rings everywhere — accessibility hard requirement. */
+:focus-visible {
+  outline: 3px solid var(--color-accent-red);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Map UI chrome (top bar, side panel, controls) is dark and high-contrast,
+   independent of the light OpenFreeMap "liberty" basemap underneath it. */
+.map-chrome {
+  background: var(--color-charcoal-900);
+  color: var(--color-offwhite-50);
+}

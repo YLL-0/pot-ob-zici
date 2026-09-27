@@ -1,0 +1,37 @@
+{
+  "name": "pot-ob-zici",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "import:xlsx": "tsx scripts/import-xlsx.ts",
+    "import:xlsx:check": "tsx scripts/import-xlsx.ts --check",
+    "generate:poti": "tsx scripts/generate-poti.ts",
+    "seed": "tsx scripts/seed.ts"
+  },
+  "dependencies": {
+    "next": "15.5.26",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "maplibre-gl": "6.11.2",
+    "@supabase/supabase-js": "2.117.2",
+    "lucide-react": "1.48.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "26.6.3",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "tailwindcss": "4.3.3",
+    "@tailwindcss/postcss": "4.3.3",
+    "eslint": "9.39.5",
+    "eslint-config-next": "15.5.26",
+    "@eslint/eslintrc": "3.3.7",
+    "xlsx": "0.18.5",
+    "tsx": "4.23.15"
+  }
+}

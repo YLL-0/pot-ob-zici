@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "slug": "zica-1943",
+        "naziv": "Obrambni obroč 1942–43 (žica)",
+        "vrsta": "zica",
+        "etapa": null,
+        "odsek": null,
+        "barva": "#6b7f8f",
+        "status": "PLACEHOLDER — ni zgodovinsko potrjeno",
+        "tocke_ids": ["NMZ-001", "NMZ-012", "NMZ-019", "NMZ-015"],
+        "opomba": "Ročno postavljen grob obroč okoli starega mestnega jedra, samo za ponazoritev koncepta 'mesto v žici'. Ni terensko preverjeno, ni zgodovinsko potrjena trasa. Privzeto skrit sloj."
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [15.1761, 45.80309],
+          [15.17486, 45.80539],
+          [15.17318, 45.80777],
+          [15.17061, 45.80888],
+          [15.16718, 45.80843],
+          [15.16406, 45.80719],
+          [15.16255, 45.80555],
+          [15.16067, 45.80337],
+          [15.16216, 45.80125],
+          [15.16304, 45.79925],
+          [15.1668, 45.79793],
+          [15.16971, 45.79848],
+          [15.17343, 45.79882],
+          [15.17431, 45.80116],
+          [15.1761, 45.80309]
+        ]
+      }
+    }
+  ]
+}

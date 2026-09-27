@@ -1,0 +1,14 @@
+{
+  "_opomba": "Ročno postavljena sidrišča (vozlišča) za shematsko risanje 8 etap kot sklenjenega obroča. To NI zgodovinski ali izmerjen podatek — samo groba lega poimenovanih naselij/predelov, uporabljena kot začetna/končna točka vsake etape, da se etape stikajo. Uporablja jih izključno scripts/generate-poti.ts. Vrstni red je ciklični: etapa N gre od sidrisce[N-1] do sidrisce[N % 8]. Gotna vas in Drska sta namenoma rahlo zamaknjeni od NMZ-035 in NMZ-001 (ki imata skoraj identične koordinate) — sicer Chaikin glajenje na ničelno dolgem odseku ponovi isto točko namesto da bi jo zgladil.",
+  "status": "PLACEHOLDER — ni zgodovinsko potrjeno",
+  "sidrisca": [
+    { "naziv": "Loka", "lat": 45.807, "lon": 15.163 },
+    { "naziv": "Bršljin", "lat": 45.8195, "lon": 15.1815 },
+    { "naziv": "Bučna vas", "lat": 45.824, "lon": 15.2005 },
+    { "naziv": "Ragovo", "lat": 45.8, "lon": 15.18 },
+    { "naziv": "Žabja vas", "lat": 45.7914, "lon": 15.1711 },
+    { "naziv": "Gotna vas", "lat": 45.7853, "lon": 15.1478 },
+    { "naziv": "Šmihel", "lat": 45.7905, "lon": 15.1561 },
+    { "naziv": "Drska", "lat": 45.7943, "lon": 15.16 }
+  ]
+}
