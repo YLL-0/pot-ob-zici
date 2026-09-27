@@ -1,11 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import type { Pot, Tocka } from "@/lib/types";
 import { filterTocke } from "@/lib/filters";
 import { useFilterState } from "@/hooks/useFilterState";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import type { RouteState } from "@/lib/routing";
 import TopBar from "@/components/TopBar";
 import SidePanel, { type SheetState } from "@/components/SidePanel";
 import Legend from "@/components/Legend";
@@ -28,6 +29,7 @@ export default function MapExperience({ points, poti }: MapExperienceProps) {
 
   const [desktopExpanded, setDesktopExpanded] = useState(true);
   const [sheetState, setSheetState] = useState<SheetState>("peek");
+  const [routeState, setRouteState] = useState<RouteState>({ status: "idle" });
 
   const visiblePoints = useMemo(() => filterTocke(points, filters), [points, filters]);
 
@@ -36,6 +38,12 @@ export default function MapExperience({ points, poti }: MapExperienceProps) {
   }
   function selectPot(slug: string | null) {
     setFilters({ pot: slug, tocka: null });
+  }
+  // Stable identity (only depends on the setter, which React guarantees is
+  // stable) so it's safe as a MapView effect dependency without churn.
+  const handleRouteChange = useCallback((state: RouteState) => setRouteState(state), []);
+  function clearRoute() {
+    setRouteState({ status: "idle" });
   }
   function togglePanel() {
     // Checked at click time, not render time: which variant is actually
@@ -63,6 +71,8 @@ export default function MapExperience({ points, poti }: MapExperienceProps) {
           expanded={desktopExpanded}
           sheetState={sheetState}
           onSheetStateChange={setSheetState}
+          routeState={routeState}
+          onClearRoute={clearRoute}
         />
         <main className="relative min-w-0 flex-1">
           <MapView
@@ -74,6 +84,9 @@ export default function MapExperience({ points, poti }: MapExperienceProps) {
             prefersReducedMotion={prefersReducedMotion}
             onSelectTocka={selectTocka}
             onSelectPot={selectPot}
+            zicaVidna={filters.zica}
+            routeTockaId={routeState.status === "idle" ? null : routeState.tocka.id}
+            onRouteChange={handleRouteChange}
           />
           <Legend />
           <p className="map-chrome pointer-events-none absolute top-3 left-3 z-10 max-w-[min(85vw,22rem)] rounded px-3 py-1.5 text-xs shadow-lg">

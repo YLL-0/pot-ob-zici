@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
-import { GripHorizontal, Search, Type } from "lucide-react";
+import { ChevronDown, ChevronUp, GripHorizontal, Search, Type, X } from "lucide-react";
 import type { FilterState } from "@/lib/filters";
 import { filterTocke, toggleInArray } from "@/lib/filters";
 import { ETAPA_ODSEKI, getEtapaBarva } from "@/lib/etape";
 import { VRSTA_ICONS, VRSTA_LABELS, VSE_VRSTE } from "@/lib/vrsta";
 import { VSE_ZGODBE, ZGODBA_LABELS } from "@/lib/zgodbe";
 import { getVecjaPisava, setVecjaPisava } from "@/lib/progress";
+import { formatDistance, formatMinutes } from "@/lib/geo";
+import type { RouteState } from "@/lib/routing";
 import type { Pot, Tocka } from "@/lib/types";
 
 export type SheetState = "peek" | "half" | "full";
@@ -24,6 +26,8 @@ interface SidePanelProps {
   expanded: boolean;
   sheetState: SheetState;
   onSheetStateChange: (s: SheetState) => void;
+  routeState: RouteState;
+  onClearRoute: () => void;
 }
 
 const SHEET_HEIGHT: Record<SheetState, string> = {
@@ -61,6 +65,73 @@ function VecjaPisavaToggle() {
   );
 }
 
+/**
+ * "Pelji me tja" result — distance/duration/turn instructions in the panel
+ * (Phase 3 spec), triggered from a marker popup on the map. Sits above the
+ * filters so it's visible without scrolling once a route is active.
+ */
+function NavigacijaSection({ routeState, onClearRoute }: { routeState: RouteState; onClearRoute: () => void }) {
+  const [showSteps, setShowSteps] = useState(false);
+  if (routeState.status === "idle") return null;
+
+  return (
+    <div className="shrink-0 border-b border-charcoal-700 bg-charcoal-800 p-3">
+      <div className="flex items-start justify-between gap-2">
+        <p className="font-heading text-xs font-semibold tracking-wide text-offwhite-200 uppercase">
+          Navigacija · {routeState.tocka.naziv}
+        </p>
+        <button
+          type="button"
+          onClick={onClearRoute}
+          aria-label="Prekliči navigacijo"
+          className="shrink-0 rounded p-0.5 hover:bg-charcoal-700"
+        >
+          <X size={15} aria-hidden="true" />
+        </button>
+      </div>
+
+      {routeState.status === "loading" && <p className="mt-1.5 text-sm">Iščem pot …</p>}
+
+      {routeState.status === "error" && (
+        <p className="mt-1.5 text-sm text-accent-red">
+          {routeState.error} Uporabi zunanjo aplikacijo v pojavnem oknu obeležja.
+        </p>
+      )}
+
+      {routeState.status === "ready" && (
+        <div className="mt-1.5">
+          <p className="text-sm">
+            {formatDistance(routeState.route.distanceMeters)} · pribl.{" "}
+            {formatMinutes(Math.round(routeState.route.durationSeconds / 60))} hoje
+          </p>
+          {routeState.route.steps.length > 0 && (
+            <>
+              <button
+                type="button"
+                onClick={() => setShowSteps((v) => !v)}
+                aria-expanded={showSteps}
+                className="mt-1.5 flex items-center gap-1 text-xs font-medium text-offwhite-200 hover:text-offwhite-50"
+              >
+                {showSteps ? <ChevronUp size={14} aria-hidden="true" /> : <ChevronDown size={14} aria-hidden="true" />}
+                {showSteps ? "Skrij navodila po korakih" : "Pokaži navodila po korakih"}
+              </button>
+              {showSteps && (
+                <ol className="mt-1.5 list-inside list-decimal space-y-1 text-xs text-offwhite-200">
+                  {routeState.route.steps.map((s, i) => (
+                    <li key={i}>
+                      {s.instruction} <span className="text-offwhite-200/60">({formatDistance(s.distanceMeters)})</span>
+                    </li>
+                  ))}
+                </ol>
+              )}
+            </>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: ReactNode }) {
   return (
     <button
@@ -87,6 +158,8 @@ function PanelBody({
   selectedPotSlug,
   onSelectTocka,
   onSelectPot,
+  routeState,
+  onClearRoute,
 }: Omit<SidePanelProps, "expanded" | "sheetState" | "onSheetStateChange">) {
   const visiblePoints = useMemo(() => filterTocke(points, filters), [points, filters]);
   const byEtapa = useMemo(() => {
@@ -126,6 +199,8 @@ function PanelBody({
         </div>
         <VecjaPisavaToggle />
       </div>
+
+      <NavigacijaSection routeState={routeState} onClearRoute={onClearRoute} />
 
       {/* Filters */}
       <div className="shrink-0 space-y-2 border-b border-charcoal-700 p-3">
@@ -187,6 +262,15 @@ function PanelBody({
             className="h-3.5 w-3.5"
           />
           Samo osnovna trasa (13)
+        </label>
+        <label className="flex cursor-pointer items-center gap-2 text-xs">
+          <input
+            type="checkbox"
+            checked={filters.zica}
+            onChange={(e) => setFilters({ zica: e.target.checked })}
+            className="h-3.5 w-3.5"
+          />
+          Prikaži obrambni obroč 1942–43 (žica)
         </label>
       </div>
 

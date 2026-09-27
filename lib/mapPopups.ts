@@ -12,7 +12,7 @@
 import type { Pot, Tocka } from "@/lib/types";
 import { VRSTA_LABELS } from "@/lib/vrsta";
 import { ZGODBA_LABELS } from "@/lib/zgodbe";
-import { getGoogleMapsUrl } from "@/lib/zemljevidi";
+import { getAppleMapsUrl, getGoogleMapsUrl } from "@/lib/zemljevidi";
 import { lineLengthMeters, formatDistance } from "@/lib/geo";
 
 function el<K extends keyof HTMLElementTagNameMap>(
@@ -34,7 +34,19 @@ function chip(label: string): HTMLElement {
   );
 }
 
-export function buildTockaPopupElement(tocka: Tocka): HTMLElement {
+export interface TockaPopupHandle {
+  root: HTMLElement;
+  /** The in-app "Pelji me tja" button — MapView updates its label/disabled state during the async route request. */
+  peljiButton: HTMLButtonElement;
+}
+
+/**
+ * `onPeljiMeTja` drives the in-app ORS route (drawn on the real map by the
+ * caller); the Google/Apple links right below it are the always-available
+ * fallback, unconditionally present per the "must stay reachable even when
+ * the in-app route works, and work when geolocation is denied" rule.
+ */
+export function buildTockaPopupElement(tocka: Tocka, onPeljiMeTja: () => void): TockaPopupHandle {
   const root = el("div", "w-64 overflow-hidden rounded-lg bg-offwhite-50 text-charcoal-950 shadow-xl");
 
   const photo = el(
@@ -60,15 +72,27 @@ export function buildTockaPopupElement(tocka: Tocka): HTMLElement {
   vecLink.setAttribute("href", `/tocka/${tocka.slug}`);
   actions.appendChild(vecLink);
 
-  const peljiLink = el("a", "block rounded border border-charcoal-600/40 px-2.5 py-1.5 text-center text-xs font-medium text-charcoal-800 hover:bg-charcoal-900/5", "Pelji me tja ↗");
-  peljiLink.setAttribute("href", getGoogleMapsUrl(tocka.lat, tocka.lon));
-  peljiLink.setAttribute("target", "_blank");
-  peljiLink.setAttribute("rel", "noopener noreferrer");
-  actions.appendChild(peljiLink);
+  const peljiButton = el("button", "block w-full rounded border border-charcoal-600/40 px-2.5 py-1.5 text-center text-xs font-medium text-charcoal-800 hover:bg-charcoal-900/5", "Pelji me tja");
+  peljiButton.type = "button";
+  peljiButton.addEventListener("click", onPeljiMeTja);
+  actions.appendChild(peljiButton);
+
+  const fallbacks = el("div", "flex items-center justify-center gap-3 text-[11px]");
+  const googleLink = el("a", "text-charcoal-600 underline hover:text-accent-red", "Google Zemljevidi ↗");
+  googleLink.setAttribute("href", getGoogleMapsUrl(tocka.lat, tocka.lon));
+  googleLink.setAttribute("target", "_blank");
+  googleLink.setAttribute("rel", "noopener noreferrer");
+  const appleLink = el("a", "text-charcoal-600 underline hover:text-accent-red", "Apple Zemljevidi ↗");
+  appleLink.setAttribute("href", getAppleMapsUrl(tocka.lat, tocka.lon));
+  appleLink.setAttribute("target", "_blank");
+  appleLink.setAttribute("rel", "noopener noreferrer");
+  fallbacks.appendChild(googleLink);
+  fallbacks.appendChild(appleLink);
+  actions.appendChild(fallbacks);
 
   body.appendChild(actions);
   root.appendChild(body);
-  return root;
+  return { root, peljiButton };
 }
 
 export function buildPotPopupElement(pot: Pot, tockCount: number): HTMLElement {

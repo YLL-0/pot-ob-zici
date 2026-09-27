@@ -3,26 +3,32 @@
 /**
  * Small, mostly-static context map for detail pages — NOT the full
  * MapView (no clustering, no filters, no shared selection state). Two
- * variants: a single point in its surroundings (/tocka/[slug]), or a
- * trail's line with its points in walking order (/pot/[slug]).
+ * variants: a single point in its surroundings (/tocka/[slug]), optionally
+ * with an active "Pelji me tja" route drawn on top; or a trail's line with
+ * its points in walking order (/pot/[slug]).
  */
 
 import { useEffect, useRef } from "react";
-import { Map as MaplibreMap, Marker, LngLatBounds, NavigationControl, setWorkerUrl } from "maplibre-gl";
+import { Map as MaplibreMap, Marker, LngLatBounds, NavigationControl, setWorkerUrl, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { Pot, Tocka } from "@/lib/types";
 import { getEtapaBarva } from "@/lib/etape";
 
 const STYLE_URL = "https://tiles.openfreemap.org/styles/liberty";
+const AKTIVNA_POT_BARVA = "#a13d3d";
 
 if (typeof window !== "undefined") {
   setWorkerUrl(new URL("/maplibre-gl-worker.mjs", window.location.origin).href);
 }
 
-type MiniMapProps = { variant: "tocka"; tocka: Tocka } | { variant: "pot"; pot: Pot; tocke: Tocka[] };
+type MiniMapProps =
+  | { variant: "tocka"; tocka: Tocka; route?: GeoJSON.LineString | null }
+  | { variant: "pot"; pot: Pot; tocke: Tocka[] };
 
 export default function MiniMap(props: MiniMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<MaplibreMap | null>(null);
+  const loadedRef = useRef(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -34,6 +40,7 @@ export default function MiniMap(props: MiniMapProps) {
       scrollZoom: false,
       attributionControl: { compact: true },
     });
+    mapRef.current = map;
     map.addControl(new NavigationControl({ showCompass: false }), "top-right");
 
     const markers: Marker[] = [];
@@ -45,6 +52,7 @@ export default function MiniMap(props: MiniMapProps) {
             .setLngLat([props.tocka.lon, props.tocka.lat])
             .addTo(map),
         );
+        loadedRef.current = true;
         return;
       }
 
@@ -77,14 +85,63 @@ export default function MiniMap(props: MiniMapProps) {
         );
         map.fitBounds(bounds, { padding: 32, animate: false });
       }
+      loadedRef.current = true;
     });
 
     return () => {
       markers.forEach((m) => m.remove());
       map.remove();
+      mapRef.current = null;
+      loadedRef.current = false;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- built once from initial props; detail pages don't mutate these mid-view
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- built once from initial props; only `route` (tocka variant) is meant to update live, handled in the effect below
   }, []);
+
+  // Draws/updates/removes the active walking route on top of the point map.
+  const route = props.variant === "tocka" ? (props.route ?? null) : null;
+  useEffect(() => {
+    if (props.variant !== "tocka") return;
+    const map = mapRef.current;
+    if (!map) return;
+
+    const apply = () => {
+      if (!loadedRef.current) return;
+      const source = map.getSource("aktivna-pot") as GeoJSONSource | undefined;
+      if (!route) {
+        if (map.getLayer("aktivna-pot-line")) map.removeLayer("aktivna-pot-line");
+        if (map.getLayer("aktivna-pot-casing")) map.removeLayer("aktivna-pot-casing");
+        if (source) map.removeSource("aktivna-pot");
+        return;
+      }
+      const feature: GeoJSON.Feature<GeoJSON.LineString> = { type: "Feature", properties: {}, geometry: route };
+      if (source) {
+        source.setData(feature);
+      } else {
+        map.addSource("aktivna-pot", { type: "geojson", data: feature });
+        map.addLayer({
+          id: "aktivna-pot-casing",
+          type: "line",
+          source: "aktivna-pot",
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: { "line-color": "#faf8f4", "line-width": 6, "line-opacity": 0.7 },
+        });
+        map.addLayer({
+          id: "aktivna-pot-line",
+          type: "line",
+          source: "aktivna-pot",
+          layout: { "line-cap": "round", "line-join": "round" },
+          paint: { "line-color": AKTIVNA_POT_BARVA, "line-width": 3.5, "line-dasharray": [0.1, 1.6] },
+        });
+      }
+      const coords = route.coordinates as [number, number][];
+      const bounds = coords.reduce((b, c) => b.extend(c), new LngLatBounds(coords[0]!, coords[0]!));
+      map.fitBounds(bounds, { padding: 40, animate: true });
+    };
+
+    if (loadedRef.current) apply();
+    else map.once("load", apply);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- `props.variant` is read only to early-return and never changes for a mounted instance; `route` is the real trigger
+  }, [route]);
 
   return <div ref={containerRef} className="h-full w-full" />;
 }

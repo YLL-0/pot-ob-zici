@@ -16,6 +16,8 @@ export interface FilterState {
   zgodbe: Zgodba[];
   /** "Samo osnovna trasa" toggle — restrict to the 13 core-trail points. */
   samoOsnovna: boolean;
+  /** "Prikaži obrambni obroč 1942–43" toggle — off by default (Phase 3). */
+  zica: boolean;
   /** Selected point ID, or null. Mutually exclusive with `pot`. */
   tocka: string | null;
   /** Selected trail slug, or null. Mutually exclusive with `tocka`. */
@@ -28,6 +30,7 @@ export const EMPTY_FILTERS: FilterState = {
   vrste: [],
   zgodbe: [],
   samoOsnovna: false,
+  zica: false,
   tocka: null,
   pot: null,
 };
@@ -38,6 +41,7 @@ const PARAM = {
   vrste: "vrsta",
   zgodbe: "zgodba",
   samoOsnovna: "osnovna",
+  zica: "zica",
   tocka: "tocka",
   pot: "pot",
 } as const;
@@ -62,6 +66,7 @@ export function parseFilters(params: URLSearchParams): FilterState {
     vrste: parseStringList<Vrsta>(params.get(PARAM.vrste)),
     zgodbe: parseStringList<Zgodba>(params.get(PARAM.zgodbe)),
     samoOsnovna: params.get(PARAM.samoOsnovna) === "1",
+    zica: params.get(PARAM.zica) === "1",
     tocka: params.get(PARAM.tocka),
     pot: params.get(PARAM.pot),
   };
@@ -75,6 +80,7 @@ export function serializeFilters(state: FilterState): string {
   if (state.vrste.length > 0) params.set(PARAM.vrste, state.vrste.join(","));
   if (state.zgodbe.length > 0) params.set(PARAM.zgodbe, state.zgodbe.join(","));
   if (state.samoOsnovna) params.set(PARAM.samoOsnovna, "1");
+  if (state.zica) params.set(PARAM.zica, "1");
   if (state.tocka) params.set(PARAM.tocka, state.tocka);
   if (state.pot) params.set(PARAM.pot, state.pot);
   return params.toString();

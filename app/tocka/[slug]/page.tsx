@@ -4,12 +4,11 @@ import { notFound } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { getPoint, getPoints, getPoti } from "@/lib/data";
 import { getPrevNextVEtapi } from "@/lib/navigacija";
-import { getGoogleMapsUrl, getAppleMapsUrl } from "@/lib/zemljevidi";
 import { VRSTA_LABELS } from "@/lib/vrsta";
 import { ZGODBA_LABELS } from "@/lib/zgodbe";
 import { getEtapaBarva } from "@/lib/etape";
 import FotoPlaceholder from "@/components/FotoPlaceholder";
-import MiniMap from "@/components/LazyMiniMap";
+import PeljiMeTjaZemljevid from "@/components/PeljiMeTjaZemljevid";
 import TrackPointView from "@/components/TrackPointView";
 
 export const dynamic = "force-dynamic";
@@ -151,36 +150,7 @@ export default async function TockaPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Context map */}
-      <section className="mt-6">
-        <p className="mb-2 text-sm font-medium text-charcoal-700">Lokacija</p>
-        <p className="mb-2 text-xs text-charcoal-600">
-          Lokacija je približna — terenska uskladitev v teku.
-        </p>
-        <div className="h-64 overflow-hidden rounded-lg border border-charcoal-200">
-          <MiniMap variant="tocka" tocka={tocka} />
-        </div>
-      </section>
-
-      {/* Pelji me tja */}
-      <section className="mt-6 flex flex-wrap gap-2">
-        <a
-          href={getGoogleMapsUrl(tocka.lat, tocka.lon)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded bg-accent-red px-4 py-2 text-sm font-semibold text-offwhite-50 hover:bg-accent-red-dark"
-        >
-          Pelji me tja (Google Zemljevidi) ↗
-        </a>
-        <a
-          href={getAppleMapsUrl(tocka.lat, tocka.lon)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded border border-charcoal-300 px-4 py-2 text-sm font-medium hover:bg-offwhite-100"
-        >
-          Odpri v Apple Zemljevidih ↗
-        </a>
-      </section>
+      <PeljiMeTjaZemljevid tocka={tocka} />
 
       {/* Prev/next */}
       <nav className="mt-8 flex items-center justify-between border-t border-charcoal-200 pt-4 text-sm">

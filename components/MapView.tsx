@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   Map as MaplibreMap,
   LngLatBounds,
@@ -24,9 +24,12 @@ if (typeof window !== "undefined") {
 import type { Pot, Tocka } from "@/lib/types";
 import { getEtapaBarva } from "@/lib/etape";
 import { ensureVrstaIcons, vrstaIconImageId } from "@/lib/mapIcons";
-import { buildPotPopupElement, buildTockaPopupElement } from "@/lib/mapPopups";
+import { buildPotPopupElement, buildTockaPopupElement, type TockaPopupHandle } from "@/lib/mapPopups";
 import { isRazsirjeniKrak } from "@/lib/filters";
 import { VSE_VRSTE } from "@/lib/vrsta";
+import { messageForError, planWalkingRoute, type RouteState } from "@/lib/routing";
+
+const AKTIVNA_POT_BARVA = "#a13d3d";
 
 const STYLE_URL = "https://tiles.openfreemap.org/styles/liberty";
 const NOVO_MESTO_CENTER: [number, number] = [15.1687, 45.8016];
@@ -40,6 +43,41 @@ interface MapViewProps {
   prefersReducedMotion: boolean;
   onSelectTocka: (id: string | null) => void;
   onSelectPot: (slug: string | null) => void;
+  /** "Prikaži obrambni obroč 1942–43" toggle — off by default (Phase 3). */
+  zicaVidna: boolean;
+  /** Which point (if any) the active "Pelji me tja" route belongs to — used only to know when to clear the drawn line; drawing itself happens imperatively from the popup click handler. */
+  routeTockaId: string | null;
+  onRouteChange: (state: RouteState) => void;
+}
+
+function drawAktivnaPot(map: MaplibreMap, geometry: GeoJSON.LineString) {
+  const feature: GeoJSON.Feature<GeoJSON.LineString> = { type: "Feature", properties: {}, geometry };
+  const source = map.getSource("aktivna-pot") as GeoJSONSource | undefined;
+  if (source) {
+    source.setData(feature);
+    return;
+  }
+  map.addSource("aktivna-pot", { type: "geojson", data: feature });
+  map.addLayer({
+    id: "aktivna-pot-casing",
+    type: "line",
+    source: "aktivna-pot",
+    layout: { "line-cap": "round", "line-join": "round" },
+    paint: { "line-color": "#faf8f4", "line-width": 6, "line-opacity": 0.7 },
+  });
+  map.addLayer({
+    id: "aktivna-pot-line",
+    type: "line",
+    source: "aktivna-pot",
+    layout: { "line-cap": "round", "line-join": "round" },
+    paint: { "line-color": AKTIVNA_POT_BARVA, "line-width": 3.5, "line-dasharray": [0.1, 1.6] },
+  });
+}
+
+function clearAktivnaPot(map: MaplibreMap) {
+  if (map.getLayer("aktivna-pot-line")) map.removeLayer("aktivna-pot-line");
+  if (map.getLayer("aktivna-pot-casing")) map.removeLayer("aktivna-pot-casing");
+  if (map.getSource("aktivna-pot")) map.removeSource("aktivna-pot");
 }
 
 function tockaToFeature(t: Tocka): GeoJSON.Feature<GeoJSON.Point> {
@@ -66,6 +104,9 @@ export default function MapView({
   prefersReducedMotion,
   onSelectTocka,
   onSelectPot,
+  zicaVidna,
+  routeTockaId,
+  onRouteChange,
 }: MapViewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MaplibreMap | null>(null);
@@ -334,7 +375,7 @@ export default function MapView({
       );
     }
 
-    const isZica = selectedPotSlug === "zica-1943";
+    const isZica = selectedPotSlug === "zica-1943" || zicaVidna;
     if (map.getLayer("poti-zica-line")) {
       map.setLayoutProperty("poti-zica-line", "visibility", isZica ? "visible" : "none");
     }
@@ -347,7 +388,39 @@ export default function MapView({
       );
       map.fitBounds(bounds, { padding: 64, animate: !prefersReducedMotion, duration: 600 });
     }
-  }, [selectedPotSlug, poti, prefersReducedMotion]);
+  }, [selectedPotSlug, poti, prefersReducedMotion, zicaVidna]);
+
+  // --- "Pelji me tja" from a marker popup: geolocate, fetch the route,
+  // draw it, and lift the result up so the side panel can show
+  // distance/duration/turn instructions. ---------------------------------
+  const handlePeljiMeTja = useCallback(
+    async (tocka: Tocka, handle: TockaPopupHandle) => {
+      onRouteChange({ status: "loading", tocka });
+      handle.peljiButton.disabled = true;
+      handle.peljiButton.textContent = "Iščem lokacijo …";
+      try {
+        const route = await planWalkingRoute({ lat: tocka.lat, lon: tocka.lon });
+        if (mapRef.current) drawAktivnaPot(mapRef.current, route.geometry);
+        handle.peljiButton.textContent = "Pot najdena ✓";
+        onRouteChange({ status: "ready", tocka, route });
+      } catch (err) {
+        const msg = messageForError(err);
+        handle.peljiButton.textContent = msg;
+        handle.peljiButton.disabled = false;
+        onRouteChange({ status: "error", tocka, error: msg });
+      }
+    },
+    [onRouteChange],
+  );
+
+  // Clears the drawn route once the panel/caller says it's no longer active
+  // (e.g. "Prekliči navigacijo"). Drawing itself is imperative, from the
+  // click handler above, not driven by a prop — only clearing is reactive.
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !loadedRef.current) return;
+    if (!routeTockaId) clearAktivnaPot(map);
+  }, [routeTockaId]);
 
   // --- Popup: one effect deciding for BOTH selection kinds together, so a
   // tocka popup and a pot popup can never race to remove each other's ---
@@ -361,9 +434,10 @@ export default function MapView({
     if (selectedTockaId) {
       const tocka = points.find((p) => p.id === selectedTockaId);
       if (tocka) {
+        const handle = buildTockaPopupElement(tocka, () => handlePeljiMeTja(tocka, handle));
         popupRef.current = new Popup({ closeButton: false, closeOnClick: false, maxWidth: "280px" })
           .setLngLat([tocka.lon, tocka.lat])
-          .setDOMContent(buildTockaPopupElement(tocka))
+          .setDOMContent(handle.root)
           .addTo(map);
       }
     } else if (selectedPotSlug) {
@@ -376,7 +450,7 @@ export default function MapView({
           .addTo(map);
       }
     }
-  }, [selectedTockaId, selectedPotSlug, points, poti]);
+  }, [selectedTockaId, selectedPotSlug, points, poti, handlePeljiMeTja]);
 
   function handleFitAll() {
     const map = mapRef.current;
