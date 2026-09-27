@@ -1,5 +1,35 @@
 # Changelog
 
+## Faza 1 — zemljevid, gručenje, trase, stranski panel
+
+- `components/MapView.tsx`: MapLibre GL + OpenFreeMap `liberty`, lazy-loaded client island.
+  Točke v gručenem GeoJSON viru, krogci barvani po etapi, ikona po vrsti (`lib/vrsta.ts`,
+  rasterizirana prek `<canvas>` — `map.loadImage()` ne zna dekodirati SVG data-URI-jev
+  zanesljivo). Trase iz `data/poti/*.geojson`, črtkane po `status`, `zica-1943` privzeto skrita.
+- Prileganje ob nalaganju: 35 točk brez razširjenih krakov (Novo mesto), gumb "prikaži vseh 50"
+  za preostalih 15.
+- Deljena izbira med zemljevidom in panelom prek URL poizvedbe (`lib/filters.ts`,
+  `hooks/useFilterState.ts`): klik na točko/traso kjerkoli vodi v isto stanje, izbrana točka
+  dobi obroč + fly-to, izbrana trasa se odebeli/ostane polno vidna medtem ko druge zbledijo,
+  panel vrstica se samodejno prikaže v pogledu.
+- `components/SidePanel.tsx`: iskanje, filtrirni čipi (etapa/vrsta/tema), preklop "Samo osnovna
+  trasa (13)", sekciji "Poti" in "Obeležja". En `PanelBody`, dva CSS-preklopljena ovoja
+  (docked panel na desktopu, bottom sheet na mobilnem) — namerno brez JS-pogojenega mountanja,
+  da se izogne hidracijskemu neujemanju.
+- `components/TopBar.tsx`, `components/Legend.tsx`, "Večja pisava" preklop.
+- `scripts/copy-maplibre-worker.mjs` (predev/prebuild): popravek za znano napako
+  "Worker failed to load" pri maplibre-gl v webpack/Next.js okolju.
+- `app/page.tsx`: `export const dynamic = "force-dynamic"`, da Faza-4 objave niso ujete v
+  statični build.
+
+Znane poenostavitve: desktopski panel se ob strnitvi skrči na 0 (ne na ikonsko letev); mobilni
+bottom sheet cikla peek/half/full s klikom na ročico (brez pravega povleci-in-spusti); klik na
+vrstico "žica" jo začasno pokaže na zemljevidu (pravi vklop/izklop je Faza 3); izbira točke, ki
+jo aktivni filtri sicer skrijejo, lahko pusti obroč brez markerja (robni primer).
+
+Verificirano v headless Chromium (Playwright): vseh 50 markerjev, gručenje, vseh 9 trajektorij,
+sinhronizacija zemljevid↔panel↔URL, mobilni pogled — brez konzolnih napak.
+
 ## Faza 0 — ogrodje (scaffold)
 
 - Next.js 15 + TypeScript + Tailwind v4 project scaffold.
