@@ -1,5 +1,32 @@
 # Changelog
 
+## Faza 2 — pojavna okna, strani obeležij/poti, /nmz-nnn, SEO
+
+- Pojavna okna na klik (marker ali trasa, na zemljevidu ali v panelu — isto deljeno stanje iz
+  Faze 1): obeležje dobi foto-placeholder, naziv, območje, čipe, iztočnico in gumba "Več o
+  obeležju →" / "Pelji me tja"; trasa dobi naziv, odsek, št. točk, dolžino in "Odpri pot →".
+- `/tocka/[slug]`: polna stran obeležja — naslovna slika, čipi, polno besedilo ali "Vsebina v
+  pripravi" + iztočnica, EŠD, viri, primerjava danes/nekoč (placeholder), kontekstni
+  mini-zemljevid, prev/next znotraj etape, "Pelji me tja". `generateMetadata`,
+  `opengraph-image.tsx` (next/og), JSON-LD `LandmarksOrHistoricalBuildings`.
+- `/pot/[slug]`: mini-zemljevid s številčenimi točkami v vrstnem redu hoje, dolžina, ocenjen čas
+  hoje, opozorilo o shematski trasi, seznam obeležij, povezave na druge poti.
+- `/o-projektu`: o projektu, društvu, stanju vsebin, GPS/trasah, fotografijah, virih.
+- `/nmz-001` … `/nmz-050` (case-insensitive) → 301 na `/tocka/[slug]` prek `middleware.ts`.
+- `app/sitemap.ts`.
+- NMZ-001, NMZ-016, NMZ-023 zdaj nosijo dovoljeno demo besedilo (CLAUDE.md izjema), jasno
+  označeno `[DEMO BESEDILO — ni zgodovinski vir]` in namerno napisano tako, da opisuje samo
+  postavitev strani — brez izmišljenih datumov, imen ali številk.
+
+Dva popravka med gradnjo: `next/dynamic(ssr:false)` ni dovoljen neposredno v server komponenti,
+zato `components/LazyMiniMap.tsx` kot tanek client ovoj — brez njega bi maplibre-gl pristal v
+prvem JS payloadu vsebinskih strani (390 kB namesto 110 kB). Matcher `"/nmz-:id"` v middleware
+tiho ni ujel nobene poti (path-to-regexp ne poveže parametra brez ločila za literalom) —
+popravljeno na širši matcher z notranjim regexom.
+
+Verificirano v headless Chromiumu: obe pojavni okni, obe detajlni strani, redirect (301,
+case-insensitive) in 404 za neznan ID, sitemap.xml, opengraph-image — brez konzolnih napak.
+
 ## Faza 1 — zemljevid, gručenje, trase, stranski panel
 
 - `components/MapView.tsx`: MapLibre GL + OpenFreeMap `liberty`, lazy-loaded client island.

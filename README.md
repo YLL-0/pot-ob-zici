@@ -13,15 +13,18 @@ Spletna stran, na kateri je zemljevid **domača stran** — obiskovalec takoj vi
 Novega mesta z etapami poti in obeležji, ne pristajalne strani pred njim. Vsako obeležje ima
 svojo stran, na katero vodi QR-tablica na terenu.
 
-### Kje je stanje zdaj (po Fazi 1)
+### Kje je stanje zdaj (po Fazi 2)
 
-Domača stran je zdaj pravi zemljevid: vseh 50 obeležij, vseh 8 etap in poskusna trasa nekdanje
-žice, z iskanjem, filtri (etapa/vrsta/tema) in seznamom v stranskem panelu (na telefonu spodnja
-pomična ploščica). Klik na obeležje ali etapo na zemljevidu in v seznamu vodi v isto stanje.
+Domača stran je zemljevid: vseh 50 obeležij, vseh 8 etap in poskusna trasa nekdanje žice, z
+iskanjem, filtri in seznamom v stranskem panelu. Klik na obeležje ali etapo — na zemljevidu ali
+v seznamu — odpre pojavno okno s povzetkom in vodi na svojo stran (`/tocka/...`, `/pot/...`) s
+polnim besedilom (ali "Vsebina v pripravi", če ga zgodovinarji še niso napisali), viri, EŠD in
+kontekstnim zemljevidom. QR-tablice (`/nmz-001` … `/nmz-050`) pravilno preusmerijo na pravo stran.
 
-Kar še manjka: klik na obeležje/etapo ne odpre še podrobne vsebine (pojavno okno in lastna stran
-sta Faza 2), ni še navigacije "Pelji me tja" (Faza 3), admin za vnos besedil in fotografij pa je
-šele Faza 4 — brez njega vsebin trenutno ne more vnesti nihče razen prek Excela/razvijalca.
+Kar še manjka: gumb "Pelji me tja" trenutno vodi samo v Google/Apple Zemljevide (zunanja
+aplikacija) — navigacija znotraj strani s prikazom razdalje in časa je Faza 3. Admin za vnos
+besedil in fotografij je Faza 4 — brez njega vsebin trenutno ne more vnesti nihče razen prek
+Excela/razvijalca.
 
 Aplikacija ves čas deluje tudi brez podatkovne baze (za demo na katerem koli računalniku).
 
