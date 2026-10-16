@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { ETAPA_ODSEKI, getEtapaBarva } from "@/lib/etape";
+import type { Etapa } from "@/lib/types";
 import { VRSTA_ICONS, VRSTA_LABELS, VSE_VRSTE } from "@/lib/vrsta";
 
 /** Small collapsible map legend: etapa colours + object-type icons. */
-export default function Legend() {
+export default function Legend({ etape }: { etape: Etapa[] }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -25,15 +25,16 @@ export default function Legend() {
         <div id="legenda-vsebina" className="max-h-[60vh] overflow-y-auto border-t border-charcoal-700 px-3 py-2">
           <p className="mb-1 text-xs font-semibold text-offwhite-200">Etapa (barva)</p>
           <ul className="mb-3 space-y-1">
-            {Object.entries(ETAPA_ODSEKI).map(([etapa, odsek]) => (
-              <li key={etapa} className="flex items-center gap-2">
+            {etape.map((etapa) => (
+              <li key={etapa.id} className="flex items-center gap-2">
                 <span
                   aria-hidden="true"
                   className="inline-block h-3 w-3 shrink-0 rounded-full"
-                  style={{ backgroundColor: getEtapaBarva(Number(etapa)) }}
+                  style={{ backgroundColor: etapa.barva }}
                 />
                 <span>
-                  Etapa {etapa} — {odsek}
+                  {etapa.naziv}
+                  {etapa.odsek ? ` — ${etapa.odsek}` : ""}
                 </span>
               </li>
             ))}

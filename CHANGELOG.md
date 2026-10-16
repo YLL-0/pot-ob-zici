@@ -1,5 +1,42 @@
 # Changelog
 
+## Faza 4.1 — etape kot podatki, `zaporedje`, shema `trase`, popravek RLS
+
+- `supabase/migrations/0002_etape_trase.sql`:
+  - nova tabela `etape` (`id` = stabilen slug `etapa-N`, `stevilka`, `naziv`, `odsek`, `barva`,
+    `opis`, `vidna`, `updated_*`), napolnjena z obstoječimi 8 etapami;
+  - `tocke.etapa` iz `int 1–8` v tuji ključ na `etape.id` (obstoječe vrednosti migrirane,
+    `null` = točka brez etape), `on delete restrict`, zato je brisanje etape s točkami zavrnjeno;
+  - `tocke.zaporedje` z deferrable `unique (etapa, zaporedje)`;
+  - `tocke.odsek` odstranjen (izpelje se iz etape), neuporabljena tabela `poti` odstranjena;
+  - nova tabela `trase` (predpomnilnik izračunanih tras; `razlog` in `kraki` poleg polj iz
+    specifikacije, zastarelost se izpelje iz `kljuc` in se ne shranjuje).
+- **Popravek napake iz 0001:** politike na `profiles`/`tocke` so brale `profiles` znotraj RLS
+  politike, kar je pri prijavljenem uporabniku vrglo *infinite recursion detected in policy*.
+  Zdaj gredo prek `is_editor()` / `is_admin()` (security definer). Dodane politike za
+  insert/delete na `tocke` ter RLS za `etape` (javno samo `vidna`) in `trase`.
+- `lib/etape.ts`: iz konstantnih tabel v pomožne funkcije + `ETAPE_SEED`. `lib/data.ts`:
+  `getEtape()` / `getEtapa()` z enakim fallbackom brez `.env` kot točke; točke prihajajo urejene
+  po etapi in `zaporedje`. Komponente dobijo seznam etap kot prop (legenda, čipi, panel, barve
+  markerjev), nič več ne predpostavlja "8 etap".
+- `lib/zaporedje.ts`: privzeti vrstni red v etapi (projekcija med sidrišči + 2-opt).
+  `import-xlsx.ts` ga izračuna za vseh 50 točk (tudi razširjene krake, odločitev naročnika) in
+  številko etape preslika v `etapa-N`. Seed regeneriran; `import:xlsx:check` je pred tem pokazal
+  točno 100 razlik (50 × `etapa`, 50 × `zaporedje`), nič drugega.
+- `scripts/seed.ts` najprej vstavi manjkajoče etape (obstoječih ne spreminja), `odsek` ne
+  pošilja več. `generate-poti.ts` bere `ETAPE_SEED`; `data/poti/*.geojson` je bajt-identičen.
+- Prev/next na `/tocka/[slug]` zdaj sledi `zaporedje` (prej ID). Seznam obeležij v panelu je
+  znotraj etape urejen po `zaporedje` (prej po ID) — edina vidna sprememba.
+
+Preverjeno: migraciji `0001` + `0002` na Postgres 16 (podman, nadomestna `auth` shema) nad
+obstoječimi vrsticami s številčnimi etapami. Potrjena napaka rekurzije pred popravkom in njena
+odprava; anon vidi samo vidne etape in objavljene točke; urednik ne more brisati etap; FK zavrne
+brisanje etape s točkami in neznano etapo; dvojni `zaporedje` je zavrnjen, zamenjava v enem
+stavku uspe. **Ni preverjeno:** `npm run seed` proti pravemu Supabase (PostgREST) — ni projekta
+v tem okolju. `lint`, `typecheck`, `build` čisti; `npm run dev` brez `.env` v headless Chromiumu:
+50 obeležij, 8 etap v legendi in čipih, `?etapa=3` → 7, +5 → 11, prev/next po `zaporedje`,
+`/pot/etapa-3`, OG slika, brez konzolnih napak.
+
 ## Faza 3 — navigacija (ORS + geolokacija), pravo stikalo za žico
 
 - `app/api/route/route.ts`: strežniški ovoj za OpenRouteService foot-walking/geojson. Ključ

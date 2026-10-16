@@ -137,9 +137,23 @@ export interface Tocka {
   /** Heritage register ID (EŠD). Often null — most points aren't registered. */
   esd: string | null;
   esd_status: EsdStatus;
-  /** Stage number, 1–8. */
-  etapa: number;
-  /** Stage section name, e.g. "Šmihel – Drska". Derived from `etapa`. */
+  /**
+   * Stage ID (`Etapa.id`, e.g. "etapa-7"), or null for a point that belongs
+   * to no stage — it still shows on the map but is part of no route.
+   */
+  etapa: string | null;
+  /**
+   * Order of the point within its stage's route (1-based), or null when
+   * the point has no stage. Defaulted by scripts/import-xlsx.ts from
+   * geographic order (lib/zaporedje.ts); editable in the admin.
+   */
+  zaporedje: number | null;
+  /**
+   * Stage section name, e.g. "Šmihel – Drska". Not stored in Supabase —
+   * lib/data.ts overwrites it on read from the point's `Etapa.odsek`, so
+   * the two can never drift apart. Kept in tocke.seed.json only because
+   * the Excel carries it (column C).
+   */
   odsek: string;
   vkljucitev: Vkljucitev;
   /** One-line teaser. Already written by the client — safe to display. */
@@ -186,6 +200,63 @@ export interface Tocka {
 }
 
 /**
+ * A stage (etapa). Editable data since Phase 4 — no longer a hardcoded
+ * 1–8 table. `id` is a stable slug ("etapa-1"); never regenerate it for an
+ * existing stage, it is referenced by tocke.etapa, URLs and the offline
+ * fallback files data/poti/<id>.geojson. `stevilka` is display order only
+ * and may change when an editor reorders stages.
+ */
+export interface Etapa {
+  id: string;
+  stevilka: number;
+  naziv: string;
+  odsek: string | null;
+  /** "#rrggbb". Shared by the stage's markers, trail line and panel row. */
+  barva: string;
+  opis: string | null;
+  /** Hidden stages are not shown publicly (RLS filters them out). */
+  vidna: boolean;
+  updated_at: string | null;
+  updated_by: string | null;
+}
+
+/** Outcome of a routing attempt. "Stale" is never stored — see Trasa.kljuc. */
+export type TrasaStatus = "izracunano" | "ni_uspelo";
+
+/** One leg of a computed route, between two consecutive waypoints. */
+export interface TrasaKrak {
+  od_id: string;
+  do_id: string;
+  dolzina_m: number;
+  /** Straight-line distance, for the "suspicious detour" check. */
+  zracna_m: number;
+}
+
+/**
+ * A cached routing result (table `trase`). The public map only ever reads
+ * these; routing calls happen in the admin (Phase 4 step 2).
+ *
+ * `kljuc` hashes the ordered (point id, lat, lon) list + stage ids +
+ * routing profile. A route is stale exactly when the key computed from the
+ * current points no longer matches — staleness is derived, not stored, so
+ * it can never be forgotten.
+ */
+export interface Trasa {
+  id: string;
+  kljuc: string;
+  etapa_ids: string[];
+  geometry: { type: "LineString"; coordinates: [number, number][] } | null;
+  dolzina_m: number | null;
+  trajanje_s: number | null;
+  engine: string;
+  izracunano_ob: string;
+  status: TrasaStatus;
+  /** Why routing failed (status "ni_uspelo"), shown in the admin. */
+  razlog: string | null;
+  kraki: TrasaKrak[] | null;
+}
+
+/**
  * A trail: one of the 8 numbered stages, or the 1943 wire ring. Loaded
  * generically from whatever GeoJSON files sit in data/poti/ — see
  * lib/data.ts and README.md for the "drop in a real GPX later" contract.
@@ -203,7 +274,10 @@ export interface Pot {
   slug: string;
   naziv: string;
   vrsta: PotVrsta;
-  /** 1–8 for stages, null for the 1943 wire. */
+  /**
+   * Stage display number for the committed schematic fallback files, null
+   * for the 1943 wire. Match a Pot to its Etapa by `slug === Etapa.id`.
+   */
   etapa: number | null;
   odsek: string | null;
   /** Colour shared by the trail line, its markers, and its panel row. */

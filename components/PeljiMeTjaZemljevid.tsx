@@ -22,7 +22,7 @@ const MiniMap = dynamic(() => import("@/components/MiniMap"), {
   ),
 });
 
-export default function PeljiMeTjaZemljevid({ tocka }: { tocka: Tocka }) {
+export default function PeljiMeTjaZemljevid({ tocka, barva }: { tocka: Tocka; barva: string }) {
   const [state, setState] = useState<RouteState>({ status: "idle" });
   const [showSteps, setShowSteps] = useState(false);
 
@@ -42,7 +42,7 @@ export default function PeljiMeTjaZemljevid({ tocka }: { tocka: Tocka }) {
       <p className="mb-2 text-xs text-charcoal-600">Lokacija je približna — terenska uskladitev v teku.</p>
 
       <div className="h-64 overflow-hidden rounded-lg border border-charcoal-200">
-        <MiniMap variant="tocka" tocka={tocka} route={state.status === "ready" ? state.route.geometry : null} />
+        <MiniMap variant="tocka" tocka={tocka} barva={barva} route={state.status === "ready" ? state.route.geometry : null} />
       </div>
 
       <div className="mt-3 flex flex-wrap gap-2">

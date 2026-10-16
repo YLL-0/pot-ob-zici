@@ -8,6 +8,10 @@
  * `npm run dev` and show all 50 points — this fallback is what makes that
  * true, and it must never become a hard Supabase dependency.
  *
+ * Stages (etape) follow the same rule: Supabase `etape` if configured,
+ * otherwise lib/etape.ts ETAPE_SEED. A point's `odsek` is always taken
+ * from its stage on read (it is not stored in Supabase).
+ *
  * Trails (poti) always come from data/poti/*.geojson regardless of
  * Supabase config — see README.md "Dodajanje prave GPX trase" for the
  * zero-code-change contract this loader honours.
@@ -16,11 +20,40 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import seedData from "@/tocke.seed.json";
-import type { Pot, Tocka } from "@/lib/types";
+import type { Etapa, Pot, Tocka } from "@/lib/types";
 import { getQrUrl } from "@/lib/qr";
+import { ETAPE_SEED, findEtapa, sortEtape } from "@/lib/etape";
 import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase";
 
 const POTI_DIR = join(process.cwd(), "data", "poti");
+
+// ---------------------------------------------------------------------------
+// Stages (etape)
+// ---------------------------------------------------------------------------
+
+async function loadSupabaseEtape(): Promise<Etapa[]> {
+  const supabase = getSupabaseClient();
+  // RLS limits the anon client to `vidna = true`; filtered here as well so
+  // the public result doesn't depend on which client reads it.
+  const { data, error } = await supabase.from("etape").select("*").eq("vidna", true).order("stevilka");
+  if (error) {
+    throw new Error(`Napaka pri branju etap iz Supabase: ${error.message}`);
+  }
+  return (data ?? []) as Etapa[];
+}
+
+/** Public, visible stages in display order (`stevilka`). */
+export async function getEtape(): Promise<Etapa[]> {
+  if (isSupabaseConfigured()) {
+    return loadSupabaseEtape();
+  }
+  return sortEtape(ETAPE_SEED.filter((e) => e.vidna));
+}
+
+export async function getEtapa(id: string): Promise<Etapa | null> {
+  const etape = await getEtape();
+  return findEtapa(etape, id) ?? null;
+}
 
 // ---------------------------------------------------------------------------
 // Points (tocke)
@@ -55,27 +88,37 @@ function assertValidTocke(raw: unknown): asserts raw is Tocka[] {
   });
 }
 
-function withComputedQrUrl(tocka: Tocka): Tocka {
-  return { ...tocka, qr_url: getQrUrl(tocka.id) };
+/** Fills the read-time fields: `qr_url` (lib/qr.ts) and `odsek` (from the stage). */
+function withDerivedFields(tocka: Tocka, etape: Etapa[]): Tocka {
+  return {
+    ...tocka,
+    qr_url: getQrUrl(tocka.id),
+    odsek: findEtapa(etape, tocka.etapa)?.odsek ?? "",
+  };
+}
+
+/** Stage display order first, then walking order within the stage. */
+function compareByEtapaZaporedje(etape: Etapa[]) {
+  const stevilka = (t: Tocka) => findEtapa(etape, t.etapa)?.stevilka ?? Number.MAX_SAFE_INTEGER;
+  return (a: Tocka, b: Tocka) =>
+    stevilka(a) - stevilka(b) ||
+    (a.zaporedje ?? Number.MAX_SAFE_INTEGER) - (b.zaporedje ?? Number.MAX_SAFE_INTEGER) ||
+    a.id.localeCompare(b.id);
 }
 
 function loadSeedPoints(): Tocka[] {
   assertValidTocke(seedData);
-  return seedData.map(withComputedQrUrl);
+  return seedData;
 }
 
 async function loadSupabasePoints(): Promise<Tocka[]> {
   const supabase = getSupabaseClient();
-  const { data, error } = await supabase
-    .from("tocke")
-    .select("*")
-    .eq("status", "objavljeno")
-    .order("etapa", { ascending: true });
+  const { data, error } = await supabase.from("tocke").select("*").eq("status", "objavljeno");
 
   if (error) {
     throw new Error(`Napaka pri branju točk iz Supabase: ${error.message}`);
   }
-  return (data ?? []).map((row) => withComputedQrUrl(row as Tocka));
+  return (data ?? []) as Tocka[];
 }
 
 /**
@@ -83,12 +126,18 @@ async function loadSupabasePoints(): Promise<Tocka[]> {
  * here in the seed path too, so demo behaviour matches production
  * behaviour from day one (today this filters out nothing: all 50 seed
  * rows are already "objavljeno").
+ *
+ * A point whose stage is hidden (or missing) is still returned — it shows
+ * on the map like a point with no stage, just not as part of any route.
  */
 export async function getPoints(): Promise<Tocka[]> {
-  if (isSupabaseConfigured()) {
-    return loadSupabasePoints();
-  }
-  return loadSeedPoints().filter((t) => t.status === "objavljeno");
+  const [raw, etape] = await Promise.all([
+    isSupabaseConfigured()
+      ? loadSupabasePoints()
+      : Promise.resolve(loadSeedPoints().filter((t) => t.status === "objavljeno")),
+    getEtape(),
+  ]);
+  return raw.map((t) => withDerivedFields(t, etape)).sort(compareByEtapaZaporedje(etape));
 }
 
 export async function getPoint(slug: string): Promise<Tocka | null> {

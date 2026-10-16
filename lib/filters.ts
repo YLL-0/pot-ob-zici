@@ -5,12 +5,15 @@
  * how to (de)serialize them, so the URL stays the source of truth.
  */
 
-import type { Tocka, Vrsta, Zgodba } from "@/lib/types";
+import type { Etapa, Tocka, Vrsta, Zgodba } from "@/lib/types";
 
 export interface FilterState {
   /** Free-text search over naziv + obmocje. */
   q: string;
-  /** Selected stage numbers (1–8). Empty = no filter (show all). */
+  /**
+   * Selected stages by display number (`Etapa.stevilka`), as in `?etapa=3`.
+   * Empty = no filter (show all). Resolved to stage IDs in filterTocke().
+   */
   etape: number[];
   vrste: Vrsta[];
   zgodbe: Zgodba[];
@@ -95,11 +98,12 @@ export function isRazsirjeniKrak(tocka: Tocka): boolean {
   return tocka.vkljucitev.startsWith("Razširjeni");
 }
 
-export function filterTocke(points: Tocka[], filters: FilterState): Tocka[] {
+export function filterTocke(points: Tocka[], filters: FilterState, etape: Etapa[]): Tocka[] {
   const q = filters.q.trim().toLowerCase();
+  const etapaIds = new Set(etape.filter((e) => filters.etape.includes(e.stevilka)).map((e) => e.id));
   return points.filter((t) => {
     if (filters.samoOsnovna && !isCoreTrail(t)) return false;
-    if (filters.etape.length > 0 && !filters.etape.includes(t.etapa)) return false;
+    if (filters.etape.length > 0 && (t.etapa === null || !etapaIds.has(t.etapa))) return false;
     if (filters.vrste.length > 0 && !filters.vrste.includes(t.vrsta)) return false;
     if (filters.zgodbe.length > 0 && !t.zgodbe_predlog.some((z) => filters.zgodbe.includes(z))) return false;
     if (q.length > 0) {

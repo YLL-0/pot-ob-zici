@@ -2,7 +2,7 @@
 
 import { useCallback, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
-import type { Pot, Tocka } from "@/lib/types";
+import type { Etapa, Pot, Tocka } from "@/lib/types";
 import { filterTocke } from "@/lib/filters";
 import { useFilterState } from "@/hooks/useFilterState";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
@@ -21,9 +21,10 @@ const MapView = dynamic(() => import("@/components/MapView"), {
 interface MapExperienceProps {
   points: Tocka[];
   poti: Pot[];
+  etape: Etapa[];
 }
 
-export default function MapExperience({ points, poti }: MapExperienceProps) {
+export default function MapExperience({ points, poti, etape }: MapExperienceProps) {
   const [filters, setFilters] = useFilterState();
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -31,7 +32,7 @@ export default function MapExperience({ points, poti }: MapExperienceProps) {
   const [sheetState, setSheetState] = useState<SheetState>("peek");
   const [routeState, setRouteState] = useState<RouteState>({ status: "idle" });
 
-  const visiblePoints = useMemo(() => filterTocke(points, filters), [points, filters]);
+  const visiblePoints = useMemo(() => filterTocke(points, filters, etape), [points, filters, etape]);
 
   function selectTocka(id: string | null) {
     setFilters({ tocka: id, pot: null });
@@ -62,6 +63,7 @@ export default function MapExperience({ points, poti }: MapExperienceProps) {
         <SidePanel
           points={points}
           poti={poti}
+          etape={etape}
           filters={filters}
           setFilters={setFilters}
           selectedTockaId={filters.tocka}
@@ -79,6 +81,7 @@ export default function MapExperience({ points, poti }: MapExperienceProps) {
             points={points}
             visiblePoints={visiblePoints}
             poti={poti}
+            etape={etape}
             selectedTockaId={filters.tocka}
             selectedPotSlug={filters.pot}
             prefersReducedMotion={prefersReducedMotion}
@@ -88,7 +91,7 @@ export default function MapExperience({ points, poti }: MapExperienceProps) {
             routeTockaId={routeState.status === "idle" ? null : routeState.tocka.id}
             onRouteChange={handleRouteChange}
           />
-          <Legend />
+          <Legend etape={etape} />
           <p className="map-chrome pointer-events-none absolute top-3 left-3 z-10 max-w-[min(85vw,22rem)] rounded px-3 py-1.5 text-xs shadow-lg">
             Trasa je shematska — prava pot še ni vrisana.
           </p>

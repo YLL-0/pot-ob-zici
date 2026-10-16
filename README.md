@@ -73,9 +73,9 @@ No `.env` needed. `lib/data.ts` falls back to `tocke.seed.json` (all 50 points) 
 To connect Supabase instead, copy `.env.example` to `.env.local` and fill in the values, then:
 
 ```bash
-# apply supabase/migrations/0001_init.sql to your project, then:
+# apply supabase/migrations/0001_init.sql, then 0002_etape_trase.sql, then:
 npm run import:xlsx   # regenerate tocke.seed.json from the client's Excel (if needed)
-npm run seed          # push tocke.seed.json into Supabase (idempotent, upsert on id)
+npm run seed          # insert missing stages, then upsert tocke.seed.json (on id)
 ```
 
 To test the in-app walking route ("Pelji me tja"), also set `ORS_API_KEY` in `.env.local` (a
@@ -105,6 +105,17 @@ tocke.seed.json  ──────────────►  lib/data.ts getP
   spreadsheet snapshot.
 - Adding a new field: update `lib/types.ts` (`Tocka`/`Pot`), `scripts/import-xlsx.ts`, and
   `supabase/migrations/` together. See the comments at the top of each file.
+- **Stages (etape) are data since Phase 4.** `etape` table in Supabase, or `ETAPE_SEED` in
+  `lib/etape.ts` when there is no `.env`; read them through `lib/data.ts` `getEtape()`.
+  `etape.id` is a stable slug (`etapa-3`) — `stevilka` is only display order and may change.
+  The Excel's numeric "Etapa" column is resolved to that ID by the importer (an unknown number
+  stops the import; an empty cell = no stage). A point's `odsek` is derived from its stage on
+  read and is not stored in Supabase.
+- `zaporedje` (a point's order within its stage, used for routing) has no Excel column. The
+  importer computes a default from geography (`lib/zaporedje.ts`: projection along the stage
+  direction, then 2-opt) for every point of every stage, extended branches included. It is a
+  starting point only — editors set the real order in the admin, and `npm run seed` won't
+  overwrite rows edited there after the import.
 - Slugs are stable IDs. `scripts/import-xlsx.ts` never regenerates a slug for an ID that
   already exists in `tocke.seed.json` — only a brand-new point gets a freshly `slugify()`'d
   slug.

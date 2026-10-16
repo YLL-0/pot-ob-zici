@@ -12,7 +12,6 @@ import { useEffect, useRef } from "react";
 import { Map as MaplibreMap, Marker, LngLatBounds, NavigationControl, setWorkerUrl, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { Pot, Tocka } from "@/lib/types";
-import { getEtapaBarva } from "@/lib/etape";
 
 const STYLE_URL = "https://tiles.openfreemap.org/styles/liberty";
 const AKTIVNA_POT_BARVA = "#a13d3d";
@@ -22,7 +21,7 @@ if (typeof window !== "undefined") {
 }
 
 type MiniMapProps =
-  | { variant: "tocka"; tocka: Tocka; route?: GeoJSON.LineString | null }
+  | { variant: "tocka"; tocka: Tocka; barva: string; route?: GeoJSON.LineString | null }
   | { variant: "pot"; pot: Pot; tocke: Tocka[] };
 
 export default function MiniMap(props: MiniMapProps) {
@@ -48,7 +47,7 @@ export default function MiniMap(props: MiniMapProps) {
     map.on("load", () => {
       if (props.variant === "tocka") {
         markers.push(
-          new Marker({ color: getEtapaBarva(props.tocka.etapa) })
+          new Marker({ color: props.barva })
             .setLngLat([props.tocka.lon, props.tocka.lat])
             .addTo(map),
         );

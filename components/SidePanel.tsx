@@ -4,19 +4,20 @@ import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from "rea
 import { ChevronDown, ChevronUp, GripHorizontal, Search, Type, X } from "lucide-react";
 import type { FilterState } from "@/lib/filters";
 import { filterTocke, toggleInArray } from "@/lib/filters";
-import { ETAPA_ODSEKI, getEtapaBarva } from "@/lib/etape";
+import { BARVA_BREZ_ETAPE } from "@/lib/etape";
 import { VRSTA_ICONS, VRSTA_LABELS, VSE_VRSTE } from "@/lib/vrsta";
 import { VSE_ZGODBE, ZGODBA_LABELS } from "@/lib/zgodbe";
 import { getVecjaPisava, setVecjaPisava } from "@/lib/progress";
 import { formatDistance, formatMinutes } from "@/lib/geo";
 import type { RouteState } from "@/lib/routing";
-import type { Pot, Tocka } from "@/lib/types";
+import type { Etapa, Pot, Tocka } from "@/lib/types";
 
 export type SheetState = "peek" | "half" | "full";
 
 interface SidePanelProps {
   points: Tocka[];
   poti: Pot[];
+  etape: Etapa[];
   filters: FilterState;
   setFilters: (update: Partial<FilterState> | ((prev: FilterState) => Partial<FilterState>)) => void;
   selectedTockaId: string | null;
@@ -152,6 +153,7 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
 function PanelBody({
   points,
   poti,
+  etape,
   filters,
   setFilters,
   selectedTockaId,
@@ -161,12 +163,20 @@ function PanelBody({
   routeState,
   onClearRoute,
 }: Omit<SidePanelProps, "expanded" | "sheetState" | "onSheetStateChange">) {
-  const visiblePoints = useMemo(() => filterTocke(points, filters), [points, filters]);
+  const visiblePoints = useMemo(() => filterTocke(points, filters, etape), [points, filters, etape]);
+  // Grouped by stage in display order; points with no (visible) stage last.
+  // `points` already arrive sorted by stage and walking order (lib/data.ts).
   const byEtapa = useMemo(() => {
-    const map = new Map<number, Tocka[]>();
-    for (const t of visiblePoints) map.set(t.etapa, [...(map.get(t.etapa) ?? []), t]);
-    return map;
-  }, [visiblePoints]);
+    const groups: { etapa: Etapa | undefined; tocke: Tocka[] }[] = etape.map((etapa) => ({ etapa, tocke: [] }));
+    const brezEtape: Tocka[] = [];
+    for (const t of visiblePoints) {
+      const group = groups.find((g) => g.etapa!.id === t.etapa);
+      if (group) group.tocke.push(t);
+      else brezEtape.push(t);
+    }
+    groups.push({ etapa: undefined, tocke: brezEtape });
+    return groups.filter((g) => g.tocke.length > 0);
+  }, [visiblePoints, etape]);
 
   const rowRefs = useRef<Map<string, HTMLLIElement>>(new Map());
   useEffect(() => {
@@ -207,23 +217,20 @@ function PanelBody({
         <div>
           <p className="mb-1 text-xs font-semibold text-offwhite-200">Etapa</p>
           <div className="flex flex-wrap gap-1.5">
-            {Object.keys(ETAPA_ODSEKI).map((e) => {
-              const etapa = Number(e);
-              return (
-                <Chip
-                  key={etapa}
-                  active={filters.etape.includes(etapa)}
-                  onClick={() => setFilters((prev) => ({ etape: toggleInArray(prev.etape, etapa) }))}
-                >
-                  <span
-                    aria-hidden="true"
-                    className="mr-1 inline-block h-2 w-2 rounded-full align-middle"
-                    style={{ backgroundColor: getEtapaBarva(etapa) }}
-                  />
-                  {etapa}
-                </Chip>
-              );
-            })}
+            {etape.map((etapa) => (
+              <Chip
+                key={etapa.id}
+                active={filters.etape.includes(etapa.stevilka)}
+                onClick={() => setFilters((prev) => ({ etape: toggleInArray(prev.etape, etapa.stevilka) }))}
+              >
+                <span
+                  aria-hidden="true"
+                  className="mr-1 inline-block h-2 w-2 rounded-full align-middle"
+                  style={{ backgroundColor: etapa.barva }}
+                />
+                {etapa.stevilka}
+              </Chip>
+            ))}
           </div>
         </div>
         <div>
@@ -306,49 +313,47 @@ function PanelBody({
           <h2 className="mb-2 font-heading text-xs font-semibold tracking-wide text-offwhite-200 uppercase">
             Obeležja ({visiblePoints.length})
           </h2>
-          {[...byEtapa.entries()]
-            .sort(([a], [b]) => a - b)
-            .map(([etapa, tocke]) => (
-              <div key={etapa} className="mb-3">
-                <p className="mb-1 flex items-center gap-1.5 text-xs font-semibold text-offwhite-200">
-                  <span
-                    aria-hidden="true"
-                    className="inline-block h-2 w-2 rounded-full"
-                    style={{ backgroundColor: getEtapaBarva(etapa) }}
-                  />
-                  Etapa {etapa}
-                </p>
-                <ul className="space-y-0.5">
-                  {tocke.map((t) => {
-                    const Icon = VRSTA_ICONS[t.vrsta];
-                    const selected = selectedTockaId === t.id;
-                    return (
-                      <li
-                        key={t.id}
-                        ref={(el) => {
-                          if (el) rowRefs.current.set(t.id, el);
-                          else rowRefs.current.delete(t.id);
-                        }}
+          {byEtapa.map(({ etapa, tocke }) => (
+            <div key={etapa?.id ?? "brez-etape"} className="mb-3">
+              <p className="mb-1 flex items-center gap-1.5 text-xs font-semibold text-offwhite-200">
+                <span
+                  aria-hidden="true"
+                  className="inline-block h-2 w-2 rounded-full"
+                  style={{ backgroundColor: etapa?.barva ?? BARVA_BREZ_ETAPE }}
+                />
+                {etapa?.naziv ?? "Brez etape"}
+              </p>
+              <ul className="space-y-0.5">
+                {tocke.map((t) => {
+                  const Icon = VRSTA_ICONS[t.vrsta];
+                  const selected = selectedTockaId === t.id;
+                  return (
+                    <li
+                      key={t.id}
+                      ref={(el) => {
+                        if (el) rowRefs.current.set(t.id, el);
+                        else rowRefs.current.delete(t.id);
+                      }}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => onSelectTocka(selected ? null : t.id)}
+                        aria-pressed={selected}
+                        className={`flex w-full items-center gap-2 rounded px-2 py-1.5 text-left ${
+                          selected ? "bg-charcoal-700" : "hover:bg-charcoal-800"
+                        }`}
                       >
-                        <button
-                          type="button"
-                          onClick={() => onSelectTocka(selected ? null : t.id)}
-                          aria-pressed={selected}
-                          className={`flex w-full items-center gap-2 rounded px-2 py-1.5 text-left ${
-                            selected ? "bg-charcoal-700" : "hover:bg-charcoal-800"
-                          }`}
-                        >
-                          <Icon size={14} aria-hidden="true" className="shrink-0 opacity-80" />
-                          <span className="shrink-0 text-xs text-offwhite-200/70">{t.id}</span>
-                          <span className="flex-1 truncate">{t.naziv}</span>
-                          <span className="shrink-0 truncate text-xs text-offwhite-200/70">{t.obmocje}</span>
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            ))}
+                        <Icon size={14} aria-hidden="true" className="shrink-0 opacity-80" />
+                        <span className="shrink-0 text-xs text-offwhite-200/70">{t.id}</span>
+                        <span className="flex-1 truncate">{t.naziv}</span>
+                        <span className="shrink-0 truncate text-xs text-offwhite-200/70">{t.obmocje}</span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          ))}
           {visiblePoints.length === 0 && (
             <p className="text-offwhite-200/70">Ni zadetkov — poskusi spremeniti filtre ali iskalni niz.</p>
           )}

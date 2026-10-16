@@ -24,6 +24,14 @@
  * i.e. someone typed real content into the Excel — this script warns
  * loudly instead of silently discarding it (see checkForStrayContent).
  *
+ * Stages: column B holds the stage NUMBER; it is resolved to a stage ID
+ * ("etapa-3") that must exist in lib/etape.ts ETAPE_SEED, and an empty cell
+ * means "no stage". `zaporedje` (order within the stage) has no Excel
+ * column — it is computed here from geography (lib/zaporedje.ts) so the
+ * seed and the no-.env fallback carry a sensible default. Once Supabase
+ * exists, the admin is where stage and order are edited; scripts/seed.ts
+ * will not overwrite a row edited there more recently than this import.
+ *
  * The one exception: NMZ-001, NMZ-016 and NMZ-023 get DEMO_BESEDILA below
  * so one detail page can be demoed with real-length text (CLAUDE.md
  * explicitly allows this for exactly these three, labelled as demo). It's
@@ -36,6 +44,8 @@ import { readdirSync } from "node:fs";
 import { join } from "node:path";
 import * as XLSX from "xlsx";
 import { slugify } from "../lib/slug";
+import { ETAPE_SEED, etapaIdIzStevilke } from "../lib/etape";
+import { privzetoZaporedje, type LatLon } from "../lib/zaporedje";
 import type {
   DovoljenjeQr,
   EsdStatus,
@@ -50,6 +60,7 @@ import type {
 
 const ROOT = join(import.meta.dirname, "..");
 const SEED_PATH = join(ROOT, "tocke.seed.json");
+const SIDRISCA_PATH = join(ROOT, "data", "sidrisca.json");
 const META_PATH = join(ROOT, "tocke.seed.meta.json");
 const SHEET_NAME = "MASTER 50";
 const HEADER_ROW_INDEX = 3; // row 4, 0-based
@@ -353,6 +364,39 @@ function checkForStrayContent(id: string, columnLabel: string, raw: string): voi
   }
 }
 
+/** Column B -> stage ID. Empty = no stage; an unknown number is a hard error. */
+function parseEtapa(raw: string, id: string): string | null {
+  if (raw.length === 0) return null;
+  const stevilka = Number(raw);
+  const etapaId = Number.isInteger(stevilka) ? etapaIdIzStevilke(stevilka) : null;
+  if (!etapaId || !ETAPE_SEED.some((e) => e.id === etapaId)) {
+    throw new Error(
+      `Neznana etapa "${raw}" pri ${id}. Znane etape: ${ETAPE_SEED.map((e) => e.stevilka).join(", ")} (lib/etape.ts).`,
+    );
+  }
+  return etapaId;
+}
+
+/**
+ * Fills in `zaporedje` for every point that has a stage, all points of the
+ * stage included (extended-branch points too — client decision, Phase 4).
+ * The walking direction of a numbered stage runs from its anchor to the
+ * next one (data/sidrisca.json, a closed loop of 8 — same convention as
+ * scripts/generate-poti.ts).
+ */
+function assignZaporedje(points: Tocka[]): void {
+  const sidrisca = (JSON.parse(readFileSync(SIDRISCA_PATH, "utf-8")) as { sidrisca: LatLon[] }).sidrisca;
+  for (const etapa of ETAPE_SEED) {
+    const start = sidrisca[etapa.stevilka - 1];
+    const end = sidrisca[etapa.stevilka % sidrisca.length];
+    const smer = start && end ? { start, end } : undefined;
+    const vEtapi = points.filter((p) => p.etapa === etapa.id);
+    privzetoZaporedje(vEtapi, smer).forEach((id, i) => {
+      vEtapi.find((p) => p.id === id)!.zaporedje = i + 1;
+    });
+  }
+}
+
 function findExcelFile(): string {
   const explicit = process.argv.find((a) => a.endsWith(".xlsx"));
   if (explicit) return join(ROOT, explicit);
@@ -416,7 +460,8 @@ function rowToTocka(row: unknown[], existing: Map<string, Tocka>): Tocka {
     gps_zanesljivost: parseGpsZanesljivost(get(COL.GPS_STATUS)),
     esd: esdRaw.length > 0 ? esdRaw : null,
     esd_status: lookup(ESD_STATUS_MAP, get(COL.ESD_STATUS), `esd_status (${id})`),
-    etapa: Number(get(COL.ETAPA)),
+    etapa: parseEtapa(get(COL.ETAPA), id),
+    zaporedje: null, // filled in by assignZaporedje() once all rows are parsed
     odsek: get(COL.ODSEK),
     vkljucitev: parseVkljucitev(get(COL.VKLJUCITEV)),
     iztocnica: get(COL.IZTOCNICA),
@@ -501,6 +546,7 @@ function main() {
 
   console.log(`Najdenih ${dataRows.length} podatkovnih vrstic.`);
   const points = dataRows.map((row) => rowToTocka(row, existing));
+  assignZaporedje(points);
 
   const ids = new Set(points.map((p) => p.id));
   if (ids.size !== points.length) {

@@ -21,13 +21,9 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import type { Tocka } from "../lib/types";
-import { ETAPA_BARVE } from "../lib/etape";
-
-interface LatLon {
-  lat: number;
-  lon: number;
-}
+import type { Etapa, Tocka } from "../lib/types";
+import { ETAPE_SEED, sortEtape } from "../lib/etape";
+import { orderByProjection, type LatLon } from "../lib/zaporedje";
 
 interface Sidrisce extends LatLon {
   naziv: string;
@@ -51,22 +47,13 @@ function isOnTrail(tocka: Tocka): boolean {
   return !tocka.vkljucitev.startsWith("Razširjeni");
 }
 
-/**
- * Orders points by their scalar projection onto the vector from `start` to
- * `end`, so they run in the same direction as the stage's walking sense.
- * Within a dense cluster (e.g. the 12 old-town points of stage 8) this is
- * still only an approximation of real walking order — that's expected of
- * schematic geometry and is why every feature carries "status": "shematsko".
- */
-function orderByProjection(points: Tocka[], start: LatLon, end: LatLon): Tocka[] {
-  const dx = end.lon - start.lon;
-  const dy = end.lat - start.lat;
-  return [...points].sort((a, b) => {
-    const pa = (a.lon - start.lon) * dx + (a.lat - start.lat) * dy;
-    const pb = (b.lon - start.lon) * dx + (b.lat - start.lat) * dy;
-    return pa - pb;
-  });
-}
+// Ordering: lib/zaporedje.ts orderByProjection — scalar projection onto
+// the vector from `start` to `end`, so points run in the stage's walking
+// sense. Within a dense cluster (e.g. the 12 old-town points of stage 8)
+// that is only an approximation of real walking order — expected of
+// schematic geometry, and why every feature carries "status": "shematsko".
+// (Routed trails use Tocka.zaporedje instead; this file is only the
+// offline fallback.)
 
 /**
  * Chaikin corner-cutting for an OPEN polyline. Preserves the exact first
@@ -90,11 +77,12 @@ function chaikinOpen(points: [number, number][], iterations: number): [number, n
   return current;
 }
 
-function buildEtapaGeoJson(etapa: number, points: Tocka[], sidrisca: Sidrisce[]) {
+function buildEtapaGeoJson(etapaZapis: Etapa, points: Tocka[], sidrisca: Sidrisce[]) {
+  const etapa = etapaZapis.stevilka;
   const start = sidrisca[etapa - 1]!;
   const end = sidrisca[etapa % sidrisca.length]!;
   const stagePoints = orderByProjection(
-    points.filter((p) => p.etapa === etapa && isOnTrail(p)),
+    points.filter((p) => p.etapa === etapaZapis.id && isOnTrail(p)),
     start,
     end,
   );
@@ -121,12 +109,12 @@ function buildEtapaGeoJson(etapa: number, points: Tocka[], sidrisca: Sidrisce[])
       {
         type: "Feature" as const,
         properties: {
-          slug: `etapa-${etapa}`,
+          slug: etapaZapis.id,
           naziv: `Etapa ${etapa}: ${odsek}`,
           vrsta: "etapa",
           etapa,
           odsek,
-          barva: ETAPA_BARVE[etapa],
+          barva: etapaZapis.barva,
           status: "shematsko",
           tocke_ids: stagePoints.map((p) => p.id),
         },
@@ -143,16 +131,17 @@ function main() {
   const points = loadPoints();
   const sidrisca = loadSidrisca();
 
-  if (sidrisca.length !== 8) {
-    throw new Error(`Pričakovanih 8 sidrišč, najdenih ${sidrisca.length}.`);
+  const etape = sortEtape(ETAPE_SEED);
+  if (sidrisca.length !== etape.length) {
+    throw new Error(`Pričakovanih ${etape.length} sidrišč (eno na etapo), najdenih ${sidrisca.length}.`);
   }
 
-  for (let etapa = 1; etapa <= 8; etapa++) {
+  for (const etapa of etape) {
     const geojson = buildEtapaGeoJson(etapa, points, sidrisca);
-    const path = join(ROOT, "data", "poti", `etapa-${etapa}.geojson`);
+    const path = join(ROOT, "data", "poti", `${etapa.id}.geojson`);
     writeFileSync(path, JSON.stringify(geojson, null, 2) + "\n", "utf-8");
     const n = geojson.features[0]!.properties.tocke_ids.length;
-    console.log(`  etapa-${etapa}.geojson  (${n} točk na trasi)`);
+    console.log(`  ${etapa.id}.geojson  (${n} točk na trasi)`);
   }
 
   console.log("Generirano. zica-1943.geojson ni bil spremenjen (ročno avtoriran, ni generiran).");

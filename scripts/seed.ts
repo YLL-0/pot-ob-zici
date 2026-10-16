@@ -1,5 +1,10 @@
 /**
- * Pushes tocke.seed.json into Supabase. Idempotent (upsert on `id`) and
+ * Pushes the seed stages (lib/etape.ts ETAPE_SEED) and tocke.seed.json
+ * into Supabase.
+ *
+ * Stages are insert-only: a stage that already exists is never touched,
+ * so an editor's rename, recolour or reorder in the admin survives a
+ * re-seed. Points are pushed as before: idempotent (upsert on `id`) and
  * safe to re-run: a row that has been edited in Supabase more recently
  * than the seed file was generated (tocke.seed.meta.json's generated_at)
  * is skipped with a warning instead of overwritten — once content is in
@@ -12,6 +17,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { getSupabaseServiceClient } from "../lib/supabase";
+import { ETAPE_SEED } from "../lib/etape";
 import type { Tocka } from "../lib/types";
 
 const ROOT = join(import.meta.dirname, "..");
@@ -47,13 +53,22 @@ async function main() {
 
   const supabase = getSupabaseServiceClient();
 
+  // Stages first — tocke.etapa is a foreign key to etape.id.
+  const { error: etapeError } = await supabase
+    .from("etape")
+    .upsert(ETAPE_SEED, { onConflict: "id", ignoreDuplicates: true });
+  if (etapeError) {
+    throw new Error(`Napaka pri zapisu etap v Supabase: ${etapeError.message}`);
+  }
+  console.log(`✓ Etape: manjkajoče od ${ETAPE_SEED.length} vstavljene, obstoječe nespremenjene.`);
+
   const { data: existingRows, error: fetchError } = await supabase.from("tocke").select("id, updated_at");
   if (fetchError) {
     throw new Error(`Napaka pri branju obstoječih vrstic: ${fetchError.message}`);
   }
   const existingUpdatedAt = new Map((existingRows ?? []).map((r) => [r.id as string, r.updated_at as string | null]));
 
-  const toUpsert: Tocka[] = [];
+  const toUpsert: Omit<Tocka, "qr_url" | "odsek">[] = [];
   let skipped = 0;
 
   for (const point of points) {
@@ -63,10 +78,10 @@ async function main() {
       skipped++;
       continue;
     }
-    // qr_url is derived, never stored.
+    // qr_url and odsek are derived on read (lib/data.ts), never stored.
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { qr_url, ...row } = point;
-    toUpsert.push({ ...row, qr_url: "" } as Tocka);
+    const { qr_url, odsek, ...row } = point;
+    toUpsert.push(row);
   }
 
   if (toUpsert.length > 0) {

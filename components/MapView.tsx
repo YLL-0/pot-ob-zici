@@ -21,7 +21,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 if (typeof window !== "undefined") {
   setWorkerUrl(new URL("/maplibre-gl-worker.mjs", window.location.origin).href);
 }
-import type { Pot, Tocka } from "@/lib/types";
+import type { Etapa, Pot, Tocka } from "@/lib/types";
 import { getEtapaBarva } from "@/lib/etape";
 import { ensureVrstaIcons, vrstaIconImageId } from "@/lib/mapIcons";
 import { buildPotPopupElement, buildTockaPopupElement, type TockaPopupHandle } from "@/lib/mapPopups";
@@ -38,6 +38,7 @@ interface MapViewProps {
   points: Tocka[];
   visiblePoints: Tocka[];
   poti: Pot[];
+  etape: Etapa[];
   selectedTockaId: string | null;
   selectedPotSlug: string | null;
   prefersReducedMotion: boolean;
@@ -80,10 +81,15 @@ function clearAktivnaPot(map: MaplibreMap) {
   if (map.getSource("aktivna-pot")) map.removeSource("aktivna-pot");
 }
 
-function tockaToFeature(t: Tocka): GeoJSON.Feature<GeoJSON.Point> {
+/**
+ * The stage colour travels on the feature itself (resolved from the live
+ * `etape` list), so the circle layer needs no per-stage match expression
+ * and editor-defined stages/colours just work.
+ */
+function tockaToFeature(t: Tocka, etape: Etapa[]): GeoJSON.Feature<GeoJSON.Point> {
   return {
     type: "Feature",
-    properties: { id: t.id, etapa: t.etapa, vrsta: t.vrsta, naziv: t.naziv },
+    properties: { id: t.id, etapa: t.etapa, barva: getEtapaBarva(etape, t.etapa), vrsta: t.vrsta, naziv: t.naziv },
     geometry: { type: "Point", coordinates: [t.lon, t.lat] },
   };
 }
@@ -99,6 +105,7 @@ export default function MapView({
   points,
   visiblePoints,
   poti,
+  etape,
   selectedTockaId,
   selectedPotSlug,
   prefersReducedMotion,
@@ -172,7 +179,7 @@ export default function MapView({
         // --- Points: clustered source ------------------------------------
         map.addSource("tocke", {
           type: "geojson",
-          data: { type: "FeatureCollection", features: visiblePoints.map(tockaToFeature) },
+          data: { type: "FeatureCollection", features: visiblePoints.map((t) => tockaToFeature(t, etape)) },
           cluster: true,
           clusterRadius: 50,
           clusterMaxZoom: 13,
@@ -209,19 +216,7 @@ export default function MapView({
           source: "tocke",
           filter: ["!", ["has", "point_count"]],
           paint: {
-            "circle-color": [
-              "match",
-              ["get", "etapa"],
-              1, getEtapaBarva(1),
-              2, getEtapaBarva(2),
-              3, getEtapaBarva(3),
-              4, getEtapaBarva(4),
-              5, getEtapaBarva(5),
-              6, getEtapaBarva(6),
-              7, getEtapaBarva(7),
-              8, getEtapaBarva(8),
-              "#888888",
-            ],
+            "circle-color": ["get", "barva"],
             "circle-radius": 13,
             "circle-stroke-color": "#faf8f4",
             "circle-stroke-width": 1.5,
@@ -337,8 +332,8 @@ export default function MapView({
     const map = mapRef.current;
     if (!map || !loadedRef.current) return;
     const source = map.getSource("tocke") as GeoJSONSource | undefined;
-    source?.setData({ type: "FeatureCollection", features: visiblePoints.map(tockaToFeature) });
-  }, [visiblePoints]);
+    source?.setData({ type: "FeatureCollection", features: visiblePoints.map((t) => tockaToFeature(t, etape)) });
+  }, [visiblePoints, etape]);
 
   // --- Selected point: highlight ring + fly-to -----------------------------
   useEffect(() => {
@@ -348,14 +343,14 @@ export default function MapView({
     const tocka = selectedTockaId ? points.find((p) => p.id === selectedTockaId) : undefined;
     highlightSource?.setData({
       type: "FeatureCollection",
-      features: tocka ? [tockaToFeature(tocka)] : [],
+      features: tocka ? [tockaToFeature(tocka, etape)] : [],
     });
     if (tocka) {
       const opts = { center: [tocka.lon, tocka.lat] as [number, number], zoom: Math.max(map.getZoom(), 15) };
       if (prefersReducedMotion) map.jumpTo(opts);
       else map.easeTo({ ...opts, duration: 600 });
     }
-  }, [selectedTockaId, points, prefersReducedMotion]);
+  }, [selectedTockaId, points, etape, prefersReducedMotion]);
 
   // --- Selected trail: bold it, fade the rest, fly to its bounds, reveal zica --
   useEffect(() => {

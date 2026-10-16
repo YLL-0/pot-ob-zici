@@ -6,7 +6,7 @@ Project rules for Claude Code. Read before every task in this repo.
 
 1. **Never invent historical content.** No dates, names, casualty numbers, event descriptions or quiz answers. Missing content renders as "Vsebina v pripravi" + the `iztocnica` + EŠD + source links. Only NMZ-001, NMZ-016, NMZ-023 may carry filler, and it must be labelled `[DEMO BESEDILO — ni zgodovinski vir]`.
 2. **The app runs with no `.env`.** `lib/data.ts` falls back to `tocke.seed.json`. Never make Supabase a hard requirement for `npm run dev`.
-3. **`tocke.seed.json` is generated, not hand-edited.** Changes come from the client's Excel via `npm run import:xlsx`. If you need a new field, add it to the importer AND the schema.
+3. **`tocke.seed.json` is generated, not hand-edited.** Changes come from the client's Excel via `npm run import:xlsx`. If you need a new field, add it to the importer AND the schema. The Excel feeds the seed and the no-`.env` fallback; once Supabase exists, the admin is the source of truth (`npm run seed` never overwrites a row edited there after the import, and never touches existing `etape`).
 4. **All user-facing strings are Slovenian.** Code and comments are English. No mixed-language UI.
 5. **GPS coordinates are approximate.** Never present them as surveyed.
 6. **No new dependencies without asking.** Stack is Next.js 15 + TS + Tailwind v4 + MapLibre + Supabase + lucide-react.
@@ -16,7 +16,8 @@ Project rules for Claude Code. Read before every task in this repo.
 - App Router, server components by default; `"use client"` only where the map or interactivity needs it.
 - Data access goes through `lib/data.ts` only — no direct Supabase calls in components.
 - Filter state lives in the URL query string, not React state.
-- Slovenian diacritics in slugs are transliterated (č→c, š→s, ž→z). Slugs are stable IDs — never regenerate them for existing points.
+- Slovenian diacritics in slugs are transliterated (č→c, š→s, ž→z). Slugs are stable IDs — never regenerate them for existing points or stages (`etape.id`, e.g. `etapa-3`).
+- Stages are data (`getEtape()` in `lib/data.ts`), not constants. Components receive the stage list as a prop; never hardcode "8 stages" or index `ETAPE_SEED` at runtime.
 - `localStorage` access only through `lib/progress.ts`, always try/catch.
 - Tailwind: use design tokens from `app/globals.css`, no arbitrary hex values in components.
 

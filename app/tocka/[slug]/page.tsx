@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { getPoint, getPoints, getPoti } from "@/lib/data";
+import { getEtape, getPoint, getPoints } from "@/lib/data";
 import { getPrevNextVEtapi } from "@/lib/navigacija";
 import { VRSTA_LABELS } from "@/lib/vrsta";
 import { ZGODBA_LABELS } from "@/lib/zgodbe";
-import { getEtapaBarva } from "@/lib/etape";
+import { findEtapa, getEtapaBarva } from "@/lib/etape";
 import FotoPlaceholder from "@/components/FotoPlaceholder";
 import PeljiMeTjaZemljevid from "@/components/PeljiMeTjaZemljevid";
 import TrackPointView from "@/components/TrackPointView";
@@ -34,12 +34,12 @@ function isDemo(text: string | null): boolean {
 
 export default async function TockaPage({ params }: PageProps) {
   const { slug } = await params;
-  const [tocka, vseTocke, poti] = await Promise.all([getPoint(slug), getPoints(), getPoti()]);
+  const [tocka, vseTocke, etape] = await Promise.all([getPoint(slug), getPoints(), getEtape()]);
   if (!tocka) notFound();
 
   const { prev, next } = getPrevNextVEtapi(tocka, vseTocke);
-  const etapaPot = poti.find((p) => p.etapa === tocka.etapa) ?? null;
-  const barva = getEtapaBarva(tocka.etapa);
+  const etapa = findEtapa(etape, tocka.etapa);
+  const barva = getEtapaBarva(etape, tocka.etapa);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -69,8 +69,8 @@ export default async function TockaPage({ params }: PageProps) {
 
       <header className="mt-5">
         <p className="text-sm text-charcoal-600">
-          {tocka.obmocje} · Etapa {tocka.etapa}
-          {etapaPot ? `: ${etapaPot.odsek}` : ""}
+          {tocka.obmocje}
+          {etapa ? ` · ${etapa.naziv}${etapa.odsek ? `: ${etapa.odsek}` : ""}` : ""}
         </p>
         <h1 className="font-heading text-2xl font-bold sm:text-3xl">{tocka.naziv}</h1>
         <div className="mt-2 flex flex-wrap gap-1.5">
@@ -150,7 +150,7 @@ export default async function TockaPage({ params }: PageProps) {
         </div>
       </section>
 
-      <PeljiMeTjaZemljevid tocka={tocka} />
+      <PeljiMeTjaZemljevid tocka={tocka} barva={barva} />
 
       {/* Prev/next */}
       <nav className="mt-8 flex items-center justify-between border-t border-charcoal-200 pt-4 text-sm">
