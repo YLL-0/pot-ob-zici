@@ -126,6 +126,37 @@ tocke.seed.json  ──────────────►  lib/data.ts getP
   prints a loud warning instead of silently discarding it — real content still needs to be
   entered through the admin (Phase 4) once it exists.
 
+### Routed trails (trase) — Phase 4
+
+Stage routes are computed along real streets and footpaths by OpenRouteService `foot-walking`,
+**server-side only** (`lib/ors.ts`; `ORS_API_KEY` never reaches the browser), and cached. The
+public map only ever reads the cache.
+
+- **Building blocks:** each stage's route through its published points in `zaporedje` order, and
+  a connector for every ordered pair of stages (last point → first point). A selection of
+  several stages is composed from these on read (`lib/trase.ts` `sestaviTraso`), so 7 stage
+  requests + 28 connector requests cover all 255 selections.
+- **Staleness is derived, not stored:** each cached row carries a key hashing profile, stage IDs
+  and the ordered `(id, lat, lon)` waypoints. Moving, reordering, reassigning or (un)publishing
+  a point changes the key; a row whose key no longer matches is never served.
+- **Honest fallback:** a part without a current routed row is drawn from the schematic file
+  below (or a straight connector) and marked `"shematsko"`. Failures are cached with a reason; a
+  missing key or an ORS rate limit stops the batch and writes nothing.
+- **Storage:** Supabase `trase` when configured, otherwise `.cache/trase.json` (gitignored), so a
+  fresh clone shows the schematic fallback.
+
+```bash
+npm run trase                               # state of every route, no ORS calls
+npm run trase -- --preracunaj               # recompute stale / missing / failed (≤ 35 requests)
+npm run trase -- --preracunaj --vse         # recompute everything
+npm run trase -- --etapa=etapa-6            # one stage (+ connectors touching it)
+npm run trase:preizkus                      # self-check of the acceptance criteria (3 requests)
+```
+
+Both scripts read `.env.local`. Quality warnings (leg > 2,5× the straight line, leg > 3 km,
+point > 100 m from the nearest mapped path) are shown for stage routes and connectors between
+consecutive stages.
+
 ### Trails (poti)
 
 `data/poti/*.geojson` — one file per trail, loaded generically by `lib/data.ts` `getPoti()`.

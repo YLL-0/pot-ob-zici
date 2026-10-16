@@ -1,5 +1,36 @@
 # Changelog
 
+## Faza 4.2 — servis za izračun tras (ORS, predpomnilnik, fallback, zastarelost)
+
+- `lib/ors.ts`: skupni strežniški odjemalec za ORS `foot-walking` (časovna omejitev, preslikava
+  napak v slovenske razloge: ni ključa, omejitev zahtevkov, točka predaleč od poti, ni povezave,
+  storitev nedosegljiva). `app/api/route/route.ts` ("Pelji me tja") ga zdaj uporablja; odgovor
+  brskalniku je nespremenjen.
+- `lib/trase.ts`: točke trase (samo objavljene, po `zaporedje`), ključ predpomnilnika
+  (sha256 profila, etap in urejenih `(id, lat, lon)`), stanje (izračunano / ni uspelo /
+  zastarelo / ni izračunano), opozorila za urednika (krak > 2,5× zračne razdalje, > 3 km, točka
+  > 100 m od poti) in `sestaviTraso()` za poljubno izbiro etap: etapa + povezava + etapa …,
+  manjkajoči deli iz shematske linije, označeni kot `shematsko`, s sporočilom iz specifikacije.
+- `lib/trasiranje.ts`: `preracunajTrase()` (zaporedno, razmaknjeno; brez ključa ali ob omejitvi
+  se serija ustavi in nič ne zapiše) in `stanjeTras()`. Pripravljeno za admin (`after()`).
+- `lib/traseRepo.ts`: shramba v Supabase `trase` ali, brez Supabase, `.cache/trase.json`
+  (gitignorirano). Ob novem izračunu se starejša vrstica istega gradnika izbriše.
+- `npm run trase` (stanje / `--preracunaj` / `--vse` / `--etapa=`) in `npm run trase:preizkus`
+  (21 preverjanj kriterijev iz specifikacije nad kopijo predpomnilnika v pomnilniku, 3 zahtevki).
+- Skupaj 36 gradnikov: 7 tras etap + 28 povezav izračunanih, etapa 7 "ni uspelo" (ena točka).
+
+Preverjeno z resničnim ORS ključem: vseh 35 izračunov uspešnih; `trase:preizkus` 21/21
+(premik točke → zastarelo → javno shematsko → ponovni izračun z drugačno geometrijo; sprememba
+vrstnega reda → drugačna trasa; etape 2+3+4 ena neprekinjena črta v vrstnem redu etap; točka v
+morju → shranjen neuspeh z ID-jem točke in shematski prikaz; brez ključa se nič ne zapiše).
+Pot prek Supabase preverjena na Postgres 16 + PostgREST 12 (podman, lokalno): `npm run seed`
+(prvič pognan — 8 etap, 50 točk z `zaporedje`), zapis tras, posodobitev pri istem ključu,
+brisanje stare vrstice ob novem ključu, zastarelost po premiku točke v bazi, anon zapis v `trase`
+zavrnjen (401), skrita etapa anonimnemu odjemalcu nevidna. `/api/route` z ključem vrne pot s
+koraki, brez ključa 503. **Ni preverjeno:** pravi Supabase projekt (Auth, Storage) — pride s
+korakom 4. Napaka med delom: prvi poln izračun je porabil 35 zahtevkov zaman, ker ORS brez
+`instructions` izpusti `segments`; popravljeno (navodila se vedno zahtevajo, zavržejo po potrebi).
+
 ## Faza 4.1 — etape kot podatki, `zaporedje`, shema `trase`, popravek RLS
 
 - `supabase/migrations/0002_etape_trase.sql`:

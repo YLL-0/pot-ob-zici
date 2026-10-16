@@ -12,6 +12,9 @@
 .env
 .env*.local
 
+# local routing cache when Supabase is not configured (lib/traseRepo.ts)
+/.cache/
+
 # misc
 .DS_Store
 *.pem

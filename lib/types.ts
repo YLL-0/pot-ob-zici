@@ -228,13 +228,28 @@ export interface TrasaKrak {
   od_id: string;
   do_id: string;
   dolzina_m: number;
+  trajanje_s: number;
   /** Straight-line distance, for the "suspicious detour" check. */
   zracna_m: number;
+  /**
+   * How far the routing engine had to move each end point to reach the
+   * nearest mapped path. Large values usually mean approximate coordinates
+   * — the route then ends near the memorial, not at it.
+   */
+  odmik_od_m: number;
+  odmik_do_m: number;
 }
 
 /**
  * A cached routing result (table `trase`). The public map only ever reads
- * these; routing calls happen in the admin (Phase 4 step 2).
+ * these; routing calls happen server-side from the admin or
+ * `npm run trase` (lib/trasiranje.ts).
+ *
+ * Two kinds of row, told apart by `etapa_ids`: one ID = a stage's own
+ * route through its points; two IDs = a connector from the last point of
+ * the first stage to the first point of the second. A route across several
+ * selected stages is composed from these on read (lib/trase.ts), never
+ * stored, so the public map never needs a routing call.
  *
  * `kljuc` hashes the ordered (point id, lat, lon) list + stage ids +
  * routing profile. A route is stale exactly when the key computed from the

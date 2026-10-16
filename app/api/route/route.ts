@@ -1,9 +1,10 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { OrsNapaka, isOrsConfigured, orsDirections } from "@/lib/ors";
 
 /**
  * Server-side proxy for OpenRouteService foot-walking directions. The API
- * key lives only here (ORS_API_KEY, server env) — it never reaches the
- * browser. See lib/routing.ts for the client side of this.
+ * key (ORS_API_KEY, server env) is only read in lib/ors.ts — it never
+ * reaches the browser. See lib/routing.ts for the client side of this.
  *
  * Caching: a simple in-memory Map, rounded to ~11m so nearby requests
  * share a cache entry. This is a best-effort cache for a single warm
@@ -32,20 +33,6 @@ function cacheKey(fromLat: number, fromLon: number, toLat: number, toLon: number
   return `${round(fromLat)},${round(fromLon)}|${round(toLat)},${round(toLon)}`;
 }
 
-interface OrsStep {
-  instruction: string;
-  distance: number;
-}
-
-interface OrsFeature {
-  geometry: GeoJSON.LineString;
-  properties: { segments: { distance: number; duration: number; steps: OrsStep[] }[] };
-}
-
-interface OrsResponse {
-  features: OrsFeature[];
-}
-
 function parseCoord(value: string | null, name: string): number {
   const n = Number(value);
   if (value === null || !Number.isFinite(n)) {
@@ -67,8 +54,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: err instanceof Error ? err.message : "Neveljavni parametri." }, { status: 400 });
   }
 
-  const apiKey = process.env.ORS_API_KEY;
-  if (!apiKey) {
+  if (!isOrsConfigured()) {
     // Clear "route unavailable" state (acceptance criteria) — the external
     // maps fallback link stays available regardless of this.
     return NextResponse.json({ error: "ORS_API_KEY ni nastavljen." }, { status: 503 });
@@ -80,40 +66,27 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(cached.data, { headers: { "Cache-Control": "private, max-age=300" } });
   }
 
-  let orsResponse: Response;
+  let result;
   try {
-    orsResponse = await fetch("https://api.openrouteservice.org/v2/directions/foot-walking/geojson", {
-      method: "POST",
-      headers: {
-        Authorization: apiKey,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ coordinates: [[fromLon, fromLat], [toLon, toLat]] }),
-    });
+    const route = await orsDirections(
+      [
+        [fromLon, fromLat],
+        [toLon, toLat],
+      ],
+      { koraki: true },
+    );
+    const segment = route.segments[0]!;
+    result = {
+      geometry: route.geometry,
+      distanceMeters: segment.distance,
+      durationSeconds: segment.duration,
+      steps: segment.steps.map((s) => ({ instruction: s.instruction, distanceMeters: s.distance })),
+    };
   } catch (err) {
-    console.error("[api/route] Napaka pri klicu ORS:", err);
+    if (!(err instanceof OrsNapaka)) throw err;
+    console.error("[api/route] Napaka pri izračunu poti:", err.message);
     return NextResponse.json({ error: "Poti trenutno ni mogoče izračunati." }, { status: 502 });
   }
-
-  if (!orsResponse.ok) {
-    const body = await orsResponse.text().catch(() => "");
-    console.error(`[api/route] ORS je vrnil ${orsResponse.status}:`, body.slice(0, 500));
-    return NextResponse.json({ error: "Poti trenutno ni mogoče izračunati." }, { status: 502 });
-  }
-
-  const data = (await orsResponse.json()) as OrsResponse;
-  const feature = data.features?.[0];
-  const segment = feature?.properties?.segments?.[0];
-  if (!feature || !segment) {
-    return NextResponse.json({ error: "ORS ni vrnil poti." }, { status: 502 });
-  }
-
-  const result = {
-    geometry: feature.geometry,
-    distanceMeters: segment.distance,
-    durationSeconds: segment.duration,
-    steps: segment.steps.map((s) => ({ instruction: s.instruction, distanceMeters: s.distance })),
-  };
 
   cache.set(key, { data: result, expiresAt: Date.now() + CACHE_TTL_MS });
 

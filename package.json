@@ -13,6 +13,8 @@
     "import:xlsx": "tsx scripts/import-xlsx.ts",
     "import:xlsx:check": "tsx scripts/import-xlsx.ts --check",
     "generate:poti": "tsx scripts/generate-poti.ts",
+    "trase": "tsx --env-file-if-exists=.env.local scripts/trase.ts",
+    "trase:preizkus": "tsx --env-file-if-exists=.env.local scripts/trase-preizkus.ts",
     "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {
