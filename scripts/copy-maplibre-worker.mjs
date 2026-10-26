@@ -13,7 +13,7 @@
  * sibling call site in components/MapView.tsx.
  */
 
-import { copyFileSync, existsSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 
 const ROOT = join(import.meta.dirname, "..");
@@ -23,7 +23,7 @@ const PUBLIC = join(ROOT, "public");
 // The worker module itself imports maplibre-gl-shared.mjs as a sibling —
 // both must be served from the same public path.
 const FILES = ["maplibre-gl-worker.mjs", "maplibre-gl-shared.mjs"];
-
+mkdirSync(PUBLIC, {recursive: true});
 for (const file of FILES) {
   const src = join(DIST, file);
   if (!existsSync(src)) {
