@@ -12,6 +12,7 @@ import { useEffect, useRef } from "react";
 import { Map as MaplibreMap, Marker, LngLatBounds, NavigationControl, setWorkerUrl, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { Pot, Tocka } from "@/lib/types";
+import type { DelTrase } from "@/lib/trasaIzris";
 import { barvaZetona } from "@/lib/mapBarve";
 
 const STYLE_URL = "https://tiles.openfreemap.org/styles/liberty";
@@ -22,7 +23,8 @@ if (typeof window !== "undefined") {
 
 type MiniMapProps =
   | { variant: "tocka"; tocka: Tocka; barva: string; route?: GeoJSON.LineString | null }
-  | { variant: "pot"; pot: Pot; tocke: Tocka[] };
+  /** `deli`: the stage's ring section (routed parts solid, schematic dashed); without it, the trail's own geometry, dashed. */
+  | { variant: "pot"; pot: Pot; tocke: Tocka[]; deli?: DelTrase[] };
 
 export default function MiniMap(props: MiniMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -56,16 +58,40 @@ export default function MiniMap(props: MiniMapProps) {
       }
 
       const { pot, tocke } = props;
+      const deli: DelTrase[] = props.deli ?? [{ vrsta: "shematsko", coordinates: pot.geometry.coordinates }];
       map.addSource("pot-linija", {
         type: "geojson",
-        data: { type: "Feature", properties: {}, geometry: pot.geometry },
+        data: {
+          type: "FeatureCollection",
+          features: deli.map((d) => ({
+            type: "Feature",
+            properties: { vrsta: d.vrsta },
+            geometry: { type: "LineString", coordinates: d.coordinates },
+          })),
+        },
       });
       map.addLayer({
-        id: "pot-linija-layer",
+        id: "pot-linija-obroba",
         type: "line",
         source: "pot-linija",
         layout: { "line-cap": "round", "line-join": "round" },
-        paint: { "line-color": pot.barva, "line-width": 3.5, "line-dasharray": [2, 1.6] },
+        paint: { "line-color": barvaZetona("offwhite-50"), "line-width": 7, "line-opacity": 0.9 },
+      });
+      map.addLayer({
+        id: "pot-linija-izracunano",
+        type: "line",
+        source: "pot-linija",
+        filter: ["==", ["get", "vrsta"], "izracunano"],
+        layout: { "line-cap": "round", "line-join": "round" },
+        paint: { "line-color": pot.barva, "line-width": 4 },
+      });
+      map.addLayer({
+        id: "pot-linija-shematsko",
+        type: "line",
+        source: "pot-linija",
+        filter: ["==", ["get", "vrsta"], "shematsko"],
+        layout: { "line-cap": "butt", "line-join": "round" },
+        paint: { "line-color": pot.barva, "line-width": 4, "line-dasharray": [2.5, 1.2] },
       });
 
       tocke.forEach((t, i) => {
@@ -77,11 +103,9 @@ export default function MiniMap(props: MiniMapProps) {
         markers.push(new Marker({ element: el }).setLngLat([t.lon, t.lat]).addTo(map));
       });
 
-      if (pot.geometry.coordinates.length > 0) {
-        const bounds = pot.geometry.coordinates.reduce(
-          (b, [lon, lat]) => b.extend([lon, lat]),
-          new LngLatBounds(pot.geometry.coordinates[0], pot.geometry.coordinates[0]),
-        );
+      const vse = deli.flatMap((d) => d.coordinates);
+      if (vse.length > 0) {
+        const bounds = vse.reduce((b, [lon, lat]) => b.extend([lon, lat]), new LngLatBounds(vse[0], vse[0]));
         map.fitBounds(bounds, { padding: 32, animate: false });
       }
       loadedRef.current = true;
@@ -122,14 +146,14 @@ export default function MiniMap(props: MiniMapProps) {
           type: "line",
           source: "aktivna-pot",
           layout: { "line-cap": "round", "line-join": "round" },
-          paint: { "line-color": barvaZetona("offwhite-50"), "line-width": 6, "line-opacity": 0.7 },
+          paint: { "line-color": barvaZetona("offwhite-50"), "line-width": 9, "line-opacity": 0.9 },
         });
         map.addLayer({
           id: "aktivna-pot-line",
           type: "line",
           source: "aktivna-pot",
           layout: { "line-cap": "round", "line-join": "round" },
-          paint: { "line-color": barvaZetona("accent-red"), "line-width": 3.5, "line-dasharray": [0.1, 1.6] },
+          paint: { "line-color": barvaZetona("charcoal-900"), "line-width": 5, "line-dasharray": [0, 2] },
         });
       }
       const coords = route.coordinates as [number, number][];

@@ -3,7 +3,8 @@
 import { useCallback, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import type { Etapa, Pot, Tocka } from "@/lib/types";
-import { filterTocke } from "@/lib/filters";
+import { filterTocke, isRazsirjeniKrak } from "@/lib/filters";
+import { statusOdsekov, vidniOdseki, SPOROCILO_ZICA, type Obroc } from "@/lib/trasaIzris";
 import { useFilterState } from "@/hooks/useFilterState";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import type { RouteState } from "@/lib/routing";
@@ -22,9 +23,10 @@ interface MapExperienceProps {
   points: Tocka[];
   poti: Pot[];
   etape: Etapa[];
+  obroc: Obroc;
 }
 
-export default function MapExperience({ points, poti, etape }: MapExperienceProps) {
+export default function MapExperience({ points, poti, etape, obroc }: MapExperienceProps) {
   const [filters, setFilters] = useFilterState();
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -33,6 +35,32 @@ export default function MapExperience({ points, poti, etape }: MapExperienceProp
   const [routeState, setRouteState] = useState<RouteState>({ status: "idle" });
 
   const visiblePoints = useMemo(() => filterTocke(points, filters, etape), [points, filters, etape]);
+
+  // Selected stages (URL `?etapa=` holds display numbers), as stage IDs.
+  const izbraneEtapaIds = useMemo(
+    () => etape.filter((e) => filters.etape.includes(e.stevilka)).map((e) => e.id),
+    [etape, filters.etape],
+  );
+
+  // The emphasised stage: the selected point's, or the selected stage trail.
+  const poudarjenaEtapaId = useMemo(() => {
+    if (filters.tocka) return points.find((p) => p.id === filters.tocka)?.etapa ?? null;
+    return etape.some((e) => e.id === filters.pot) ? filters.pot : null;
+  }, [filters.tocka, filters.pot, points, etape]);
+
+  // Walking order 1, 2, 3 … — only with exactly one stage selected (with
+  // several the numbers would be ambiguous). Counted over the stage's
+  // points on the line (`points` arrive in walking order), so a search
+  // filter never renumbers them; extended-branch points get no number.
+  const zaporedneStevilke = useMemo(() => {
+    if (izbraneEtapaIds.length !== 1) return null;
+    const naCrti = points.filter((p) => p.etapa === izbraneEtapaIds[0] && !isRazsirjeniKrak(p));
+    return new Map(naCrti.map((p, i) => [p.id, i + 1]));
+  }, [izbraneEtapaIds, points]);
+
+  // Honest labelling of what is drawn: routed, partly schematic, or schematic.
+  const status = statusOdsekov(vidniOdseki(obroc, izbraneEtapaIds));
+  const zicaVidna = filters.zica || filters.pot === "zica-1943";
 
   function selectTocka(id: string | null) {
     setFilters({ tocka: id, pot: null });
@@ -68,6 +96,7 @@ export default function MapExperience({ points, poti, etape }: MapExperienceProp
           setFilters={setFilters}
           selectedTockaId={filters.tocka}
           selectedPotSlug={filters.pot}
+          poudarjenaEtapaId={poudarjenaEtapaId}
           onSelectTocka={selectTocka}
           onSelectPot={selectPot}
           expanded={desktopExpanded}
@@ -82,6 +111,10 @@ export default function MapExperience({ points, poti, etape }: MapExperienceProp
             visiblePoints={visiblePoints}
             poti={poti}
             etape={etape}
+            obroc={obroc}
+            izbraneEtapaIds={izbraneEtapaIds}
+            poudarjenaEtapaId={poudarjenaEtapaId}
+            zaporedneStevilke={zaporedneStevilke}
             selectedTockaId={filters.tocka}
             selectedPotSlug={filters.pot}
             prefersReducedMotion={prefersReducedMotion}
@@ -92,9 +125,17 @@ export default function MapExperience({ points, poti, etape }: MapExperienceProp
             onRouteChange={handleRouteChange}
           />
           <Legend etape={etape} />
-          <p className="map-chrome pointer-events-none absolute top-3 left-3 z-10 max-w-[min(85vw,22rem)] rounded px-3 py-1.5 text-xs shadow-lg">
-            Trasa je shematska — prava pot še ni vrisana.
-          </p>
+          {/* Hidden while a point's popup is open: on a phone it would cover
+              the popup, which labels the stage line itself. */}
+          {!filters.tocka && (status || zicaVidna) && (
+            <div
+              role="status"
+              className="map-chrome pointer-events-none absolute top-3 left-3 z-10 max-w-[min(62vw,22rem)] space-y-0.5 rounded px-3 py-1.5 text-xs shadow-lg"
+            >
+              {status && <p>{status.sporocilo}</p>}
+              {zicaVidna && <p>{SPOROCILO_ZICA}</p>}
+            </div>
+          )}
         </main>
       </div>
     </div>

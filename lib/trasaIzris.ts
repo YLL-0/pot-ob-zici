@@ -14,6 +14,7 @@
 
 export const SPOROCILO_IZRACUNANO = "Trasa je izračunana po dejanskih poteh. Ni uradno označena pot.";
 export const SPOROCILO_SHEMATSKO = "Trase ni bilo mogoče izračunati po poteh — prikazana je shematska povezava.";
+export const SPOROCILO_ZICA = "Obroč 1942–43 je ročno postavljen za ponazoritev in ni zgodovinsko potrjen.";
 
 export interface DelTrase {
   /** "shematsko" parts must be drawn dashed and labelled as such. */

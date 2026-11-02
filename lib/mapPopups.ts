@@ -13,7 +13,7 @@ import type { Pot, Tocka } from "@/lib/types";
 import { VRSTA_LABELS } from "@/lib/vrsta";
 import { ZGODBA_LABELS } from "@/lib/zgodbe";
 import { getAppleMapsUrl, getGoogleMapsUrl } from "@/lib/zemljevidi";
-import { lineLengthMeters, formatDistance } from "@/lib/geo";
+import { formatDistance } from "@/lib/geo";
 
 function el<K extends keyof HTMLElementTagNameMap>(
   tag: K,
@@ -34,6 +34,40 @@ function chip(label: string): HTMLElement {
   );
 }
 
+/** The point's stage, for the popup's key of the two lines on the map. */
+export interface PopupLegenda {
+  naziv: string;
+  barva: string;
+  /** The stage line is (partly) the schematic fallback — drawn dashed. */
+  shematsko: boolean;
+}
+
+/** A short line sample, drawn with a top border so it matches the map's line style. */
+function vzorecCrte(slog: "solid" | "dashed" | "dotted", barvaRazred: string | null, barva?: string): HTMLElement {
+  const sample = el("span", `inline-block w-6 shrink-0 border-t-4 ${barvaRazred ?? ""}`);
+  sample.style.borderTopStyle = slog;
+  if (barva) sample.style.borderTopColor = barva;
+  sample.setAttribute("aria-hidden", "true");
+  return sample;
+}
+
+/**
+ * Two routes can be on screen at once — the stage trail and the personal
+ * walking route — so the popup says which line is which.
+ */
+function legendaCrt(legenda: PopupLegenda): HTMLElement {
+  const box = el("div", "mt-2 space-y-1 rounded bg-charcoal-900/5 p-1.5 text-[11px] leading-snug text-charcoal-800");
+  const etapa = el("p", "flex items-center gap-1.5");
+  etapa.appendChild(vzorecCrte(legenda.shematsko ? "dashed" : "solid", null, legenda.barva));
+  etapa.appendChild(el("span", undefined, `Trasa: ${legenda.naziv} (${legenda.shematsko ? "shematska povezava" : "izračunana, ni uradno označena pot"})`));
+  box.appendChild(etapa);
+  const pot = el("p", "flex items-center gap-1.5");
+  pot.appendChild(vzorecCrte("dotted", "border-charcoal-900"));
+  pot.appendChild(el("span", undefined, "Pelji me tja: vaša pot do obeležja"));
+  box.appendChild(pot);
+  return box;
+}
+
 export interface TockaPopupHandle {
   root: HTMLElement;
   /** The in-app "Pelji me tja" button — MapView updates its label/disabled state during the async route request. */
@@ -46,7 +80,11 @@ export interface TockaPopupHandle {
  * fallback, unconditionally present per the "must stay reachable even when
  * the in-app route works, and work when geolocation is denied" rule.
  */
-export function buildTockaPopupElement(tocka: Tocka, onPeljiMeTja: () => void): TockaPopupHandle {
+export function buildTockaPopupElement(
+  tocka: Tocka,
+  legenda: PopupLegenda | null,
+  onPeljiMeTja: () => void,
+): TockaPopupHandle {
   const root = el("div", "w-64 overflow-hidden rounded-lg bg-offwhite-50 text-charcoal-950 shadow-xl");
 
   const photo = el(
@@ -90,12 +128,18 @@ export function buildTockaPopupElement(tocka: Tocka, onPeljiMeTja: () => void): 
   fallbacks.appendChild(appleLink);
   actions.appendChild(fallbacks);
 
+  if (legenda) actions.appendChild(legendaCrt(legenda));
+
   body.appendChild(actions);
   root.appendChild(body);
   return { root, peljiButton };
 }
 
-export function buildPotPopupElement(pot: Pot, tockCount: number): HTMLElement {
+/**
+ * `meters` and `sporocilo` describe what is actually drawn (the routed or
+ * schematic ring section), so the label is always honest about it.
+ */
+export function buildPotPopupElement(pot: Pot, tockCount: number, meters: number, sporocilo: string | null): HTMLElement {
   const root = el("div", "w-60 overflow-hidden rounded-lg bg-offwhite-50 p-3 text-charcoal-950 shadow-xl");
 
   const header = el("div", "flex items-center gap-2");
@@ -107,15 +151,12 @@ export function buildPotPopupElement(pot: Pot, tockCount: number): HTMLElement {
 
   if (pot.odsek) root.appendChild(el("p", "mt-1 text-xs text-charcoal-600", pot.odsek));
 
-  const meters = lineLengthMeters(pot.geometry.coordinates);
   root.appendChild(
     el("p", "mt-1 text-xs text-charcoal-800", `${tockCount} točk · pribl. ${formatDistance(meters)}`),
   );
 
-  if (pot.status) {
-    root.appendChild(
-      el("p", "mt-1 text-[11px] font-medium text-accent-red-dark", "Trasa je shematska — prava pot še ni vrisana."),
-    );
+  if (sporocilo) {
+    root.appendChild(el("p", "mt-1 text-[11px] font-medium text-accent-red-dark", sporocilo));
   }
 
   const link = el("a", "mt-2.5 block rounded bg-accent-red px-2.5 py-1.5 text-center text-xs font-semibold text-offwhite-50 hover:bg-accent-red-dark", "Odpri pot →");

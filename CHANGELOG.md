@@ -1,5 +1,36 @@
 # Changelog
 
+## Faza 4.3 — zemljevid: barve etap, sklenjen obroč, izbira etap, klik na točko
+
+- **Ena barva na etapo, en vir:** `etape.barva`. Etapne poti prevzamejo barvo, naziv in odsek iz
+  `etape` ob branju; `generate-poti.ts` barve ne zapisuje več. Čip (»Etapa N« z barvno piko),
+  črta, markerji, gruče, vrstica v panelu, pojavno okno in `/pot/[slug]` se ob prebarvanju
+  spremenijo skupaj. Barve zemljevida (obrobe, gruče, osebna pot) iz CSS žetonov, ne hexov.
+- **Sklenjen obroč** (`lib/trase.ts` `sestaviObroc`): odsek etape n teče do prve točke etape n+1,
+  zadnja se sklene na prvo. Vrzeli se zaprejo v konstrukciji — šum pripenjanja na mestu, večje
+  vrzeli s kratkim shematskim mostom. Velja za izračunane, shematske in mešane trase.
+- Povezave samo med sosednjima etapama obroča, vključno zadnja → prva (cel izračun: 15
+  zahtevkov namesto 35). Nesosednje izbrane etape se ne povezujejo. Točke razširjenih krakov
+  niso postaje na črti etape (ostanejo markerji svoje barve) — ključi tras se zato spremenijo,
+  potreben je ponoven izračun (`npm run trase -- --preracunaj`).
+- **Zemljevid:** privzeto vse etape; izbira čipov pokaže samo izbrane črte in točke (v URL-ju).
+  Pri natanko eni izbrani etapi markerji pokažejo zaporedno številko hoje (gručenje je takrat
+  izklopljeno, da so številke vedno vidne). Izračunani deli polna črta, shematski dolge
+  črtice, vse z belo obrobo za berljivost na podlagi.
+- **Klik na točko:** njena etapa se odebeli, ostale zbledijo, čip etape dobi poudarjen obroč;
+  hkrati se odpre pojavno okno s »Pelji me tja« in ključem črt. Osebna pot je temna pikčasta
+  črta na beli obrobi — po obliki in barvi drugačna od vseh tras etap. Klik na prazen
+  zemljevid počisti točko, filter etap ostane.
+- Gruče: obroč v barvi prevladujoče etape (štetje po etapah prek `clusterProperties`).
+- Značka in pojavna okna povedo, kaj je narisano: »izračunana … ni uradno označena pot« ali
+  »shematska povezava«; za žico svoje opozorilo. Legenda razloži tri vrste črt.
+- Telefon: prilagoditev pogleda upošteva spodnji list; pojavno okno točke se odpre navzgor.
+- `npm run trase:obroc` (23 preverjanj obroča brez ORS) in `npm run barve:preizkus` (barve
+  etap pod normalnim vidom, protanopijo, devteranopijo, tritanopijo; kontrast z ikono).
+
+**Barve etap niso spremenjene.** Trenutne ne ustrezajo (protanopija: etapi 5 ↔ 7 ΔE 3,8;
+devteranopija: 2 ↔ 8 ΔE 5,9, 5 ↔ 6 ΔE 6,7) — predlog čaka potrditev.
+
 ## Faza 4.2 — servis za izračun tras (ORS, predpomnilnik, fallback, zastarelost)
 
 - `lib/ors.ts`: skupni strežniški odjemalec za ORS `foot-walking` (časovna omejitev, preslikava

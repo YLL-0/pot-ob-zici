@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getEtape, getPoints, getPoti } from "@/lib/data";
+import { getEtape, getObroc, getPoints, getPoti } from "@/lib/data";
 import MapExperience from "@/components/MapExperience";
 
 // Once Supabase is connected, getPoints()/getPoti() must read current data
@@ -13,11 +13,11 @@ export const dynamic = "force-dynamic";
  * See PROMPT.md "Layout of / (the map page)".
  */
 export default async function HomePage() {
-  const [points, poti, etape] = await Promise.all([getPoints(), getPoti(), getEtape()]);
+  const [points, poti, etape, obroc] = await Promise.all([getPoints(), getPoti(), getEtape(), getObroc()]);
 
   return (
     <Suspense fallback={null}>
-      <MapExperience points={points} poti={poti} etape={etape} />
+      <MapExperience points={points} poti={poti} etape={etape} obroc={obroc} />
     </Suspense>
   );
 }

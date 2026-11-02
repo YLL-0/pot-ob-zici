@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPot, getPoti, getPoints } from "@/lib/data";
+import { getObroc, getPot, getPoti, getPoints } from "@/lib/data";
+import { tockeTrase } from "@/lib/trase";
+import { koordinateOdsekov, statusOdsekov, vidniOdseki, SPOROCILO_ZICA } from "@/lib/trasaIzris";
 import { VRSTA_ICONS } from "@/lib/vrsta";
 import { estimateWalkingMinutes, formatDistance, formatMinutes, lineLengthMeters } from "@/lib/geo";
 import MiniMap from "@/components/LazyMiniMap";
@@ -25,13 +27,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function PotPage({ params }: PageProps) {
   const { slug } = await params;
-  const [pot, vsePoti, vseTocke] = await Promise.all([getPot(slug), getPoti(), getPoints()]);
+  const [pot, vsePoti, vseTocke, obroc] = await Promise.all([getPot(slug), getPoti(), getPoints(), getObroc()]);
   if (!pot) notFound();
 
+  // A stage page shows the same ring section as the map (its own route up
+  // to the next stage's first point) and its points in walking order.
+  const odsek = pot.vrsta === "etapa" ? vidniOdseki(obroc, [pot.slug]) : [];
+  const status = statusOdsekov(odsek);
+  const deli = odsek.flatMap((o) => o.deli);
   const tockeByIdMap = new Map(vseTocke.map((t) => [t.id, t]));
-  const tockeVVrstnemRedu = pot.tocke_ids.map((id) => tockeByIdMap.get(id)).filter((t): t is Tocka => Boolean(t));
+  const tockeVVrstnemRedu =
+    pot.vrsta === "etapa"
+      ? tockeTrase(pot.slug, vseTocke)
+      : pot.tocke_ids.map((id) => tockeByIdMap.get(id)).filter((t): t is Tocka => Boolean(t));
+  const sporocilo = pot.vrsta === "zica" ? SPOROCILO_ZICA : (status?.sporocilo ?? null);
 
-  const meters = lineLengthMeters(pot.geometry.coordinates);
+  const meters = lineLengthMeters(deli.length > 0 ? koordinateOdsekov(odsek) : pot.geometry.coordinates);
   const minutes = estimateWalkingMinutes(meters);
 
   return (
@@ -56,15 +67,14 @@ export default async function PotPage({ params }: PageProps) {
         <span>pribl. {formatMinutes(minutes)} hoje</span>
       </div>
 
-      {pot.status && (
+      {sporocilo && (
         <p className="mt-3 rounded border border-accent-red/40 bg-accent-red/10 px-3 py-2 text-sm font-medium text-accent-red-dark">
-          Trasa je shematska — prava pot še ni vrisana.{" "}
-          {pot.vrsta === "zica" && "Obroč je ročno postavljen za ponazoritev in ni zgodovinsko potrjen."}
+          {sporocilo}
         </p>
       )}
 
       <div className="mt-5 h-72 overflow-hidden rounded-lg border border-charcoal-200 sm:h-96">
-        <MiniMap variant="pot" pot={pot} tocke={tockeVVrstnemRedu} />
+        <MiniMap variant="pot" pot={pot} tocke={tockeVVrstnemRedu} deli={deli.length > 0 ? deli : undefined} />
       </div>
 
       <section className="mt-6">

@@ -22,6 +22,8 @@ interface SidePanelProps {
   setFilters: (update: Partial<FilterState> | ((prev: FilterState) => Partial<FilterState>)) => void;
   selectedTockaId: string | null;
   selectedPotSlug: string | null;
+  /** The stage of the selected point (or the selected stage trail) — its chip reads as active. */
+  poudarjenaEtapaId: string | null;
   onSelectTocka: (id: string | null) => void;
   onSelectPot: (slug: string | null) => void;
   expanded: boolean;
@@ -133,7 +135,18 @@ function NavigacijaSection({ routeState, onClearRoute }: { routeState: RouteStat
   );
 }
 
-function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: ReactNode }) {
+function Chip({
+  active,
+  poudarjen = false,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  /** Emphasised without being a filter: the selected point lies on this stage. */
+  poudarjen?: boolean;
+  onClick: () => void;
+  children: ReactNode;
+}) {
   return (
     <button
       type="button"
@@ -142,8 +155,10 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
       className={`rounded-full border px-2.5 py-1 text-xs font-medium whitespace-nowrap ${
         active
           ? "border-accent-red bg-accent-red text-offwhite-50"
-          : "border-charcoal-600 text-offwhite-100 hover:bg-charcoal-800"
-      }`}
+          : poudarjen
+            ? "border-offwhite-50 bg-charcoal-700 text-offwhite-50"
+            : "border-charcoal-600 text-offwhite-100 hover:bg-charcoal-800"
+      } ${poudarjen ? "ring-2 ring-offwhite-50 ring-offset-1 ring-offset-charcoal-900" : ""}`}
     >
       {children}
     </button>
@@ -158,6 +173,7 @@ function PanelBody({
   setFilters,
   selectedTockaId,
   selectedPotSlug,
+  poudarjenaEtapaId,
   onSelectTocka,
   onSelectPot,
   routeState,
@@ -221,6 +237,7 @@ function PanelBody({
               <Chip
                 key={etapa.id}
                 active={filters.etape.includes(etapa.stevilka)}
+                poudarjen={poudarjenaEtapaId === etapa.id}
                 onClick={() => setFilters((prev) => ({ etape: toggleInArray(prev.etape, etapa.stevilka) }))}
               >
                 <span
@@ -229,6 +246,7 @@ function PanelBody({
                   style={{ backgroundColor: etapa.barva }}
                 />
                 {etapa.naziv}
+                {poudarjenaEtapaId === etapa.id && <span className="sr-only"> (izbrano obeležje je na tej etapi)</span>}
               </Chip>
             ))}
           </div>

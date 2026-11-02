@@ -10,7 +10,7 @@ export default function Legend({ etape }: { etape: Etapa[] }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="map-chrome absolute top-3 right-3 z-10 max-w-[min(90vw,20rem)] rounded-lg text-sm shadow-lg">
+    <div className="map-chrome absolute top-3 right-3 z-15 max-w-[min(90vw,20rem)] rounded-lg text-sm shadow-lg">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -38,6 +38,22 @@ export default function Legend({ etape }: { etape: Etapa[] }) {
                 </span>
               </li>
             ))}
+          </ul>
+          <p className="mb-1 text-xs font-semibold text-offwhite-200">Črte na zemljevidu</p>
+          {/* Light swatch so the samples show the map's real line colours. */}
+          <ul className="mb-3 space-y-1.5 rounded bg-offwhite-50 p-2 text-xs text-charcoal-950">
+            <li className="flex items-center gap-2">
+              <span aria-hidden="true" className="inline-block w-7 shrink-0 border-t-4 border-solid border-charcoal-600" />
+              Trasa etape, izračunana po poteh (v barvi etape)
+            </li>
+            <li className="flex items-center gap-2">
+              <span aria-hidden="true" className="inline-block w-7 shrink-0 border-t-4 border-dashed border-charcoal-600" />
+              Trasa etape, shematska povezava
+            </li>
+            <li className="flex items-center gap-2">
+              <span aria-hidden="true" className="inline-block w-7 shrink-0 border-t-4 border-dotted border-charcoal-900" />
+              Pelji me tja — vaša pot do obeležja
+            </li>
           </ul>
           <p className="mb-1 text-xs font-semibold text-offwhite-200">Vrsta obeležja (ikona)</p>
           <ul className="space-y-1">
