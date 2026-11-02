@@ -14,7 +14,10 @@
  *
  * Trails (poti) always come from data/poti/*.geojson regardless of
  * Supabase config — see README.md "Dodajanje prave GPX trase" for the
- * zero-code-change contract this loader honours.
+ * zero-code-change contract this loader honours. A stage trail's colour,
+ * name and section are NOT taken from its file: they are joined from the
+ * live stage (`etape.barva` is the single source of a stage's colour), so a
+ * recolour in the admin reaches the line, the panel row and /pot/[slug].
  */
 
 import { readFileSync, readdirSync } from "node:fs";
@@ -24,6 +27,9 @@ import type { Etapa, Pot, Tocka } from "@/lib/types";
 import { getQrUrl } from "@/lib/qr";
 import { ETAPE_SEED, findEtapa, sortEtape } from "@/lib/etape";
 import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase";
+import { sestaviObroc } from "@/lib/trase";
+import { getTraseRepo } from "@/lib/traseRepo";
+import type { Obroc } from "@/lib/trasaIzris";
 
 const POTI_DIR = join(process.cwd(), "data", "poti");
 
@@ -161,7 +167,8 @@ interface PotGeoJsonProperties {
   vrsta: Pot["vrsta"];
   etapa: number | null;
   odsek: string | null;
-  barva: string;
+  /** Only read for non-stage trails (the 1943 wire); stage colours come from `etape`. */
+  barva?: string;
   status: Pot["status"];
   tocke_ids: string[];
 }
@@ -177,25 +184,38 @@ interface PotGeoJsonFeatureCollection {
   features: PotGeoJsonFeature[];
 }
 
-function parsePotFile(filename: string): Pot {
+function parsePotFile(filename: string): PotGeoJsonFeature {
   const raw = readFileSync(join(POTI_DIR, filename), "utf-8");
   const parsed = JSON.parse(raw) as PotGeoJsonFeatureCollection;
   const feature = parsed.features.find((f) => f.geometry.type === "LineString");
   if (!feature) {
     throw new Error(`${filename} ne vsebuje LineString feature-ja.`);
   }
-  const { properties, geometry } = feature;
-  return {
-    slug: properties.slug,
-    naziv: properties.naziv,
-    vrsta: properties.vrsta,
-    etapa: properties.etapa,
-    odsek: properties.odsek,
-    barva: properties.barva,
-    status: properties.status,
-    tocke_ids: properties.tocke_ids,
-    geometry,
-  };
+  return feature;
+}
+
+/**
+ * A stage trail takes its identity from the live stage: colour, number,
+ * name and section. Returns null for a stage that is hidden or no longer
+ * exists — its fallback file must not show publicly.
+ */
+function toPot({ properties, geometry }: PotGeoJsonFeature, etape: Etapa[]): Pot | null {
+  const base = { slug: properties.slug, vrsta: properties.vrsta, status: properties.status, tocke_ids: properties.tocke_ids, geometry };
+  if (properties.vrsta === "etapa") {
+    const etapa = findEtapa(etape, properties.slug);
+    if (!etapa) return null;
+    return {
+      ...base,
+      naziv: etapa.odsek ? `${etapa.naziv}: ${etapa.odsek}` : etapa.naziv,
+      etapa: etapa.stevilka,
+      odsek: etapa.odsek,
+      barva: etapa.barva,
+    };
+  }
+  if (!properties.barva) {
+    throw new Error(`${properties.slug}.geojson nima lastnosti "barva".`);
+  }
+  return { ...base, naziv: properties.naziv, etapa: null, odsek: properties.odsek, barva: properties.barva };
 }
 
 /**
@@ -205,12 +225,25 @@ function parsePotFile(filename: string): Pot {
  * hand-authored, or how many stages there are.
  */
 export async function getPoti(): Promise<Pot[]> {
+  const etape = await getEtape();
   const files = readdirSync(POTI_DIR).filter((f) => f.endsWith(".geojson"));
-  return files.map(parsePotFile).sort((a, b) => {
+  const poti = files.map(parsePotFile).map((f) => toPot(f, etape)).filter((p): p is Pot => p !== null);
+  return poti.sort((a, b) => {
     if (a.etapa !== null && b.etapa !== null) return a.etapa - b.etapa;
     if (a.etapa === null && b.etapa === null) return a.slug.localeCompare(b.slug);
     return a.etapa === null ? 1 : -1; // etapas before the 1943 layer
   });
+}
+
+/**
+ * The stage ring the map draws: cached routes where current, the schematic
+ * fallback elsewhere (lib/trase.ts sestaviObroc). Reads the route cache
+ * only — never triggers a routing call. With no Supabase and no
+ * .cache/trase.json (a fresh clone) it is entirely schematic.
+ */
+export async function getObroc(): Promise<Obroc> {
+  const [etape, points, poti, vrstice] = await Promise.all([getEtape(), getPoints(), getPoti(), getTraseRepo().vse()]);
+  return sestaviObroc(etape, points, vrstice, poti);
 }
 
 export async function getPot(slug: string): Promise<Pot | null> {

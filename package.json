@@ -15,6 +15,7 @@
     "generate:poti": "tsx scripts/generate-poti.ts",
     "trase": "tsx --env-file-if-exists=.env.local scripts/trase.ts",
     "trase:preizkus": "tsx --env-file-if-exists=.env.local scripts/trase-preizkus.ts",
+    "trase:obroc": "tsx scripts/obroc-preizkus.ts",
     "seed": "tsx scripts/seed.ts"
   },
   "dependencies": {

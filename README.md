@@ -132,10 +132,14 @@ Stage routes are computed along real streets and footpaths by OpenRouteService `
 **server-side only** (`lib/ors.ts`; `ORS_API_KEY` never reaches the browser), and cached. The
 public map only ever reads the cache.
 
-- **Building blocks:** each stage's route through its published points in `zaporedje` order, and
-  a connector for every ordered pair of stages (last point → first point). A selection of
-  several stages is composed from these on read (`lib/trase.ts` `sestaviTraso`), so 7 stage
-  requests + 28 connector requests cover all 255 selections.
+- **Building blocks:** each stage's route through its published on-trail points in `zaporedje`
+  order (extended-branch "Razširjeni … krak" points stay markers, not stops on the line), and a
+  connector from each stage's last point to the next stage's first point around the loop — the
+  last stage closes back to the first. The map draws one closed ring composed from these on
+  read (`lib/trase.ts` `sestaviObroc`): stage n's section runs up to stage n+1's first point, so
+  consecutive stages always meet and any run of consecutive selected stages is one line.
+  Non-consecutive selected stages are not joined. A full recompute is 7 stage + 8 connector
+  requests (stage 7 has a single point on its line).
 - **Staleness is derived, not stored:** each cached row carries a key hashing profile, stage IDs
   and the ordered `(id, lat, lon)` waypoints. Moving, reordering, reassigning or (un)publishing
   a point changes the key; a row whose key no longer matches is never served.
@@ -147,7 +151,7 @@ public map only ever reads the cache.
 
 ```bash
 npm run trase                               # state of every route, no ORS calls
-npm run trase -- --preracunaj               # recompute stale / missing / failed (≤ 35 requests)
+npm run trase -- --preracunaj               # recompute stale / missing / failed (≤ 15 requests)
 npm run trase -- --preracunaj --vse         # recompute everything
 npm run trase -- --etapa=etapa-6            # one stage (+ connectors touching it)
 npm run trase:preizkus                      # self-check of the acceptance criteria (3 requests)
@@ -162,7 +166,8 @@ consecutive stages.
 `data/poti/*.geojson` — one file per trail, loaded generically by `lib/data.ts` `getPoti()`.
 **Dropping in a real GPX-derived GeoJSON file needs zero code changes**, as long as its
 Feature `properties` carry: `slug`, `naziv`, `vrsta` (`"etapa"` | `"zica"`), `etapa` (number or
-`null`), `odsek` (string or `null`), `barva` (hex colour), `status` (`"shematsko"` | the 1943
+`null`), `odsek` (string or `null`), `barva` (hex colour — only for non-stage trails such as
+the 1943 wire; a stage trail's colour, name and section always come from its `etape` row), `status` (`"shematsko"` | the 1943
 placeholder string | `null` once a trail is actually surveyed), and `tocke_ids` (array of point
 IDs the trail's panel row groups). The loader just reads whatever `.geojson` files sit in the
 directory — it doesn't hardcode "8 stages".

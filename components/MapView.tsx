@@ -23,13 +23,12 @@ if (typeof window !== "undefined") {
 }
 import type { Etapa, Pot, Tocka } from "@/lib/types";
 import { getEtapaBarva } from "@/lib/etape";
+import { barvaZetona } from "@/lib/mapBarve";
 import { ensureVrstaIcons, vrstaIconImageId } from "@/lib/mapIcons";
 import { buildPotPopupElement, buildTockaPopupElement, type TockaPopupHandle } from "@/lib/mapPopups";
 import { isRazsirjeniKrak } from "@/lib/filters";
 import { VSE_VRSTE } from "@/lib/vrsta";
 import { messageForError, planWalkingRoute, type RouteState } from "@/lib/routing";
-
-const AKTIVNA_POT_BARVA = "#a13d3d";
 
 const STYLE_URL = "https://tiles.openfreemap.org/styles/liberty";
 const NOVO_MESTO_CENTER: [number, number] = [15.1687, 45.8016];
@@ -64,14 +63,14 @@ function drawAktivnaPot(map: MaplibreMap, geometry: GeoJSON.LineString) {
     type: "line",
     source: "aktivna-pot",
     layout: { "line-cap": "round", "line-join": "round" },
-    paint: { "line-color": "#faf8f4", "line-width": 6, "line-opacity": 0.7 },
+    paint: { "line-color": barvaZetona("offwhite-50"), "line-width": 6, "line-opacity": 0.7 },
   });
   map.addLayer({
     id: "aktivna-pot-line",
     type: "line",
     source: "aktivna-pot",
     layout: { "line-cap": "round", "line-join": "round" },
-    paint: { "line-color": AKTIVNA_POT_BARVA, "line-width": 3.5, "line-dasharray": [0.1, 1.6] },
+    paint: { "line-color": barvaZetona("accent-red"), "line-width": 3.5, "line-dasharray": [0.1, 1.6] },
   });
 }
 
@@ -191,8 +190,8 @@ export default function MapView({
           source: "tocke",
           filter: ["has", "point_count"],
           paint: {
-            "circle-color": "#1c2024",
-            "circle-stroke-color": "#faf8f4",
+            "circle-color": barvaZetona("charcoal-900"),
+            "circle-stroke-color": barvaZetona("offwhite-50"),
             "circle-stroke-width": 2,
             "circle-radius": ["step", ["get", "point_count"], 16, 10, 20, 25, 26],
           },
@@ -207,7 +206,7 @@ export default function MapView({
             "text-font": ["Noto Sans Bold"],
             "text-size": 13,
           },
-          paint: { "text-color": "#faf8f4" },
+          paint: { "text-color": barvaZetona("offwhite-50") },
         });
 
         map.addLayer({
@@ -218,7 +217,7 @@ export default function MapView({
           paint: {
             "circle-color": ["get", "barva"],
             "circle-radius": 13,
-            "circle-stroke-color": "#faf8f4",
+            "circle-stroke-color": barvaZetona("offwhite-50"),
             "circle-stroke-width": 1.5,
           },
         });
@@ -261,7 +260,7 @@ export default function MapView({
           paint: {
             "circle-radius": 19,
             "circle-color": "transparent",
-            "circle-stroke-color": "#a13d3d",
+            "circle-stroke-color": barvaZetona("accent-red"),
             "circle-stroke-width": 3,
           },
         });

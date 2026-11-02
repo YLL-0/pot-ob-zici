@@ -11,11 +11,10 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import type { Map as MaplibreMap } from "maplibre-gl";
 import { VRSTA_ICONS } from "@/lib/vrsta";
+import { barvaZetona } from "@/lib/mapBarve";
 import type { Vrsta } from "@/lib/types";
 
 const ICON_SIZE = 96;
-/** Off-white — matches --color-offwhite-50, reads clearly on any etapa colour. */
-const ICON_COLOR = "#faf8f4";
 
 export function vrstaIconImageId(vrsta: Vrsta): string {
   return `vrsta-icon-${vrsta}`;
@@ -23,8 +22,9 @@ export function vrstaIconImageId(vrsta: Vrsta): string {
 
 function svgDataUri(vrsta: Vrsta): string {
   const Icon = VRSTA_ICONS[vrsta];
+  // Off-white token: reads clearly on any etapa colour (palette is checked for it).
   const markup = renderToStaticMarkup(
-    createElement(Icon, { color: ICON_COLOR, strokeWidth: 2.25, width: ICON_SIZE, height: ICON_SIZE }),
+    createElement(Icon, { color: barvaZetona("offwhite-50"), strokeWidth: 2.25, width: ICON_SIZE, height: ICON_SIZE }),
   );
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(markup)}`;
 }

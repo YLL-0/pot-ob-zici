@@ -1,14 +1,13 @@
 /**
  * Routed trails — pure logic, no I/O: which points a route goes through,
- * cache keys, staleness, quality warnings, and composing a route across
- * several selected stages. Server-only (node:crypto).
+ * cache keys, staleness, quality warnings, and building the stage ring the
+ * public map draws. Server-only (node:crypto).
  *
  * Building blocks (see Trasa in lib/types.ts): each stage's own route, and
- * a connector for every ordered pair of stages (last point of the earlier
- * stage → first point of the later one, by `stevilka`). Any selection of
- * stages is then stage + connector + stage + …, composed on read — 8 stage
- * requests + at most 28 connector requests cover every one of the 255
- * possible selections, and the public map never triggers a routing call.
+ * a connector from each stage's last point to the next stage's first point
+ * around the loop (by `stevilka`, the last stage closing back to the
+ * first). That is 2 × stages requests for the whole ring; the public map
+ * never triggers a routing call.
  *
  * Honesty rule: a part that has no current routed geometry is drawn from
  * the schematic fallback and marked "shematsko" — never passed off as a
@@ -19,10 +18,11 @@ import { createHash } from "node:crypto";
 import { haversineMeters } from "@/lib/geo";
 import { ORS_PROFIL } from "@/lib/ors";
 import { sortEtape } from "@/lib/etape";
+import { isRazsirjeniKrak } from "@/lib/filters";
+import type { DelTrase, Obroc, OdsekObroca } from "@/lib/trasaIzris";
 import type { Etapa, Pot, Tocka, Trasa } from "@/lib/types";
 
-export const SPOROCILO_IZRACUNANO = "Trasa je izračunana po dejanskih poteh. Ni uradno označena pot.";
-export const SPOROCILO_SHEMATSKO = "Trase ni bilo mogoče izračunati po poteh — prikazana je shematska povezava.";
+export { SPOROCILO_IZRACUNANO, SPOROCILO_SHEMATSKO } from "@/lib/trasaIzris";
 
 /** Quality thresholds from the Phase 4 brief. */
 export const MEJA_RAZMERJE = 2.5;
@@ -40,12 +40,15 @@ type Waypoint = Pick<Tocka, "id" | "lat" | "lon">;
 
 /**
  * The points a stage's route visits, in walking order: published points
- * only (a route must not lead to a stop the public can't see), ordered by
- * `zaporedje`, points without one last by ID.
+ * only (a route must not lead to a stop the public can't see), and not the
+ * "Razširjeni … krak" extended-branch points — those sit kilometres off the
+ * loop and stay markers in their stage's colour, not stops on its line
+ * (the schematic fallback leaves them out too). Ordered by `zaporedje`,
+ * points without one last by ID.
  */
 export function tockeTrase(etapaId: string, points: Tocka[]): Tocka[] {
   return points
-    .filter((t) => t.etapa === etapaId && t.status === "objavljeno")
+    .filter((t) => t.etapa === etapaId && t.status === "objavljeno" && !isRazsirjeniKrak(t))
     .sort(
       (a, b) =>
         (a.zaporedje ?? Number.MAX_SAFE_INTEGER) - (b.zaporedje ?? Number.MAX_SAFE_INTEGER) || a.id.localeCompare(b.id),
@@ -68,13 +71,6 @@ export interface Gradnik {
   etapaIds: string[];
   waypoints: Tocka[];
   kljuc: string;
-  /**
-   * Connectors only: true when the two stages are consecutive in display
-   * order. Only those are part of the "natural" walk, so only they get
-   * quality warnings — a connector from stage 1 to stage 6 is long by
-   * definition.
-   */
-  sosednji?: boolean;
 }
 
 export function gradnikEtape(etapaId: string, points: Tocka[]): Gradnik {
@@ -92,24 +88,37 @@ export function gradnikPovezave(odId: string, doId: string, points: Tocka[]): Gr
 }
 
 /**
- * Every building block for these stages: each stage's route plus a
- * connector for every ordered pair (by `stevilka`) where both stages have
- * points. With `samoEtape`, connectors are limited to pairs involving one
- * of those stages.
+ * The stages that make up the loop, in `stevilka` order: those with at
+ * least one point on their line. A stage with none has nothing to draw and
+ * is stepped over — its neighbours join each other directly.
+ */
+export function obrocEtap(etape: Etapa[], points: Tocka[]): Etapa[] {
+  return sortEtape(etape).filter((e) => tockeTrase(e.id, points).length > 0);
+}
+
+/** The stage after `index` around the loop, or null for a loop of one. */
+function naslednja<T>(obroc: T[], index: number): T | null {
+  return obroc.length < 2 ? null : obroc[(index + 1) % obroc.length]!;
+}
+
+/**
+ * Every building block for these stages: each stage's own route, plus the
+ * connector from each stage to the next one around the loop (the last
+ * closing back to the first). With `samoEtape`, limited to those stages
+ * and the connectors touching them.
  */
 export function vsiGradniki(etape: Etapa[], points: Tocka[], samoEtape?: string[]): Gradnik[] {
-  const sorted = sortEtape(etape);
   const zadeva = (id: string) => !samoEtape || samoEtape.includes(id);
-  const gradniki: Gradnik[] = sorted.filter((e) => zadeva(e.id)).map((e) => gradnikEtape(e.id, points));
-  for (let i = 0; i < sorted.length; i++) {
-    for (let j = i + 1; j < sorted.length; j++) {
-      const a = sorted[i]!.id;
-      const b = sorted[j]!.id;
-      if (!zadeva(a) && !zadeva(b)) continue;
-      const g = gradnikPovezave(a, b, points);
-      if (g) gradniki.push({ ...g, sosednji: j === i + 1 });
-    }
-  }
+  const gradniki: Gradnik[] = sortEtape(etape)
+    .filter((e) => zadeva(e.id))
+    .map((e) => gradnikEtape(e.id, points));
+  const obroc = obrocEtap(etape, points);
+  obroc.forEach((etapa, i) => {
+    const nasl = naslednja(obroc, i);
+    if (!nasl || (!zadeva(etapa.id) && !zadeva(nasl.id))) return;
+    const g = gradnikPovezave(etapa.id, nasl.id, points);
+    if (g) gradniki.push(g);
+  });
   return gradniki;
 }
 
@@ -184,108 +193,135 @@ export function opozorilaTrase(trasa: Pick<Trasa, "kraki">): string[] {
 }
 
 // ---------------------------------------------------------------------------
-// Composing the public route for a selection of stages
+// The ring the public map draws
 // ---------------------------------------------------------------------------
 
-export interface DelTrase {
-  /** "shematsko" parts must be drawn dashed and labelled as such. */
-  vrsta: "izracunano" | "shematsko";
-  coordinates: [number, number][];
-}
+/**
+ * Gaps up to this size between consecutive parts are routing snap noise
+ * (both ends were snapped from the same point): closed in place. Anything
+ * larger is bridged with a straight part marked "shematsko".
+ */
+const STIK_M = 30;
 
-export interface SestavljenaTrasa {
-  etapaIds: string[];
-  deli: DelTrase[];
-  /** "delno" = some parts routed, some schematic. */
-  status: "izracunano" | "delno" | "shematsko";
-  sporocilo: string;
-  /** Only reported when the whole route is routed — never for schematic geometry. */
-  dolzina_m: number | null;
-  trajanje_s: number | null;
-}
+type Coord = [number, number];
 
-function dodajDel(deli: DelTrase[], del: DelTrase): void {
-  if (del.coordinates.length < 2) return;
+const enaka = (a: Coord, b: Coord) => a[0] === b[0] && a[1] === b[1];
+
+function dodaj(deli: DelTrase[], del: DelTrase): void {
   const zadnji = deli.at(-1);
-  if (zadnji && zadnji.vrsta === del.vrsta) {
-    const [first, ...rest] = del.coordinates;
-    const konec = zadnji.coordinates.at(-1)!;
-    zadnji.coordinates.push(...(konec[0] === first![0] && konec[1] === first![1] ? rest : del.coordinates));
+  if (zadnji && zadnji.vrsta === del.vrsta && enaka(zadnji.coordinates.at(-1)!, del.coordinates[0]!)) {
+    zadnji.coordinates.push(...del.coordinates.slice(1));
     return;
   }
   deli.push({ vrsta: del.vrsta, coordinates: [...del.coordinates] });
 }
 
-function shematskaEtapa(etapaId: string, waypoints: Tocka[], poti: Pot[]): [number, number][] {
-  const pot = poti.find((p) => p.slug === etapaId);
-  if (pot) return pot.geometry.coordinates;
+/**
+ * Appends `del` so that the line stays unbroken from `kazalec` (its
+ * current end), and returns the new end.
+ */
+function prikljuci(deli: DelTrase[], kazalec: Coord, del: DelTrase): Coord {
+  const [first] = del.coordinates;
+  if (!first) return kazalec;
+  let coordinates = del.coordinates;
+  if (!enaka(kazalec, first)) {
+    const zadnji = deli.at(-1);
+    if (haversineMeters(kazalec, first) > STIK_M) {
+      dodaj(deli, { vrsta: "shematsko", coordinates: [kazalec, first] });
+    } else if (zadnji) {
+      // Snap noise: the previous part (whatever its kind) just reaches over.
+      zadnji.coordinates.push(first);
+    } else {
+      coordinates = [kazalec, ...coordinates];
+    }
+  }
+  if (coordinates.length >= 2) dodaj(deli, { vrsta: del.vrsta, coordinates });
+  return coordinates.at(-1)!;
+}
+
+/** How one stage's own part is drawn, and where it starts and ends. */
+interface LastniDel {
+  del: DelTrase | null;
+  zacetek: Coord;
+  konec: Coord;
+  /** Starts and ends at the stage's own first/last point, not at a schematic anchor — so a connector fits. */
+  priTockah: boolean;
+}
+
+function lastniDel(etapa: Etapa, points: Tocka[], vrstice: Trasa[], poti: Pot[], imaPovezavo: boolean): LastniDel {
+  const gradnik = gradnikEtape(etapa.id, points);
+  const wp = gradnik.waypoints;
+  const prva: Coord = [wp[0]!.lon, wp[0]!.lat];
+  const pot = poti.find((p) => p.slug === etapa.id);
+  const izDatoteke = (c: Coord[]): LastniDel => ({
+    del: { vrsta: "shematsko", coordinates: c },
+    zacetek: c[0]!,
+    konec: c.at(-1)!,
+    priTockah: false,
+  });
+
+  if (wp.length < 2) {
+    // A single-point stage has nothing to route on its own: routed
+    // connectors on either side reach the point. With none, its committed
+    // schematic file reads better than two straight bridges.
+    if (!imaPovezavo && pot) return izDatoteke(pot.geometry.coordinates);
+    return { del: null, zacetek: prva, konec: prva, priTockah: true };
+  }
+  const vrstica = veljavnaGeometrija(gradnik, vrstice);
+  if (vrstica) {
+    const c = vrstica.geometry!.coordinates;
+    return { del: { vrsta: "izracunano", coordinates: c }, zacetek: c[0]!, konec: c.at(-1)!, priTockah: true };
+  }
+  if (pot) return izDatoteke(pot.geometry.coordinates);
   // A stage created in the admin has no committed schematic file: connect
-  // its points directly. Still marked "shematsko", so never passed off as a route.
-  return waypoints.map((p): [number, number] => [p.lon, p.lat]);
+  // its points directly. Still "shematsko", so never passed off as a route.
+  const c = wp.map((p): Coord => [p.lon, p.lat]);
+  return { del: { vrsta: "shematsko", coordinates: c }, zacetek: c[0]!, konec: c.at(-1)!, priTockah: true };
 }
 
 /**
- * One continuous line across the selected stages, in `stevilka` order:
- * stage, connector, stage, … Parts with a current routed row use it; the
- * rest fall back to the committed schematic line (stages) or a straight
- * connection (connectors), marked "shematsko".
+ * The whole loop, one section per stage. Section n runs from stage n's
+ * start to stage n+1's start — its own route, then the way to the next
+ * stage — so consecutive sections share their joint exactly and the last
+ * closes onto the first. Gaps are closed here, by construction, never in
+ * the renderer:
+ *
+ * - routed stage → routed connector → routed stage: joints are the snapped
+ *   positions of the same points; leftover snap noise is closed in place;
+ * - a stage drawn from its committed schematic file starts and ends at its
+ *   anchors, so it meets its neighbours through straight "shematsko"
+ *   bridges instead of a connector (a connector ends at the wrong place).
  */
-export function sestaviTraso(
-  etapaIds: string[],
-  etape: Etapa[],
-  points: Tocka[],
-  vrstice: Trasa[],
-  poti: Pot[],
-): SestavljenaTrasa {
-  const izbrane = sortEtape(etape.filter((e) => etapaIds.includes(e.id)));
-  const deli: DelTrase[] = [];
-  let dolzina = 0;
-  let trajanje = 0;
-  let prejsnja: Etapa | null = null;
+export function sestaviObroc(etape: Etapa[], points: Tocka[], vrstice: Trasa[], poti: Pot[]): Obroc {
+  const obroc = obrocEtap(etape, points);
+  const povezava = (od: Etapa | null, doE: Etapa | null) =>
+    od && doE ? veljavnaGeometrija(gradnikPovezave(od.id, doE.id, points), vrstice) : null;
 
-  for (const etapa of izbrane) {
-    const gradnik = gradnikEtape(etapa.id, points);
-    if (gradnik.waypoints.length === 0) continue;
+  const lastni = obroc.map((etapa, i) => {
+    const prejsnja = obroc.length < 2 ? null : obroc[(i - 1 + obroc.length) % obroc.length]!;
+    const imaPovezavo = Boolean(povezava(prejsnja, etapa) || povezava(etapa, naslednja(obroc, i)));
+    return lastniDel(etapa, points, vrstice, poti, imaPovezavo);
+  });
 
-    if (prejsnja) {
-      const povezava = gradnikPovezave(prejsnja.id, etapa.id, points);
-      const vrstica = veljavnaGeometrija(povezava, vrstice);
-      if (vrstica) {
-        dodajDel(deli, { vrsta: "izracunano", coordinates: vrstica.geometry!.coordinates });
-        dolzina += vrstica.dolzina_m ?? 0;
-        trajanje += vrstica.trajanje_s ?? 0;
-      } else if (povezava) {
-        const [a, b] = povezava.waypoints;
-        dodajDel(deli, { vrsta: "shematsko", coordinates: [[a!.lon, a!.lat], [b!.lon, b!.lat]] });
+  const odseki: OdsekObroca[] = obroc.map((etapa, i) => {
+    const ta = lastni[i]!;
+    const deli: DelTrase[] = [];
+    let kazalec = ta.zacetek;
+    if (ta.del) kazalec = prikljuci(deli, kazalec, ta.del);
+
+    const nasl = naslednja(obroc, i);
+    if (nasl) {
+      const naslednji = lastni[(i + 1) % obroc.length]!;
+      const vrstica = ta.priTockah && naslednji.priTockah ? povezava(etapa, nasl) : null;
+      if (vrstica) kazalec = prikljuci(deli, kazalec, { vrsta: "izracunano", coordinates: vrstica.geometry!.coordinates });
+      // End exactly where the next section starts.
+      if (!enaka(kazalec, naslednji.zacetek)) {
+        prikljuci(deli, kazalec, { vrsta: "shematsko", coordinates: [naslednji.zacetek] });
       }
     }
-
-    // A single-point stage has nothing to route on its own; inside a
-    // multi-stage selection the connectors on either side reach it.
-    if (gradnik.waypoints.length >= 2 || izbrane.length === 1) {
-      const vrstica = veljavnaGeometrija(gradnik, vrstice);
-      if (vrstica) {
-        dodajDel(deli, { vrsta: "izracunano", coordinates: vrstica.geometry!.coordinates });
-        dolzina += vrstica.dolzina_m ?? 0;
-        trajanje += vrstica.trajanje_s ?? 0;
-      } else {
-        dodajDel(deli, { vrsta: "shematsko", coordinates: shematskaEtapa(etapa.id, gradnik.waypoints, poti) });
-      }
-    }
-    prejsnja = etapa;
-  }
-
-  const imaIzracunano = deli.some((d) => d.vrsta === "izracunano");
-  const imaShematsko = deli.some((d) => d.vrsta === "shematsko");
-  const status = imaIzracunano && !imaShematsko ? "izracunano" : imaIzracunano ? "delno" : "shematsko";
-  return {
-    etapaIds: izbrane.map((e) => e.id),
-    deli,
-    status,
-    sporocilo: status === "izracunano" ? SPOROCILO_IZRACUNANO : SPOROCILO_SHEMATSKO,
-    dolzina_m: status === "izracunano" ? dolzina : null,
-    trajanje_s: status === "izracunano" ? trajanje : null,
-  };
+    return { etapaId: etapa.id, deli };
+  });
+  return { odseki };
 }
 
 // ---------------------------------------------------------------------------

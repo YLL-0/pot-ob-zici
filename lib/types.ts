@@ -295,7 +295,11 @@ export interface Pot {
    */
   etapa: number | null;
   odsek: string | null;
-  /** Colour shared by the trail line, its markers, and its panel row. */
+  /**
+   * Colour shared by the trail line, its markers, and its panel row. For a
+   * stage trail this is the live `Etapa.barva`, joined in lib/data.ts —
+   * never a copy stored in the GeoJSON file.
+   */
   barva: string;
   status: PotStatus | null;
   /** IDs of points this trail's row groups in the side panel. */

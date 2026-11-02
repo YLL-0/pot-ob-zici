@@ -5,7 +5,7 @@
  * itself never waits on ORS; and from "Ponovno izračunaj trase").
  *
  * The public map never calls this. It reads cached rows and composes them
- * (lib/trase.ts sestaviTraso).
+ * (lib/trase.ts sestaviObroc).
  */
 
 import { getEtape, getPoints } from "@/lib/data";
@@ -58,7 +58,7 @@ function stanjeIzVrstice(gradnik: Gradnik, vrstice: Trasa[], razlog: string | nu
     stanje,
     razlog: razlog ?? (aktualna ? (vrstica?.razlog ?? null) : null),
     opozorila:
-      stanje === "izracunano" && vrstica && (gradnik.vrsta === "etapa" || gradnik.sosednji) ? opozorilaTrase(vrstica) : [],
+      stanje === "izracunano" && vrstica ? opozorilaTrase(vrstica) : [],
     dolzina_m: stanje === "izracunano" ? (vrstica?.dolzina_m ?? null) : null,
     trajanje_s: stanje === "izracunano" ? (vrstica?.trajanje_s ?? null) : null,
     izracunano_ob: vrstica?.izracunano_ob ?? null,

@@ -12,9 +12,9 @@ import { useEffect, useRef } from "react";
 import { Map as MaplibreMap, Marker, LngLatBounds, NavigationControl, setWorkerUrl, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { Pot, Tocka } from "@/lib/types";
+import { barvaZetona } from "@/lib/mapBarve";
 
 const STYLE_URL = "https://tiles.openfreemap.org/styles/liberty";
-const AKTIVNA_POT_BARVA = "#a13d3d";
 
 if (typeof window !== "undefined") {
   setWorkerUrl(new URL("/maplibre-gl-worker.mjs", window.location.origin).href);
@@ -122,14 +122,14 @@ export default function MiniMap(props: MiniMapProps) {
           type: "line",
           source: "aktivna-pot",
           layout: { "line-cap": "round", "line-join": "round" },
-          paint: { "line-color": "#faf8f4", "line-width": 6, "line-opacity": 0.7 },
+          paint: { "line-color": barvaZetona("offwhite-50"), "line-width": 6, "line-opacity": 0.7 },
         });
         map.addLayer({
           id: "aktivna-pot-line",
           type: "line",
           source: "aktivna-pot",
           layout: { "line-cap": "round", "line-join": "round" },
-          paint: { "line-color": AKTIVNA_POT_BARVA, "line-width": 3.5, "line-dasharray": [0.1, 1.6] },
+          paint: { "line-color": barvaZetona("accent-red"), "line-width": 3.5, "line-dasharray": [0.1, 1.6] },
         });
       }
       const coords = route.coordinates as [number, number][];

@@ -4,7 +4,7 @@
  *
  * - a stale route is never served; moving a point or changing the order
  *   makes the stage stale, and recomputing produces different geometry;
- * - several stages compose into one continuous route, in stage order;
+ * - consecutive stages form one continuous line, in stage order (the ring);
  * - a routing failure is cached with a reason and falls back to the
  *   schematic line, marked as such — never a silent straight line;
  * - a missing key writes nothing.
@@ -18,7 +18,8 @@
 
 import { getEtape, getPoints, getPoti } from "../lib/data";
 import { preracunajTrase } from "../lib/trasiranje";
-import { gradnikEtape, sestaviTraso, stanjeGradnika, SPOROCILO_IZRACUNANO, SPOROCILO_SHEMATSKO } from "../lib/trase";
+import { gradnikEtape, sestaviObroc, stanjeGradnika, tockeTrase, SPOROCILO_IZRACUNANO } from "../lib/trase";
+import { koordinateOdsekov, statusOdsekov, vidniOdseki } from "../lib/trasaIzris";
 import { getTraseRepo, type TraseRepo } from "../lib/traseRepo";
 import { haversineMeters } from "../lib/geo";
 import { randomUUID } from "node:crypto";
@@ -76,36 +77,38 @@ async function main() {
   preveri(k(points.map((p) => (p.id === "NMZ-006" ? { ...p, status: "osnutek" } : p))) !== osnova, "umik objave spremeni ključ");
   preveri(k(premakni(points, "NMZ-001", 45.79, 15.16)) === osnova, "premik točke druge etape ključa ne spremeni");
 
-  console.log("\n— Sestavljanje (brez zahtevkov)");
-  const e5 = sestaviTraso(["etapa-5"], etape, points, vrstice, poti);
+  console.log("\n— Obroč (brez zahtevkov)");
+  const izbor = (ids: string[], pts: Tocka[], vr: Trasa[]) => {
+    const odseki = vidniOdseki(sestaviObroc(etape, pts, vr, poti), ids);
+    return { odseki, ...statusOdsekov(odseki)! };
+  };
+  const e5 = izbor(["etapa-5"], points, vrstice);
   preveri(e5.status === "izracunano" && e5.sporocilo === SPOROCILO_IZRACUNANO, "etapa 5: izračunana, z oznako »ni uradno označena pot«");
 
-  const tri = sestaviTraso(["etapa-4", "etapa-2", "etapa-3"], etape, points, vrstice, poti);
-  preveri(tri.status === "izracunano" && tri.deli.length === 1, "etape 2+3+4: ena neprekinjena izračunana črta");
-  preveri(tri.etapaIds.join() === "etapa-2,etapa-3,etapa-4", "etape so v vrstnem redu po številki, ne po izbiri");
-  const prva = points.filter((p) => p.etapa === "etapa-2").sort((a, b) => a.zaporedje! - b.zaporedje!)[0]!;
-  const zadnja = points.filter((p) => p.etapa === "etapa-4").sort((a, b) => b.zaporedje! - a.zaporedje!)[0]!;
-  const crta = tri.deli[0]!.coordinates;
+  const tri = izbor(["etapa-4", "etapa-2", "etapa-3"], points, vrstice);
+  preveri(tri.status === "izracunano", "etape 2+3+4: vse izračunano");
+  preveri(tri.odseki.map((o) => o.etapaId).join() === "etapa-2,etapa-3,etapa-4", "odseki so v vrstnem redu po številki, ne po izbiri");
   preveri(
-    haversineMeters([prva.lon, prva.lat], crta[0]!) < 400 && haversineMeters([zadnja.lon, zadnja.lat], crta.at(-1)!) < 400,
-    `začne pri ${prva.id} in konča pri ${zadnja.id}`,
+    tri.odseki.every((o, i) => i === 0 || JSON.stringify(tri.odseki[i - 1]!.deli.at(-1)!.coordinates.at(-1)) === JSON.stringify(o.deli[0]!.coordinates[0])),
+    "etape 2+3+4: ena neprekinjena črta (etapa se konča, kjer se začne naslednja)",
   );
-  const vsota = ["etapa-2", "etapa-2,etapa-3", "etapa-3", "etapa-3,etapa-4", "etapa-4"]
-    .map((id) => vrstice.find((v) => v.etapa_ids.join() === id)!.dolzina_m!)
-    .reduce((a, b) => a + b, 0);
-  preveri(Math.abs((tri.dolzina_m ?? 0) - vsota) < 1, "dolžina = 3 etape + 2 povezavi");
+  const prva = tockeTrase("etapa-2", points)[0]!;
+  const naslednja = tockeTrase("etapa-5", points)[0]!;
+  const crta = koordinateOdsekov(tri.odseki);
+  preveri(
+    haversineMeters([prva.lon, prva.lat], crta[0]!) < 400 && haversineMeters([naslednja.lon, naslednja.lat], crta.at(-1)!) < 400,
+    `začne pri ${prva.id} in konča pri prvi točki etape 5 (${naslednja.id})`,
+  );
 
-  const e7 = sestaviTraso(["etapa-7"], etape, points, vrstice, poti);
-  preveri(e7.status === "shematsko" && e7.sporocilo === SPOROCILO_SHEMATSKO && e7.dolzina_m === null, "etapa 7 sama: shematska, s sporočilom, brez dolžine");
-  const e678 = sestaviTraso(["etapa-6", "etapa-7", "etapa-8"], etape, points, vrstice, poti);
-  preveri(e678.status === "izracunano" && e678.deli.length === 1, "etape 6+7+8: etapo 7 (ena točka) dosežeta povezavi");
+  const e678 = izbor(["etapa-6", "etapa-7", "etapa-8"], points, vrstice);
+  preveri(e678.status === "izracunano", "etape 6+7+8: etapo 7 (ena točka) dosežeta povezavi");
 
   console.log("\n— Zastarelost in ponovni izračun (2 zahtevka)");
   const repo = pomnilniskiRepo(vrstice);
   const premaknjene = premakni(points, "NMZ-006", 45.7975, 15.1545); // ~150 m from its seed position
   const g5 = gradnikEtape("etapa-5", premaknjene);
   preveri(stanjeGradnika(g5, repo.vrstice) === "zastarelo", "po premiku je etapa 5 zastarela");
-  const zast = sestaviTraso(["etapa-5"], etape, premaknjene, repo.vrstice, poti);
+  const zast = izbor(["etapa-5"], premaknjene, repo.vrstice);
   preveri(zast.status === "shematsko", "zastarela trasa se javno ne prikaže — namesto nje shematska");
   const prej = geometrija(repo, "etapa-5");
   await preracunajTrase({ etape, points: premaknjene, repo, etapaIds: ["etapa-5"], brezPovezav: true });
@@ -126,8 +129,8 @@ async function main() {
   const vMorju = premakni(points, "NMZ-006", 45.3, 13.2); // Adriatic — no path within 350 m
   const [r] = await preracunajTrase({ etape, points: vMorju, repo: repo3, etapaIds: ["etapa-5"], brezPovezav: true });
   preveri(r?.stanje === "ni_uspelo" && (r.razlog ?? "").includes("NMZ-006"), `neuspeh je shranjen z razlogom: »${r?.razlog}«`);
-  const pad = sestaviTraso(["etapa-5"], etape, vMorju, repo3.vrstice, poti);
-  preveri(pad.status === "shematsko" && pad.deli.every((d) => d.vrsta === "shematsko"), "ob neuspehu: shematska črta, označena kot shematska");
+  const pad = izbor(["etapa-5"], vMorju, repo3.vrstice);
+  preveri(pad.status === "shematsko" && pad.odseki.every((o) => o.deli.every((d) => d.vrsta === "shematsko")), "ob neuspehu: shematska črta, označena kot shematska");
 
   console.log("\n— Brez ključa (brez zahtevkov)");
   const kljuc = process.env.ORS_API_KEY;

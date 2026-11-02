@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getEtape, getPoint } from "@/lib/data";
-import { getEtapaBarva } from "@/lib/etape";
+import { BARVA_BREZ_ETAPE, getEtapaBarva } from "@/lib/etape";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -8,7 +8,7 @@ export const contentType = "image/png";
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const [tocka, etape] = await Promise.all([getPoint(slug), getEtape()]);
-  const barva = tocka ? getEtapaBarva(etape, tocka.etapa) : "#96582c";
+  const barva = tocka ? getEtapaBarva(etape, tocka.etapa) : BARVA_BREZ_ETAPE;
 
   return new ImageResponse(
     (

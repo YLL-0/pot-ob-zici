@@ -225,10 +225,10 @@ function PanelBody({
               >
                 <span
                   aria-hidden="true"
-                  className="mr-1 inline-block h-2 w-2 rounded-full align-middle"
+                  className="mr-1.5 inline-block h-2.5 w-2.5 rounded-full align-middle ring-1 ring-offwhite-50/70"
                   style={{ backgroundColor: etapa.barva }}
                 />
-                {etapa.stevilka}
+                {etapa.naziv}
               </Chip>
             ))}
           </div>

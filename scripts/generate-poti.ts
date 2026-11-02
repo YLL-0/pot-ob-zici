@@ -114,7 +114,8 @@ function buildEtapaGeoJson(etapaZapis: Etapa, points: Tocka[], sidrisca: Sidrisc
           vrsta: "etapa",
           etapa,
           odsek,
-          barva: etapaZapis.barva,
+          // No `barva`: a stage's colour lives only in `etape` and is joined
+          // on read (lib/data.ts getPoti), so a recolour reaches the line.
           status: "shematsko",
           tocke_ids: stagePoints.map((p) => p.id),
         },
