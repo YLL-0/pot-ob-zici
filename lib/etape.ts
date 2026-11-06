@@ -12,9 +12,9 @@
  * trails with. supabase/migrations/0002_etape_trase.sql inserts the same
  * eight rows once; after that Supabase is the source of truth.
  *
- * Colour hues deliberately avoid the red band (~340°–20°): muted red is the
- * UI's one interactive accent (app/globals.css --color-accent-red) and must
- * stay visually unambiguous from a stage colour.
+ * The UI accent (app/globals.css --color-poudarek) is a very dark green,
+ * used for emphasis only; stage colours are mid-tone and never that dark,
+ * so a stage chip never reads as the accent.
  */
 
 import type { Etapa } from "@/lib/types";

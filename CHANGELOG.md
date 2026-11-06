@@ -1,5 +1,16 @@
 # Changelog
 
+## Popravki 1 — §2: svetel, topel, urednišni videz
+
+- En sistem žetonov v `app/globals.css` (papir, površina, tonirano, črnilo, mehko črnilo, črta,
+  poudarek, lestvica pisave, širine stolpca); temni žetoni (`charcoal`, `offwhite`,
+  `accent-red`, `.map-chrome`) odstranjeni. Serifni naslovi, brezserifno besedilo.
+- Vse strani (domača, obeležje, etapa, o projektu) v istem sistemu: skupna glava z
+  »Večjo pisavo«, nadnaslov + velik serifni naslov, obvestila s poudarjenim levim robom.
+- Zemljevid: svetle gruče, svetla pojavna okna, besedilo v rem (raste z »Večjo pisavo«).
+- Popravek: »Večja pisava« ob kliku ni povečala pisave (CSS je iskal `="true"`, gumb je
+  nastavil prazen atribut).
+
 ## Popravki 1 — §3: etape kot vidna kontrola
 
 - Domača stran je urednišni stolpec (po referenci): naslov, obvestilo o koordinatah, vedno

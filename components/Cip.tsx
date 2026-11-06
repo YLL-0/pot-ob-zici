@@ -40,7 +40,7 @@ export default function Cip({ active, onClick, children, barva, poudarjen = fals
       )}
       {children}
       {stevilo !== undefined && (
-        <span className={`text-xs tabular-nums ${active ? "opacity-85" : "text-crnilo-mehko"}`}>{stevilo}</span>
+        <span className={`text-xs tabular-nums ${active ? "" : "text-crnilo-mehko"}`}>{stevilo}</span>
       )}
     </button>
   );

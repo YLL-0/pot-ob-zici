@@ -10,7 +10,7 @@
  * Stage colours never come from here — they are data (`etape.barva`).
  */
 
-export type MapZeton = "charcoal-950" | "charcoal-900" | "offwhite-50" | "accent-red" | "historical";
+export type MapZeton = "papir" | "povrsina" | "crnilo" | "poudarek" | "historical";
 
 /** Reads `--color-<ime>` from :root. Call only in the browser (map setup). */
 export function barvaZetona(ime: MapZeton): string {

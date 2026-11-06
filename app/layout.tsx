@@ -18,14 +18,15 @@ export const metadata: Metadata = {
 const VECJA_PISAVA_INIT_SCRIPT = `
 try {
   if (window.localStorage.getItem("pot-ob-zici:vecja-pisava") === "1") {
-    document.documentElement.setAttribute("data-vecja-pisava", "true");
+    document.documentElement.setAttribute("data-vecja-pisava", "");
   }
 } catch (e) {}
 `;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="sl">
+    // The init script may add data-vecja-pisava before hydration — expected, not a mismatch.
+    <html lang="sl" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: VECJA_PISAVA_INIT_SCRIPT }} />
       </head>

@@ -91,7 +91,7 @@ function drawAktivnaPot(map: MaplibreMap, geometry: GeoJSON.LineString) {
       type: "line",
       source: "aktivna-pot",
       layout: { "line-cap": "round", "line-join": "round" },
-      paint: { "line-color": barvaZetona("offwhite-50"), "line-width": 9, "line-opacity": 0.9 },
+      paint: { "line-color": barvaZetona("povrsina"), "line-width": 9, "line-opacity": 0.9 },
     },
     beforeId,
   );
@@ -101,7 +101,7 @@ function drawAktivnaPot(map: MaplibreMap, geometry: GeoJSON.LineString) {
       type: "line",
       source: "aktivna-pot",
       layout: { "line-cap": "round", "line-join": "round" },
-      paint: { "line-color": barvaZetona("charcoal-900"), "line-width": 5, "line-dasharray": [0, 2] },
+      paint: { "line-color": barvaZetona("crnilo"), "line-width": 5, "line-dasharray": [0, 2] },
     },
     beforeId,
   );
@@ -169,7 +169,7 @@ function clusterProperties(etape: Etapa[]): Record<string, unknown> {
 }
 
 function clusterBarva(etape: Etapa[]): DataDrivenPropertyValueSpecification<string> {
-  const fallback = barvaZetona("offwhite-50");
+  const fallback = barvaZetona("povrsina");
   if (etape.length === 0) return fallback;
   const veje = etape.flatMap((e, i) => {
     const primerjave = etape.flatMap((_, j) => (j === i ? [] : [[">=", ["get", `n${i}`], ["get", `n${j}`]]]));
@@ -277,7 +277,8 @@ export default function MapView({
       void (async () => {
         await ensureVrstaIcons(map, VSE_VRSTE);
         const start = latest.current;
-        const offwhite = barvaZetona("offwhite-50");
+        const bela = barvaZetona("povrsina");
+        const crnilo = barvaZetona("crnilo");
 
         // --- Stage ring: casing beneath, then routed (solid) and schematic (long dashes) --
         map.addSource("poti-etape", { type: "geojson", data: obrocToFeatures(start.obroc, start.etape) });
@@ -287,7 +288,7 @@ export default function MapView({
           source: "poti-etape",
           filter: filterEtap(null, start.izbraneEtapaIds),
           layout: { "line-cap": "round", "line-join": "round" },
-          paint: { "line-color": offwhite, "line-width": SIRINA.osnovna + OBROBA, "line-opacity": 0.9 },
+          paint: { "line-color": bela, "line-width": SIRINA.osnovna + OBROBA, "line-opacity": 0.9 },
         });
         map.addLayer({
           id: "poti-etape-izracunano",
@@ -344,7 +345,8 @@ export default function MapView({
           source: "tocke",
           filter: ["has", "point_count"],
           paint: {
-            "circle-color": barvaZetona("charcoal-900"),
+            // Light clusters to match the light page: white disc, ink count, ring in the dominant stage colour.
+            "circle-color": bela,
             "circle-stroke-color": clusterBarva(start.etape),
             "circle-stroke-width": 4,
             "circle-radius": ["step", ["get", "point_count"], 16, 10, 20, 25, 26],
@@ -360,7 +362,7 @@ export default function MapView({
             "text-font": ["Noto Sans Bold"],
             "text-size": 13,
           },
-          paint: { "text-color": offwhite },
+          paint: { "text-color": crnilo },
         });
 
         map.addLayer({
@@ -371,7 +373,7 @@ export default function MapView({
           paint: {
             "circle-color": ["get", "barva"],
             "circle-radius": 13,
-            "circle-stroke-color": offwhite,
+            "circle-stroke-color": bela,
             "circle-stroke-width": 1.5,
           },
         });
@@ -401,8 +403,8 @@ export default function MapView({
           filter: imaStevilko,
           paint: {
             "circle-radius": 9,
-            "circle-color": barvaZetona("charcoal-950"),
-            "circle-stroke-color": offwhite,
+            "circle-color": barvaZetona("crnilo"),
+            "circle-stroke-color": bela,
             "circle-stroke-width": 1.5,
             "circle-translate": [12, -12],
           },
@@ -419,7 +421,7 @@ export default function MapView({
             "text-allow-overlap": true,
             "text-ignore-placement": true,
           },
-          paint: { "text-color": offwhite, "text-translate": [12, -12] },
+          paint: { "text-color": bela, "text-translate": [12, -12] },
         });
 
         // --- Selection highlight ring -------------------------------------
@@ -431,7 +433,7 @@ export default function MapView({
           paint: {
             "circle-radius": 19,
             "circle-color": "transparent",
-            "circle-stroke-color": barvaZetona("accent-red"),
+            "circle-stroke-color": barvaZetona("poudarek"),
             "circle-stroke-width": 3,
           },
         });

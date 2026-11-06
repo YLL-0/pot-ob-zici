@@ -1,38 +1,24 @@
 @import "tailwindcss";
 
 /*
- * Design tokens for "Pot ob žici".
+ * Design tokens for "Pot ob žici" — the single source for palette, type
+ * scale and layout widths. Every component builds from these.
  *
- * Palette: deep charcoal (map UI, dark chrome), a muted red used sparingly
- * as the one interactive accent (never reused for etapa/story colours —
- * see lib/etape.ts), warm off-white for content-page text surfaces, one
- * desaturated blue-grey reserved for the 1943 historical wire layer.
+ * Direction (POPRAVKI_1 §2): a light, warm, editorial page. Warm off-white
+ * paper, white surfaces, warm near-black ink, one restrained deep-green
+ * accent used for emphasis only (active "Vse" chip, notice rule, links,
+ * focus). Stage colours are data (`etape.barva`), never tokens.
+ *
+ * Contrast (WCAG AA), measured on --color-papir unless noted:
+ *   crnilo 15.9:1 · crnilo-mehko 7.3:1 (6.7:1 on tonirano) ·
+ *   poudarek 9.8:1 · white on poudarek 10.5:1 ·
+ *   crta-mocna 3.4:1 (input/button boundaries, WCAG 1.4.11).
  *
  * Tailwind v4 config lives here (CSS @theme), not in a JS config file.
  * `static`: every token is emitted as a CSS variable even if no class uses
  * it — lib/mapBarve.ts reads them at runtime for MapLibre paint colours.
  */
 @theme static {
-  --color-charcoal-950: #14171a;
-  --color-charcoal-900: #1c2024;
-  --color-charcoal-800: #262b30;
-  --color-charcoal-700: #343b42;
-  --color-charcoal-600: #4a545c;
-
-  --color-offwhite-50: #faf8f4;
-  --color-offwhite-100: #f2efe8;
-  --color-offwhite-200: #e6e1d6;
-
-  --color-accent-red: #a13d3d;
-  --color-accent-red-dark: #7f2f2f;
-
-  /* Reserved for the 1943 wire layer only — never an etapa colour. */
-  --color-historical: #6b7f8f;
-
-  /* --- Light editorial system (POPRAVKI_1 §2) --------------------------- */
-  /* Warm off-white page, white surfaces, warm near-black ink. Contrast on
-     --color-papir: crnilo 15.9:1, crnilo-mehko 7.4:1, crta-mocna 3.4:1
-     (UI boundaries, WCAG 1.4.11). */
   --color-papir: #faf7f1;
   --color-povrsina: #ffffff;
   --color-tonirano: #f1ece2;
@@ -40,32 +26,32 @@
   --color-crnilo-mehko: #57514a;
   --color-crta: #e4ddd1;
   --color-crta-mocna: #8c8478;
-  /* The one accent: deep green, for emphasis only (active "Vse" chip,
-     notice rule, links, focus). White on it 10.6:1. */
   --color-poudarek: #2a4536;
   --color-poudarek-temno: #1c3126;
   --color-poudarek-svetlo: #e3ebe5;
 
+  /* Reserved for the 1943 wire layer only — never an etapa colour. */
+  --color-historical: #6b7f8f;
+
+  /* Type: serif headings, humanist sans body — system stacks, no web-font download. */
+  --font-heading: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --font-body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+
   /* Type scale */
   --text-nadnaslov: 0.75rem;
   --text-nadnaslov--letter-spacing: 0.18em;
-  --text-naslov: clamp(2rem, 1.4rem + 3vw, 3rem);
-  --text-naslov--line-height: 1.1;
+  --text-naslov: clamp(2.125rem, 1.5rem + 3vw, 3.25rem);
+  --text-naslov--line-height: 1.08;
   --text-podnaslov: 1.125rem;
   --text-podnaslov--line-height: 1.55;
 
-  /* Layout: the centred content column */
+  /* Layout: the centred content column, and the narrower reading measure */
   --container-stolpec: 50rem;
   --container-besedilo: 40rem;
-
-  --font-heading: "Neue Grotesk Fallback", "Arial Narrow", system-ui, sans-serif;
-  --font-body: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
 }
 
 :root {
   color-scheme: light;
-  --content-bg: var(--color-offwhite-50);
-  --content-fg: var(--color-charcoal-950);
   --font-scale: 1;
 }
 
@@ -73,17 +59,18 @@ html {
   font-size: calc(16px * var(--font-scale));
 }
 
-/* "Večja pisava" toggle — set on <html> by a client component reading
-   lib/progress.ts. Kept as a data attribute (not a class) so it survives
-   server-rendered markup without a flash of default size. */
-html[data-vecja-pisava="true"] {
+/* "Večja pisava" toggle — set on <html> by components/VecjaPisava.tsx
+   (persisted via lib/progress.ts). Kept as a data attribute (not a class)
+   so it survives server-rendered markup without a flash of default size. */
+html[data-vecja-pisava] {
   --font-scale: 1.25;
 }
 
 body {
-  background: var(--content-bg);
-  color: var(--content-fg);
+  background: var(--color-papir);
+  color: var(--color-crnilo);
   font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -92,13 +79,14 @@ h3,
 h4,
 .font-heading {
   font-family: var(--font-heading);
+  letter-spacing: -0.01em;
 }
 
 /* Visible focus rings everywhere — accessibility hard requirement. */
 :focus-visible {
-  outline: 3px solid var(--color-accent-red);
+  outline: 3px solid var(--color-poudarek);
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -112,9 +100,9 @@ h4,
   }
 }
 
-/* Map UI chrome (top bar, side panel, controls) is dark and high-contrast,
-   independent of the light OpenFreeMap "liberty" basemap underneath it. */
-.map-chrome {
-  background: var(--color-charcoal-900);
-  color: var(--color-offwhite-50);
+/* MapLibre popups: our popup content brings its own rounded white card. */
+.maplibregl-popup-content {
+  padding: 0;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgb(31 28 24 / 0.18);
 }

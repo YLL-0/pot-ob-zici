@@ -29,7 +29,7 @@ function el<K extends keyof HTMLElementTagNameMap>(
 function chip(label: string): HTMLElement {
   return el(
     "span",
-    "inline-block rounded-full border border-charcoal-600/30 bg-charcoal-900/5 px-2 py-0.5 text-[11px] font-medium text-charcoal-800",
+    "inline-block rounded-full border border-crta bg-papir px-2 py-0.5 text-xs font-medium text-crnilo",
     label,
   );
 }
@@ -56,13 +56,13 @@ function vzorecCrte(slog: "solid" | "dashed" | "dotted", barvaRazred: string | n
  * walking route — so the popup says which line is which.
  */
 function legendaCrt(legenda: PopupLegenda): HTMLElement {
-  const box = el("div", "mt-2 space-y-1 rounded bg-charcoal-900/5 p-1.5 text-[11px] leading-snug text-charcoal-800");
+  const box = el("div", "mt-2 space-y-1 rounded bg-tonirano p-1.5 text-xs leading-snug text-crnilo");
   const etapa = el("p", "flex items-center gap-1.5");
   etapa.appendChild(vzorecCrte(legenda.shematsko ? "dashed" : "solid", null, legenda.barva));
   etapa.appendChild(el("span", undefined, `Trasa: ${legenda.naziv} (${legenda.shematsko ? "shematska povezava" : "izračunana, ni uradno označena pot"})`));
   box.appendChild(etapa);
   const pot = el("p", "flex items-center gap-1.5");
-  pot.appendChild(vzorecCrte("dotted", "border-charcoal-900"));
+  pot.appendChild(vzorecCrte("dotted", "border-crnilo"));
   pot.appendChild(el("span", undefined, "Pelji me tja: vaša pot do obeležja"));
   box.appendChild(pot);
   return box;
@@ -85,42 +85,42 @@ export function buildTockaPopupElement(
   legenda: PopupLegenda | null,
   onPeljiMeTja: () => void,
 ): TockaPopupHandle {
-  const root = el("div", "w-64 overflow-hidden rounded-lg bg-offwhite-50 text-charcoal-950 shadow-xl");
+  const root = el("div", "w-64 overflow-hidden rounded-xl bg-povrsina text-crnilo");
 
   const photo = el(
     "div",
-    "flex h-20 items-center justify-center bg-charcoal-800 text-center text-xs font-heading font-semibold tracking-wide text-offwhite-100",
+    "flex h-20 items-center justify-center bg-tonirano text-center text-xs font-heading font-semibold tracking-wide text-crnilo-mehko",
     `${tocka.id} · ${VRSTA_LABELS[tocka.vrsta]}`,
   );
   root.appendChild(photo);
 
   const body = el("div", "p-3");
-  body.appendChild(el("p", "text-[11px] text-charcoal-600", tocka.obmocje));
-  body.appendChild(el("h3", "font-heading text-sm leading-snug font-bold", tocka.naziv));
+  body.appendChild(el("p", "text-xs text-crnilo-mehko", tocka.obmocje));
+  body.appendChild(el("h3", "font-heading text-base leading-snug font-semibold", tocka.naziv));
 
   const chips = el("div", "mt-1.5 flex flex-wrap gap-1");
   chips.appendChild(chip(VRSTA_LABELS[tocka.vrsta]));
   for (const z of tocka.zgodbe_predlog) chips.appendChild(chip(ZGODBA_LABELS[z]));
   body.appendChild(chips);
 
-  body.appendChild(el("p", "mt-2 text-xs leading-snug text-charcoal-800", tocka.iztocnica));
+  body.appendChild(el("p", "mt-2 text-xs leading-snug text-crnilo", tocka.iztocnica));
 
   const actions = el("div", "mt-3 flex flex-col gap-1.5");
-  const vecLink = el("a", "block rounded bg-accent-red px-2.5 py-1.5 text-center text-xs font-semibold text-offwhite-50 hover:bg-accent-red-dark", "Več o obeležju →");
+  const vecLink = el("a", "block rounded bg-poudarek px-2.5 py-1.5 text-center text-xs font-semibold text-white hover:bg-poudarek-temno", "Več o obeležju →");
   vecLink.setAttribute("href", `/tocka/${tocka.slug}`);
   actions.appendChild(vecLink);
 
-  const peljiButton = el("button", "block w-full rounded border border-charcoal-600/40 px-2.5 py-1.5 text-center text-xs font-medium text-charcoal-800 hover:bg-charcoal-900/5", "Pelji me tja");
+  const peljiButton = el("button", "block w-full rounded border border-crta-mocna px-2.5 py-1.5 text-center text-xs font-medium text-crnilo hover:bg-tonirano", "Pelji me tja");
   peljiButton.type = "button";
   peljiButton.addEventListener("click", onPeljiMeTja);
   actions.appendChild(peljiButton);
 
-  const fallbacks = el("div", "flex items-center justify-center gap-3 text-[11px]");
-  const googleLink = el("a", "text-charcoal-600 underline hover:text-accent-red", "Google Zemljevidi ↗");
+  const fallbacks = el("div", "flex items-center justify-center gap-3 text-xs");
+  const googleLink = el("a", "text-crnilo-mehko underline hover:text-poudarek", "Google Zemljevidi ↗");
   googleLink.setAttribute("href", getGoogleMapsUrl(tocka.lat, tocka.lon));
   googleLink.setAttribute("target", "_blank");
   googleLink.setAttribute("rel", "noopener noreferrer");
-  const appleLink = el("a", "text-charcoal-600 underline hover:text-accent-red", "Apple Zemljevidi ↗");
+  const appleLink = el("a", "text-crnilo-mehko underline hover:text-poudarek", "Apple Zemljevidi ↗");
   appleLink.setAttribute("href", getAppleMapsUrl(tocka.lat, tocka.lon));
   appleLink.setAttribute("target", "_blank");
   appleLink.setAttribute("rel", "noopener noreferrer");
@@ -140,26 +140,26 @@ export function buildTockaPopupElement(
  * schematic ring section), so the label is always honest about it.
  */
 export function buildPotPopupElement(pot: Pot, tockCount: number, meters: number, sporocilo: string | null): HTMLElement {
-  const root = el("div", "w-60 overflow-hidden rounded-lg bg-offwhite-50 p-3 text-charcoal-950 shadow-xl");
+  const root = el("div", "w-60 overflow-hidden rounded-xl bg-povrsina p-3 text-crnilo");
 
   const header = el("div", "flex items-center gap-2");
   const swatch = el("span", "inline-block h-3 w-3 shrink-0 rounded-full");
   swatch.style.backgroundColor = pot.barva;
   header.appendChild(swatch);
-  header.appendChild(el("h3", "font-heading text-sm font-bold leading-snug", pot.naziv));
+  header.appendChild(el("h3", "font-heading text-base font-semibold leading-snug", pot.naziv));
   root.appendChild(header);
 
-  if (pot.odsek) root.appendChild(el("p", "mt-1 text-xs text-charcoal-600", pot.odsek));
+  if (pot.odsek) root.appendChild(el("p", "mt-1 text-xs text-crnilo-mehko", pot.odsek));
 
   root.appendChild(
-    el("p", "mt-1 text-xs text-charcoal-800", `${tockCount} točk · pribl. ${formatDistance(meters)}`),
+    el("p", "mt-1 text-xs text-crnilo", `${tockCount} točk · pribl. ${formatDistance(meters)}`),
   );
 
   if (sporocilo) {
-    root.appendChild(el("p", "mt-1 text-[11px] font-medium text-accent-red-dark", sporocilo));
+    root.appendChild(el("p", "mt-1 text-xs font-medium text-poudarek-temno", sporocilo));
   }
 
-  const link = el("a", "mt-2.5 block rounded bg-accent-red px-2.5 py-1.5 text-center text-xs font-semibold text-offwhite-50 hover:bg-accent-red-dark", "Odpri pot →");
+  const link = el("a", "mt-2.5 block rounded bg-poudarek px-2.5 py-1.5 text-center text-xs font-semibold text-white hover:bg-poudarek-temno", "Odpri pot →");
   link.setAttribute("href", `/pot/${pot.slug}`);
   root.appendChild(link);
 

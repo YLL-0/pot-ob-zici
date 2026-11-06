@@ -24,7 +24,7 @@ function svgDataUri(vrsta: Vrsta): string {
   const Icon = VRSTA_ICONS[vrsta];
   // Off-white token: reads clearly on any etapa colour (palette is checked for it).
   const markup = renderToStaticMarkup(
-    createElement(Icon, { color: barvaZetona("offwhite-50"), strokeWidth: 2.25, width: ICON_SIZE, height: ICON_SIZE }),
+    createElement(Icon, { color: barvaZetona("povrsina"), strokeWidth: 2.25, width: ICON_SIZE, height: ICON_SIZE }),
   );
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(markup)}`;
 }

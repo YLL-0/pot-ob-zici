@@ -75,7 +75,7 @@ export default function MiniMap(props: MiniMapProps) {
         type: "line",
         source: "pot-linija",
         layout: { "line-cap": "round", "line-join": "round" },
-        paint: { "line-color": barvaZetona("offwhite-50"), "line-width": 7, "line-opacity": 0.9 },
+        paint: { "line-color": barvaZetona("povrsina"), "line-width": 7, "line-opacity": 0.9 },
       });
       map.addLayer({
         id: "pot-linija-izracunano",
@@ -97,7 +97,7 @@ export default function MiniMap(props: MiniMapProps) {
       tocke.forEach((t, i) => {
         const el = document.createElement("div");
         el.className =
-          "flex h-6 w-6 items-center justify-center rounded-full border-2 border-offwhite-50 text-[11px] font-bold text-offwhite-50 shadow";
+          "flex h-6 w-6 items-center justify-center rounded-full border-2 border-white text-xs font-bold text-white shadow";
         el.style.backgroundColor = pot.barva;
         el.textContent = String(i + 1);
         markers.push(new Marker({ element: el }).setLngLat([t.lon, t.lat]).addTo(map));
@@ -146,14 +146,14 @@ export default function MiniMap(props: MiniMapProps) {
           type: "line",
           source: "aktivna-pot",
           layout: { "line-cap": "round", "line-join": "round" },
-          paint: { "line-color": barvaZetona("offwhite-50"), "line-width": 9, "line-opacity": 0.9 },
+          paint: { "line-color": barvaZetona("povrsina"), "line-width": 9, "line-opacity": 0.9 },
         });
         map.addLayer({
           id: "aktivna-pot-line",
           type: "line",
           source: "aktivna-pot",
           layout: { "line-cap": "round", "line-join": "round" },
-          paint: { "line-color": barvaZetona("charcoal-900"), "line-width": 5, "line-dasharray": [0, 2] },
+          paint: { "line-color": barvaZetona("crnilo"), "line-width": 5, "line-dasharray": [0, 2] },
         });
       }
       const coords = route.coordinates as [number, number][];

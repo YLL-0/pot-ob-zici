@@ -23,7 +23,7 @@ Project rules for Claude Code. Read before every task in this repo.
 
 ## Accessibility (hard requirement)
 
-WCAG AA contrast, full keyboard operation of map filters and bottom sheet, visible focus rings, `prefers-reduced-motion`, labelled icon-only buttons, a "Večja pisava" toggle. Audience includes schools and elderly visitors using phones outdoors.
+WCAG AA contrast, full keyboard operation of map filters, stage chips and lists, visible focus rings, `prefers-reduced-motion`, labelled icon-only buttons, a "Večja pisava" toggle. Audience includes schools and elderly visitors using phones outdoors.
 
 ## Commands
 

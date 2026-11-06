@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SiteHeader from "@/components/SiteHeader";
+import Nadnaslov from "@/components/Nadnaslov";
 
 export const metadata: Metadata = {
   title: "O projektu",
@@ -8,16 +10,18 @@ export const metadata: Metadata = {
 
 export default function OProjektuPage() {
   return (
-    <main className="mx-auto max-w-2xl px-4 pb-16">
-      <nav className="pt-4 text-sm">
-        <Link href="/" className="text-charcoal-600 hover:text-accent-red">
+    <div className="min-h-dvh bg-papir">
+    <SiteHeader />
+    <main className="mx-auto max-w-stolpec space-y-10 px-4 pt-8 pb-20 sm:px-6 sm:pt-10">
+      <nav aria-label="Drobtine" className="text-sm">
+        <Link href="/" className="font-medium text-poudarek underline-offset-4 hover:underline">
           ← Nazaj na zemljevid
         </Link>
       </nav>
 
-      <h1 className="mt-4 font-heading text-2xl font-bold sm:text-3xl">O projektu</h1>
+      <Nadnaslov nadnaslov="Novo mesto · Dolenjska" naslov="O projektu" />
 
-      <section className="mt-6 space-y-3 text-[15px] leading-relaxed">
+      <section className="max-w-besedilo space-y-4 text-lg leading-relaxed">
         <p>
           <strong>Pot ob žici</strong> je digitalna učna pot 50 spominskih obeležij druge svetovne vojne,
           razporejenih na 8 etapah okoli Novega mesta. Vsako obeležje ima na terenu QR-tablico, ki obiskovalca
@@ -30,9 +34,9 @@ export default function OProjektuPage() {
         </p>
       </section>
 
-      <section className="mt-8">
-        <h2 className="font-heading text-lg font-semibold">Stanje vsebin</h2>
-        <p className="mt-2 text-[15px] leading-relaxed">
+      <section className="max-w-besedilo">
+        <h2 className="font-heading text-2xl font-semibold">Stanje vsebin</h2>
+        <p className="mt-3 text-lg leading-relaxed">
           Besedila za posamezna obeležja pripravljajo zgodovinarji društva in bodo dodana postopoma. Dokler
           besedilo za obeležje ni pripravljeno, stran namesto njega prikaže kratko iztočnico, morebitno EŠD
           številko in povezave na vire. Tri obeležja (za namen predstavitve) trenutno prikazujejo jasno
@@ -40,45 +44,47 @@ export default function OProjektuPage() {
         </p>
       </section>
 
-      <section className="mt-8">
-        <h2 className="font-heading text-lg font-semibold">GPS koordinate in trase</h2>
-        <p className="mt-2 text-[15px] leading-relaxed">
+      <section className="max-w-besedilo">
+        <h2 className="font-heading text-2xl font-semibold">GPS koordinate in trase</h2>
+        <p className="mt-3 text-lg leading-relaxed">
           Koordinate obeležij so izhodiščni približki, izračunani iz javno dostopnih podatkov — ne s terenskim
-          GPS-om — in bodo pred namestitvijo QR-tablic terensko usklajene. Črtkane trase etap in obroč
-          nekdanje obrambne žice iz let 1942–43 so shematski: prikazujejo približen potek, ne izmerjene poti.
+          GPS-om — in bodo pred namestitvijo QR-tablic terensko usklajene. Trase etap so izračunane po javno
+          dostopnih poteh (OpenStreetMap); kjer to ni mogoče, so prikazane kot črtkana shematska povezava.
+          Nobena ni uradno označena pot. Obroč nekdanje obrambne žice iz let 1942–43 je shematski: prikazuje
+          približen potek, ne izmerjene lege.
         </p>
       </section>
 
-      <section className="mt-8">
-        <h2 className="font-heading text-lg font-semibold">Fotografije</h2>
-        <p className="mt-2 text-[15px] leading-relaxed">
+      <section className="max-w-besedilo">
+        <h2 className="font-heading text-2xl font-semibold">Fotografije</h2>
+        <p className="mt-3 text-lg leading-relaxed">
           Fotografije bodo dodane sproti. Vsaka bo označena z avtorjem oziroma virom in navedbo pravic — javna
           spominska stran ne sme objaviti slikovnega gradiva neznanega izvora.
         </p>
       </section>
 
-      <section className="mt-8">
-        <h2 className="font-heading text-lg font-semibold">Viri</h2>
-        <ul className="mt-2 list-inside list-disc space-y-1 text-sm">
+      <section className="max-w-besedilo">
+        <h2 className="font-heading text-2xl font-semibold">Viri</h2>
+        <ul className="mt-3 list-inside list-disc space-y-1 text-lg">
           <li>
-            <a href="https://www.zb-nob-nm.si/" target="_blank" rel="noopener noreferrer" className="text-accent-red hover:underline">
+            <a href="https://www.zb-nob-nm.si/" target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">
               zb-nob-nm.si
             </a>{" "}
             — ZZB NOB Novo mesto
           </li>
           <li>
-            <a href="https://partizanstvo.si/" target="_blank" rel="noopener noreferrer" className="text-accent-red hover:underline">
+            <a href="https://partizanstvo.si/" target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">
               partizanstvo.si
             </a>
           </li>
           <li>
-            <a href="https://www.novomesto.si/" target="_blank" rel="noopener noreferrer" className="text-accent-red hover:underline">
+            <a href="https://www.novomesto.si/" target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">
               novomesto.si
             </a>{" "}
             — Mestna občina Novo mesto
           </li>
           <li>
-            <a href="https://www.dolenjskimuzej.si/" target="_blank" rel="noopener noreferrer" className="text-accent-red hover:underline">
+            <a href="https://www.dolenjskimuzej.si/" target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">
               dolenjskimuzej.si
             </a>{" "}
             — Dolenjski muzej
@@ -86,20 +92,21 @@ export default function OProjektuPage() {
         </ul>
       </section>
 
-      <section className="mt-8">
-        <h2 className="font-heading text-lg font-semibold">Zemljevid</h2>
-        <p className="mt-2 text-[15px] leading-relaxed">
+      <section className="max-w-besedilo">
+        <h2 className="font-heading text-2xl font-semibold">Zemljevid</h2>
+        <p className="mt-3 text-lg leading-relaxed">
           Zemljevidne podlage: ©{" "}
-          <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="text-accent-red hover:underline">
+          <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">
             OpenStreetMap
           </a>{" "}
           prispevki, prek{" "}
-          <a href="https://openfreemap.org/" target="_blank" rel="noopener noreferrer" className="text-accent-red hover:underline">
+          <a href="https://openfreemap.org/" target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">
             OpenFreeMap
           </a>
           .
         </p>
       </section>
     </main>
+    </div>
   );
 }

@@ -6,10 +6,13 @@ import { getEtape, getPoint, getPoints } from "@/lib/data";
 import { getPrevNextVEtapi } from "@/lib/navigacija";
 import { VRSTA_LABELS } from "@/lib/vrsta";
 import { ZGODBA_LABELS } from "@/lib/zgodbe";
-import { findEtapa, getEtapaBarva } from "@/lib/etape";
+import { besediloNaBarvi, findEtapa, getEtapaBarva } from "@/lib/etape";
 import FotoPlaceholder from "@/components/FotoPlaceholder";
 import PeljiMeTjaZemljevid from "@/components/PeljiMeTjaZemljevid";
 import TrackPointView from "@/components/TrackPointView";
+import SiteHeader from "@/components/SiteHeader";
+import Nadnaslov from "@/components/Nadnaslov";
+import Obvestilo from "@/components/Obvestilo";
 
 export const dynamic = "force-dynamic";
 
@@ -52,82 +55,83 @@ export default async function TockaPage({ params }: PageProps) {
   };
 
   return (
-    <main className="mx-auto max-w-3xl px-4 pb-16">
+    <div className="min-h-dvh bg-papir">
+    <SiteHeader />
+    <main className="mx-auto max-w-stolpec space-y-8 px-4 pt-8 pb-20 sm:px-6 sm:pt-10">
       <TrackPointView slug={tocka.slug} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <nav className="pt-4 text-sm">
-        <Link href="/" className="text-charcoal-600 hover:text-accent-red">
+      <nav aria-label="Drobtine" className="text-sm">
+        <Link href="/" className="font-medium text-poudarek underline-offset-4 hover:underline">
           ← Nazaj na zemljevid
         </Link>
       </nav>
 
       {/* Hero */}
-      <div className="mt-4 h-56 overflow-hidden rounded-lg sm:h-72">
-        <FotoPlaceholder tocka={tocka} />
-      </div>
-
-      <header className="mt-5">
-        <p className="text-sm text-charcoal-600">
-          {tocka.obmocje}
-          {etapa ? ` · ${etapa.naziv}${etapa.odsek ? `: ${etapa.odsek}` : ""}` : ""}
-        </p>
-        <h1 className="font-heading text-2xl font-bold sm:text-3xl">{tocka.naziv}</h1>
-        <div className="mt-2 flex flex-wrap gap-1.5">
+      <header className="space-y-4">
+        <Nadnaslov
+          nadnaslov={tocka.obmocje}
+          naslov={tocka.naziv}
+          uvod={etapa?.odsek ? `${etapa.naziv}: ${etapa.odsek}` : undefined}
+        />
+        <div className="flex flex-wrap gap-2">
           <span
-            className="rounded-full px-2.5 py-0.5 text-xs font-medium text-offwhite-50"
+            className={`rounded-full px-3 py-1 text-sm font-medium ${besediloNaBarvi(barva) === "svetlo" ? "text-white" : "text-crnilo"}`}
             style={{ backgroundColor: barva }}
           >
             {VRSTA_LABELS[tocka.vrsta]}
           </span>
           {tocka.zgodbe_predlog.map((z) => (
-            <span key={z} className="rounded-full border border-charcoal-600/30 px-2.5 py-0.5 text-xs font-medium text-charcoal-800">
+            <span key={z} className="rounded-full border border-crta bg-povrsina px-3 py-1 text-sm font-medium">
               {ZGODBA_LABELS[z]}
             </span>
           ))}
         </div>
       </header>
 
+      <div className="h-56 overflow-hidden rounded-xl sm:h-80">
+        <FotoPlaceholder tocka={tocka} />
+      </div>
+
+
       {/* Content */}
-      <section className="mt-6 space-y-4 text-[15px] leading-relaxed text-charcoal-950">
+      <section className="max-w-besedilo space-y-5 text-lg leading-relaxed">
         {tocka.besedilo_kratko ? (
           <>
             {isDemo(tocka.besedilo_kratko) && (
-              <p className="rounded border border-accent-red/40 bg-accent-red/10 px-3 py-2 text-xs font-semibold text-accent-red-dark">
-                To besedilo je demonstracijsko in ni zgodovinski vir.
-              </p>
+              <Obvestilo>
+                <p className="font-semibold">To besedilo je demonstracijsko in ni zgodovinski vir.</p>
+              </Obvestilo>
             )}
             <p>{tocka.besedilo_kratko}</p>
             {tocka.besedilo_poglobljeno && (
-              <details className="rounded border border-charcoal-200 p-3">
-                <summary className="cursor-pointer font-heading text-sm font-semibold">
+              <details className="rounded-xl border border-crta bg-povrsina p-4">
+                <summary className="cursor-pointer font-heading text-base font-semibold">
                   Poglobljeno besedilo
                 </summary>
-                <div className="mt-2 space-y-2 whitespace-pre-line text-sm">{tocka.besedilo_poglobljeno}</div>
+                <div className="mt-3 space-y-2 text-base whitespace-pre-line">{tocka.besedilo_poglobljeno}</div>
               </details>
             )}
           </>
         ) : (
-          <div className="rounded border border-charcoal-200 bg-offwhite-100 p-4">
-            <p className="font-heading text-sm font-semibold tracking-wide text-charcoal-600 uppercase">
-              Vsebina v pripravi
-            </p>
+          <div className="rounded-xl border border-crta bg-povrsina p-5">
+            <p className="text-nadnaslov font-semibold text-crnilo-mehko uppercase">Vsebina v pripravi</p>
             <p className="mt-2">{tocka.iztocnica}</p>
           </div>
         )}
 
-        <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm text-charcoal-700">
+        <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-base text-crnilo-mehko">
           <dt className="font-medium">EŠD</dt>
           <dd>{tocka.esd ?? "Obeležje (še) nima EŠD številke."}</dd>
         </dl>
 
         {tocka.viri.length > 0 && (
           <div>
-            <p className="text-sm font-medium text-charcoal-700">Viri</p>
-            <ul className="mt-1 list-inside list-disc text-sm">
+            <h2 className="font-heading text-xl font-semibold">Viri</h2>
+            <ul className="mt-2 list-inside list-disc text-base">
               {tocka.viri.map((v) => (
                 <li key={v} className="truncate">
-                  <a href={v} target="_blank" rel="noopener noreferrer" className="text-accent-red hover:underline">
+                  <a href={v} target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">
                     {v}
                   </a>
                 </li>
@@ -138,13 +142,13 @@ export default async function TockaPage({ params }: PageProps) {
       </section>
 
       {/* Photo comparison slot */}
-      <section className="mt-6">
-        <p className="mb-2 text-sm font-medium text-charcoal-700">Danes / nekoč</p>
-        <div className="grid grid-cols-2 gap-2">
-          <div className="h-32 overflow-hidden rounded">
+      <section>
+        <h2 className="mb-3 font-heading text-xl font-semibold">Danes / nekoč</h2>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="h-36 overflow-hidden rounded-xl">
             <FotoPlaceholder tocka={tocka} label="Danes" />
           </div>
-          <div className="h-32 overflow-hidden rounded">
+          <div className="h-36 overflow-hidden rounded-xl">
             <FotoPlaceholder tocka={tocka} label="Arhivsko" />
           </div>
         </div>
@@ -153,16 +157,16 @@ export default async function TockaPage({ params }: PageProps) {
       <PeljiMeTjaZemljevid tocka={tocka} barva={barva} />
 
       {/* Prev/next */}
-      <nav className="mt-8 flex items-center justify-between border-t border-charcoal-200 pt-4 text-sm">
+      <nav aria-label="Prejšnje in naslednje obeležje v etapi" className="flex items-start justify-between gap-4 border-t border-crta pt-6 text-sm">
         {prev ? (
-          <Link href={`/tocka/${prev.slug}`} className="flex items-center gap-1 text-charcoal-700 hover:text-accent-red">
+          <Link href={`/tocka/${prev.slug}`} className="flex items-center gap-1 font-medium text-poudarek underline-offset-4 hover:underline">
             <ChevronLeft size={16} aria-hidden="true" /> {prev.naziv}
           </Link>
         ) : (
           <span />
         )}
         {next ? (
-          <Link href={`/tocka/${next.slug}`} className="flex items-center gap-1 text-right text-charcoal-700 hover:text-accent-red">
+          <Link href={`/tocka/${next.slug}`} className="flex items-center gap-1 text-right font-medium text-poudarek underline-offset-4 hover:underline">
             {next.naziv} <ChevronRight size={16} aria-hidden="true" />
           </Link>
         ) : (
@@ -170,5 +174,6 @@ export default async function TockaPage({ params }: PageProps) {
         )}
       </nav>
     </main>
+    </div>
   );
 }

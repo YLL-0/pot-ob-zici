@@ -12,7 +12,7 @@ import dynamic from "next/dynamic";
 const MiniMap = dynamic(() => import("@/components/MiniMap"), {
   ssr: false,
   loading: () => (
-    <div className="map-chrome flex h-full w-full items-center justify-center text-xs">Nalagam zemljevid …</div>
+    <div className="flex h-full w-full items-center justify-center bg-tonirano text-crnilo-mehko text-xs">Nalagam zemljevid …</div>
   ),
 });
 

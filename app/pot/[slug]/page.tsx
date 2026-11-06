@@ -8,6 +8,10 @@ import { VRSTA_ICONS } from "@/lib/vrsta";
 import { estimateWalkingMinutes, formatDistance, formatMinutes, lineLengthMeters } from "@/lib/geo";
 import MiniMap from "@/components/LazyMiniMap";
 import type { Tocka } from "@/lib/types";
+import SiteHeader from "@/components/SiteHeader";
+import Nadnaslov from "@/components/Nadnaslov";
+import Obvestilo from "@/components/Obvestilo";
+import { besediloNaBarvi, stevnikObelezij } from "@/lib/etape";
 
 export const dynamic = "force-dynamic";
 
@@ -46,69 +50,81 @@ export default async function PotPage({ params }: PageProps) {
   const minutes = estimateWalkingMinutes(meters);
 
   return (
-    <main className="mx-auto max-w-3xl px-4 pb-16">
-      <nav className="pt-4 text-sm">
-        <Link href="/" className="text-charcoal-600 hover:text-accent-red">
+    <div className="min-h-dvh bg-papir">
+    <SiteHeader />
+    <main className="mx-auto max-w-stolpec space-y-8 px-4 pt-8 pb-20 sm:px-6 sm:pt-10">
+      <nav aria-label="Drobtine" className="text-sm">
+        <Link href="/" className="font-medium text-poudarek underline-offset-4 hover:underline">
           ← Nazaj na zemljevid
         </Link>
       </nav>
 
-      <header className="mt-4 flex items-center gap-3">
-        <span aria-hidden="true" className="inline-block h-4 w-4 shrink-0 rounded-full" style={{ backgroundColor: pot.barva }} />
-        <div>
-          <h1 className="font-heading text-2xl font-bold sm:text-3xl">{pot.naziv}</h1>
-          {pot.odsek && <p className="text-sm text-charcoal-600">{pot.odsek}</p>}
-        </div>
-      </header>
-
-      <div className="mt-3 flex flex-wrap gap-4 text-sm text-charcoal-700">
-        <span>{tockeVVrstnemRedu.length} obeležij na trasi</span>
+      <header className="space-y-4">
+        <Nadnaslov
+          nadnaslov={pot.vrsta === "etapa" ? "Etapa poti ob žici" : "Zgodovinski sloj"}
+          naslov={
+            <span className="inline-flex items-center gap-3">
+              <span aria-hidden="true" className="inline-block h-5 w-5 shrink-0 rounded-full" style={{ backgroundColor: pot.barva }} />
+              {pot.naziv}
+            </span>
+          }
+          uvod={pot.odsek && !pot.naziv.includes(pot.odsek) ? pot.odsek : undefined}
+        />
+      <div className="flex flex-wrap gap-x-6 gap-y-1 text-base text-crnilo-mehko">
+        <span>{stevnikObelezij(tockeVVrstnemRedu.length)} na trasi</span>
         <span>pribl. {formatDistance(meters)}</span>
         <span>pribl. {formatMinutes(minutes)} hoje</span>
       </div>
 
+      </header>
+
       {sporocilo && (
-        <p className="mt-3 rounded border border-accent-red/40 bg-accent-red/10 px-3 py-2 text-sm font-medium text-accent-red-dark">
-          {sporocilo}
-        </p>
+        <Obvestilo>
+          <p>{sporocilo}</p>
+        </Obvestilo>
       )}
 
-      <div className="mt-5 h-72 overflow-hidden rounded-lg border border-charcoal-200 sm:h-96">
+      <div className="h-80 overflow-hidden rounded-xl border border-crta sm:h-[28rem]">
         <MiniMap variant="pot" pot={pot} tocke={tockeVVrstnemRedu} deli={deli.length > 0 ? deli : undefined} />
       </div>
 
-      <section className="mt-6">
-        <h2 className="font-heading text-lg font-semibold">Obeležja na trasi (vrstni red hoje)</h2>
-        <ol className="mt-3 space-y-1">
+      <section>
+        <h2 className="font-heading text-2xl font-semibold">Obeležja na trasi</h2>
+        <p className="mt-1 text-sm text-crnilo-mehko">V vrstnem redu hoje.</p>
+        <ol className="mt-4 divide-y divide-crta overflow-hidden rounded-xl border border-crta bg-povrsina">
           {tockeVVrstnemRedu.map((t, i) => {
             const Icon = VRSTA_ICONS[t.vrsta];
             return (
               <li key={t.id}>
                 <Link
                   href={`/tocka/${t.slug}`}
-                  className="flex items-center gap-2.5 rounded px-2 py-1.5 hover:bg-offwhite-100"
+                  className="flex items-center gap-3 px-4 py-3 hover:bg-papir"
                 >
                   <span
-                    className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-offwhite-50"
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold tabular-nums ${
+                      besediloNaBarvi(pot.barva) === "svetlo" ? "text-white" : "text-crnilo"
+                    }`}
                     style={{ backgroundColor: pot.barva }}
                   >
                     {i + 1}
                   </span>
-                  <Icon size={15} aria-hidden="true" className="shrink-0 text-charcoal-600" />
-                  <span className="flex-1">{t.naziv}</span>
-                  <span className="text-xs text-charcoal-600">{t.obmocje}</span>
+                  <Icon size={18} aria-hidden="true" className="shrink-0 text-crnilo-mehko" />
+                  <span className="min-w-0 flex-1">
+                    <span className="block leading-snug font-medium">{t.naziv}</span>
+                    <span className="block text-sm text-crnilo-mehko">{t.obmocje}</span>
+                  </span>
                 </Link>
               </li>
             );
           })}
         </ol>
         {tockeVVrstnemRedu.length === 0 && (
-          <p className="mt-2 text-sm text-charcoal-600">Ta sloj nima neposredno pripisanih obeležij.</p>
+          <p className="mt-2 text-sm text-crnilo-mehko">Ta sloj nima neposredno pripisanih obeležij.</p>
         )}
       </section>
 
-      <nav className="mt-8 border-t border-charcoal-200 pt-4 text-sm">
-        <p className="mb-2 font-medium text-charcoal-700">Druge poti</p>
+      <nav aria-labelledby="druge-poti" className="border-t border-crta pt-6 text-sm">
+        <h2 id="druge-poti" className="mb-3 font-heading text-xl font-semibold">Druge poti</h2>
         <div className="flex flex-wrap gap-2">
           {vsePoti
             .filter((p) => p.slug !== pot.slug)
@@ -116,13 +132,15 @@ export default async function PotPage({ params }: PageProps) {
               <Link
                 key={p.slug}
                 href={`/pot/${p.slug}`}
-                className="rounded-full border border-charcoal-300 px-3 py-1 text-xs font-medium hover:bg-offwhite-100"
+                className="inline-flex min-h-9 items-center gap-2 rounded-full border border-crta bg-povrsina px-3.5 py-1.5 text-sm font-medium hover:border-crta-mocna"
               >
+                <span aria-hidden="true" className="inline-block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: p.barva }} />
                 {p.naziv}
               </Link>
             ))}
         </div>
       </nav>
     </main>
+    </div>
   );
 }
