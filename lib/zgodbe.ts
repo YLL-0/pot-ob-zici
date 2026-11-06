@@ -1,28 +1,25 @@
 import type { Zgodba } from "@/lib/types";
 
-/** Slovenian display label per story theme, for filter chips. */
+/**
+ * The client's ten story themes, in the client's order. Fixed list: do not
+ * extend, rename or substitute (POPRAVKI_1 §1). The importer's
+ * TEMA_TO_ZGODBE table (scripts/import-xlsx.ts) may only map to these.
+ */
 export const ZGODBA_LABELS: Record<Zgodba, string> = {
+  "mesto-v-zici": "Mesto v žici",
   odpor: "Odpor",
   zrtve: "Žrtve",
-  "kultura-spominjanja": "Kultura spominjanja",
-  "otroci-in-mladi": "Otroci in mladi",
-  "partizanske-enote": "Partizanske enote",
   talci: "Talci",
   zeleznicarji: "Železničarji",
-  "mesto-v-zici": "Mesto v žici",
-  bombardiranje: "Bombardiranje",
+  "partizanske-enote": "Partizanske enote",
+  "otroci-in-mladi": "Otroci in mladi",
   "zenske-v-odporu": "Ženske v odporu",
+  bombardiranje: "Bombardiranje",
+  osvoboditev: "Osvoboditev",
 };
 
-export const VSE_ZGODBE: Zgodba[] = [
-  "odpor",
-  "zrtve",
-  "kultura-spominjanja",
-  "otroci-in-mladi",
-  "partizanske-enote",
-  "talci",
-  "zeleznicarji",
-  "mesto-v-zici",
-  "bombardiranje",
-  "zenske-v-odporu",
-];
+export const VSE_ZGODBE = Object.keys(ZGODBA_LABELS) as Zgodba[];
+
+export function isZgodba(value: string): value is Zgodba {
+  return Object.prototype.hasOwnProperty.call(ZGODBA_LABELS, value);
+}

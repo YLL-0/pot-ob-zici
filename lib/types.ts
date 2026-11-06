@@ -21,14 +21,15 @@
  * so `gps_zanesljivost` IS the GPS status column — no duplicate field.
  */
 
-/** Type of memorial object. Closed set — confirmed against all 50 rows. */
+/**
+ * Type of memorial object. Client-specified closed list of five — never
+ * extend, rename or substitute (POPRAVKI_1 §1).
+ */
 export type Vrsta =
   | "plosca" // ploščа
   | "spomenik"
   | "grobnica"
   | "bunker"
-  | "kompleks"
-  | "muzej"
   | "kraj-dogodka";
 
 /**
@@ -48,18 +49,22 @@ export type Vkljucitev =
 /** GPS reliability. All current data is "priblizek" (approximate). */
 export type GpsZanesljivost = "priblizek" | "terensko-izmerjeno" | "preverjeno-v-gis";
 
-/** Story theme used for filter chips. A point can carry up to 3. */
+/**
+ * Story theme used for filter chips. A point can carry up to 3, or none.
+ * Client-specified closed list of ten — never extend, rename or substitute
+ * (POPRAVKI_1 §1). A theme with no points is shown as an empty chip.
+ */
 export type Zgodba =
+  | "mesto-v-zici"
   | "odpor"
   | "zrtve"
-  | "kultura-spominjanja"
-  | "otroci-in-mladi"
-  | "partizanske-enote"
   | "talci"
   | "zeleznicarji"
-  | "mesto-v-zici"
+  | "partizanske-enote"
+  | "otroci-in-mladi"
+  | "zenske-v-odporu"
   | "bombardiranje"
-  | "zenske-v-odporu";
+  | "osvoboditev";
 
 /** EŠD (heritage register) entry status. */
 export type EsdStatus = "za-preverjanje" | "vpisano" | "ni-esd" | "ni-relevantno";

@@ -1,8 +1,6 @@
 import {
-  BuildingComplex,
   Cross,
   Landmark,
-  Library,
   MapPin,
   ScrollText,
   Shield,
@@ -10,14 +8,16 @@ import {
 } from "lucide-react";
 import type { Vrsta } from "@/lib/types";
 
-/** Slovenian display label per object type, for filter chips and legend. */
+/**
+ * The client's five object types, in the client's order. Fixed list: do not
+ * extend, rename or substitute (POPRAVKI_1 §1). The importer's
+ * VRSTA_RAW_TO_VRSTA table (scripts/import-xlsx.ts) may only map to these.
+ */
 export const VRSTA_LABELS: Record<Vrsta, string> = {
-  plosca: "Spominska plošča",
   spomenik: "Spomenik",
+  plosca: "Spominska plošča",
   grobnica: "Grobnica",
   bunker: "Bunker",
-  kompleks: "Spominski kompleks",
-  muzej: "Muzej",
   "kraj-dogodka": "Kraj dogodka",
 };
 
@@ -27,9 +27,11 @@ export const VRSTA_ICONS: Record<Vrsta, LucideIcon> = {
   spomenik: Landmark,
   grobnica: Cross,
   bunker: Shield,
-  kompleks: BuildingComplex,
-  muzej: Library,
   "kraj-dogodka": MapPin,
 };
 
-export const VSE_VRSTE: Vrsta[] = ["plosca", "spomenik", "grobnica", "bunker", "kompleks", "muzej", "kraj-dogodka"];
+export const VSE_VRSTE = Object.keys(VRSTA_LABELS) as Vrsta[];
+
+export function isVrsta(value: string): value is Vrsta {
+  return Object.prototype.hasOwnProperty.call(VRSTA_LABELS, value);
+}

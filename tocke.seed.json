@@ -235,9 +235,7 @@
     "vkljucitev": "Bližina poti",
     "iztocnica": "Obeležje, povezano s prvim praznovanjem Dneva vstaje.",
     "kljucna_tema": "Spomin; povojna kultura spominjanja",
-    "zgodbe_predlog": [
-      "kultura-spominjanja"
-    ],
+    "zgodbe_predlog": [],
     "viri": [
       "https://partizanstvo.si/"
     ],
@@ -396,7 +394,7 @@
     "naziv": "Spomeniški kompleks Na vratih / Loža herojev",
     "obmocje": "Rozmanova ulica",
     "vrsta_raw": "Spomeniški kompleks",
-    "vrsta": "kompleks",
+    "vrsta": "spomenik",
     "lat": 45.8044,
     "lon": 15.1682,
     "gps_zanesljivost": "priblizek",
@@ -408,9 +406,7 @@
     "vkljucitev": "Bližina poti",
     "iztocnica": "Osrednji mestni spominski kompleks NOB.",
     "kljucna_tema": "Narodni heroji; kolektivni spomin",
-    "zgodbe_predlog": [
-      "kultura-spominjanja"
-    ],
+    "zgodbe_predlog": [],
     "viri": [
       "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/",
       "https://partizanstvo.si/"
@@ -440,7 +436,7 @@
     "naziv": "Spominska avla Dolenjskega muzeja",
     "obmocje": "Center Novega mesta",
     "vrsta_raw": "Muzejska spominska točka",
-    "vrsta": "muzej",
+    "vrsta": "spomenik",
     "lat": 45.8049,
     "lon": 15.1679,
     "gps_zanesljivost": "priblizek",
@@ -452,9 +448,7 @@
     "vkljucitev": "Bližina poti",
     "iztocnica": "Muzejska interpretacijska točka za zgodovino NOB na Dolenjskem.",
     "kljucna_tema": "Muzejska interpretacija; zgodovinski viri",
-    "zgodbe_predlog": [
-      "kultura-spominjanja"
-    ],
+    "zgodbe_predlog": [],
     "viri": [
       "https://www.dolenjskimuzej.si/"
     ],
@@ -495,9 +489,7 @@
     "vkljucitev": "Bližina poti",
     "iztocnica": "Kip kot izhodišče za razpravo o vojni, povojnem času in kulturi spomina.",
     "kljucna_tema": "Tito; povojni spomin",
-    "zgodbe_predlog": [
-      "kultura-spominjanja"
-    ],
+    "zgodbe_predlog": [],
     "viri": [
       "https://www.dolenjskimuzej.si/"
     ],
@@ -1403,7 +1395,7 @@
     "naziv": "Spominski sklop NOB na pokopališču Šmihel",
     "obmocje": "Šmihel",
     "vrsta_raw": "Spominski sklop",
-    "vrsta": "kompleks",
+    "vrsta": "grobnica",
     "lat": 45.7904,
     "lon": 15.1552,
     "gps_zanesljivost": "priblizek",
@@ -1749,7 +1741,7 @@
     "naziv": "Spominski park padlim borcem",
     "obmocje": "Češča vas",
     "vrsta_raw": "Spominski park",
-    "vrsta": "kompleks",
+    "vrsta": "spomenik",
     "lat": 45.8149,
     "lon": 15.1217,
     "gps_zanesljivost": "priblizek",
@@ -1762,8 +1754,7 @@
     "iztocnica": "Spominski park padlim borcem.",
     "kljucna_tema": "Padli borci; javni spominski prostor",
     "zgodbe_predlog": [
-      "zrtve",
-      "kultura-spominjanja"
+      "zrtve"
     ],
     "viri": [
       "https://partizanstvo.si/"
@@ -2150,9 +2141,7 @@
     "vkljucitev": "Razširjeni vzhodni krak",
     "iztocnica": "Lokacija Beceletove jame z dvema spominskima ploščama.",
     "kljucna_tema": "Dogodki NOB; spomin v krajini",
-    "zgodbe_predlog": [
-      "kultura-spominjanja"
-    ],
+    "zgodbe_predlog": [],
     "viri": [
       "https://partizanstvo.si/"
     ],

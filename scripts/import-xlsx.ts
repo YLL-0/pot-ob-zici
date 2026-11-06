@@ -119,14 +119,15 @@ const VRSTA_RAW_TO_VRSTA: Record<string, Vrsta> = {
   Grobnica: "grobnica",
   "Grobnica / spomenik": "grobnica",
   "Kip / spomenik": "spomenik",
-  "Muzejska spominska točka": "muzej",
+  // Client list has five types; approved mapping (POPRAVKI_1 §1, 2026-11-06).
+  "Muzejska spominska točka": "spomenik",
   "Naravna lokacija / spominski plošči": "kraj-dogodka",
   Spomenik: "spomenik",
-  "Spomeniški kompleks": "kompleks",
+  "Spomeniški kompleks": "spomenik",
   "Spominska plošča": "plosca",
   "Spominska plošča / lokacija dogodka": "plosca",
-  "Spominski park": "kompleks",
-  "Spominski sklop": "kompleks",
+  "Spominski park": "spomenik",
+  "Spominski sklop": "grobnica",
   "Spominsko obeležje": "spomenik",
 };
 
@@ -135,7 +136,8 @@ const VRSTA_RAW_TO_VRSTA: Record<string, Vrsta> = {
  * cannot be mechanically split into story-theme tags). Extracted from the
  * previously reviewed tocke.seed.json. A kljucna_tema not in this table
  * means a genuinely new theme text — the script stops and asks rather than
- * guessing tags for it.
+ * guessing tags for it. An empty list means no client theme fits the text
+ * (approved, POPRAVKI_1 §1) — never fill it with a guess.
  */
 const TEMA_TO_ZGODBE: Record<string, Zgodba[]> = {
   "Alojz Colja; lokalni odpor": ["odpor"],
@@ -147,7 +149,7 @@ const TEMA_TO_ZGODBE: Record<string, Zgodba[]> = {
   "Danilo Podobnik; Slavko Petrič": ["odpor"],
   "Delavsko gibanje; predvojni kontekst": ["odpor"],
   "Delo; mladi; lokalna skupnost": ["otroci-in-mladi"],
-  "Dogodki NOB; spomin v krajini": ["kultura-spominjanja"],
+  "Dogodki NOB; spomin v krajini": [],
   "Dolenjski odred; padli borci": ["partizanske-enote", "zrtve"],
   "Družinska zgodba; žrtve / odpor": ["zrtve", "odpor"],
   "Gasilstvo; lokalna skupnost; NOB": ["odpor"],
@@ -163,22 +165,22 @@ const TEMA_TO_ZGODBE: Record<string, Zgodba[]> = {
   "Mladi; izobraževanje; odpor": ["otroci-in-mladi", "odpor"],
   "Mladi; lokalna zgodovina": ["otroci-in-mladi"],
   "Mladi; šolstvo; NOB": ["otroci-in-mladi"],
-  "Muzejska interpretacija; zgodovinski viri": ["kultura-spominjanja"],
-  "Narodni heroji; kolektivni spomin": ["kultura-spominjanja"],
+  "Muzejska interpretacija; zgodovinski viri": [],
+  "Narodni heroji; kolektivni spomin": [],
   "Odpor; organizirano delovanje": ["odpor"],
   "Padli borci / žrtve": ["zrtve"],
   "Padli borci NOB": ["zrtve"],
   "Padli borci NOV": ["zrtve"],
   "Padli borci; civilne žrtve": ["zrtve"],
-  "Padli borci; javni spominski prostor": ["zrtve", "kultura-spominjanja"],
+  "Padli borci; javni spominski prostor": ["zrtve"],
   "Padli borci; spomin": ["zrtve"],
   "Padli borci; žrtve; spomin": ["zrtve"],
   "Partizanske enote; Dolenjski bataljon": ["partizanske-enote"],
   "Represija; institucije; odpor": ["odpor"],
   "Represija; talci; javne usmrtitve": ["talci"],
-  "Spomin; povojna kultura spominjanja": ["kultura-spominjanja"],
+  "Spomin; povojna kultura spominjanja": [],
   "Talci; okupacijsko nasilje": ["talci"],
-  "Tito; povojni spomin": ["kultura-spominjanja"],
+  "Tito; povojni spomin": [],
   "Valantičeva družina; lokalni spomin": ["odpor"],
   "Železničarji; odpor": ["zeleznicarji", "odpor"],
   "Železničarji; odpor; logistika": ["zeleznicarji", "odpor"],

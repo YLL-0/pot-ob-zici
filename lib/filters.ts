@@ -6,6 +6,8 @@
  */
 
 import type { Etapa, Tocka, Vrsta, Zgodba } from "@/lib/types";
+import { isVrsta } from "@/lib/vrsta";
+import { isZgodba } from "@/lib/zgodbe";
 
 export interface FilterState {
   /** Free-text search over naziv + obmocje. */
@@ -57,17 +59,18 @@ function parseIntList(raw: string | null): number[] {
     .filter((n) => Number.isInteger(n));
 }
 
-function parseStringList<T extends string>(raw: string | null): T[] {
+/** Splits a comma list, keeping only known values (old shared links may carry removed ones). */
+function parseStringList<T extends string>(raw: string | null, isKnown: (v: string) => v is T): T[] {
   if (!raw) return [];
-  return raw.split(",").filter(Boolean) as T[];
+  return raw.split(",").filter(isKnown);
 }
 
 export function parseFilters(params: URLSearchParams): FilterState {
   return {
     q: params.get(PARAM.q) ?? "",
     etape: parseIntList(params.get(PARAM.etape)),
-    vrste: parseStringList<Vrsta>(params.get(PARAM.vrste)),
-    zgodbe: parseStringList<Zgodba>(params.get(PARAM.zgodbe)),
+    vrste: parseStringList(params.get(PARAM.vrste), isVrsta),
+    zgodbe: parseStringList(params.get(PARAM.zgodbe), isZgodba),
     samoOsnovna: params.get(PARAM.samoOsnovna) === "1",
     zica: params.get(PARAM.zica) === "1",
     tocka: params.get(PARAM.tocka),
