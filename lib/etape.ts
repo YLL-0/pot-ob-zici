@@ -30,7 +30,7 @@ const SEED_ROWS: [stevilka: number, odsek: string, barva: string][] = [
   [5, "Žabja vas – Gotna vas", "#2c4f96"],
   [6, "Gotna vas – Šmihel", "#582c96"],
   [7, "Šmihel – Drska", "#962c96"],
-  [8, "Drska – Loka", "#967c2c"],
+  [8, "Drska – Loka", "#836d26"],
 ];
 
 export const ETAPE_SEED: Etapa[] = SEED_ROWS.map(([stevilka, odsek, barva]) => ({
@@ -67,4 +67,36 @@ export function getEtapaBarva(etape: Etapa[], id: string | null): string {
 
 export function sortEtape(etape: Etapa[]): Etapa[] {
   return [...etape].sort((a, b) => a.stevilka - b.stevilka);
+}
+
+function relativnaSvetlost(hex: string): number {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+  if (!m) return 0;
+  const n = parseInt(m[1]!, 16);
+  const kanal = (c: number) => {
+    const v = c / 255;
+    return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * kanal((n >> 16) & 255) + 0.7152 * kanal((n >> 8) & 255) + 0.0722 * kanal(n & 255);
+}
+
+/**
+ * Text colour for a label on a stage-coloured fill (an active stage chip):
+ * whichever of white or the ink token gives the higher WCAG contrast, so
+ * any colour an editor picks stays readable.
+ */
+export function besediloNaBarvi(barva: string): "svetlo" | "temno" {
+  const L = relativnaSvetlost(barva);
+  const zBelo = 1.05 / (L + 0.05);
+  const zCrnilom = (L + 0.05) / 0.0619; // --color-crnilo, L ≈ 0.0119
+  return zBelo >= zCrnilom ? "svetlo" : "temno";
+}
+
+/** Slovenian plural: 1 obeležje, 2 obeležji, 3–4 obeležja, 5+ obeležij. */
+export function stevnikObelezij(n: number): string {
+  const ostanek = n % 100;
+  if (ostanek === 1) return `${n} obeležje`;
+  if (ostanek === 2) return `${n} obeležji`;
+  if (ostanek === 3 || ostanek === 4) return `${n} obeležja`;
+  return `${n} obeležij`;
 }

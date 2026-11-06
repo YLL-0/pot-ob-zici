@@ -1,5 +1,17 @@
 # Changelog
 
+## Popravki 1 — §3: etape kot vidna kontrola
+
+- Domača stran je urednišni stolpec (po referenci): naslov, obvestilo o koordinatah, vedno
+  vidni čipi **Vse etape · Etapa 1 … 8** v barvi etape (aktivni zapolnjen, besedilo z AA
+  kontrastom), iskanje + »Filtri« (vrsta, tema s številom točk, osnovna trasa, žica), zemljevid,
+  seznam etap (številka, ime, odsek, število obeležij) in vsa obeležja po etapah.
+- Klik na čip ali vrstico etape: zemljevid se prilagodi izbranim etapam, njihove črte polne
+  debeline, ostale točke izginejo; več etap hkrati, zaporedne ostanejo ena črta. Izbor v URL-ju.
+- Zemljevid v strani: sodelovalne kretnje (dva prsta / Ctrl + kolešček), slovenska besedila.
+- Odstranjena stranski panel in spodnji list (`SidePanel`, `TopBar`).
+- Barva etape 8 potemnjena (`#836d26`), ker zapolnjen čip z `#967c2c` ni dosegel AA.
+
 ## Popravki 1 — §4: prave trase na objavljeni strani
 
 - **Trase v repozitoriju:** `npm run trase -- --preracunaj --zapisi-v-repo` zapiše trase v

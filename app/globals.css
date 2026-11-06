@@ -29,6 +29,35 @@
   /* Reserved for the 1943 wire layer only — never an etapa colour. */
   --color-historical: #6b7f8f;
 
+  /* --- Light editorial system (POPRAVKI_1 §2) --------------------------- */
+  /* Warm off-white page, white surfaces, warm near-black ink. Contrast on
+     --color-papir: crnilo 15.9:1, crnilo-mehko 7.4:1, crta-mocna 3.4:1
+     (UI boundaries, WCAG 1.4.11). */
+  --color-papir: #faf7f1;
+  --color-povrsina: #ffffff;
+  --color-tonirano: #f1ece2;
+  --color-crnilo: #1f1c18;
+  --color-crnilo-mehko: #57514a;
+  --color-crta: #e4ddd1;
+  --color-crta-mocna: #8c8478;
+  /* The one accent: deep green, for emphasis only (active "Vse" chip,
+     notice rule, links, focus). White on it 10.6:1. */
+  --color-poudarek: #2a4536;
+  --color-poudarek-temno: #1c3126;
+  --color-poudarek-svetlo: #e3ebe5;
+
+  /* Type scale */
+  --text-nadnaslov: 0.75rem;
+  --text-nadnaslov--letter-spacing: 0.18em;
+  --text-naslov: clamp(2rem, 1.4rem + 3vw, 3rem);
+  --text-naslov--line-height: 1.1;
+  --text-podnaslov: 1.125rem;
+  --text-podnaslov--line-height: 1.55;
+
+  /* Layout: the centred content column */
+  --container-stolpec: 50rem;
+  --container-besedilo: 40rem;
+
   --font-heading: "Neue Grotesk Fallback", "Arial Narrow", system-ui, sans-serif;
   --font-body: "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
 }

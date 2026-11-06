@@ -178,31 +178,27 @@ function clusterBarva(etape: Etapa[]): DataDrivenPropertyValueSpecification<stri
   return ["case", ...veje, fallback] as unknown as ExpressionSpecification;
 }
 
-/**
- * Fit padding that keeps the fitted area clear of the map chrome: the
- * status badge on top and, on phones, the bottom sheet (peek height ≈ 28vh).
- */
+/** Fit padding: the map sits in the page column, nothing overlaps it but the zoom control. */
 function odmikPogleda(map: MaplibreMap) {
-  const { clientWidth: w, clientHeight: h } = map.getContainer();
-  if (w < 768) return { top: 72, bottom: Math.round(h * 0.3) + 16, left: 24, right: 24 };
-  return { top: 72, bottom: 48, left: 48, right: 48 };
+  const { clientWidth: w } = map.getContainer();
+  if (w < 768) return { top: 40, bottom: 24, left: 24, right: 48 };
+  return { top: 48, bottom: 40, left: 48, right: 64 };
 }
 
-/** Phones: the bottom sheet covers the lower map, so point popups open upwards. */
+/** Narrow maps: point popups open upwards so they stay inside the frame. */
 function jeTelefon(map: MaplibreMap): boolean {
   return map.getContainer().clientWidth < 768;
 }
 
 /**
- * Where a selected point is brought into view. On a phone it goes low in
- * the strip between the status badge and the bottom sheet, leaving room
- * above it for the popup (anchored at its bottom).
+ * Where a selected point is brought into view. On a narrow map it goes
+ * low in the frame, leaving room above it for the popup (anchored at its
+ * bottom).
  */
 function odmikZaTocko(map: MaplibreMap) {
   if (!jeTelefon(map)) return odmikPogleda(map);
   const h = map.getContainer().clientHeight;
-  const spodaj = Math.round(h * 0.3) + 24;
-  return { top: Math.max(72, h - spodaj - 70), bottom: spodaj, left: 24, right: 24 };
+  return { top: Math.max(40, h - 110), bottom: 24, left: 24, right: 24 };
 }
 
 function extendBounds(bounds: LngLatBounds | null, coords: [number, number][]): LngLatBounds | null {
@@ -262,6 +258,17 @@ export default function MapView({
       style: STYLE_URL,
       center: NOVO_MESTO_CENTER,
       zoom: 13,
+      // The map is embedded in a scrolling page: one finger / plain wheel
+      // scrolls the page, two fingers / Ctrl+wheel move the map.
+      cooperativeGestures: true,
+      attributionControl: { compact: true },
+      locale: {
+        "CooperativeGesturesHandler.WindowsHelpText": "Za povečavo zemljevida drži Ctrl in vrti kolešček.",
+        "CooperativeGesturesHandler.MacHelpText": "Za povečavo zemljevida drži ⌘ in vrti kolešček.",
+        "CooperativeGesturesHandler.MobileHelpText": "Zemljevid premikaš z dvema prstoma.",
+        "NavigationControl.ZoomIn": "Povečaj",
+        "NavigationControl.ZoomOut": "Pomanjšaj",
+      },
     });
     mapRef.current = map;
     map.addControl(new NavigationControl({ showCompass: false }), "top-right");
@@ -507,7 +514,8 @@ export default function MapView({
     map.setFilter("poti-etape-shematsko", filterEtap("shematsko", izbrane));
 
     const p = poudarjenaEtapaId;
-    const s = SIRINA;
+    // Selected stages are drawn at full weight; with no selection, all at the normal weight.
+    const s = izbrane.length > 0 ? { ...SIRINA, osnovna: SIRINA.poudarjena } : SIRINA;
     map.setPaintProperty("poti-etape-obroba", "line-width", poPoudarku(p, s.poudarjena + OBROBA, s.zbledela + OBROBA, s.osnovna + OBROBA));
     map.setPaintProperty("poti-etape-obroba", "line-opacity", poPoudarku(p, 0.95, 0.35, 0.9));
     for (const id of ["poti-etape-izracunano", "poti-etape-shematsko"]) {
@@ -678,7 +686,7 @@ export default function MapView({
         <button
           type="button"
           onClick={handleFitAll}
-          className="map-chrome absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full px-4 py-2 text-sm font-medium shadow-lg"
+          className="absolute bottom-9 left-1/2 -translate-x-1/2 rounded-full border border-crta-mocna bg-povrsina px-4 py-2 text-sm font-medium whitespace-nowrap shadow-md"
         >
           Obeležja zunaj kadra — prikaži vseh {points.length}
         </button>

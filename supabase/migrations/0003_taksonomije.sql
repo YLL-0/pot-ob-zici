@@ -31,3 +31,7 @@ alter table public.tocke alter column vrsta type vrsta_obelezja using vrsta::vrs
 update public.tocke
 set zgodbe_predlog = array_remove(zgodbe_predlog, 'kultura-spominjanja')
 where 'kultura-spominjanja' = any (zgodbe_predlog);
+
+-- 3. Stage 8's seed colour could not carry AA-contrast text when used as a
+--    filled chip (best 4.21:1). Darkened — only if nobody recoloured it yet.
+update public.etape set barva = '#836d26' where id = 'etapa-8' and barva = '#967c2c';
