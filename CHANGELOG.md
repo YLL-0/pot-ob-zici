@@ -1,5 +1,14 @@
 # Changelog
 
+## Popravki 1 — §4 (2/2): izračunane trase
+
+- `data/trase/` napolnjen z ORS (foot-walking): 7 etap in 8 povezav izračunanih, celoten obroč
+  je zdaj po dejanskih poteh (brez shematskih delov). Etapa 7 ima eno samo točko, zato nima
+  lastne trase, povezavi na obeh straneh pa sta izračunani.
+- Popravek: pri etapi z eno točko se je obroč stikal pri surovi koordinati namesto pri
+  pripeti (NMZ-032 je 108 m od poti), kar je dalo 51 m shematski most in napačno opozorilo
+  »Trase ni bilo mogoče izračunati«. Zdaj se stika pri koncu dohodne izračunane povezave.
+
 ## Popravki 1 — §2: svetel, topel, urednišni videz
 
 - En sistem žetonov v `app/globals.css` (papir, površina, tonirano, črnilo, mehko črnilo, črta,

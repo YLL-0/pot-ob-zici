@@ -303,6 +303,21 @@ export function sestaviObroc(etape: Etapa[], points: Tocka[], vrstice: Trasa[], 
     return lastniDel(etapa, points, vrstice, poti, imaPovezavo);
   });
 
+  // A single-point stage has no geometry of its own, so its joint would be
+  // the raw point — off the path when the point lies away from it. When the
+  // incoming connector is routed, start at that connector's (snapped) end
+  // instead, so routed connectors on both sides meet without a bridge.
+  lastni.forEach((ta, i) => {
+    if (ta.del || obroc.length < 2) return;
+    const prejsnja = obroc[(i - 1 + obroc.length) % obroc.length]!;
+    if (!lastni[(i - 1 + obroc.length) % obroc.length]!.priTockah) return;
+    const konec = povezava(prejsnja, obroc[i]!)?.geometry?.coordinates.at(-1);
+    if (konec) {
+      ta.zacetek = konec;
+      ta.konec = konec;
+    }
+  });
+
   const odseki: OdsekObroca[] = obroc.map((etapa, i) => {
     const ta = lastni[i]!;
     const deli: DelTrase[] = [];

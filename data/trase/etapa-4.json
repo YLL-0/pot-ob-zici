@@ -1,0 +1,15 @@
+{
+  "id": "etapa-4",
+  "kljuc": "381d89e0fed6374afe32a055630b2e00040e0a6de7514f69a793281f6bf46e56",
+  "etapa_ids": [
+    "etapa-4"
+  ],
+  "engine": "ors/foot-walking",
+  "izracunano_ob": "2026-11-06T21:56:37.474Z",
+  "dolzina_m": 26.4,
+  "trajanje_s": 19,
+  "status": "izracunano",
+  "razlog": null,
+  "kraki": [{"od_id":"NMZ-002","do_id":"NMZ-003","dolzina_m":26.4,"trajanje_s":19,"zracna_m":122,"odmik_od_m":125,"odmik_do_m":12}],
+  "geometry": {"type":"LineString","coordinates":[[15.170945,45.790748],[15.170813,45.790782],[15.170692,45.790796],[15.170615,45.790791]]}
+}

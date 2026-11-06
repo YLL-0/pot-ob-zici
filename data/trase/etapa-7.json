@@ -1,0 +1,15 @@
+{
+  "id": "etapa-7",
+  "kljuc": "aa762739a2e4537b9323bf0da24eece5910c87144121518d1857fa4b0715bd76",
+  "etapa_ids": [
+    "etapa-7"
+  ],
+  "engine": "ors/foot-walking",
+  "izracunano_ob": "2026-11-06T21:56:41.233Z",
+  "dolzina_m": null,
+  "trajanje_s": null,
+  "status": "ni_uspelo",
+  "razlog": "Etapa ima manj kot dve objavljeni točki — trase ni mogoče izračunati.",
+  "kraki": null,
+  "geometry": null
+}
