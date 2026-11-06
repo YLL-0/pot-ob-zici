@@ -238,8 +238,9 @@ export async function getPoti(): Promise<Pot[]> {
 /**
  * The stage ring the map draws: cached routes where current, the schematic
  * fallback elsewhere (lib/trase.ts sestaviObroc). Reads the route cache
- * only — never triggers a routing call. With no Supabase and no
- * .cache/trase.json (a fresh clone) it is entirely schematic.
+ * only — never triggers a routing call. Storage precedence in
+ * lib/traseRepo.ts: Supabase, else committed data/trase/ files; with
+ * neither it is entirely schematic.
  */
 export async function getObroc(): Promise<Obroc> {
   const [etape, points, poti, vrstice] = await Promise.all([getEtape(), getPoints(), getPoti(), getTraseRepo().vse()]);

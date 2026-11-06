@@ -1,20 +1,28 @@
 /**
  * Routed trails from the command line — the routing service before any
- * admin UI exists (Phase 4 step 2).
+ * admin UI exists.
  *
  *   npm run trase                         state of every stage route and connector, no ORS calls
  *   npm run trase -- --preracunaj         recompute stale / missing / failed routes
  *   npm run trase -- --preracunaj --vse   recompute everything ("Ponovno izračunaj trase")
  *   npm run trase -- --etapa=etapa-6      limit to one stage (+ connectors touching it); repeatable
  *   npm run trase -- --brez-povezav       stage routes only, skip connectors
+ *   npm run trase -- --preracunaj --zapisi-v-repo
+ *                                         write results to data/trase/ (committed files)
  *
- * Reads ORS_API_KEY (and Supabase settings, if any) from .env.local.
- * Without Supabase, results go to .cache/trase.json (see lib/traseRepo.ts).
+ * Flags also work without the `--` separator (`npm run trase --preracunaj`):
+ * npm then passes them as npm_config_* variables, which are read too.
+ *
+ * Reads ORS_API_KEY (and Supabase settings, if any) from .env.local. Results
+ * go to Supabase when configured; with --zapisi-v-repo they go to
+ * data/trase/ instead. Without Supabase, --zapisi-v-repo is required — there
+ * is no other durable store (see lib/traseRepo.ts).
  */
 
 import { preracunajTrase, stanjeTras, type StanjeGradnika } from "../lib/trasiranje";
-import { getTraseRepo } from "../lib/traseRepo";
-import { isOrsConfigured } from "../lib/ors";
+import { getRepoDatoteke, getTraseRepo } from "../lib/traseRepo";
+import { diagnozaTras } from "../lib/traseDiagnoza";
+import { isSupabaseConfigured } from "../lib/supabase";
 import { formatDistance, formatMinutes } from "../lib/geo";
 
 const OZNAKE: Record<StanjeGradnika["stanje"], string> = {
@@ -53,19 +61,46 @@ function povzetek(stanja: StanjeGradnika[]): void {
   }
 }
 
+const args = process.argv.slice(2);
+
+/** A boolean flag, given as `-- --ime` or as `npm run trase --ime` (npm_config_ime). */
+function zastavica(ime: string): boolean {
+  const env = process.env[`npm_config_${ime.replace(/-/g, "_")}`];
+  return args.includes(`--${ime}`) || (env !== undefined && env !== "" && env !== "false");
+}
+
 async function main() {
-  const args = process.argv.slice(2);
   const etapaIds = args.filter((a) => a.startsWith("--etapa=")).map((a) => a.slice("--etapa=".length));
+  if (etapaIds.length === 0 && process.env.npm_config_etapa) etapaIds.push(process.env.npm_config_etapa);
+  const vRepo = zastavica("zapisi-v-repo");
+  const repo = vRepo ? getRepoDatoteke() : getTraseRepo();
+  const preracunaj = zastavica("preracunaj");
   const moznosti = {
     etapaIds: etapaIds.length > 0 ? etapaIds : undefined,
-    vse: args.includes("--vse"),
-    brezPovezav: args.includes("--brez-povezav"),
+    vse: zastavica("vse"),
+    brezPovezav: zastavica("brez-povezav"),
+    repo,
   };
 
-  console.log(`Shramba: ${getTraseRepo().ime} · ORS ključ: ${isOrsConfigured() ? "nastavljen" : "NI nastavljen"}`);
+  console.log(`Shramba: ${repo.ime}`);
+  const pogoji = diagnozaTras();
+  for (const p of pogoji) console.log(`⚠ ${p.koda}: ${p.sporocilo}`);
+  if (pogoji.length === 0) console.log("✓ ORS ključ je nastavljen, trajna shramba obstaja.");
 
-  if (!args.includes("--preracunaj")) {
-    let stanja = await stanjeTras();
+  if (preracunaj && !vRepo && !isSupabaseConfigured()) {
+    console.error(
+      "\n✗ Supabase ni nastavljen, zato rezultatov ni kam trajno shraniti. " +
+        "Dodaj --zapisi-v-repo (zapiše v data/trase/, nato commit) ali nastavi Supabase.",
+    );
+    process.exit(1);
+  }
+  if (preracunaj && pogoji.some((p) => p.koda === "NI_ORS_KLJUCA")) {
+    console.error("\n✗ Brez ORS_API_KEY ni mogoče računati. Nastavi ga v .env.local.");
+    process.exit(1);
+  }
+
+  if (!preracunaj) {
+    let stanja = await stanjeTras({ repo });
     if (moznosti.etapaIds) stanja = stanja.filter((s) => s.etapaIds.some((id) => moznosti.etapaIds!.includes(id)));
     if (moznosti.brezPovezav) stanja = stanja.filter((s) => s.vrsta === "etapa");
     povzetek(stanja);
@@ -82,6 +117,7 @@ async function main() {
   });
   process.stdout.write("\n");
   povzetek(stanja);
+  if (vRepo) console.log("\nZapisano v data/trase/. Preglej in commitaj te datoteke, da jih dobi objavljena stran.");
 }
 
 main().catch((err) => {

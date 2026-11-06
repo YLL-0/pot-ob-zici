@@ -1,5 +1,20 @@
 # Changelog
 
+## Popravki 1 — §4: prave trase na objavljeni strani
+
+- **Trase v repozitoriju:** `npm run trase -- --preracunaj --zapisi-v-repo` zapiše trase v
+  `data/trase/` (ena datoteka na etapo/povezavo, vsaka s svojim ključem — zastarela se zazna).
+  Branje: Supabase, sicer `data/trase/`, sicer shematsko. `.cache/trase.json` odstranjen
+  (na Vercelu se ob vsakem deployu izbriše).
+- **Poimenovana stanja** `NI_ORS_KLJUCA` in `NI_TRAJNE_SHRAMBE`: ob zagonu strežnika
+  (`instrumentation.ts`) in v `npm run trase`. README: kaj mora biti nastavljeno za produkcijo.
+- Zastavice delujejo tudi brez `--` (`npm run trase --preracunaj`).
+
+## Popravki 1 — §1: taksonomije po naročnikovih seznamih
+
+- Zgodbe: natanko deset naročnikovih tem (dodana Osvoboditev, odstranjena izmišljena »Kultura
+  spominjanja«). Vrsta: natanko pet (odstranjena Spominski kompleks in Muzej). Migracija 0003.
+
 ## Faza 4.3 — zemljevid: barve etap, sklenjen obroč, izbira etap, klik na točko
 
 - **Ena barva na etapo, en vir:** `etape.barva`. Etapne poti prevzamejo barvo, naziv in odsek iz

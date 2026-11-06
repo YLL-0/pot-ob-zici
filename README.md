@@ -146,12 +146,16 @@ public map only ever reads the cache.
 - **Honest fallback:** a part without a current routed row is drawn from the schematic file
   below (or a straight connector) and marked `"shematsko"`. Failures are cached with a reason; a
   missing key or an ORS rate limit stops the batch and writes nothing.
-- **Storage:** Supabase `trase` when configured, otherwise `.cache/trase.json` (gitignored), so a
-  fresh clone shows the schematic fallback.
+- **Storage, in read precedence:** Supabase `trase` when configured; otherwise the committed
+  route files in `data/trase/` (one JSON file per stage / connector, each carrying its cache
+  key, so a stale file is detected and not served); otherwise the schematic fallback.
+- **The public site never calls the routing service for trails.** Routes are computed once —
+  by `npm run trase` or, later, from the admin after an edit — and only read afterwards.
 
 ```bash
-npm run trase                               # state of every route, no ORS calls
-npm run trase -- --preracunaj               # recompute stale / missing / failed (≤ 15 requests)
+npm run trase                               # state of every route + named conditions, no ORS calls
+npm run trase -- --preracunaj --zapisi-v-repo   # compute into data/trase/ (no Supabase needed)
+npm run trase -- --preracunaj               # compute into Supabase (requires Supabase)
 npm run trase -- --preracunaj --vse         # recompute everything
 npm run trase -- --etapa=etapa-6            # one stage (+ connectors touching it)
 npm run trase:preizkus                      # self-check of the acceptance criteria (3 requests)
@@ -160,6 +164,29 @@ npm run trase:preizkus                      # self-check of the acceptance crite
 Both scripts read `.env.local`. Quality warnings (leg > 2,5× the straight line, leg > 3 km,
 point > 100 m from the nearest mapped path) are shown for stage routes and connectors between
 consecutive stages.
+
+#### Routed trails in production — what must be set
+
+Two named conditions are reported on server start (`instrumentation.ts`, look for `[trase]` in
+the logs) and by `npm run trase`:
+
+| Condition | Meaning | What the site does |
+|---|---|---|
+| `NI_TRAJNE_SHRAMBE` | No Supabase **and** no files in `data/trase/` | Every stage is drawn schematically (dashed straight lines, "Trase ni bilo mogoče izračunati po poteh"). |
+| `NI_ORS_KLJUCA` | `ORS_API_KEY` is not set | Stored routes are still shown. Nothing new can be routed; a route made stale by an edit falls back to the schematic line until it is recomputed. |
+
+For routed trails on the deployed site **without a database**, nothing has to be set in
+production. On a machine with `ORS_API_KEY` in `.env.local`:
+
+```bash
+npm run trase -- --preracunaj --zapisi-v-repo   # 15 ORS requests for the full ring
+git add data/trase && git commit -m "Trase: preračun"
+```
+
+and deploy. With Supabase configured, Supabase takes precedence and must hold the routes
+(`npm run trase -- --preracunaj`); `ORS_API_KEY` is then needed server-side only for
+recomputing from the admin. `.cache/` is no longer used: a deployment's file system is rebuilt
+on every deploy, so a runtime file cache is always empty there.
 
 ### Trails (poti)
 
