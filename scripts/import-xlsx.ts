@@ -6,8 +6,13 @@
  *                                 diff against the current tocke.seed.json;
  *                                 never writes. Exits 1 if anything would change.
  *
- * CLAUDE.md rule: tocke.seed.json is generated, not hand-edited. This is
- * the only script allowed to write it.
+ * CLAUDE.md rule: tocke.seed.json is generated, not hand-edited. This
+ * script and scripts/apply-koordinate.ts (register coordinates) are the
+ * only ones allowed to write it.
+ *
+ * Coordinates: the Excel's lat/lon are the weakest source. They never
+ * overwrite a point whose gps_zanesljivost is zunanji_vir,
+ * terensko-izmerjeno or preverjeno-v-gis — see MOCNEJSI_OD_EXCELA.
  *
  * Sheet "MASTER 50", header row 4, data rows 5–54 (Excel table
  * MasterObelezja, A4:AH54).
@@ -397,6 +402,49 @@ function loadExistingSeed(): Map<string, Tocka> {
   return new Map(raw.filter((r): r is Tocka & { id: string } => typeof r.id === "string").map((r) => [r.id, r as Tocka]));
 }
 
+// --- Coordinate precedence ----------------------------------------------------
+
+/**
+ * Reliabilities that outrank the Excel. The Excel's lat/lon are
+ * "izhodiščni približki" — measured against the partizanstvo.si register
+ * they were off by 1.1 km median, 4.35 km worst (POPRAVKI_2 §1). They are
+ * now the WEAKEST source and must never overwrite a position that came
+ * from the register, a field survey or GIS. For such a point the importer
+ * keeps lat, lon, gps_zanesljivost and the gps_* source fields from the
+ * existing seed and only reports what the Excel says.
+ */
+const MOCNEJSI_OD_EXCELA: ReadonlySet<Tocka["gps_zanesljivost"]> = new Set([
+  "zunanji_vir",
+  "terensko-izmerjeno",
+  "preverjeno-v-gis",
+]);
+
+type Koordinate = Pick<
+  Tocka,
+  "lat" | "lon" | "gps_zanesljivost" | "gps_vir" | "gps_vir_id" | "gps_vir_url" | "gps_opomba"
+>;
+
+/** Points whose Excel coordinates were overruled, for the run summary. */
+const prezrteExcelKoordinate: string[] = [];
+
+function koordinate(id: string, excel: Koordinate, prev: Tocka | undefined): Koordinate {
+  if (!prev || !MOCNEJSI_OD_EXCELA.has(prev.gps_zanesljivost)) return excel;
+  if (excel.lat !== prev.lat || excel.lon !== prev.lon) {
+    prezrteExcelKoordinate.push(
+      `  · ${id}: Excel ima ${excel.lat}, ${excel.lon} — obdržane ${prev.lat}, ${prev.lon} (${prev.gps_zanesljivost}).`,
+    );
+  }
+  return {
+    lat: prev.lat,
+    lon: prev.lon,
+    gps_zanesljivost: prev.gps_zanesljivost,
+    gps_vir: prev.gps_vir ?? null,
+    gps_vir_id: prev.gps_vir_id ?? null,
+    gps_vir_url: prev.gps_vir_url ?? null,
+    gps_opomba: prev.gps_opomba ?? null,
+  };
+}
+
 // --- Row -> Tocka -------------------------------------------------------------
 
 function rowToTocka(row: unknown[], existing: Map<string, Tocka>): Tocka {
@@ -436,14 +484,22 @@ function rowToTocka(row: unknown[], existing: Map<string, Tocka>): Tocka {
     obmocje: get(COL.OBMOCJE),
     vrsta_raw,
     vrsta: lookup(VRSTA_RAW_TO_VRSTA, vrsta_raw, `vrsta_raw (${id})`),
-    lat: Number(get(COL.LAT)),
-    lon: Number(get(COL.LON)),
-    gps_zanesljivost: parseGpsZanesljivost(get(COL.GPS_STATUS)),
-    // Source fields have no Excel column — set by scripts/apply-koordinate.ts.
-    gps_vir: prev?.gps_vir ?? null,
-    gps_vir_id: prev?.gps_vir_id ?? null,
-    gps_vir_url: prev?.gps_vir_url ?? null,
-    gps_opomba: prev?.gps_opomba ?? null,
+    // Excel coordinates only win over another Excel approximation — see
+    // MOCNEJSI_OD_EXCELA. Source fields have no Excel column (set by
+    // scripts/apply-koordinate.ts).
+    ...koordinate(
+      id,
+      {
+        lat: Number(get(COL.LAT)),
+        lon: Number(get(COL.LON)),
+        gps_zanesljivost: parseGpsZanesljivost(get(COL.GPS_STATUS)),
+        gps_vir: prev?.gps_vir ?? null,
+        gps_vir_id: prev?.gps_vir_id ?? null,
+        gps_vir_url: prev?.gps_vir_url ?? null,
+        gps_opomba: prev?.gps_opomba ?? null,
+      },
+      prev,
+    ),
     esd: esdRaw.length > 0 ? esdRaw : null,
     esd_status: lookup(ESD_STATUS_MAP, get(COL.ESD_STATUS), `esd_status (${id})`),
     etapa: parseEtapa(get(COL.ETAPA), id),
@@ -533,6 +589,14 @@ function main() {
   console.log(`Najdenih ${dataRows.length} podatkovnih vrstic.`);
   const points = dataRows.map((row) => rowToTocka(row, existing));
   dodeliZaporedje(points);
+
+  if (prezrteExcelKoordinate.length > 0) {
+    console.log(
+      `Excel koordinate prezrte pri ${prezrteExcelKoordinate.length} točkah — obdržan močnejši vir ` +
+        `(register / teren / GIS)${checkOnly ? ":" : ". Podrobnosti: npm run import:xlsx:check."}`,
+    );
+    if (checkOnly) prezrteExcelKoordinate.forEach((l) => console.log(l));
+  }
 
   const ids = new Set(points.map((p) => p.id));
   if (ids.size !== points.length) {

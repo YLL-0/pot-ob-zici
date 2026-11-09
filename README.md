@@ -40,9 +40,25 @@ demo-točke (NMZ-001, NMZ-016, NMZ-023), ki bodo za namen predstavitve nosile ja
 
 ### GPS koordinate
 
-Vse koordinate so **približki**, izračunani iz javno dostopnih podatkov — ne s terenskim
-GPS-om. To bo na strani vedno jasno napisano. Pred namestitvijo QR-tablic jih je treba
-terensko preveriti (kot že piše v opombi na vrhu vašega Excela).
+Koordinate vseh 50 obeležij so prevzete iz javnega registra **[partizanstvo.si](https://partizanstvo.si/)**
+(vsako obeležje je povezano s svojim zapisom v registru po ID-ju). Terensko še niso preverjene —
+na strani obeležja to piše skupaj s povezavo na zapis v registru. Pred namestitvijo QR-tablic jih
+je še vedno treba preveriti na terenu.
+
+**Koordinate v Excelu so zdaj najšibkejši vir.** Ponovni uvoz Excela (`npm run import:xlsx`)
+koordinat obeležja, ki ima vir iz registra (`zunanji_vir`), terensko meritev (`terensko-izmerjeno`)
+ali preverbo v GIS (`preverjeno-v-gis`), nikoli ne prepiše. Spremembo lokacije takega obeležja
+vnesite v admin (ko bo na voljo) ali v `koordinate_partizanstvo.json` in zaženite
+`npm run apply:koordinate` — ne v Excel.
+
+**Pred objavo terensko preveriti** — ime v registru se ne ujema povsem z našim, zato je ujemanje
+verjetno, ne zanesljivo (polje `gps_opomba`):
+
+| ID | Obeležje | Kaj preveriti |
+|---|---|---|
+| NMZ-030 | Spominska plošča padlim gasilcem | Zapis v registru leži ob pokopališču Ločna, naša opomba navaja gasilski dom na Seidlovi cesti. |
+| NMZ-033 | Spominski sklop NOB na pokopališču Šmihel | Na pokopališču je več ločenih zapisov; potrditi, da je to skupno obeležje, ne posamezen grob. |
+| NMZ-034 | Valantičevo obeležje | 45 m od NMZ-033, ločeno od NMZ-004 (Kandija); potrditi, da gre za tri različna obeležja. |
 
 ### Kaj bo omogočilo urejanje vsebin (Faza 4)
 
@@ -73,7 +89,7 @@ No `.env` needed. `lib/data.ts` falls back to `tocke.seed.json` (all 50 points) 
 To connect Supabase instead, copy `.env.example` to `.env.local` and fill in the values, then:
 
 ```bash
-# apply supabase/migrations/0001_init.sql, then 0002_etape_trase.sql, then:
+# apply supabase/migrations/0001_init.sql … 0004_gps_vir.sql in order, then:
 npm run import:xlsx   # regenerate tocke.seed.json from the client's Excel (if needed)
 npm run seed          # insert missing stages, then upsert tocke.seed.json (on id)
 ```
@@ -99,6 +115,12 @@ tocke.seed.json  ──────────────►  lib/data.ts getP
 - **`tocke.seed.json` is generated, never hand-edited.** Run `npm run import:xlsx` to
   regenerate it from the Excel. Run `npm run import:xlsx:check` first to see a diff without
   writing anything.
+- **Coordinate precedence.** The Excel's lat/lon are the weakest source. Register positions
+  come from `koordinate_partizanstvo.json` via `npm run apply:koordinate` (matches on `id`
+  only, refuses on any missing/unknown id, idempotent, recomputes the default `zaporedje`).
+  The importer never overwrites lat/lon of a point whose `gps_zanesljivost` is `zunanji_vir`,
+  `terensko-izmerjeno` or `preverjeno-v-gis`; `import:xlsx:check` lists what the Excel says.
+  `gps_opomba` non-null = needs field verification (NMZ-030, NMZ-033, NMZ-034).
 - The Excel import is a **one-time migration**, not an ongoing sync. Once real content lives
   in Supabase, `npm run seed` will skip (with a warning) any row whose `updated_at` in the
   database is newer than the import — it will never clobber a human edit with a stale
@@ -239,6 +261,7 @@ npm run lint             # eslint
 npm run typecheck        # tsc --noEmit
 npm run import:xlsx      # regenerate tocke.seed.json from the client's Excel
 npm run import:xlsx:check # same, but only prints a diff — writes nothing
+npm run apply:koordinate # apply register coordinates (koordinate_partizanstvo.json) to the seed
 npm run generate:poti    # regenerate the 8 schematic stage GeoJSON files
 npm run seed              # push tocke.seed.json into Supabase (idempotent)
 ```
