@@ -110,8 +110,9 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
     <div className="min-h-dvh bg-papir">
       <SiteHeader />
       <main className="pb-20">
-        {/* Compact top: title, notice, stage chips, search — the map below is the main element. */}
-        <div className="mx-auto max-w-stolpec space-y-3 px-4 pt-5 pb-3 sm:px-6 sm:pt-6">
+        {/* Same layout as the client's prototype: one container; title,
+            notice, chips + search and the map all fit on the first screen. */}
+        <div className="mx-auto max-w-zemljevid space-y-3 px-4 pt-5 pb-3 sm:px-6 sm:pt-6">
           <Nadnaslov
             kompaktno
             nadnaslov="Novo mesto · Dolenjska"
@@ -147,28 +148,34 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
           <h2 id="naslov-zemljevid" className="sr-only">
             Zemljevid in izbira etap
           </h2>
-          <div className="mx-auto max-w-stolpec space-y-2 px-4 sm:px-6">
-            <EtapeCipi
-              etape={etape}
-              izbrane={filters.etape}
-              poudarjenaEtapaId={poudarjenaEtapaId}
-              onPreklopi={preklopiEtapo}
-              onVse={vseEtape}
-            />
-            <Filtri points={points} filters={filters} setFilters={setFilters} />
+          <div className="mx-auto max-w-zemljevid space-y-2 px-4 sm:px-6">
+            {/* Chips and search share one row from lg up. */}
+            <div className="space-y-2 lg:flex lg:items-start lg:justify-between lg:gap-4 lg:space-y-0">
+              <div className="min-w-0 lg:flex-1">
+                <EtapeCipi
+                  etape={etape}
+                  izbrane={filters.etape}
+                  poudarjenaEtapaId={poudarjenaEtapaId}
+                  onPreklopi={preklopiEtapo}
+                  onVse={vseEtape}
+                />
+              </div>
+              <div className="lg:w-96 lg:shrink-0">
+                <Filtri points={points} filters={filters} setFilters={setFilters} />
+              </div>
+            </div>
             <p className="text-sm text-crnilo-mehko" aria-live="polite">
               Prikazano {visiblePoints.length} od {stevnikObelezij(points.length)}
             </p>
           </div>
 
-          {/* The map breaks out of the reading column. Height: the whole
-              viewport below the header (floor 35rem) from sm up; at least
-              60svh on phones. svh, not vh — mobile browser chrome would cut
-              a vh-sized map off. */}
+          {/* 60% of the screen (floor 26.25rem), as in the prototype, so the
+              heading, chips and map are visible together without scrolling.
+              svh, not vh — mobile browser chrome would cut a vh map off. */}
           <div className="mx-auto max-w-zemljevid px-4 sm:px-6">
             <div
               ref={zemljevidRef}
-              className="relative h-[70svh] min-h-[60svh] overflow-hidden rounded-xl border border-crta bg-tonirano sm:h-[calc(100svh-var(--visina-glave))] sm:min-h-[35rem]"
+              className="relative h-[60svh] min-h-[26.25rem] overflow-hidden rounded-xl border border-crta bg-tonirano"
             >
               <MapView
                 points={points}
@@ -191,7 +198,7 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
             </div>
           </div>
 
-          <div className="mx-auto max-w-stolpec space-y-4 px-4 sm:px-6">
+          <div className="mx-auto max-w-zemljevid space-y-4 px-4 sm:px-6">
             {(status || zicaVidna) && (
               <div role="status" className="space-y-1 text-sm text-crnilo-mehko">
                 {status && <p>{status.sporocilo}</p>}
@@ -203,7 +210,7 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
           </div>
         </section>
 
-        <div className="mx-auto max-w-stolpec space-y-12 px-4 pt-10 sm:px-6">
+        <div className="mx-auto max-w-zemljevid space-y-12 px-4 pt-10 sm:px-6">
           <section aria-labelledby="naslov-etape" className="space-y-4">
             <div>
               <h2 id="naslov-etape" className="font-heading text-2xl font-semibold">

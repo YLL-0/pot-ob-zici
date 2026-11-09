@@ -5,7 +5,7 @@ import VecjaPisava from "@/components/VecjaPisava";
 export default function SiteHeader() {
   return (
     <header className="border-b border-crta bg-papir">
-      {/* min-h = --visina-glave: the home-page map height is computed from it. */}
+      {/* min-h = --visina-glave: fixed header height token. */}
       <div className="mx-auto flex min-h-(--visina-glave) max-w-stolpec items-center justify-between gap-3 px-4 py-2 sm:px-6">
         <Link href="/" className="font-heading text-lg font-semibold tracking-tight">
           Pot ob žici

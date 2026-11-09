@@ -49,7 +49,7 @@
      the wide frame the home-page map breaks out into (POPRAVKI_2 §2). */
   --container-stolpec: 50rem;
   --container-besedilo: 40rem;
-  --container-zemljevid: 90rem;
+  --container-zemljevid: 72rem;
 
   /* Compact page title (home page: the map, not the hero, is the main element). */
   --text-naslov-kompakten: clamp(1.75rem, 1.4rem + 1.5vw, 2.25rem);
