@@ -33,11 +33,12 @@ export default function Filtri({ points, filters, setFilters }: FiltriProps) {
 
   return (
     <div className="space-y-3">
-      <div className="flex flex-col gap-2 sm:flex-row">
+      {/* One row at every width: search + disclosure button, so the map stays high on the page. */}
+      <div className="flex gap-2">
         <label htmlFor={searchId} className="sr-only">
           Išči po nazivu ali kraju
         </label>
-        <div className="relative flex-1">
+        <div className="relative min-w-0 flex-1">
           <Search
             size={18}
             aria-hidden="true"
@@ -57,7 +58,7 @@ export default function Filtri({ points, filters, setFilters }: FiltriProps) {
           onClick={() => setOdprto((v) => !v)}
           aria-expanded={odprto}
           aria-controls={panelId}
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-crta-mocna bg-povrsina px-4 text-sm font-medium hover:bg-tonirano"
+          className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 rounded-lg border border-crta-mocna bg-povrsina px-3 text-sm font-medium hover:bg-tonirano sm:px-4"
         >
           <SlidersHorizontal size={16} aria-hidden="true" />
           Filtri

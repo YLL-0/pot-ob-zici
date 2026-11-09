@@ -37,9 +37,11 @@ interface MapExperienceProps {
 }
 
 /**
- * The home page: an editorial column — heading, coordinates notice, the
- * always-visible stage chips, search and filters, the map, the stage list
- * and all points by stage. All selection and filter state is in the URL.
+ * The home page. A compact top in the editorial column (heading,
+ * coordinates notice, stage chips, search and filters), then the map as
+ * the page's main element — wider than the column and as tall as the
+ * viewport below the header (POPRAVKI_2 §2) — then the stage list and all
+ * points by stage. All selection and filter state is in the URL.
  */
 export default function MapExperience({ points, poti, etape, obroc }: MapExperienceProps) {
   const [filters, setFilters] = useFilterState();
@@ -101,100 +103,115 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
   return (
     <div className="min-h-dvh bg-papir">
       <SiteHeader />
-      <main className="mx-auto max-w-stolpec space-y-8 px-4 pt-10 pb-20 sm:px-6 sm:pt-14">
-        <Nadnaslov
-          nadnaslov="Novo mesto · Dolenjska"
-          naslov="Pot ob žici"
-          uvod={`Spominska pot okoli Novega mesta — ${stevnikObelezij(points.length)} na ${etape.length} etapah.`}
-        />
+      <main className="pb-20">
+        {/* Compact top: title, notice, stage chips, search — the map below is the main element. */}
+        <div className="mx-auto max-w-stolpec space-y-3 px-4 pt-5 pb-3 sm:px-6 sm:pt-6">
+          <Nadnaslov
+            kompaktno
+            nadnaslov="Novo mesto · Dolenjska"
+            naslov="Pot ob žici"
+            uvod={`Spominska pot okoli Novega mesta — ${stevnikObelezij(points.length)} na ${etape.length} etapah.`}
+          />
 
-        <Obvestilo>
-          <p>Koordinate obeležij so izhodiščni približki in niso terensko izmerjene.</p>
-        </Obvestilo>
+          <Obvestilo>
+            <p>Koordinate obeležij so izhodiščni približki in niso terensko izmerjene.</p>
+          </Obvestilo>
+        </div>
 
-        <section aria-labelledby="naslov-zemljevid" className="space-y-4">
+        <section aria-labelledby="naslov-zemljevid" className="space-y-3">
           <h2 id="naslov-zemljevid" className="sr-only">
             Zemljevid in izbira etap
           </h2>
-          <EtapeCipi
-            etape={etape}
-            izbrane={filters.etape}
-            poudarjenaEtapaId={poudarjenaEtapaId}
-            onPreklopi={preklopiEtapo}
-            onVse={vseEtape}
-          />
-          <Filtri points={points} filters={filters} setFilters={setFilters} />
-
-          <p className="text-sm text-crnilo-mehko" aria-live="polite">
-            Prikazano {visiblePoints.length} od {stevnikObelezij(points.length)}
-          </p>
-
-          <div
-            ref={zemljevidRef}
-            className="relative h-[68svh] max-h-[40rem] min-h-[22rem] overflow-hidden rounded-xl border border-crta bg-tonirano"
-          >
-            <MapView
-              points={points}
-              visiblePoints={visiblePoints}
-              poti={poti}
+          <div className="mx-auto max-w-stolpec space-y-2 px-4 sm:px-6">
+            <EtapeCipi
               etape={etape}
-              obroc={obroc}
-              izbraneEtapaIds={izbraneEtapaIds}
+              izbrane={filters.etape}
               poudarjenaEtapaId={poudarjenaEtapaId}
-              zaporedneStevilke={zaporedneStevilke}
-              selectedTockaId={filters.tocka}
-              selectedPotSlug={filters.pot}
-              prefersReducedMotion={prefersReducedMotion}
-              onSelectTocka={selectTocka}
-              onSelectPot={selectPot}
-              zicaVidna={filters.zica}
-              routeTockaId={routeState.status === "idle" ? null : routeState.tocka.id}
-              onRouteChange={handleRouteChange}
+              onPreklopi={preklopiEtapo}
+              onVse={vseEtape}
             />
-          </div>
-
-          {(status || zicaVidna) && (
-            <div role="status" className="space-y-1 text-sm text-crnilo-mehko">
-              {status && <p>{status.sporocilo}</p>}
-              {zicaVidna && <p>{SPOROCILO_ZICA}</p>}
-            </div>
-          )}
-          <Navigacija routeState={routeState} onClearRoute={() => setRouteState({ status: "idle" })} />
-          <Legend />
-        </section>
-
-        <section aria-labelledby="naslov-etape" className="space-y-4 pt-4">
-          <div>
-            <h2 id="naslov-etape" className="font-heading text-2xl font-semibold">
-              Etape
-            </h2>
-            <p className="mt-1 text-sm text-crnilo-mehko">
-              {etape.length} zaporednih odsekov ene krožne poti. Klik na etapo jo prikaže na zemljevidu.
+            <Filtri points={points} filters={filters} setFilters={setFilters} />
+            <p className="text-sm text-crnilo-mehko" aria-live="polite">
+              Prikazano {visiblePoints.length} od {stevnikObelezij(points.length)}
             </p>
           </div>
-          <EtapeSeznam
-            etape={etape}
-            izbrane={filters.etape}
-            poudarjenaEtapaId={poudarjenaEtapaId}
-            onPreklopi={(n) => pokaziNaZemljevidu(() => preklopiEtapo(n))}
-            stevilo={steviloNaEtapi}
-          />
+
+          {/* The map breaks out of the reading column. Height: the whole
+              viewport below the header (floor 35rem) from sm up; at least
+              60svh on phones. svh, not vh — mobile browser chrome would cut
+              a vh-sized map off. */}
+          <div className="mx-auto max-w-zemljevid px-4 sm:px-6">
+            <div
+              ref={zemljevidRef}
+              className="relative h-[70svh] min-h-[60svh] overflow-hidden rounded-xl border border-crta bg-tonirano sm:h-[calc(100svh-var(--visina-glave))] sm:min-h-[35rem]"
+            >
+              <MapView
+                points={points}
+                visiblePoints={visiblePoints}
+                poti={poti}
+                etape={etape}
+                obroc={obroc}
+                izbraneEtapaIds={izbraneEtapaIds}
+                poudarjenaEtapaId={poudarjenaEtapaId}
+                zaporedneStevilke={zaporedneStevilke}
+                selectedTockaId={filters.tocka}
+                selectedPotSlug={filters.pot}
+                prefersReducedMotion={prefersReducedMotion}
+                onSelectTocka={selectTocka}
+                onSelectPot={selectPot}
+                zicaVidna={filters.zica}
+                routeTockaId={routeState.status === "idle" ? null : routeState.tocka.id}
+                onRouteChange={handleRouteChange}
+              />
+            </div>
+          </div>
+
+          <div className="mx-auto max-w-stolpec space-y-4 px-4 sm:px-6">
+            {(status || zicaVidna) && (
+              <div role="status" className="space-y-1 text-sm text-crnilo-mehko">
+                {status && <p>{status.sporocilo}</p>}
+                {zicaVidna && <p>{SPOROCILO_ZICA}</p>}
+              </div>
+            )}
+            <Navigacija routeState={routeState} onClearRoute={() => setRouteState({ status: "idle" })} />
+            <Legend />
+          </div>
         </section>
 
-        <section aria-labelledby="naslov-obelezja" className="space-y-4 pt-4">
-          <div>
-            <h2 id="naslov-obelezja" className="font-heading text-2xl font-semibold">
-              Vsa obeležja po etapah
-            </h2>
-            <p className="mt-1 text-sm text-crnilo-mehko">Klik na obeležje ga poišče na zemljevidu.</p>
-          </div>
-          <SeznamObelezij
-            etape={etape}
-            tocke={visiblePoints}
-            selectedTockaId={filters.tocka}
-            onSelectTocka={(id) => pokaziNaZemljevidu(() => selectTocka(id))}
-          />
-        </section>
+        <div className="mx-auto max-w-stolpec space-y-12 px-4 pt-10 sm:px-6">
+          <section aria-labelledby="naslov-etape" className="space-y-4">
+            <div>
+              <h2 id="naslov-etape" className="font-heading text-2xl font-semibold">
+                Etape
+              </h2>
+              <p className="mt-1 text-sm text-crnilo-mehko">
+                {etape.length} zaporednih odsekov ene krožne poti. Klik na etapo jo prikaže na zemljevidu.
+              </p>
+            </div>
+            <EtapeSeznam
+              etape={etape}
+              izbrane={filters.etape}
+              poudarjenaEtapaId={poudarjenaEtapaId}
+              onPreklopi={(n) => pokaziNaZemljevidu(() => preklopiEtapo(n))}
+              stevilo={steviloNaEtapi}
+            />
+          </section>
+
+          <section aria-labelledby="naslov-obelezja" className="space-y-4">
+            <div>
+              <h2 id="naslov-obelezja" className="font-heading text-2xl font-semibold">
+                Vsa obeležja po etapah
+              </h2>
+              <p className="mt-1 text-sm text-crnilo-mehko">Klik na obeležje ga poišče na zemljevidu.</p>
+            </div>
+            <SeznamObelezij
+              etape={etape}
+              tocke={visiblePoints}
+              selectedTockaId={filters.tocka}
+              onSelectTocka={(id) => pokaziNaZemljevidu(() => selectTocka(id))}
+            />
+          </section>
+        </div>
       </main>
     </div>
   );

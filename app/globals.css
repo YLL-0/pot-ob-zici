@@ -45,14 +45,24 @@
   --text-podnaslov: 1.125rem;
   --text-podnaslov--line-height: 1.55;
 
-  /* Layout: the centred content column, and the narrower reading measure */
+  /* Layout: the centred content column, the narrower reading measure, and
+     the wide frame the home-page map breaks out into (POPRAVKI_2 §2). */
   --container-stolpec: 50rem;
   --container-besedilo: 40rem;
+  --container-zemljevid: 90rem;
+
+  /* Compact page title (home page: the map, not the hero, is the main element). */
+  --text-naslov-kompakten: clamp(1.75rem, 1.4rem + 1.5vw, 2.25rem);
+  --text-naslov-kompakten--line-height: 1.1;
 }
 
 :root {
   color-scheme: light;
   --font-scale: 1;
+  /* Site header height (components/SiteHeader.tsx). The home-page map is
+     sized as 100svh minus this, so it fills the viewport below the header.
+     rem-based, so it grows with "Večja pisava" together with the header. */
+  --visina-glave: 3.5rem;
 }
 
 html {
