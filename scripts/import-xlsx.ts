@@ -45,7 +45,7 @@ import { join } from "node:path";
 import * as XLSX from "xlsx";
 import { slugify } from "../lib/slug";
 import { ETAPE_SEED, etapaIdIzStevilke } from "../lib/etape";
-import { privzetoZaporedje, type LatLon } from "../lib/zaporedje";
+import { dodeliZaporedje } from "../lib/zaporedjeEtap";
 import type {
   DovoljenjeQr,
   EsdStatus,
@@ -60,7 +60,6 @@ import type {
 
 const ROOT = join(import.meta.dirname, "..");
 const SEED_PATH = join(ROOT, "tocke.seed.json");
-const SIDRISCA_PATH = join(ROOT, "data", "sidrisca.json");
 const META_PATH = join(ROOT, "tocke.seed.meta.json");
 const SHEET_NAME = "MASTER 50";
 const HEADER_ROW_INDEX = 3; // row 4, 0-based
@@ -379,26 +378,6 @@ function parseEtapa(raw: string, id: string): string | null {
   return etapaId;
 }
 
-/**
- * Fills in `zaporedje` for every point that has a stage, all points of the
- * stage included (extended-branch points too — client decision, Phase 4).
- * The walking direction of a numbered stage runs from its anchor to the
- * next one (data/sidrisca.json, a closed loop of 8 — same convention as
- * scripts/generate-poti.ts).
- */
-function assignZaporedje(points: Tocka[]): void {
-  const sidrisca = (JSON.parse(readFileSync(SIDRISCA_PATH, "utf-8")) as { sidrisca: LatLon[] }).sidrisca;
-  for (const etapa of ETAPE_SEED) {
-    const start = sidrisca[etapa.stevilka - 1];
-    const end = sidrisca[etapa.stevilka % sidrisca.length];
-    const smer = start && end ? { start, end } : undefined;
-    const vEtapi = points.filter((p) => p.etapa === etapa.id);
-    privzetoZaporedje(vEtapi, smer).forEach((id, i) => {
-      vEtapi.find((p) => p.id === id)!.zaporedje = i + 1;
-    });
-  }
-}
-
 function findExcelFile(): string {
   const explicit = process.argv.find((a) => a.endsWith(".xlsx"));
   if (explicit) return join(ROOT, explicit);
@@ -460,10 +439,15 @@ function rowToTocka(row: unknown[], existing: Map<string, Tocka>): Tocka {
     lat: Number(get(COL.LAT)),
     lon: Number(get(COL.LON)),
     gps_zanesljivost: parseGpsZanesljivost(get(COL.GPS_STATUS)),
+    // Source fields have no Excel column — set by scripts/apply-koordinate.ts.
+    gps_vir: prev?.gps_vir ?? null,
+    gps_vir_id: prev?.gps_vir_id ?? null,
+    gps_vir_url: prev?.gps_vir_url ?? null,
+    gps_opomba: prev?.gps_opomba ?? null,
     esd: esdRaw.length > 0 ? esdRaw : null,
     esd_status: lookup(ESD_STATUS_MAP, get(COL.ESD_STATUS), `esd_status (${id})`),
     etapa: parseEtapa(get(COL.ETAPA), id),
-    zaporedje: null, // filled in by assignZaporedje() once all rows are parsed
+    zaporedje: null, // filled in by dodeliZaporedje() once all rows are parsed
     odsek: get(COL.ODSEK),
     vkljucitev: parseVkljucitev(get(COL.VKLJUCITEV)),
     iztocnica: get(COL.IZTOCNICA),
@@ -548,7 +532,7 @@ function main() {
 
   console.log(`Najdenih ${dataRows.length} podatkovnih vrstic.`);
   const points = dataRows.map((row) => rowToTocka(row, existing));
-  assignZaporedje(points);
+  dodeliZaporedje(points);
 
   const ids = new Set(points.map((p) => p.id));
   if (ids.size !== points.length) {

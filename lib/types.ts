@@ -15,8 +15,8 @@
  * by the "never invent historical content" rule.
  *
  * NOTE on GPS status: the Excel has a separate "GPS status" column (J),
- * but for all 50 current rows its value normalizes to the same thing the
- * existing `gps_zanesljivost` field already encodes ("priblizek"). Adding
+ * but its value normalizes to the same thing the existing
+ * `gps_zanesljivost` field encodes ("priblizek"). Adding
  * a second field for the same fact would just invite them to drift apart,
  * so `gps_zanesljivost` IS the GPS status column — no duplicate field.
  */
@@ -46,8 +46,16 @@ export type Vkljucitev =
   | "Razširjeni severni krak"
   | "Razširjeni severovzhodni krak";
 
-/** GPS reliability. All current data is "priblizek" (approximate). */
-export type GpsZanesljivost = "priblizek" | "terensko-izmerjeno" | "preverjeno-v-gis";
+/**
+ * GPS reliability, weakest first:
+ * - "priblizek": the Excel's starting approximation (km-scale errors seen).
+ * - "zunanji_vir": taken from a public register (partizanstvo.si) and
+ *   matched by ID — not yet checked in the field (POPRAVKI_2 §1).
+ * - "terensko-izmerjeno" / "preverjeno-v-gis": surveyed / GIS-verified.
+ * The importer never overwrites coordinates of the last three with the
+ * Excel's values (scripts/import-xlsx.ts).
+ */
+export type GpsZanesljivost = "priblizek" | "zunanji_vir" | "terensko-izmerjeno" | "preverjeno-v-gis";
 
 /**
  * Story theme used for filter chips. A point can carry up to 3, or none.
@@ -139,6 +147,18 @@ export interface Tocka {
   lat: number;
   lon: number;
   gps_zanesljivost: GpsZanesljivost;
+  /** Coordinate source name, e.g. "partizanstvo.si"; null for the Excel's approximation. */
+  gps_vir: string | null;
+  /** The source's own record ID (partizanstvo.si memorial ID). */
+  gps_vir_id: number | null;
+  /** Public URL of the source record, linked on the point's page. */
+  gps_vir_url: string | null;
+  /**
+   * Field-verification note. Non-null = the position (or the match to the
+   * source record) is uncertain and must be checked on site before the
+   * point is treated as confirmed. Shown in the admin.
+   */
+  gps_opomba: string | null;
   /** Heritage register ID (EŠD). Often null — most points aren't registered. */
   esd: string | null;
   esd_status: EsdStatus;

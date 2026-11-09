@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit",
     "import:xlsx": "tsx scripts/import-xlsx.ts",
     "import:xlsx:check": "tsx scripts/import-xlsx.ts --check",
+    "apply:koordinate": "tsx scripts/apply-koordinate.ts",
     "generate:poti": "tsx scripts/generate-poti.ts",
     "trase": "tsx --env-file-if-exists=.env.local scripts/trase.ts",
     "trase:preizkus": "tsx --env-file-if-exists=.env.local scripts/trase-preizkus.ts",
