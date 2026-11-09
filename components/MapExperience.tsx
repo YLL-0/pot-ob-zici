@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import type { Etapa, Pot, Tocka } from "@/lib/types";
 import { filterTocke, isRazsirjeniKrak, toggleInArray } from "@/lib/filters";
 import { stevnikObelezij } from "@/lib/etape";
+import { BESEDILO_PRIBLIZEK, steviloPoZanesljivosti } from "@/lib/gpsOznaka";
 import { statusOdsekov, vidniOdseki, SPOROCILO_ZICA, type Obroc } from "@/lib/trasaIzris";
 import { useFilterState } from "@/hooks/useFilterState";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
@@ -73,6 +74,11 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
     return new Map(naCrti.map((p, i) => [p.id, i + 1]));
   }, [izbraneEtapaIds, points]);
 
+  // Coordinates notice follows the data: register-sourced positions get the
+  // register wording; the stronger caveat stays only while some point is
+  // still on the Excel's approximation (POPRAVKI_2 §1).
+  const gps = useMemo(() => steviloPoZanesljivosti(points), [points]);
+
   const steviloNaEtapi = useCallback((etapaId: string) => points.filter((p) => p.etapa === etapaId).length, [points]);
 
   // Honest labelling of what is drawn: routed, partly schematic, or schematic.
@@ -114,7 +120,26 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
           />
 
           <Obvestilo>
-            <p>Koordinate obeležij so izhodiščni približki in niso terensko izmerjene.</p>
+            {gps.zunanji_vir > 0 && (
+              <p>
+                Lokacije obeležij so iz javnega registra{" "}
+                <a
+                  href="https://partizanstvo.si/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-poudarek underline underline-offset-4"
+                >
+                  partizanstvo.si
+                </a>{" "}
+                — terensko še niso preverjene.
+              </p>
+            )}
+            {gps.priblizek > 0 &&
+              (gps.zunanji_vir > 0 ? (
+                <p>Pri nekaterih obeležjih je lokacija le izhodiščni približek in ni terensko izmerjena.</p>
+              ) : (
+                <p>{BESEDILO_PRIBLIZEK}</p>
+              ))}
           </Obvestilo>
         </div>
 

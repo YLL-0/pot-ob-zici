@@ -14,6 +14,7 @@ import type { RouteState } from "@/lib/routing";
 import { messageForError, planWalkingRoute } from "@/lib/routing";
 import { getAppleMapsUrl, getGoogleMapsUrl } from "@/lib/zemljevidi";
 import { formatDistance, formatMinutes } from "@/lib/geo";
+import { gpsOznaka } from "@/lib/gpsOznaka";
 
 const MiniMap = dynamic(() => import("@/components/MiniMap"), {
   ssr: false,
@@ -25,6 +26,7 @@ const MiniMap = dynamic(() => import("@/components/MiniMap"), {
 export default function PeljiMeTjaZemljevid({ tocka, barva }: { tocka: Tocka; barva: string }) {
   const [state, setState] = useState<RouteState>({ status: "idle" });
   const [showSteps, setShowSteps] = useState(false);
+  const oznaka = gpsOznaka(tocka);
 
   async function handleClick() {
     setState({ status: "loading", tocka });
@@ -39,7 +41,26 @@ export default function PeljiMeTjaZemljevid({ tocka, barva }: { tocka: Tocka; ba
   return (
     <section className="mt-6">
       <p className="mb-2 text-sm font-medium text-crnilo-mehko">Lokacija in navigacija</p>
-      <p className="mb-2 text-xs text-crnilo-mehko">Lokacija je približna — terenska uskladitev v teku.</p>
+      <p className="mb-2 text-sm text-crnilo-mehko">
+        {oznaka.besedilo}
+        {oznaka.povezava && (
+          <>
+            {" "}
+            (
+            <a
+              href={oznaka.povezava.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-poudarek underline underline-offset-4"
+            >
+              {oznaka.povezava.besedilo}
+            </a>
+            )
+          </>
+        )}
+        {oznaka.besedilo.endsWith(".") ? "" : "."}
+        {oznaka.ujemanjeNepotrjeno && " Ujemanje z zapisom v registru je treba še potrditi na terenu."}
+      </p>
 
       <div className="h-64 overflow-hidden rounded-lg border border-crta">
         <MiniMap variant="tocka" tocka={tocka} barva={barva} route={state.status === "ready" ? state.route.geometry : null} />
