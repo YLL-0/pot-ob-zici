@@ -1,11 +1,11 @@
 {
   "id": "etapa-7",
-  "kljuc": "aa762739a2e4537b9323bf0da24eece5910c87144121518d1857fa4b0715bd76",
+  "kljuc": "fd63a2d0de5a8cd51cc186c256ca8be6a9cd6a6d6f281aa8b953784d0a3ee629",
   "etapa_ids": [
     "etapa-7"
   ],
   "engine": "ors/foot-walking",
-  "izracunano_ob": "2026-11-06T21:56:41.233Z",
+  "izracunano_ob": "2026-11-09T14:01:36.863Z",
   "dolzina_m": null,
   "trajanje_s": null,
   "status": "ni_uspelo",
