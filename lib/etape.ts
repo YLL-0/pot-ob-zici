@@ -100,3 +100,27 @@ export function stevnikObelezij(n: number): string {
   if (ostanek === 3 || ostanek === 4) return `${n} obeležja`;
   return `${n} obeležij`;
 }
+
+/** "Etapa 2, Etapa 3 in Etapa 5" */
+function nastej(deli: string[]): string {
+  return deli.length < 2 ? (deli[0] ?? "") : `${deli.slice(0, -1).join(", ")} in ${deli[deli.length - 1]}`;
+}
+
+/**
+ * The stage selection in words, above the list (POPRAVKI_3 §3), with the
+ * verb agreeing in number: "Prikazana je Etapa 3: Bučna vas – Ragovo
+ * (7 obeležij)", "Prikazani sta …", "Prikazane so …", "Prikazanih je 5 etap: …".
+ * `izbrane` in stage order; `steviloTock` = points shown.
+ */
+export function opisIzbireEtap(izbrane: Etapa[], steviloTock: number): string {
+  const n = izbrane.length;
+  const tock = `(${stevnikObelezij(steviloTock)})`;
+  const e = izbrane[0];
+  if (n === 1 && e) {
+    return `Prikazana je ${e.naziv}${e.odsek ? `: ${e.odsek}` : ""} ${tock}`;
+  }
+  const imena = nastej(izbrane.map((e) => e.naziv));
+  if (n === 2) return `Prikazani sta ${imena} ${tock}`;
+  if (n <= 4) return `Prikazane so ${imena} ${tock}`;
+  return `Prikazanih je ${n} etap: ${imena} ${tock}`;
+}

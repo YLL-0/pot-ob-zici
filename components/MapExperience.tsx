@@ -4,7 +4,7 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import type { Etapa, Pot, Tocka } from "@/lib/types";
 import { filterTocke, isRazsirjeniKrak, toggleInArray } from "@/lib/filters";
-import { stevnikObelezij } from "@/lib/etape";
+import { opisIzbireEtap, stevnikObelezij } from "@/lib/etape";
 import { BESEDILO_PRIBLIZEK, steviloPoZanesljivosti } from "@/lib/gpsOznaka";
 import { statusOdsekov, vidniOdseki, SPOROCILO_ZICA, type Obroc } from "@/lib/trasaIzris";
 import { useFilterState } from "@/hooks/useFilterState";
@@ -13,7 +13,7 @@ import type { RouteState } from "@/lib/routing";
 import SiteHeader from "@/components/SiteHeader";
 import Nadnaslov from "@/components/Nadnaslov";
 import Obvestilo from "@/components/Obvestilo";
-import { EtapeCipi, EtapeSeznam } from "@/components/EtapeIzbira";
+import { EtapeCipi } from "@/components/EtapeIzbira";
 import Filtri from "@/components/Filtri";
 import Navigacija from "@/components/Navigacija";
 import Legend from "@/components/Legend";
@@ -52,11 +52,9 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
 
   const visiblePoints = useMemo(() => filterTocke(points, filters, etape), [points, filters, etape]);
 
-  // Selected stages (URL `?etapa=` holds display numbers), as stage IDs.
-  const izbraneEtapaIds = useMemo(
-    () => etape.filter((e) => filters.etape.includes(e.stevilka)).map((e) => e.id),
-    [etape, filters.etape],
-  );
+  // Selected stages (URL `?etapa=` holds display numbers), in stage order.
+  const izbraneEtape = useMemo(() => etape.filter((e) => filters.etape.includes(e.stevilka)), [etape, filters.etape]);
+  const izbraneEtapaIds = useMemo(() => izbraneEtape.map((e) => e.id), [izbraneEtape]);
 
   // The emphasised stage: the selected point's, or the selected stage trail.
   const poudarjenaEtapaId = useMemo(() => {
@@ -79,8 +77,6 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
   // still on the Excel's approximation (POPRAVKI_2 §1).
   const gps = useMemo(() => steviloPoZanesljivosti(points), [points]);
 
-  const steviloNaEtapi = useCallback((etapaId: string) => points.filter((p) => p.etapa === etapaId).length, [points]);
-
   // Honest labelling of what is drawn: routed, partly schematic, or schematic.
   const status = statusOdsekov(vidniOdseki(obroc, izbraneEtapaIds));
   const zicaVidna = filters.zica || filters.pot === "zica-1943";
@@ -89,7 +85,11 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
     setFilters({ tocka: id, pot: null });
   }
   function selectPot(slug: string | null) {
-    setFilters({ pot: slug, tocka: null });
+    // A stage line clicked on the map selects that stage exactly as its
+    // chip does, so chip, list and selection line follow (POPRAVKI_3 §3).
+    const etapa = etape.find((e) => e.id === slug);
+    if (etapa) setFilters({ etape: [etapa.stevilka], pot: null, tocka: null });
+    else setFilters({ pot: slug, tocka: null });
   }
   function preklopiEtapo(stevilka: number) {
     setFilters((prev) => ({ etape: toggleInArray(prev.etape, stevilka), pot: null }));
@@ -213,31 +213,30 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
         </section>
 
         <div className="mx-auto max-w-zemljevid space-y-12 px-4 pt-10 sm:px-6">
-          <section aria-labelledby="naslov-etape" className="space-y-4">
-            <div>
-              <h2 id="naslov-etape" className="font-heading text-2xl font-semibold">
-                Etape
-              </h2>
-              <p className="mt-1 text-sm text-crnilo-mehko">
-                {etape.length} zaporednih odsekov ene krožne poti. Klik na etapo jo prikaže na zemljevidu.
-              </p>
-            </div>
-            <EtapeSeznam
-              etape={etape}
-              izbrane={filters.etape}
-              poudarjenaEtapaId={poudarjenaEtapaId}
-              onPreklopi={(n) => pokaziNaZemljevidu(() => preklopiEtapo(n))}
-              stevilo={steviloNaEtapi}
-            />
-          </section>
-
           <section aria-labelledby="naslov-obelezja" className="space-y-4">
             <div>
               <h2 id="naslov-obelezja" className="font-heading text-2xl font-semibold">
-                Vsa obeležja po etapah
+                Obeležja po etapah
               </h2>
-              <p className="mt-1 text-sm text-crnilo-mehko">Klik na obeležje ga poišče na zemljevidu.</p>
+              <p className="mt-1 text-sm text-crnilo-mehko">
+                {etape.length} zaporednih odsekov ene krožne poti. Klik na obeležje ga poišče na zemljevidu.
+              </p>
             </div>
+            {izbraneEtape.length > 0 && (
+              <p
+                role="status"
+                className="flex flex-wrap items-baseline gap-x-3 gap-y-1 rounded-lg border border-crta bg-povrsina px-4 py-3 font-medium"
+              >
+                <span>{opisIzbireEtap(izbraneEtape, visiblePoints.length)}</span>
+                <button
+                  type="button"
+                  onClick={vseEtape}
+                  className="text-sm font-medium text-poudarek underline underline-offset-4"
+                >
+                  Pokaži vse etape
+                </button>
+              </p>
+            )}
             <SeznamObelezij
               etape={etape}
               tocke={visiblePoints}

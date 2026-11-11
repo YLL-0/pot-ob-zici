@@ -148,15 +148,14 @@ function obrocToFeatures(obroc: Obroc, etape: Etapa[]): GeoJSON.FeatureCollectio
   };
 }
 
-function filterEtap(vrsta: "izracunano" | "shematsko" | null, izbrane: string[]): FilterSpecification {
-  const pogoji: ExpressionSpecification[] = [];
-  if (vrsta) pogoji.push(["==", ["get", "vrsta"], vrsta]);
-  if (izbrane.length > 0) pogoji.push(["in", ["get", "etapaId"], ["literal", izbrane]]);
-  return ["all", ...pogoji];
+/** Every stage is always drawn; a selection fades the others instead of hiding them (POPRAVKI_3 §3). */
+function filterEtap(vrsta: "izracunano" | "shematsko" | null): FilterSpecification {
+  return vrsta ? ["==", ["get", "vrsta"], vrsta] : ["all"];
 }
 
-function poPoudarku(poudarjena: string | null, da: number, ne: number, sicer: number): DataDrivenPropertyValueSpecification<number> {
-  return poudarjena ? ["case", ["==", ["get", "etapaId"], poudarjena], da, ne] : sicer;
+/** `da` for the emphasised stages, `ne` for the rest; `sicer` for all when nothing is emphasised. */
+function poPoudarku(poudarjene: string[], da: number, ne: number, sicer: number): DataDrivenPropertyValueSpecification<number> {
+  return poudarjene.length > 0 ? ["case", ["in", ["get", "etapaId"], ["literal", poudarjene]], da, ne] : sicer;
 }
 
 /**
@@ -301,7 +300,7 @@ export default function MapView({
           id: "poti-etape-obroba",
           type: "line",
           source: "poti-etape",
-          filter: filterEtap(null, start.izbraneEtapaIds),
+          filter: filterEtap(null),
           layout: { "line-cap": "round", "line-join": "round" },
           paint: { "line-color": bela, "line-width": SIRINA.osnovna + OBROBA, "line-opacity": 0.9 },
         });
@@ -309,7 +308,7 @@ export default function MapView({
           id: "poti-etape-izracunano",
           type: "line",
           source: "poti-etape",
-          filter: filterEtap("izracunano", start.izbraneEtapaIds),
+          filter: filterEtap("izracunano"),
           layout: { "line-cap": "round", "line-join": "round" },
           paint: { "line-color": ["get", "barva"], "line-width": SIRINA.osnovna },
         });
@@ -317,7 +316,7 @@ export default function MapView({
           id: "poti-etape-shematsko",
           type: "line",
           source: "poti-etape",
-          filter: filterEtap("shematsko", start.izbraneEtapaIds),
+          filter: filterEtap("shematsko"),
           // Butt caps: round caps would fill the dash gaps back in.
           layout: { "line-cap": "butt", "line-join": "round" },
           paint: { "line-color": ["get", "barva"], "line-width": SIRINA.osnovna, "line-dasharray": [2.5, 1.2] },
@@ -485,7 +484,17 @@ export default function MapView({
             return;
           }
           if (hits.some((f) => f.layer.id === "clusters")) return;
-          const linija = hits.find((f) => lineLayers.includes(f.layer.id));
+          // Lines are a few px wide: accept a click within ~8 px, or a
+          // stage is near impossible to pick by finger.
+          const t = 8;
+          const blizu = map.queryRenderedFeatures(
+            [
+              [e.point.x - t, e.point.y - t],
+              [e.point.x + t, e.point.y + t],
+            ],
+            { layers: lineLayers.filter((l) => map.getLayer(l)) },
+          );
+          const linija = blizu[0];
           if (linija) {
             const slug = (linija.properties?.etapaId ?? linija.properties?.slug) as string | undefined;
             if (slug) onSelectPot(slug);
@@ -528,22 +537,25 @@ export default function MapView({
     const map = mapRef.current;
     if (!map || !loaded) return;
     const izbrane = izbraneKljuc ? izbraneKljuc.split(",") : [];
-    map.setFilter("poti-etape-obroba", filterEtap(null, izbrane));
-    map.setFilter("poti-etape-izracunano", filterEtap("izracunano", izbrane));
-    map.setFilter("poti-etape-shematsko", filterEtap("shematsko", izbrane));
-
     const p = poudarjenaEtapaId;
-    // Selected stages are drawn at full weight; with no selection, all at the normal weight.
-    const s = izbrane.length > 0 ? { ...SIRINA, osnovna: SIRINA.poudarjena } : SIRINA;
-    map.setPaintProperty("poti-etape-obroba", "line-width", poPoudarku(p, s.poudarjena + OBROBA, s.zbledela + OBROBA, s.osnovna + OBROBA));
-    map.setPaintProperty("poti-etape-obroba", "line-opacity", poPoudarku(p, 0.95, 0.35, 0.9));
+    // Selected stages and the selected point's stage at full weight, the
+    // rest faded; with nothing selected, every stage at the normal weight.
+    const poudarjene = p && !izbrane.includes(p) ? [...izbrane, p] : izbrane;
+    map.setPaintProperty("poti-etape-obroba", "line-width", poPoudarku(poudarjene, SIRINA.poudarjena + OBROBA, SIRINA.zbledela + OBROBA, SIRINA.osnovna + OBROBA));
+    map.setPaintProperty("poti-etape-obroba", "line-opacity", poPoudarku(poudarjene, 0.95, 0.35, 0.9));
     for (const id of ["poti-etape-izracunano", "poti-etape-shematsko"]) {
-      map.setPaintProperty(id, "line-width", poPoudarku(p, s.poudarjena, s.zbledela, s.osnovna));
-      map.setPaintProperty(id, "line-opacity", poPoudarku(p, 1, 0.35, 1));
+      map.setPaintProperty(id, "line-width", poPoudarku(poudarjene, SIRINA.poudarjena, SIRINA.zbledela, SIRINA.osnovna));
+      map.setPaintProperty(id, "line-opacity", poPoudarku(poudarjene, 1, 0.35, 1));
     }
-    // The emphasised stage is drawn above its neighbours at the joints.
+    // Emphasised stages are drawn above their neighbours at the joints, the point's own on top.
     for (const id of PLASTI_ETAP) {
-      map.setLayoutProperty(id, "line-sort-key", p ? ["case", ["==", ["get", "etapaId"], p], 1, 0] : 0);
+      map.setLayoutProperty(
+        id,
+        "line-sort-key",
+        poudarjene.length > 0
+          ? ["case", ["==", ["get", "etapaId"], p ?? ""], 2, ["in", ["get", "etapaId"], ["literal", poudarjene]], 1, 0]
+          : 0,
+      );
     }
   }, [loaded, izbraneKljuc, poudarjenaEtapaId]);
 

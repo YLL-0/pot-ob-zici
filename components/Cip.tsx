@@ -28,7 +28,7 @@ export default function Cip({ active, onClick, children, barva, poudarjen = fals
       aria-pressed={active}
       style={active && barva ? { backgroundColor: barva } : undefined}
       className={`inline-flex min-h-9 items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-medium whitespace-nowrap transition-colors ${
-        active ? aktivniRazredi : "border-crta bg-povrsina text-crnilo hover:border-crta-mocna"
+        active ? aktivniRazredi : "border-crta-mocna bg-transparent text-crnilo hover:bg-povrsina"
       } ${poudarjen ? "ring-2 ring-crnilo ring-offset-2 ring-offset-papir" : ""}`}
     >
       {barva && (
