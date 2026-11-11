@@ -258,9 +258,12 @@ export default function MapView({
       style: STYLE_URL,
       center: NOVO_MESTO_CENTER,
       zoom: 13,
-      // The map is embedded in a scrolling page: one finger / plain wheel
-      // scrolls the page, two fingers / Ctrl+wheel move the map.
-      cooperativeGestures: true,
+      // The wheel zooms with no modifier (POPRAVKI_3 §1). Touch keeps
+      // cooperative gestures — one finger scrolls the page, two move the
+      // map — or a tall map on a phone traps the visitor. MapLibre has one
+      // switch for both, so it starts from the primary pointer and is
+      // flipped per input below.
+      cooperativeGestures: window.matchMedia("(pointer: coarse)").matches,
       attributionControl: { compact: true },
       locale: {
         "CooperativeGesturesHandler.WindowsHelpText": "Za povečavo zemljevida drži Ctrl in vrti kolešček.",
@@ -272,6 +275,18 @@ export default function MapView({
     });
     mapRef.current = map;
     map.addControl(new NavigationControl({ showCompass: false }), "top-right");
+
+    // Capture phase on the outer container runs before MapLibre's own
+    // handlers on the canvas, so the mode is right for the very gesture
+    // that triggered it (hybrid laptops switch between the two).
+    const vhod = containerRef.current;
+    const prilagodiVhodu = (e: Event) => {
+      const dotik = e instanceof PointerEvent && e.pointerType === "touch";
+      if (dotik && !map.cooperativeGestures.isEnabled()) map.cooperativeGestures.enable();
+      if (!dotik && map.cooperativeGestures.isEnabled()) map.cooperativeGestures.disable();
+    };
+    vhod.addEventListener("pointerdown", prilagodiVhodu, { capture: true });
+    vhod.addEventListener("wheel", prilagodiVhodu, { capture: true, passive: true });
 
     map.on("load", () => {
       void (async () => {
@@ -490,6 +505,8 @@ export default function MapView({
     });
 
     return () => {
+      vhod.removeEventListener("pointerdown", prilagodiVhodu, { capture: true });
+      vhod.removeEventListener("wheel", prilagodiVhodu, { capture: true });
       map.remove();
       mapRef.current = null;
       setLoaded(false);

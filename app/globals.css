@@ -110,6 +110,14 @@ h4,
   }
 }
 
+/* MapLibre + / − buttons are the keyboard path to zoom: same ring as
+   everywhere else, drawn inside so the control group never clips it. */
+.maplibregl-ctrl button:focus-visible {
+  outline: 3px solid var(--color-poudarek);
+  outline-offset: -3px;
+  box-shadow: none;
+}
+
 /* MapLibre popups: our popup content brings its own rounded white card. */
 .maplibregl-popup-content {
   padding: 0;
