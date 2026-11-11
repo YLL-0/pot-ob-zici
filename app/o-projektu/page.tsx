@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function OProjektuPage() {
   return (
-    <div className="min-h-dvh bg-papir">
+    <div className="flex-1 bg-papir">
     <SiteHeader />
     <main className="mx-auto max-w-stolpec space-y-10 px-4 pt-8 pb-20 sm:px-6 sm:pt-10">
       <nav aria-label="Drobtine" className="text-sm">

@@ -107,7 +107,7 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
   const handleRouteChange = useCallback((state: RouteState) => setRouteState(state), []);
 
   return (
-    <div className="min-h-dvh bg-papir">
+    <div className="flex-1 bg-papir">
       <SiteHeader />
       <main className="pb-20">
         {/* Same layout as the client's prototype: one container; title,

@@ -50,7 +50,7 @@ export default async function PotPage({ params }: PageProps) {
   const minutes = estimateWalkingMinutes(meters);
 
   return (
-    <div className="min-h-dvh bg-papir">
+    <div className="flex-1 bg-papir">
     <SiteHeader />
     <main className="mx-auto max-w-stolpec space-y-8 px-4 pt-8 pb-20 sm:px-6 sm:pt-10">
       <nav aria-label="Drobtine" className="text-sm">
