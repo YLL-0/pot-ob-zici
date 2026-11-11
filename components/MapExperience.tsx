@@ -39,10 +39,10 @@ interface MapExperienceProps {
 
 /**
  * The home page. A compact top in the editorial column (heading,
- * coordinates notice, stage chips, search and filters), then the map as
- * the page's main element — wider than the column and as tall as the
- * viewport below the header (POPRAVKI_2 §2) — then the stage list and all
- * points by stage. All selection and filter state is in the URL.
+ * coordinates notice, one row of stage chips + search/filters/counter),
+ * then the map as the page's main element — full page width, ~70svh
+ * (POPRAVKI_3 §2) — then all points grouped by stage. All selection and
+ * filter state is in the URL.
  */
 export default function MapExperience({ points, poti, etape, obroc }: MapExperienceProps) {
   const [filters, setFilters] = useFilterState();
@@ -112,7 +112,7 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
       <main className="pb-20">
         {/* Same layout as the client's prototype: one container; title,
             notice, chips + search and the map all fit on the first screen. */}
-        <div className="mx-auto max-w-zemljevid space-y-3 px-4 pt-5 pb-3 sm:px-6 sm:pt-6">
+        <div className="mx-auto max-w-zemljevid space-y-3 px-4 pt-4 pb-3 sm:px-6 sm:pt-5">
           <Nadnaslov
             kompaktno
             nadnaslov="Novo mesto · Dolenjska"
@@ -161,21 +161,23 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
                 />
               </div>
               <div className="lg:w-96 lg:shrink-0">
-                <Filtri points={points} filters={filters} setFilters={setFilters} />
+                <Filtri
+                  points={points}
+                  filters={filters}
+                  setFilters={setFilters}
+                  stevec={`Prikazano ${visiblePoints.length} od ${stevnikObelezij(points.length)}`}
+                />
               </div>
             </div>
-            <p className="text-sm text-crnilo-mehko" aria-live="polite">
-              Prikazano {visiblePoints.length} od {stevnikObelezij(points.length)}
-            </p>
           </div>
 
-          {/* 60% of the screen (floor 26.25rem), as in the prototype, so the
-              heading, chips and map are visible together without scrolling.
+          {/* Full page width with only the outer gutter (POPRAVKI_3 §2):
+              60svh on phones, 70svh with a 35rem (560 px) floor on desktop.
               svh, not vh — mobile browser chrome would cut a vh map off. */}
-          <div className="mx-auto max-w-zemljevid px-4 sm:px-6">
+          <div className="px-2 sm:px-4">
             <div
               ref={zemljevidRef}
-              className="relative h-[60svh] min-h-[26.25rem] overflow-hidden rounded-xl border border-crta bg-tonirano"
+              className="relative h-[60svh] overflow-hidden rounded-xl border border-crta bg-tonirano lg:h-[70svh] lg:min-h-[35rem]"
             >
               <MapView
                 points={points}

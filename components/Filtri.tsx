@@ -12,6 +12,8 @@ interface FiltriProps {
   points: Tocka[];
   filters: FilterState;
   setFilters: (update: Partial<FilterState> | ((prev: FilterState) => Partial<FilterState>)) => void;
+  /** "Prikazano X od Y" — sits beside the search, not on a line of its own (POPRAVKI_3 §2). */
+  stevec?: string;
 }
 
 /**
@@ -20,7 +22,7 @@ interface FiltriProps {
  * the disclosure is open is local UI state. Theme chips show their point
  * count, so an empty client theme reads as an honest 0.
  */
-export default function Filtri({ points, filters, setFilters }: FiltriProps) {
+export default function Filtri({ points, filters, setFilters, stevec }: FiltriProps) {
   const steviloAktivnih =
     filters.vrste.length + filters.zgodbe.length + (filters.samoOsnovna ? 1 : 0) + (filters.zica ? 1 : 0);
   const [odprto, setOdprto] = useState(steviloAktivnih > 0);
@@ -71,6 +73,11 @@ export default function Filtri({ points, filters, setFilters }: FiltriProps) {
           <ChevronDown size={16} aria-hidden="true" className={odprto ? "rotate-180" : ""} />
         </button>
       </div>
+      {stevec && (
+        <p className="-mt-1.5 text-xs text-crnilo-mehko" aria-live="polite">
+          {stevec}
+        </p>
+      )}
 
       {odprto && (
         <div id={panelId} className="space-y-4 rounded-xl border border-crta bg-povrsina p-4">
