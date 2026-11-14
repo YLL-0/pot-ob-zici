@@ -51,6 +51,9 @@
   --container-besedilo: 40rem;
   --container-zemljevid: 72rem;
 
+  /* Wide screens (~1440 px): the memorial grid's fourth column (POPRAVKI_4 §1). */
+  --breakpoint-siroko: 90rem;
+
   /* Compact page title (home page: the map, not the hero, is the main element). */
   --text-naslov-kompakten: clamp(1.75rem, 1.4rem + 1.5vw, 2.25rem);
   --text-naslov-kompakten--line-height: 1.1;

@@ -49,6 +49,8 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
   const prefersReducedMotion = usePrefersReducedMotion();
   const [routeState, setRouteState] = useState<RouteState>({ status: "idle" });
   const zemljevidRef = useRef<HTMLDivElement>(null);
+  // Counts card clicks so the map pans again even when the point is already selected.
+  const [fokusTocke, setFokusTocke] = useState(0);
 
   const visiblePoints = useMemo(() => filterTocke(points, filters, etape), [points, filters, etape]);
 
@@ -189,6 +191,7 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
                 poudarjenaEtapaId={poudarjenaEtapaId}
                 zaporedneStevilke={zaporedneStevilke}
                 selectedTockaId={filters.tocka}
+                fokusTocke={fokusTocke}
                 selectedPotSlug={filters.pot}
                 prefersReducedMotion={prefersReducedMotion}
                 onSelectTocka={selectTocka}
@@ -241,7 +244,12 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
               etape={etape}
               tocke={visiblePoints}
               selectedTockaId={filters.tocka}
-              onSelectTocka={(id) => pokaziNaZemljevidu(() => selectTocka(id))}
+              onSelectTocka={(id) =>
+                pokaziNaZemljevidu(() => {
+                  selectTocka(id);
+                  setFokusTocke((n) => n + 1);
+                })
+              }
             />
           </section>
         </div>

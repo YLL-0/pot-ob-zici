@@ -20,9 +20,10 @@ function koordinate(t: Tocka): string {
 }
 
 /**
- * All visible points grouped by stage, one card per row (POPRAVKI_3 §3).
- * Sections of unselected stages are absent because `tocke` is already
- * stage-filtered. A card finds the point on the map; the arrow opens its page.
+ * All visible points grouped by stage, as a compact grid of cards: 1 / 2 / 3 / 4
+ * columns (POPRAVKI_4 §1). Sections of unselected stages are absent because
+ * `tocke` is already stage-filtered. A card finds the point on the map (pan,
+ * popup, scroll up); the point's page is linked from the popup.
  */
 export default function SeznamObelezij({ etape, tocke, selectedTockaId, onSelectTocka }: SeznamProps) {
   const skupine = useMemo(() => {
@@ -54,9 +55,9 @@ export default function SeznamObelezij({ etape, tocke, selectedTockaId, onSelect
         const barva = etapa?.barva ?? BARVA_BREZ_ETAPE;
         return (
           <section key={headingId} aria-labelledby={headingId}>
-            {/* The stage colour as a left rule keeps the grouping visible while scrolling. */}
+            {/* The stage colour as a rule under the heading. */}
             <div
-              className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-l-4 py-1 pl-3"
+              className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1 border-b-2 pb-2"
               style={{ borderColor: barva }}
             >
               <h3 id={headingId} className="flex flex-wrap items-baseline gap-x-2 font-heading text-xl font-semibold">
@@ -80,41 +81,39 @@ export default function SeznamObelezij({ etape, tocke, selectedTockaId, onSelect
                 </Link>
               )}
             </div>
-            <ul className="space-y-3">
+            {/* Fixed columns (repeat(N, minmax(0, 1fr))): an incomplete last row
+                keeps the same card width instead of stretching (POPRAVKI_4 §1). */}
+            <ul className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 siroko:grid-cols-4">
               {t.map((tocka) => {
                 const izbrana = selectedTockaId === tocka.id;
                 return (
                   <li
                     key={tocka.id}
-                    className={`flex items-stretch overflow-hidden rounded-xl border bg-povrsina transition-colors ${
-                      izbrana ? "border-crnilo ring-2 ring-crnilo" : "border-crta hover:border-crta-mocna"
-                    }`}
+                    className="flex"
                     ref={(el) => {
                       if (el) rowRefs.current.set(tocka.id, el);
                       else rowRefs.current.delete(tocka.id);
                     }}
                   >
+                    {/* The whole card is one button: Enter/Space, focus ring, no nested link. */}
                     <button
                       type="button"
-                      onClick={() => onSelectTocka(izbrana ? null : tocka.id)}
-                      aria-pressed={izbrana}
-                      className={`min-w-0 flex-1 px-5 py-4 text-left ${izbrana ? "bg-tonirano" : ""}`}
+                      onClick={() => onSelectTocka(tocka.id)}
+                      aria-current={izbrana || undefined}
+                      className={`w-full rounded-xl border px-3.5 py-3 text-left transition-colors ${
+                        izbrana
+                          ? "border-crnilo bg-tonirano ring-2 ring-crnilo"
+                          : "border-crta bg-povrsina hover:border-crta-mocna hover:bg-papir"
+                      }`}
                     >
                       <span className="block font-mono text-xs text-crnilo-mehko">{tocka.id}</span>
-                      <span className="mt-1 block leading-snug font-semibold">{tocka.naziv}</span>
-                      {tocka.obmocje && <span className="mt-0.5 block text-sm text-crnilo-mehko">{tocka.obmocje}</span>}
-                      <span className="mt-1.5 block font-mono text-xs text-crnilo-mehko">
+                      <span className="mt-0.5 block text-sm leading-snug font-semibold">{tocka.naziv}</span>
+                      {tocka.obmocje && <span className="mt-0.5 block text-xs text-crnilo-mehko">{tocka.obmocje}</span>}
+                      <span className="mt-1 block font-mono text-xs text-crnilo-mehko">
                         <span className="sr-only">Približne koordinate: </span>
                         {koordinate(tocka)}
                       </span>
                     </button>
-                    <Link
-                      href={`/tocka/${tocka.slug}`}
-                      aria-label={`Stran obeležja: ${tocka.naziv}`}
-                      className="flex w-12 shrink-0 items-center justify-center border-l border-crta text-crnilo-mehko hover:bg-papir hover:text-crnilo"
-                    >
-                      <ArrowRight size={18} aria-hidden="true" />
-                    </Link>
                   </li>
                 );
               })}

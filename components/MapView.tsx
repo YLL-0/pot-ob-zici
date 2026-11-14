@@ -59,6 +59,8 @@ interface MapViewProps {
   /** Walking-order numbers to show on markers (only when exactly one stage is selected), by point ID. */
   zaporedneStevilke: Map<string, number> | null;
   selectedTockaId: string | null;
+  /** Bumped on every card click below the map, so a re-click of the selected point still pans to it. */
+  fokusTocke?: number;
   selectedPotSlug: string | null;
   prefersReducedMotion: boolean;
   onSelectTocka: (id: string | null) => void;
@@ -216,6 +218,7 @@ export default function MapView({
   poudarjenaEtapaId,
   zaporedneStevilke,
   selectedTockaId,
+  fokusTocke = 0,
   selectedPotSlug,
   prefersReducedMotion,
   onSelectTocka,
@@ -604,7 +607,8 @@ export default function MapView({
       if (prefersReducedMotion) map.jumpTo(opts);
       else map.easeTo({ ...opts, duration: 600 });
     }
-  }, [loaded, selectedTockaId, points, etape, prefersReducedMotion]);
+    // fokusTocke: re-run on a repeated card click for the same point.
+  }, [loaded, selectedTockaId, fokusTocke, points, etape, prefersReducedMotion]);
 
   // --- Selected trail: fly to its bounds; the wire layer's visibility ------
   useEffect(() => {
