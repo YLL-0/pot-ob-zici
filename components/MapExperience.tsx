@@ -5,14 +5,12 @@ import dynamic from "next/dynamic";
 import type { Etapa, Pot, Tocka } from "@/lib/types";
 import { filterTocke, isRazsirjeniKrak, toggleInArray } from "@/lib/filters";
 import { opisIzbireEtap, stevnikObelezij } from "@/lib/etape";
-import { BESEDILO_PRIBLIZEK, steviloPoZanesljivosti } from "@/lib/gpsOznaka";
 import { statusOdsekov, vidniOdseki, SPOROCILO_ZICA, type Obroc } from "@/lib/trasaIzris";
 import { useFilterState } from "@/hooks/useFilterState";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import type { RouteState } from "@/lib/routing";
 import SiteHeader from "@/components/SiteHeader";
 import Nadnaslov from "@/components/Nadnaslov";
-import Obvestilo from "@/components/Obvestilo";
 import { EtapeCipi } from "@/components/EtapeIzbira";
 import Filtri from "@/components/Filtri";
 import Navigacija from "@/components/Navigacija";
@@ -77,7 +75,6 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
   // Coordinates notice follows the data: register-sourced positions get the
   // register wording; the stronger caveat stays only while some point is
   // still on the Excel's approximation (POPRAVKI_2 §1).
-  const gps = useMemo(() => steviloPoZanesljivosti(points), [points]);
 
   // Honest labelling of what is drawn: routed, partly schematic, or schematic.
   const status = statusOdsekov(vidniOdseki(obroc, izbraneEtapaIds));
@@ -113,7 +110,8 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
       <SiteHeader />
       <main className="pb-20">
         {/* Same layout as the client's prototype: one container; title,
-            notice, chips + search and the map all fit on the first screen. */}
+            chips + search and the map all fit on the first screen. The
+            location caveat is shown per point (PeljiMeTjaZemljevid). */}
         <div className="mx-auto max-w-zemljevid space-y-3 px-4 pt-4 pb-3 sm:px-6 sm:pt-5">
           <Nadnaslov
             kompaktno
@@ -121,29 +119,6 @@ export default function MapExperience({ points, poti, etape, obroc }: MapExperie
             naslov="Pot ob žici"
             uvod={`Spominska pot okoli Novega mesta — ${stevnikObelezij(points.length)} na ${etape.length} etapah.`}
           />
-
-          <Obvestilo>
-            {gps.zunanji_vir > 0 && (
-              <p>
-                Lokacije obeležij so iz javnega registra{" "}
-                <a
-                  href="https://partizanstvo.si/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-poudarek underline underline-offset-4"
-                >
-                  partizanstvo.si
-                </a>{" "}
-                — terensko še niso preverjene.
-              </p>
-            )}
-            {gps.priblizek > 0 &&
-              (gps.zunanji_vir > 0 ? (
-                <p>Pri nekaterih obeležjih je lokacija le izhodiščni približek in ni terensko izmerjena.</p>
-              ) : (
-                <p>{BESEDILO_PRIBLIZEK}</p>
-              ))}
-          </Obvestilo>
         </div>
 
         <section aria-labelledby="naslov-zemljevid" className="space-y-3">

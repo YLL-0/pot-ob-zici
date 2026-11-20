@@ -1,11 +1,10 @@
 /**
  * The honest location caveat for a point, by `gps_zanesljivost`
- * (POPRAVKI_2 §1). One place for the wording, so the map page and the
- * point page cannot drift apart. Never presents a position as surveyed
+ * (POPRAVKI_2 §1), shown on each point's page. One place for the wording. Never presents a position as surveyed
  * unless the data says it was (CLAUDE.md rule 5).
  */
 
-import type { GpsZanesljivost, Tocka } from "@/lib/types";
+import type { Tocka } from "@/lib/types";
 
 type GpsPolja = Pick<Tocka, "gps_zanesljivost" | "gps_vir" | "gps_vir_url" | "gps_opomba">;
 
@@ -39,14 +38,3 @@ export function gpsOznaka(t: GpsPolja): GpsOznaka {
   }
 }
 
-/** How many points have each reliability — for the map page notice. */
-export function steviloPoZanesljivosti(tocke: Pick<Tocka, "gps_zanesljivost">[]): Record<GpsZanesljivost, number> {
-  const out: Record<GpsZanesljivost, number> = {
-    priblizek: 0,
-    zunanji_vir: 0,
-    "terensko-izmerjeno": 0,
-    "preverjeno-v-gis": 0,
-  };
-  for (const t of tocke) out[t.gps_zanesljivost] = (out[t.gps_zanesljivost] ?? 0) + 1;
-  return out;
-}
