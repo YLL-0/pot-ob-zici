@@ -96,8 +96,9 @@ export default function MiniMap(props: MiniMapProps) {
 
       tocke.forEach((t, i) => {
         const el = document.createElement("div");
+        // Dark halo around the white numeral: legible on any stage colour, light ones included.
         el.className =
-          "flex h-6 w-6 items-center justify-center rounded-full border-2 border-white text-xs font-bold text-white shadow";
+          "flex h-6 w-6 items-center justify-center rounded-full border-2 border-white text-xs font-bold text-white shadow [text-shadow:0_0_2px_var(--color-crnilo),0_0_1px_var(--color-crnilo)]";
         el.style.backgroundColor = pot.barva;
         el.textContent = String(i + 1);
         markers.push(new Marker({ element: el }).setLngLat([t.lon, t.lat]).addTo(map));

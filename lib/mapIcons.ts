@@ -5,6 +5,12 @@
  * the same icon used in the legend/filter chips also appears on the map
  * markers (colour = etapa via the circle layer beneath, icon = vrsta via
  * these images).
+ *
+ * The white glyph is drawn over a slightly wider copy of itself in the ink
+ * colour — a thin dark outline around every stroke — so the icon stays
+ * legible on any stage colour, light ones included. Stage colours are
+ * therefore not constrained by icon contrast (lib/barvePreverba.ts reports
+ * it for information only).
  */
 
 import { createElement } from "react";
@@ -15,18 +21,24 @@ import { barvaZetona } from "@/lib/mapBarve";
 import type { Vrsta } from "@/lib/types";
 
 const ICON_SIZE = 96;
+/** Lucide's own stroke, in its 24-unit viewBox. */
+const STROKE = 2.25;
+/** The dark copy underneath: ~1.1 units of outline on each side (≈ 0.7 px at the map's icon size). */
+const OBROBA = STROKE + 2.25;
 
 export function vrstaIconImageId(vrsta: Vrsta): string {
   return `vrsta-icon-${vrsta}`;
 }
 
-function svgDataUri(vrsta: Vrsta): string {
+function svgDataUri(vrsta: Vrsta, color: string, strokeWidth: number): string {
   const Icon = VRSTA_ICONS[vrsta];
-  // Off-white token: reads clearly on any etapa colour (palette is checked for it).
-  const markup = renderToStaticMarkup(
-    createElement(Icon, { color: barvaZetona("povrsina"), strokeWidth: 2.25, width: ICON_SIZE, height: ICON_SIZE }),
-  );
+  const markup = renderToStaticMarkup(createElement(Icon, { color, strokeWidth, width: ICON_SIZE, height: ICON_SIZE }));
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(markup)}`;
+}
+
+/** Ink outline first, then the white glyph on top (see header). */
+function sloji(vrsta: Vrsta): string[] {
+  return [svgDataUri(vrsta, barvaZetona("crnilo"), OBROBA), svgDataUri(vrsta, barvaZetona("povrsina"), STROKE)];
 }
 
 /**
@@ -36,24 +48,25 @@ function svgDataUri(vrsta: Vrsta): string {
  * URIs — it's built for raster tile/sprite images). The <img>-element path
  * is the same one browsers use to paint inline SVGs, so it always works.
  */
-function rasterizeSvg(dataUri: string, size: number): Promise<ImageData> {
+function naloziSliko(dataUri: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      canvas.width = size;
-      canvas.height = size;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) {
-        reject(new Error("2D canvas context unavailable"));
-        return;
-      }
-      ctx.drawImage(img, 0, 0, size, size);
-      resolve(ctx.getImageData(0, 0, size, size));
-    };
+    img.onload = () => resolve(img);
     img.onerror = () => reject(new Error("SVG image failed to load"));
     img.src = dataUri;
   });
+}
+
+/** Draws the SVG layers onto one canvas, in order. */
+async function rasterizeSvg(dataUris: string[], size: number): Promise<ImageData> {
+  const slike = await Promise.all(dataUris.map(naloziSliko));
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("2D canvas context unavailable");
+  for (const img of slike) ctx.drawImage(img, 0, 0, size, size);
+  return ctx.getImageData(0, 0, size, size);
 }
 
 /**
@@ -68,7 +81,7 @@ export async function ensureVrstaIcons(map: MaplibreMap, vrste: Vrsta[]): Promis
       const id = vrstaIconImageId(vrsta);
       if (map.hasImage(id)) return;
       try {
-        const imageData = await rasterizeSvg(svgDataUri(vrsta), ICON_SIZE);
+        const imageData = await rasterizeSvg(sloji(vrsta), ICON_SIZE);
         if (!map.hasImage(id)) map.addImage(id, imageData);
       } catch (err) {
         console.warn(`[mapIcons] Ikona za vrsto "${vrsta}" se ni naložila:`, err);

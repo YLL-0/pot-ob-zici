@@ -4,15 +4,16 @@
  * Colour picker for a stage's `barva` (PROMPT_ADMIN.md "etape … barva
  * (colour picker)"). Native colour input + the hex value, a preview of the
  * marker and the stage chip as the public site draws them, and live
- * warnings from lib/barvePreverba.ts: contrast with the marker icon, and
- * colours too close to another stage (also under colour-vision
- * deficiencies). Warnings advise, they don't block — the format check
- * in cms/collections/Etape.ts is the only hard rule.
+ * checks from lib/barvePreverba.ts: colours too close to another stage
+ * (also under colour-vision deficiencies) are warned about; the marker
+ * icon's contrast is shown for information only — the icon has its own
+ * dark outline, so it is legible on any colour. Nothing here blocks a
+ * save; the format check in cms/collections/Etape.ts is the only hard rule.
  */
 
 import { useEffect, useMemo, useState } from "react";
 import { FieldDescription, FieldError, useDocumentInfo, useField, useFormFields } from "@payloadcms/ui";
-import { HEX, IKONA, MEJA_KONTRAST, VIDI, preveriBarvo, type PrimerjanaEtapa } from "@/lib/barvePreverba";
+import { HEX, IKONA, OBROBA_IKONE, VIDI, preveriBarvo, type PrimerjanaEtapa } from "@/lib/barvePreverba";
 import { besediloNaBarvi } from "@/lib/etape";
 
 interface EtapaVnos {
@@ -98,6 +99,8 @@ export function BarvaEtapePolje() {
                 borderRadius: "50%",
                 backgroundColor: barva,
                 color: IKONA,
+                // Same dark outline as the map icon (lib/mapIcons.ts).
+                textShadow: `0 0 2px ${OBROBA_IKONE}, 0 0 1px ${OBROBA_IKONE}`,
                 fontWeight: 700,
               }}
             >
@@ -126,16 +129,10 @@ export function BarvaEtapePolje() {
       <FieldError path="barva" message={errorMessage} showError={showError} />
       {preverba && (
         <div role="status" style={{ display: "grid", gap: "calc(var(--base) * 0.25)" }}>
-          {preverba.kontrastOk ? (
-            <p style={{ margin: 0, color: "var(--theme-success-750)" }}>
-              Bela ikona na oznaki je dobro vidna (kontrast {preverba.kontrastZIkono.toFixed(1).replace(".", ",")} : 1).
-            </p>
-          ) : (
-            <p style={{ margin: 0, color: "var(--theme-warning-750)" }}>
-              Bela ikona na oznaki bo slabo vidna: kontrast {preverba.kontrastZIkono.toFixed(1).replace(".", ",")} : 1,
-              priporočeno vsaj {MEJA_KONTRAST} : 1. Izberi temnejšo barvo.
-            </p>
-          )}
+          <p style={{ margin: 0, color: "var(--theme-elevation-650)" }}>
+            Kontrast bele ikone s to barvo: {preverba.kontrastZIkono.toFixed(1).replace(".", ",")} : 1. Le v
+            informacijo — ikona ima temno obrobo, zato je berljiva na vsaki barvi.
+          </p>
           {preverba.konflikti.length === 0 ? (
             ostale.length > 0 && (
               <p style={{ margin: 0, color: "var(--theme-success-750)" }}>

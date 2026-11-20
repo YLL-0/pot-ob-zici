@@ -1,8 +1,9 @@
 /**
  * Checks the live stage colours (`getEtape()`: Supabase or the seed) for
  * the Phase 4.3 brief: distinguishable from each other under normal vision
- * and the common colour-vision deficiencies, and legible under the
- * off-white marker icons.
+ * and the common colour-vision deficiencies. The white marker icon's
+ * contrast is printed for information only — the icon has its own dark
+ * outline (lib/mapIcons.ts), so it is never a violation.
  *
  *   npm run barve:preizkus                 # the stage colours as configured
  *   npm run barve:preizkus -- #aabbcc …    # a candidate palette, in stage order
@@ -16,7 +17,7 @@
 
 import { getEtape } from "../lib/data";
 import { sortEtape } from "../lib/etape";
-import { IKONA, MEJA_KONTRAST, MEJA_SOSEDNJI, MEJA_VSI, VIDI, kontrast, razdaljaBarv, type Vid } from "../lib/barvePreverba";
+import { IKONA, MEJA_SOSEDNJI, MEJA_VSI, REFERENCA_KONTRAST, VIDI, kontrast, razdaljaBarv, type Vid } from "../lib/barvePreverba";
 
 async function main() {
   const podane = process.argv.slice(2).filter((a) => /^#[0-9a-f]{6}$/i.test(a));
@@ -25,12 +26,12 @@ async function main() {
   const n = vrstice.length;
   let napake = 0;
 
-  console.log("Barve:");
+  // Icon contrast is information only: the marker icon has its own dark outline (lib/mapIcons.ts).
+  console.log(`Barve (kontrast bele ikone je informativen — ikona ima temno obrobo; referenca ${REFERENCA_KONTRAST}:1):`);
   for (const v of vrstice) {
     const k = kontrast(v.barva, IKONA);
-    const ok = k >= MEJA_KONTRAST;
-    if (!ok) napake++;
-    console.log(`  ${ok ? "✓" : "✗"} ${v.ime.padEnd(10)} ${v.barva}  kontrast z ikono ${k.toFixed(1)}:1`);
+    const opomba = k < REFERENCA_KONTRAST ? "  (pod referenco — berljivost zagotavlja obroba)" : "";
+    console.log(`  · ${v.ime.padEnd(10)} ${v.barva}  kontrast z ikono ${k.toFixed(1)}:1${opomba}`);
   }
 
   for (const vid of Object.keys(VIDI) as Vid[]) {
@@ -55,7 +56,7 @@ async function main() {
   console.log(
     napake === 0
       ? "\nVse meje izpolnjene."
-      : `\n${napake} kršitev (meje: ΔE ≥ ${MEJA_VSI}, sosednji ≥ ${MEJA_SOSEDNJI}, kontrast ≥ ${MEJA_KONTRAST}:1).`,
+      : `\n${napake} kršitev (meje: ΔE ≥ ${MEJA_VSI}, sosednji ≥ ${MEJA_SOSEDNJI}).`,
   );
   process.exit(napake === 0 ? 0 : 1);
 }

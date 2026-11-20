@@ -2,12 +2,15 @@
  * Stage-colour checks (Phase 4.3 brief), shared by `npm run barve:preizkus`
  * and the admin colour picker (cms/components/BarvaEtapePolje.tsx):
  *
- * - legible under the off-white marker icon (WCAG 1.4.11 non-text, ≥ 3:1);
- * - distinguishable from the other stages under normal vision and the
+ * - REQUIRED: distinguishable from the other stages under normal vision and the
  *   common colour-vision deficiencies. Each colour is simulated for
  *   protanopia, deuteranopia and tritanopia (Machado et al. 2009, full
  *   severity), then compared in CIELAB (ΔE*76). Stages that meet on the
  *   ring (n and n+1, last and first) share a joint and need more distance.
+ * - INFORMATION ONLY: contrast of the white marker icon with the colour.
+ *   The icon carries its own thin dark outline (lib/mapIcons.ts), so it is
+ *   legible on any colour; the value is reported, never a reason to
+ *   reject a colour.
  *
  * Pure functions, no DOM — safe on the server, in scripts and in the browser.
  */
@@ -15,10 +18,15 @@
 /** Below this ΔE two colours start to read as "the same" on a small map line. */
 export const MEJA_VSI = 15;
 export const MEJA_SOSEDNJI = 20;
-/** WCAG 1.4.11 non-text contrast for the white icon on the marker. */
-export const MEJA_KONTRAST = 3;
+/**
+ * WCAG 1.4.11 non-text level, shown as a reference next to the icon
+ * contrast. Not a limit: the outlined icon doesn't depend on it.
+ */
+export const REFERENCA_KONTRAST = 3;
 /** Marker icon colour (app/(frontend)/globals.css --color-povrsina). */
-export const IKONA = "#faf8f4";
+export const IKONA = "#ffffff";
+/** The icon's dark outline (--color-crnilo), for previews outside the public stylesheet (admin). */
+export const OBROBA_IKONE = "#1f1c18";
 
 export const HEX = /^#[0-9a-f]{6}$/i;
 
@@ -87,8 +95,8 @@ export interface Konflikt {
 }
 
 export interface PreverbaBarve {
+  /** Information only (see header). */
   kontrastZIkono: number;
-  kontrastOk: boolean;
   /** Pairs below the threshold, closest first; one entry per stage (its worst vision type). */
   konflikti: Konflikt[];
 }
@@ -110,5 +118,5 @@ export function preveriBarvo(barva: string, ostale: PrimerjanaEtapa[]): Preverba
     if (najslabsi) konflikti.push(najslabsi);
   }
   konflikti.sort((a, b) => a.razdalja - b.razdalja);
-  return { kontrastZIkono, kontrastOk: kontrastZIkono >= MEJA_KONTRAST, konflikti };
+  return { kontrastZIkono, konflikti };
 }
