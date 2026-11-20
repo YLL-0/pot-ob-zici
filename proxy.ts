@@ -3,9 +3,10 @@ import tocke from "@/tocke.seed.json";
 
 /**
  * QR shortlink redirect: /nmz-001 … /nmz-050 (case-insensitive) -> 301 to
- * /tocka/[slug]. This is a plain JSON import (Edge-safe — no node:fs), not
- * lib/data.ts's getPoints(): that module also pulls in the fs-based poti
- * loader, which the Edge runtime can't bundle. Using the seed JSON directly
+ * /tocka/[slug]. Next 16 calls this file `proxy.ts` (formerly middleware).
+ * It reads the seed JSON directly, not lib/data.ts's getPoints(): a proxy
+ * runs before every matched request and must stay cheap and never depend
+ * on the database or the poti files. Using the seed JSON directly
  * is safe here because slugs are stable IDs (never regenerated) — even
  * once Supabase is the source of truth for content, this id->slug mapping
  * doesn't change for an existing point.
@@ -14,7 +15,7 @@ const ID_TO_SLUG = new Map(tocke.map((t) => [t.id.toUpperCase(), t.slug]));
 
 const NMZ_PATTERN = /^\/(nmz-\d{3})$/i;
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const match = NMZ_PATTERN.exec(request.nextUrl.pathname);
   if (!match) return NextResponse.next();
 
