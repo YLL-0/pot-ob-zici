@@ -26,6 +26,7 @@ import { Media } from "@/cms/collections/Media";
 import { Tocke } from "@/cms/collections/Tocke";
 import { Users } from "@/cms/collections/Users";
 import { isMediaStorageConfigured } from "@/lib/cms";
+import { preracunajTraseEndpoint } from "@/cms/trase";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -47,12 +48,23 @@ export default buildConfig({
     user: Users.slug,
     importMap: { baseDir: dirname },
     meta: { titleSuffix: " — Pot ob žici (urejanje)" },
+    components: {
+      afterNavLinks: ["/cms/components/TraseNavPovezava#TraseNavPovezava"],
+      views: {
+        trase: {
+          Component: "/cms/views/TraseView#TraseView",
+          path: "/trase",
+          meta: { title: "Trase" },
+        },
+      },
+    },
   },
   i18n: {
     supportedLanguages: { sl },
     fallbackLanguage: "sl",
   },
   collections: [Tocke, Etape, Media, Users],
+  endpoints: [preracunajTraseEndpoint],
   editor: lexicalEditor(),
   db: postgresAdapter({
     // A paused Supabase project must fail fast (build falls back to the seed), not hang.

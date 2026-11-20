@@ -171,14 +171,31 @@ export const Tocke: CollectionConfig = {
           label: "Lokacija",
           description: "Koordinate so približne, dokler niso terensko izmerjene.",
           fields: [
-            // The map with a draggable pin replaces direct editing of these
-            // two (next step); until then they are read-only.
+            // Edited only through the map pin / paste field below — never
+            // as two separate number inputs (PROMPT_ADMIN.md).
             {
-              type: "row",
-              fields: [
-                { name: "lat", type: "number", label: "Zemljepisna širina", required: true, admin: { readOnly: true } },
-                { name: "lon", type: "number", label: "Zemljepisna dolžina", required: true, admin: { readOnly: true } },
-              ],
+              name: "lokacija",
+              type: "ui",
+              label: "Lokacija na zemljevidu",
+              admin: { components: { Field: "/cms/components/LokacijaPolje#LokacijaPolje" } },
+            },
+            {
+              name: "lat",
+              type: "number",
+              label: "Zemljepisna širina",
+              required: true,
+              min: 45.4,
+              max: 46.9,
+              admin: { hidden: true },
+            },
+            {
+              name: "lon",
+              type: "number",
+              label: "Zemljepisna dolžina",
+              required: true,
+              min: 13.3,
+              max: 16.6,
+              admin: { hidden: true },
             },
             {
               name: "gps_zanesljivost",
@@ -204,6 +221,12 @@ export const Tocke: CollectionConfig = {
               label: "Zaporedje v etapi",
               min: 1,
               admin: { description: "Vrstni red obeležja na poti etape (1 = prvo)." },
+            },
+            {
+              name: "trasa_stanje",
+              type: "ui",
+              label: "Trasa etape",
+              admin: { components: { Field: "/cms/components/TrasaTocke#TrasaTocke" } },
             },
           ],
         },
