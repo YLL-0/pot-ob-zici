@@ -83,52 +83,50 @@ npm install
 npm run dev
 ```
 
-No `.env` needed. `lib/data.ts` falls back to `tocke.seed.json` (all 50 points) when
-`NEXT_PUBLIC_SUPABASE_URL` is unset — this must keep working on a completely fresh clone.
+No `.env` needed. `lib/data.ts` falls back to `tocke.seed.json` / `etape.seed.json` (all 50
+points, 8 stages) when `DATABASE_URI` + `PAYLOAD_SECRET` are unset — this must keep working on
+a completely fresh clone. The admin (`/admin`) then says editing is unavailable.
 
-To connect Supabase instead, copy `.env.example` to `.env.local` and fill in the values, then:
+To run with the database and the admin, copy `.env.example` to `.env.local` and fill in the
+values (Payload + Supabase Storage + `SUPABASE_SERVICE_ROLE_KEY` for the route cache). For a
+brand-new database:
 
 ```bash
-# apply supabase/migrations/0001_init.sql … 0004_gps_vir.sql in order, then:
-npm run import:xlsx   # regenerate tocke.seed.json from the client's Excel (if needed)
-npm run seed          # insert missing stages, then upsert tocke.seed.json (on id)
+npm run payload -- migrate                 # create Payload's schema `payload`
+# apply supabase/migrations/0005_trase.sql (route cache table public.trase)
+npm run migrate:payload -- --dry-run       # what would be moved from the seed
+npm run migrate:payload                    # move seed points + stages into Payload
 ```
 
-To test the in-app walking route ("Pelji me tja"), also set `ORS_API_KEY` in `.env.local` (a
-free key from [openrouteservice.org](https://openrouteservice.org/dev/#/signup)). Without it,
-`app/api/route/route.ts` returns 503 and the UI shows the "route unavailable" state — that's the
-default in this repo, not a bug; the code follows ORS's documented `/v2/directions/foot-walking/geojson`
-contract but hasn't been exercised against a live key in this environment.
+To test the in-app walking route ("Pelji me tja") and to (re)compute stage routes, also set
+`ORS_API_KEY` in `.env.local` (a free key from [openrouteservice.org](https://openrouteservice.org/dev/#/signup)).
+Without it, `app/api/route/route.ts` returns 503, the UI shows the "route unavailable" state, and
+the admin's »Ponovno izračunaj trase« says the key is missing.
 
 ### Data pipeline
 
 ```
-client's Excel (MASTER 50 sheet)
-        │  npm run import:xlsx
-        ▼
-tocke.seed.json  ──────────────►  lib/data.ts getPoints()  ──► app
-        │  npm run seed                    ▲
-        ▼                                   │ (if NEXT_PUBLIC_SUPABASE_URL set)
-   Supabase "tocke" table ───────────────────┘
+admin (/admin, Payload) ──► Postgres schema `payload` ──► lib/data.ts (Next data cache, tagged)
+        │                                                      │        ▲
+        │ publish → revalidateTag/revalidatePath               ▼        │ no .env / paused DB at build
+        └──────────────────────────────────────────► static pages    tocke.seed.json + etape.seed.json
+                                                                                  ▲
+                                       npm run export:seed (commit the result) ───┘
 ```
 
-- **`tocke.seed.json` is generated, never hand-edited.** Run `npm run import:xlsx` to
-  regenerate it from the Excel. Run `npm run import:xlsx:check` first to see a diff without
-  writing anything.
-- **Coordinate precedence.** The Excel's lat/lon are the weakest source. Register positions
-  come from `koordinate_partizanstvo.json` via `npm run apply:koordinate` (matches on `id`
-  only, refuses on any missing/unknown id, idempotent, recomputes the default `zaporedje`).
-  The importer never overwrites lat/lon of a point whose `gps_zanesljivost` is `zunanji_vir`,
-  `terensko-izmerjeno` or `preverjeno-v-gis`; `import:xlsx:check` lists what the Excel says.
-  `gps_opomba` non-null = needs field verification (NMZ-030, NMZ-033, NMZ-034).
-- The Excel import is a **one-time migration**, not an ongoing sync. Once real content lives
-  in Supabase, `npm run seed` will skip (with a warning) any row whose `updated_at` in the
-  database is newer than the import — it will never clobber a human edit with a stale
-  spreadsheet snapshot.
-- Adding a new field: update `lib/types.ts` (`Tocka`/`Pot`), `scripts/import-xlsx.ts`, and
-  `supabase/migrations/` together. See the comments at the top of each file.
-- **Stages (etape) are data since Phase 4.** `etape` table in Supabase, or `ETAPE_SEED` in
-  `lib/etape.ts` when there is no `.env`; read them through `lib/data.ts` `getEtape()`.
+- **The admin is the source of truth.** Public pages are static and read the database only
+  through Next's cache; a publish in the admin re-renders the affected pages. A paused free
+  Supabase project therefore never takes the public site (or a QR plaque) down.
+- **`tocke.seed.json` / `etape.seed.json` are generated, never hand-edited.** `npm run
+  export:seed` regenerates them from the database (published points only); `-- --check`
+  prints the diff without writing. Commit the result after a round of edits — the no-`.env`
+  fallback and the QR redirects (`proxy.ts`) read the seed.
+- **The Excel is finished as a source.** `npm run import:xlsx` (and `apply:koordinate`) only
+  print what they would change and never write.
+- Adding a new field: the Payload collection (`cms/collections/`, then
+  `npm run payload -- migrate:create`), `lib/types.ts` and `lib/cmsMapiranje.ts` together.
+- **Stages (etape) are data since Phase 4.** Payload collection `etape`, or `etape.seed.json`
+  (`ETAPE_SEED` in `lib/etape.ts`) when there is no `.env`; read them through `lib/data.ts` `getEtape()`.
   `etape.id` is a stable slug (`etapa-3`) — `stevilka` is only display order and may change.
   The Excel's numeric "Etapa" column is resolved to that ID by the importer (an unknown number
   stops the import; an empty cell = no stage). A point's `odsek` is derived from its stage on
@@ -259,9 +257,9 @@ npm run dev              # start dev server (no .env needed)
 npm run build            # production build, must pass with zero TS errors
 npm run lint             # eslint
 npm run typecheck        # tsc --noEmit
-npm run import:xlsx      # regenerate tocke.seed.json from the client's Excel
-npm run import:xlsx:check # same, but only prints a diff — writes nothing
-npm run apply:koordinate # apply register coordinates (koordinate_partizanstvo.json) to the seed
-npm run generate:poti    # regenerate the 8 schematic stage GeoJSON files
-npm run seed              # push tocke.seed.json into Supabase (idempotent)
+npm run export:seed      # regenerate tocke.seed.json + etape.seed.json from the database
+npm run import:xlsx      # compare the client's Excel with the seed (diff only, never writes)
+npm run generate:poti    # regenerate the schematic stage GeoJSON files
+npm run trase            # state of the routed stage trails (-- --preracunaj to recompute)
+npm run migrate:payload  # one-time: move the seed into an empty Payload database (-- --dry-run first)
 ```

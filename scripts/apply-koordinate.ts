@@ -18,9 +18,13 @@
  * This is the one sanctioned exception to "tocke.seed.json is written only
  * by the importer": the importer keeps these coordinates from then on (it
  * never overwrites `zunanji_vir` / surveyed positions with the Excel's).
+ *
+ * Since the Payload phase (PROMPT_ADMIN.md) this script only REPORTS what
+ * it would change and writes nothing: the database is the source of truth
+ * and tocke.seed.json is regenerated from it by scripts/export-seed.ts.
  */
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { haversineMeters, formatDistance } from "../lib/geo";
 import { dodeliZaporedje } from "../lib/zaporedjeEtap";
@@ -157,8 +161,15 @@ function main() {
   console.log("\nZa terensko preverjanje (gps_opomba):");
   for (const id of Object.keys(GPS_OPOMBE)) console.log(`  ${id} · ${nove.find((t) => t.id === id)!.naziv}`);
 
-  writeFileSync(SEED_PATH, kanonicno, "utf-8");
-  console.log(`\n✓ Zapisano ${nove.length} točk v tocke.seed.json.`);
+  // Since the Payload phase the database is the source of truth and
+  // tocke.seed.json is written only by scripts/export-seed.ts, so this
+  // script now just reports. Coordinates are corrected in the admin.
+  void kanonicno;
+  console.log(
+    "\nNič ni zapisano: tocke.seed.json se zdaj ustvari iz baze (npm run export:seed). " +
+      "Koordinate popravi v adminu (Obeležja → Lokacija).",
+  );
+  process.exit(1);
 }
 
 main();

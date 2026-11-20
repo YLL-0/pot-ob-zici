@@ -1,51 +1,30 @@
 /**
- * Stage (etapa) helpers and the seed definition of the original 8 stages.
+ * Stage (etapa) helpers and the seed list of stages.
  *
- * Since Phase 4 stages are editable data: the live list comes from
- * lib/data.ts getEtape() (Supabase `etape`, or ETAPE_SEED below when no
- * .env is set). Components receive that list as a prop and resolve colours
- * through getEtapaBarva() — never index ETAPE_SEED directly at runtime,
- * or an editor's rename/recolour would be ignored.
+ * Stages are editable data: the live list comes from lib/data.ts
+ * getEtape() (Payload `etape`, or ETAPE_SEED below when no .env is set).
+ * Components receive that list as a prop and resolve colours through
+ * getEtapaBarva() — never index ETAPE_SEED directly at runtime, or an
+ * editor's rename/recolour would be ignored.
  *
- * ETAPE_SEED is the no-.env fallback, the source scripts/seed.ts inserts
- * from, and what scripts/generate-poti.ts colours the schematic fallback
- * trails with. supabase/migrations/0002_etape_trase.sql inserts the same
- * eight rows once; after that Supabase is the source of truth.
+ * ETAPE_SEED is etape.seed.json: the no-.env fallback, and what
+ * scripts/generate-poti.ts colours the schematic fallback trails with.
+ * Like tocke.seed.json it is generated, never hand-edited — since the
+ * Payload phase by scripts/export-seed.ts from the database (the original
+ * eight stages were moved into Payload by scripts/migrate-to-payload.ts).
  *
  * The UI accent (app/(frontend)/globals.css --color-poudarek) is a very dark green,
  * used for emphasis only; stage colours are mid-tone and never that dark,
  * so a stage chip never reads as the accent.
  */
 
+import etapeSeed from "@/etape.seed.json";
 import type { Etapa } from "@/lib/types";
 
 /** Colour for a point with no (visible) stage. */
 export const BARVA_BREZ_ETAPE = "#888888";
 
-const SEED_ROWS: [stevilka: number, odsek: string, barva: string][] = [
-  [1, "Loka – Bršljin", "#96582c"],
-  [2, "Bršljin – Bučna vas", "#84962c"],
-  [3, "Bučna vas – Ragovo", "#2c9661"],
-  [4, "Ragovo – Žabja vas", "#2c7c96"],
-  [5, "Žabja vas – Gotna vas", "#2c4f96"],
-  [6, "Gotna vas – Šmihel", "#582c96"],
-  [7, "Šmihel – Drska", "#962c96"],
-  [8, "Drska – Loka", "#836d26"],
-];
-
-export const ETAPE_SEED: Etapa[] = SEED_ROWS.map(([stevilka, odsek, barva]) => ({
-  id: etapaIdIzStevilke(stevilka),
-  stevilka,
-  naziv: `Etapa ${stevilka}`,
-  odsek,
-  barva,
-  // Left empty on purpose: a stage description is content, and content is
-  // written by the association, never invented (CLAUDE.md rule 1).
-  opis: null,
-  vidna: true,
-  updated_at: null,
-  updated_by: null,
-}));
+export const ETAPE_SEED: Etapa[] = etapeSeed;
 
 /**
  * Stable ID for one of the original numbered stages. Only used to map the

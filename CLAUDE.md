@@ -5,8 +5,8 @@ Project rules for Claude Code. Read before every task in this repo.
 ## Non-negotiables
 
 1. **Never invent historical content.** No dates, names, casualty numbers, event descriptions or quiz answers. Missing content renders as "Vsebina v pripravi" + the `iztocnica` + EŠD + source links. Only NMZ-001, NMZ-016, NMZ-023 may carry filler, and it must be labelled `[DEMO BESEDILO — ni zgodovinski vir]`.
-2. **The app runs with no `.env`.** `lib/data.ts` falls back to `tocke.seed.json`. Never make Supabase a hard requirement for `npm run dev`.
-3. **`tocke.seed.json` is generated, not hand-edited.** Changes come from the client's Excel via `npm run import:xlsx`. If you need a new field, add it to the importer AND the schema. The Excel feeds the seed and the no-`.env` fallback; once Supabase exists, the admin is the source of truth (`npm run seed` never overwrites a row edited there after the import, and never touches existing `etape`).
+2. **The app runs with no `.env`.** `lib/data.ts` falls back to `tocke.seed.json` / `etape.seed.json`. Never make the database (Payload / Supabase) a hard requirement for `npm run dev`.
+3. **`tocke.seed.json` and `etape.seed.json` are generated, not hand-edited.** The admin (Payload) is the source of truth; `npm run export:seed` regenerates both from the database (published points only) — commit the result. The Excel is finished as a source: `npm run import:xlsx` only prints a diff and never writes. If you need a new field, add it to the Payload collection (+ migration), `lib/types.ts` and `lib/cmsMapiranje.ts` in the same commit.
 4. **All user-facing strings are Slovenian.** Code and comments are English. No mixed-language UI.
 5. **GPS coordinates are approximate.** Never present them as surveyed.
 6. **No new dependencies without asking.** Stack is Next.js 15 + TS + Tailwind v4 + MapLibre + Supabase + lucide-react.
@@ -30,8 +30,8 @@ WCAG AA contrast, full keyboard operation of map filters, stage chips and lists,
 ```bash
 npm run dev          # must work on a fresh clone with no .env
 npm run build        # must pass with zero TS errors before you report done
-npm run seed         # push tocke.seed.json into Supabase
-npm run import:xlsx  # regenerate tocke.seed.json from the client's Excel
+npm run export:seed  # regenerate tocke.seed.json + etape.seed.json from the database (--check = diff only)
+npm run import:xlsx  # compare the client's Excel with tocke.seed.json (diff only, never writes)
 ```
 
 ## Working style

@@ -1,0 +1,90 @@
+[
+  {
+    "id": "etapa-1",
+    "stevilka": 1,
+    "naziv": "Etapa 1",
+    "odsek": "Loka – Bršljin",
+    "barva": "#96582c",
+    "opis": null,
+    "vidna": true,
+    "updated_at": "2026-11-20T14:06:10.898Z",
+    "updated_by": null
+  },
+  {
+    "id": "etapa-2",
+    "stevilka": 2,
+    "naziv": "Etapa 2",
+    "odsek": "Bršljin – Bučna vas",
+    "barva": "#84962c",
+    "opis": null,
+    "vidna": true,
+    "updated_at": "2026-11-20T14:06:10.993Z",
+    "updated_by": null
+  },
+  {
+    "id": "etapa-3",
+    "stevilka": 3,
+    "naziv": "Etapa 3",
+    "odsek": "Bučna vas – Ragovo",
+    "barva": "#2c9661",
+    "opis": null,
+    "vidna": true,
+    "updated_at": "2026-11-20T14:06:11.080Z",
+    "updated_by": null
+  },
+  {
+    "id": "etapa-4",
+    "stevilka": 4,
+    "naziv": "Etapa 4",
+    "odsek": "Ragovo – Žabja vas",
+    "barva": "#2c7c96",
+    "opis": null,
+    "vidna": true,
+    "updated_at": "2026-11-20T14:06:11.168Z",
+    "updated_by": null
+  },
+  {
+    "id": "etapa-5",
+    "stevilka": 5,
+    "naziv": "Etapa 5",
+    "odsek": "Žabja vas – Gotna vas",
+    "barva": "#2c4f96",
+    "opis": null,
+    "vidna": true,
+    "updated_at": "2026-11-20T14:06:11.257Z",
+    "updated_by": null
+  },
+  {
+    "id": "etapa-6",
+    "stevilka": 6,
+    "naziv": "Etapa 6",
+    "odsek": "Gotna vas – Šmihel",
+    "barva": "#582c96",
+    "opis": null,
+    "vidna": true,
+    "updated_at": "2026-11-20T14:06:11.345Z",
+    "updated_by": null
+  },
+  {
+    "id": "etapa-7",
+    "stevilka": 7,
+    "naziv": "Etapa 7",
+    "odsek": "Šmihel – Drska",
+    "barva": "#962c96",
+    "opis": null,
+    "vidna": true,
+    "updated_at": "2026-11-20T14:06:11.433Z",
+    "updated_by": null
+  },
+  {
+    "id": "etapa-8",
+    "stevilka": 8,
+    "naziv": "Etapa 8",
+    "odsek": "Drska – Loka",
+    "barva": "#836d26",
+    "opis": null,
+    "vidna": true,
+    "updated_at": "2026-11-20T14:06:11.520Z",
+    "updated_by": null
+  }
+]

@@ -1,10 +1,14 @@
 /**
- * Regenerates tocke.seed.json from the client's Excel master sheet.
+ * Compares the client's Excel master sheet with tocke.seed.json.
  *
- * `npm run import:xlsx`        — writes tocke.seed.json + tocke.seed.meta.json
- * `npm run import:xlsx:check`  — computes the same result but only prints a
- *                                 diff against the current tocke.seed.json;
- *                                 never writes. Exits 1 if anything would change.
+ * Since the Payload phase (PROMPT_ADMIN.md) the Excel is finished as a
+ * source: the database is the source of truth and tocke.seed.json is
+ * regenerated from it by scripts/export-seed.ts. This script therefore
+ * never writes any more — both commands only print the diff:
+ *
+ * `npm run import:xlsx`        — diff against the current tocke.seed.json
+ * `npm run import:xlsx:check`  — the same (kept for anything that calls it).
+ *                                 Exits 1 if anything differs.
  *
  * CLAUDE.md rule: tocke.seed.json is generated, not hand-edited. This
  * script and scripts/apply-koordinate.ts (register coordinates) are the
@@ -569,7 +573,9 @@ function diffTocke(oldList: Tocka[], newList: Tocka[]): string[] {
 // --- Main ----------------------------------------------------------------------
 
 function main() {
-  const checkOnly = process.argv.includes("--check");
+  // Always check-only now (see header). The write path at the end stays
+  // unreachable on purpose, as the record of how the seed used to be built.
+  const checkOnly = true;
   const filePath = findExcelFile();
   console.log(`Berem ${filePath.replace(ROOT + "/", "")} (list "${SHEET_NAME}")...`);
 
