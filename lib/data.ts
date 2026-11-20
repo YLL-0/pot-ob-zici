@@ -1,59 +1,118 @@
 /**
  * The ONLY place in the app allowed to fetch point/trail data. Components
- * must import from here, never call Supabase or read data/poti/ directly
- * (CLAUDE.md convention).
+ * must import from here, never call Payload, Supabase or read data/poti/
+ * directly (CLAUDE.md convention).
  *
- * getPoints() reads Supabase if NEXT_PUBLIC_SUPABASE_URL is set, otherwise
- * falls back to tocke.seed.json. A fresh clone with no .env must
- * `npm run dev` and show all 50 points — this fallback is what makes that
- * true, and it must never become a hard Supabase dependency.
+ * Points and stages come from Payload (published documents only) when the
+ * CMS is configured (lib/cms.ts: DATABASE_URI + PAYLOAD_SECRET), otherwise
+ * from tocke.seed.json / lib/etape.ts ETAPE_SEED. A fresh clone with no
+ * .env must `npm run dev` and show all 50 points — that fallback must
+ * never become a hard database dependency.
  *
- * Stages (etape) follow the same rule: Supabase `etape` if configured,
- * otherwise lib/etape.ts ETAPE_SEED. A point's `odsek` is always taken
- * from its stage on read (it is not stored in Supabase).
+ * Public pages are static and must not query the database per request: a
+ * free Supabase project pauses after a week without activity, and a QR
+ * plaque scanned in a quiet month must still open. So every database read
+ * here goes through Next's data cache with a tag ("tocke", "etape",
+ * "trase"); pages are prerendered from it and re-rendered only when an
+ * admin save invalidates the tag (cms/revalidacija.ts).
  *
- * Trails (poti) always come from data/poti/*.geojson regardless of
- * Supabase config — see README.md "Dodajanje prave GPX trase" for the
- * zero-code-change contract this loader honours. A stage trail's colour,
- * name and section are NOT taken from its file: they are joined from the
- * live stage (`etape.barva` is the single source of a stage's colour), so a
- * recolour in the admin reaches the line, the panel row and /pot/[slug].
+ * If the database can't be reached:
+ * - during `next build` or in development → the seed is used, with a
+ *   warning, so a paused database never fails a build;
+ * - in production at runtime (a re-render after a publish) → the error is
+ *   thrown, so Next keeps serving the last good page instead of replacing
+ *   edited content with the older seed.
+ *
+ * A point's `odsek` is always taken from its stage on read, `qr_url` from
+ * lib/qr.ts. Rich text (besedilo_poglobljeno) is returned as HTML.
+ *
+ * Trails (poti) always come from data/poti/*.geojson — see README.md
+ * "Dodajanje prave GPX trase" for the zero-code-change contract this
+ * loader honours. A stage trail's colour, name and section are NOT taken
+ * from its file: they are joined from the live stage (`etape.barva` is the
+ * single source of a stage's colour).
  */
 
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
+import { unstable_cache } from "next/cache";
 import seedData from "@/tocke.seed.json";
 import type { Etapa, Pot, Tocka } from "@/lib/types";
 import { getQrUrl } from "@/lib/qr";
 import { ETAPE_SEED, findEtapa, sortEtape } from "@/lib/etape";
-import { getSupabaseClient, isSupabaseConfigured } from "@/lib/supabase";
+import { isCmsConfigured } from "@/lib/cms";
+import { besediloVHtml, etapaIzDokumenta, tockaIzDokumenta, type LexicalDokument } from "@/lib/cmsMapiranje";
 import { sestaviObroc } from "@/lib/trase";
 import { getTraseRepo } from "@/lib/traseRepo";
 import type { Obroc } from "@/lib/trasaIzris";
+import { OZNAKE_PREDPOMNILNIKA } from "@/lib/cacheOznake";
 
 const POTI_DIR = join(process.cwd(), "data", "poti");
+
+
+// ---------------------------------------------------------------------------
+// Cache + fallback plumbing
+// ---------------------------------------------------------------------------
+
+/**
+ * Next's data cache, tagged. Outside Next (tsx scripts such as
+ * `npm run trase` / export-seed) there is no cache to use, so the loader
+ * runs directly.
+ */
+function predpomni<T>(nalozi: () => Promise<T>, kljuc: string, oznaka: string): () => Promise<T> {
+  if (!process.env.NEXT_RUNTIME) return nalozi;
+  return unstable_cache(nalozi, [kljuc], { tags: [oznaka] });
+}
+
+function smeUporabitiSeed(): boolean {
+  return process.env.NODE_ENV !== "production" || process.env.NEXT_PHASE === "phase-production-build";
+}
+
+/** Database first; on failure the seed (build/dev) or rethrow (production runtime). See header. */
+async function izBazeAliSeed<T>(ime: string, izBaze: () => Promise<T>, izSeeda: () => T): Promise<T> {
+  try {
+    return await izBaze();
+  } catch (err) {
+    if (!smeUporabitiSeed()) throw err;
+    const razlog = err instanceof Error ? err.message : String(err);
+    console.warn(`[data] ${ime}: baza ni dosegljiva, uporabljam tocke.seed.json / ETAPE_SEED. (${razlog})`);
+    return izSeeda();
+  }
+}
+
+/** Payload's Local API, loaded only when the CMS is configured (the no-.env path never imports Payload). */
+async function payload() {
+  const [{ getPayload }, { default: config }] = await Promise.all([import("payload"), import("@payload-config")]);
+  return getPayload({ config });
+}
 
 // ---------------------------------------------------------------------------
 // Stages (etape)
 // ---------------------------------------------------------------------------
 
-async function loadSupabaseEtape(): Promise<Etapa[]> {
-  const supabase = getSupabaseClient();
-  // RLS limits the anon client to `vidna = true`; filtered here as well so
-  // the public result doesn't depend on which client reads it.
-  const { data, error } = await supabase.from("etape").select("*").eq("vidna", true).order("stevilka");
-  if (error) {
-    throw new Error(`Napaka pri branju etap iz Supabase: ${error.message}`);
-  }
-  return (data ?? []) as Etapa[];
+function seedEtape(): Etapa[] {
+  return sortEtape(ETAPE_SEED.filter((e) => e.vidna));
 }
+
+/** Visible stages straight from the database, uncached. Also used by the admin's route recompute. */
+export async function naloziEtapeIzBaze(): Promise<Etapa[]> {
+  const { docs } = await (await payload()).find({
+    collection: "etape",
+    where: { vidna: { equals: true } },
+    sort: "stevilka",
+    depth: 0,
+    limit: 0,
+    pagination: false,
+  });
+  return docs.map(etapaIzDokumenta);
+}
+
+const etapeIzPredpomnilnika = predpomni(naloziEtapeIzBaze, "cms-etape", OZNAKE_PREDPOMNILNIKA.etape);
 
 /** Public, visible stages in display order (`stevilka`). */
 export async function getEtape(): Promise<Etapa[]> {
-  if (isSupabaseConfigured()) {
-    return loadSupabaseEtape();
-  }
-  return sortEtape(ETAPE_SEED.filter((e) => e.vidna));
+  if (!isCmsConfigured()) return seedEtape();
+  return izBazeAliSeed("etape", etapeIzPredpomnilnika, seedEtape);
 }
 
 export async function getEtapa(id: string): Promise<Etapa | null> {
@@ -117,30 +176,50 @@ function loadSeedPoints(): Tocka[] {
   return seedData;
 }
 
-async function loadSupabasePoints(): Promise<Tocka[]> {
-  const supabase = getSupabaseClient();
-  const { data, error } = await supabase.from("tocke").select("*").eq("status", "objavljeno");
+/**
+ * Published seed points, with besedilo_poglobljeno as HTML so both sources
+ * hand the page the same format. The public site only ever sees "objavljeno".
+ */
+function seedTocke(): Tocka[] {
+  return loadSeedPoints()
+    .filter((t) => t.status === "objavljeno")
+    .map((t) => ({ ...t, besedilo_poglobljeno: besediloVHtml(t.besedilo_poglobljeno) }));
+}
 
-  if (error) {
-    throw new Error(`Napaka pri branju točk iz Supabase: ${error.message}`);
-  }
-  return (data ?? []) as Tocka[];
+async function lexicalVHtml() {
+  const { convertLexicalToHTML } = await import("@payloadcms/richtext-lexical/html");
+  return (doc: LexicalDokument | null | undefined) =>
+    doc ? convertLexicalToHTML({ data: doc as Parameters<typeof convertLexicalToHTML>[0]["data"], disableContainer: true }) || null : null;
 }
 
 /**
- * All points. Public site only ever sees status "objavljeno" — filtered
- * here in the seed path too, so demo behaviour matches production
- * behaviour from day one (today this filters out nothing: all 50 seed
- * rows are already "objavljeno").
- *
- * A point whose stage is hidden (or missing) is still returned — it shows
- * on the map like a point with no stage, just not as part of any route.
+ * Published points straight from the database, uncached. `draft: false`
+ * reads the published version even when a newer draft exists. Also used by
+ * the admin's route recompute, which must see a save immediately.
+ */
+export async function naloziTockeIzBaze(): Promise<Tocka[]> {
+  const [p, vHtml] = await Promise.all([payload(), lexicalVHtml()]);
+  const { docs } = await p.find({
+    collection: "tocke",
+    where: { _status: { equals: "published" } },
+    draft: false,
+    depth: 1,
+    limit: 0,
+    pagination: false,
+  });
+  return docs.map((d) => tockaIzDokumenta(d, vHtml));
+}
+
+const tockeIzPredpomnilnika = predpomni(naloziTockeIzBaze, "cms-tocke", OZNAKE_PREDPOMNILNIKA.tocke);
+
+/**
+ * All published points. A point whose stage is hidden (or missing) is
+ * still returned — it shows on the map like a point with no stage, just
+ * not as part of any route.
  */
 export async function getPoints(): Promise<Tocka[]> {
   const [raw, etape] = await Promise.all([
-    isSupabaseConfigured()
-      ? loadSupabasePoints()
-      : Promise.resolve(loadSeedPoints().filter((t) => t.status === "objavljeno")),
+    isCmsConfigured() ? izBazeAliSeed("tocke", tockeIzPredpomnilnika, seedTocke) : Promise.resolve(seedTocke()),
     getEtape(),
   ]);
   return raw.map((t) => withDerivedFields(t, etape)).sort(compareByEtapaZaporedje(etape));
@@ -155,6 +234,16 @@ export async function getPointById(id: string): Promise<Tocka | null> {
   const points = await getPoints();
   const normalized = id.toUpperCase();
   return points.find((p) => p.id.toUpperCase() === normalized) ?? null;
+}
+
+/**
+ * The point ID a slug belonged to in tocke.seed.json. QR plaques redirect
+ * through the seed (proxy.ts) without touching the database, so if an
+ * editor renamed a slug since the last seed export, the old slug must
+ * still lead to the point — the point page uses this to redirect.
+ */
+export function getSeedIdZaSlug(slug: string): string | null {
+  return loadSeedPoints().find((t) => t.slug === slug)?.id ?? null;
 }
 
 // ---------------------------------------------------------------------------
@@ -235,16 +324,24 @@ export async function getPoti(): Promise<Pot[]> {
   });
 }
 
+const traseIzPredpomnilnika = predpomni(() => getTraseRepo().vse(), "trase", OZNAKE_PREDPOMNILNIKA.trase);
+
 /**
  * The stage ring the map draws: cached routes where current, the schematic
  * fallback elsewhere (lib/trase.ts sestaviObroc). Reads the route cache
- * only — never triggers a routing call. Storage precedence in
- * lib/traseRepo.ts: Supabase, else committed data/trase/ files; with
- * neither it is entirely schematic.
+ * only — never triggers a routing call. Storage in lib/traseRepo.ts:
+ * Supabase rows, with committed data/trase/ files for blocks not in the
+ * database; with neither it is entirely schematic.
  */
 export async function getObroc(): Promise<Obroc> {
-  const [etape, points, poti, vrstice] = await Promise.all([getEtape(), getPoints(), getPoti(), getTraseRepo().vse()]);
-  return sestaviObroc(etape, points, vrstice, poti);
+  const vrstice = traseIzPredpomnilnika().catch((err: unknown) => {
+    // Routes are an enhancement: without them every stage is drawn schematically.
+    if (!smeUporabitiSeed()) throw err;
+    console.warn(`[data] trase: ni mogoče prebrati, rišem shematsko. (${err instanceof Error ? err.message : err})`);
+    return [];
+  });
+  const [etape, points, poti, vrsticeTras] = await Promise.all([getEtape(), getPoints(), getPoti(), vrstice]);
+  return sestaviObroc(etape, points, vrsticeTras, poti);
 }
 
 export async function getPot(slug: string): Promise<Pot | null> {

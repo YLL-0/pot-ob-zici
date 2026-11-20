@@ -13,7 +13,11 @@ import Nadnaslov from "@/components/Nadnaslov";
 import Obvestilo from "@/components/Obvestilo";
 import { besediloNaBarvi, stevnikObelezij } from "@/lib/etape";
 
-export const dynamic = "force-dynamic";
+/** Static per trail; a stage added later renders on first visit (dynamicParams). */
+export async function generateStaticParams() {
+  const poti = await getPoti();
+  return poti.map((p) => ({ slug: p.slug }));
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;

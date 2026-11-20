@@ -13,6 +13,7 @@ import {
   ZGODBA_MOZNOSTI,
 } from "@/cms/moznosti";
 import { slugify } from "@/lib/slug";
+import { osveziPoIzbrisuTocke, osveziPoSpremembiTocke } from "@/cms/revalidacija";
 
 const ID_TOCKE = /^NMZ-\d{3}$/;
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -91,6 +92,8 @@ export const Tocke: CollectionConfig = {
   },
   hooks: {
     beforeValidate: [zavrniNeznanePravice],
+    afterChange: [osveziPoSpremembiTocke],
+    afterDelete: [osveziPoIzbrisuTocke],
   },
   fields: [
     {

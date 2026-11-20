@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { getEtape, getPoint, getPoints } from "@/lib/data";
+import { getEtape, getPoint, getPointById, getPoints, getSeedIdZaSlug } from "@/lib/data";
 import { getPrevNextVEtapi } from "@/lib/navigacija";
 import { VRSTA_LABELS } from "@/lib/vrsta";
 import { ZGODBA_LABELS } from "@/lib/zgodbe";
@@ -14,7 +14,11 @@ import SiteHeader from "@/components/SiteHeader";
 import Nadnaslov from "@/components/Nadnaslov";
 import Obvestilo from "@/components/Obvestilo";
 
-export const dynamic = "force-dynamic";
+/** Static per point; one published later renders on first visit (dynamicParams). */
+export async function generateStaticParams() {
+  const points = await getPoints();
+  return points.map((t) => ({ slug: t.slug }));
+}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -38,10 +42,18 @@ function isDemo(text: string | null): boolean {
 export default async function TockaPage({ params }: PageProps) {
   const { slug } = await params;
   const [tocka, vseTocke, etape] = await Promise.all([getPoint(slug), getPoints(), getEtape()]);
-  if (!tocka) notFound();
+  if (!tocka) {
+    // A slug renamed in the admin since the last seed export: QR plaques
+    // (proxy.ts) still send visitors to the old one.
+    const seedId = getSeedIdZaSlug(slug);
+    const premaknjena = seedId ? await getPointById(seedId) : null;
+    if (premaknjena && premaknjena.slug !== slug) permanentRedirect(`/tocka/${premaknjena.slug}`);
+    notFound();
+  }
 
   const { prev, next } = getPrevNextVEtapi(tocka, vseTocke);
   const etapa = findEtapa(etape, tocka.etapa);
+  const naslovna = tocka.foto[0] ?? null;
   const barva = getEtapaBarva(etape, tocka.etapa);
 
   const jsonLd = {
@@ -89,9 +101,23 @@ export default async function TockaPage({ params }: PageProps) {
         </div>
       </header>
 
-      <div className="h-56 overflow-hidden rounded-xl sm:h-80">
-        <FotoPlaceholder tocka={tocka} />
-      </div>
+      {naslovna ? (
+        <figure className="space-y-2">
+          <div className="h-56 overflow-hidden rounded-xl bg-tonirano sm:h-80">
+            {/* Plain img: photos are already resized (Media "naslovna") and served from storage. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={naslovna.url} alt={naslovna.opis ?? ""} className="h-full w-full object-cover" />
+          </div>
+          <figcaption className="text-sm text-crnilo-mehko">
+            {naslovna.opis}
+            {naslovna.avtor_vir && <> · Vir: {naslovna.avtor_vir}</>}
+          </figcaption>
+        </figure>
+      ) : (
+        <div className="h-56 overflow-hidden rounded-xl sm:h-80">
+          <FotoPlaceholder tocka={tocka} />
+        </div>
+      )}
 
 
       {/* Content */}
@@ -109,7 +135,11 @@ export default async function TockaPage({ params }: PageProps) {
                 <summary className="cursor-pointer font-heading text-base font-semibold">
                   Poglobljeno besedilo
                 </summary>
-                <div className="mt-3 space-y-2 text-base whitespace-pre-line">{tocka.besedilo_poglobljeno}</div>
+                {/* HTML from lib/data.ts: Payload's Lexical converter, or escaped seed text. */}
+                <div
+                  className="mt-3 space-y-[1lh] text-base [&_a]:text-poudarek [&_a]:underline"
+                  dangerouslySetInnerHTML={{ __html: tocka.besedilo_poglobljeno }}
+                />
               </details>
             )}
           </>

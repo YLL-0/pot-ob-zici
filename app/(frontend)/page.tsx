@@ -2,11 +2,9 @@ import { Suspense } from "react";
 import { getEtape, getObroc, getPoints, getPoti } from "@/lib/data";
 import MapExperience from "@/components/MapExperience";
 
-// Once Supabase is connected, getPoints()/getPoti() must read current data
-// on every request — an admin publishing a point (Phase 4) must show up
-// without a redeploy. Force dynamic rendering rather than letting Next
-// statically prerender this route at build time.
-export const dynamic = "force-dynamic";
+// Static: prerendered from lib/data.ts's cached reads and re-rendered when
+// an admin save expires them (cms/revalidacija.ts) — no database query per
+// visit, so a paused database never takes the map down.
 
 /**
  * The map IS the homepage — full-screen map, side panel, no page scroll.

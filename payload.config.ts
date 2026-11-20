@@ -29,6 +29,16 @@ import { isMediaStorageConfigured } from "@/lib/cms";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
+/**
+ * Public object URL of the bucket. Supabase's S3 endpoint is
+ * https://<ref>.storage.supabase.co/storage/v1/s3; public objects are
+ * served from the same host under /storage/v1/object/public/<bucket>.
+ */
+function javniUrlShrambe(): string {
+  const endpoint = (process.env.S3_ENDPOINT || "").replace(/\/+$/, "");
+  return `${endpoint.replace(/\/s3$/, "/object/public")}/${process.env.S3_BUCKET}`;
+}
+
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || undefined,
   secret: process.env.PAYLOAD_SECRET || "",
@@ -45,7 +55,8 @@ export default buildConfig({
   collections: [Tocke, Etape, Media, Users],
   editor: lexicalEditor(),
   db: postgresAdapter({
-    pool: { connectionString: process.env.DATABASE_URI || "" },
+    // A paused Supabase project must fail fast (build falls back to the seed), not hang.
+    pool: { connectionString: process.env.DATABASE_URI || "", connectionTimeoutMillis: 15_000 },
     schemaName: "payload",
     push: false,
     migrationDir: path.resolve(dirname, "migrations"),
@@ -56,7 +67,15 @@ export default buildConfig({
   plugins: isMediaStorageConfigured()
     ? [
         s3Storage({
-          collections: { media: true },
+          // Photos are served straight from the public bucket, never through
+          // Payload: a static page must not need the database to show them.
+          collections: {
+            media: {
+              disablePayloadAccessControl: true,
+              generateFileURL: ({ filename, prefix }) =>
+                `${javniUrlShrambe()}/${[prefix, filename].filter(Boolean).join("/")}`,
+            },
+          },
           bucket: process.env.S3_BUCKET!,
           config: {
             endpoint: process.env.S3_ENDPOINT!,

@@ -1,6 +1,7 @@
 import type { CollectionConfig } from "payload";
 import { APIError } from "payload";
 import { jePrijavljen, samoAdmin } from "@/cms/access";
+import { osveziPoIzbrisuEtape, osveziPoSpremembiEtape } from "@/cms/revalidacija";
 
 const HEX = /^#[0-9a-f]{6}$/i;
 const ID_ETAPE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -27,6 +28,8 @@ export const Etape: CollectionConfig = {
     delete: samoAdmin,
   },
   hooks: {
+    afterChange: [osveziPoSpremembiEtape],
+    afterDelete: [osveziPoIzbrisuEtape],
     beforeDelete: [
       async ({ req, id }) => {
         // Include drafts: a draft point still belongs to the stage.
