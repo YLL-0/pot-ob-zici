@@ -27,6 +27,7 @@ import { Tocke } from "@/cms/collections/Tocke";
 import { Users } from "@/cms/collections/Users";
 import { isMediaStorageConfigured } from "@/lib/cms";
 import { preracunajTraseEndpoint } from "@/cms/trase";
+import { vrstniRedEtapEndpoint } from "@/cms/vrstniRedEtap";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -64,7 +65,7 @@ export default buildConfig({
     fallbackLanguage: "sl",
   },
   collections: [Tocke, Etape, Media, Users],
-  endpoints: [preracunajTraseEndpoint],
+  endpoints: [preracunajTraseEndpoint, vrstniRedEtapEndpoint],
   editor: lexicalEditor(),
   db: postgresAdapter({
     // A paused Supabase project must fail fast (build falls back to the seed), not hang.

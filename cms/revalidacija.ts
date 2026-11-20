@@ -60,7 +60,9 @@ export const osveziPoIzbrisuTocke: CollectionAfterDeleteHook = ({ doc, req }) =>
 };
 
 /** A stage's colour, name or visibility shows on every page, so the tag covers them all. */
-export const osveziPoSpremembiEtape: CollectionAfterChangeHook = ({ doc, req }) => {
+export const osveziPoSpremembiEtape: CollectionAfterChangeHook = ({ doc, req, context }) => {
+  // Reordering updates every stage twice; it revalidates once at the end instead.
+  if (context?.brezOsvezitve) return doc;
   osvezi(req, [OZNAKE_PREDPOMNILNIKA.etape], ["/", "/sitemap.xml", `/pot/${(doc as { id: string }).id}`]);
   return doc;
 };
@@ -75,6 +77,11 @@ export const osveziPoSpremembiFotografije: CollectionAfterChangeHook = ({ doc, r
   osvezi(req, [OZNAKE_PREDPOMNILNIKA.tocke], []);
   return doc;
 };
+
+/** After a stage reorder (cms/vrstniRedEtap.ts): every stage page and the map. */
+export function osveziPoPreurejanjuEtap(req: PayloadRequest, ids: string[]): void {
+  osvezi(req, [OZNAKE_PREDPOMNILNIKA.etape], ["/", "/sitemap.xml", ...ids.map((id) => `/pot/${id}`)]);
+}
 
 /** After a route recompute (cms/trase). */
 export function osveziTrase(req: PayloadRequest): void {

@@ -18,6 +18,9 @@ export const Etape: CollectionConfig = {
     useAsTitle: "naziv",
     defaultColumns: ["stevilka", "naziv", "odsek", "barva", "vidna"],
     group: "Vsebina",
+    components: {
+      beforeList: ["/cms/components/VrstniRedEtap#VrstniRedEtap"],
+    },
   },
   defaultSort: "stevilka",
   access: {
@@ -70,12 +73,33 @@ export const Etape: CollectionConfig = {
         "ID sme vsebovati samo male črke brez šumnikov, številke in vezaje (npr. »etapa-9«).",
     },
     {
+      // Changed only through »Vrstni red etap« above the stage list
+      // (cms/vrstniRedEtap.ts) — never typed, so two stages can't collide.
       name: "stevilka",
       type: "number",
       label: "Številka (vrstni red)",
       required: true,
       unique: true,
       min: 1,
+      admin: {
+        readOnly: true,
+        description: "Nova etapa dobi naslednjo prosto številko. Vrstni red spremeniš na seznamu etap (»Vrstni red etap«).",
+      },
+      hooks: {
+        beforeValidate: [
+          async ({ value, operation, req }) => {
+            if (operation !== "create" || typeof value === "number") return value;
+            const { docs } = await req.payload.find({
+              collection: "etape",
+              sort: "-stevilka",
+              limit: 1,
+              depth: 0,
+              req,
+            });
+            return (docs[0]?.stevilka ?? 0) + 1;
+          },
+        ],
+      },
     },
     { name: "naziv", type: "text", label: "Naziv", required: true },
     { name: "odsek", type: "text", label: "Odsek", admin: { description: "Npr. »Šmihel – Drska«." } },
@@ -84,7 +108,7 @@ export const Etape: CollectionConfig = {
       type: "text",
       label: "Barva",
       required: true,
-      admin: { description: "Barva oznak, črte in vrstice etape, v obliki #rrggbb." },
+      admin: { components: { Field: "/cms/components/BarvaEtapePolje#BarvaEtapePolje" } },
       validate: (value: string | null | undefined) =>
         (typeof value === "string" && HEX.test(value)) || "Barva mora biti v obliki #rrggbb, npr. #2c7c96.",
     },
