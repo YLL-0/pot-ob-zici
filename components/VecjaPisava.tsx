@@ -7,7 +7,7 @@ import { setVecjaPisava } from "@/lib/progress";
 const ATRIBUT = "data-vecja-pisava";
 
 /**
- * The <html> attribute is the live state: the init script in app/layout.tsx
+ * The <html> attribute is the live state: the init script in app/(frontend)/layout.tsx
  * sets it from the saved preference before paint, and the toggle below
  * flips it. Reading it (instead of copying it into React state) keeps the
  * button and the page in step without a setState-in-effect.

@@ -12,7 +12,7 @@
  * trails with. supabase/migrations/0002_etape_trase.sql inserts the same
  * eight rows once; after that Supabase is the source of truth.
  *
- * The UI accent (app/globals.css --color-poudarek) is a very dark green,
+ * The UI accent (app/(frontend)/globals.css --color-poudarek) is a very dark green,
  * used for emphasis only; stage colours are mid-tone and never that dark,
  * so a stage chip never reads as the accent.
  */

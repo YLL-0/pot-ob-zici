@@ -2,7 +2,7 @@
 
 /**
  * Design-token colours for MapLibre paint properties. MapLibre can't read
- * CSS variables, so the map resolves them once from app/globals.css at
+ * CSS variables, so the map resolves them once from app/(frontend)/globals.css at
  * runtime instead of keeping its own hex copies (CLAUDE.md: no arbitrary
  * hex values in components). `@theme static` there guarantees every token
  * is emitted, used by a class or not.
