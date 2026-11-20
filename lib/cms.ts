@@ -19,3 +19,8 @@ export function isMediaStorageConfigured(): boolean {
       process.env.S3_SECRET_ACCESS_KEY,
   );
 }
+
+/** Resend for admin email (password reset, invitations) — cms/email.ts. */
+export function isEmailConfigured(): boolean {
+  return Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM);
+}

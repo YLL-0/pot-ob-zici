@@ -25,7 +25,8 @@ import { Etape } from "@/cms/collections/Etape";
 import { Media } from "@/cms/collections/Media";
 import { Tocke } from "@/cms/collections/Tocke";
 import { Users } from "@/cms/collections/Users";
-import { isMediaStorageConfigured } from "@/lib/cms";
+import { isEmailConfigured, isMediaStorageConfigured } from "@/lib/cms";
+import { PRIVZETO_IME_POSILJATELJA, resendAdapter } from "@/cms/email";
 import { preracunajTraseEndpoint } from "@/cms/trase";
 import { vrstniRedEtapEndpoint } from "@/cms/vrstniRedEtap";
 
@@ -67,6 +68,14 @@ export default buildConfig({
   collections: [Tocke, Etape, Media, Users],
   endpoints: [preracunajTraseEndpoint, vrstniRedEtapEndpoint],
   editor: lexicalEditor(),
+  // Password reset + invitations (cms/email.ts). Without it Payload only logs emails to the console.
+  email: isEmailConfigured()
+    ? resendAdapter({
+        apiKey: process.env.RESEND_API_KEY!,
+        posiljatelj: process.env.EMAIL_FROM!,
+        imePosiljatelja: process.env.EMAIL_FROM_NAME || PRIVZETO_IME_POSILJATELJA,
+      })
+    : undefined,
   db: postgresAdapter({
     // A paused Supabase project must fail fast (build falls back to the seed), not hang.
     pool: { connectionString: process.env.DATABASE_URI || "", connectionTimeoutMillis: 15_000 },
