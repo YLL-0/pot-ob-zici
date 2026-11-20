@@ -1,0 +1,2955 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "payload.tocke_zgodbe_predlog": {
+      "name": "tocke_zgodbe_predlog",
+      "schema": "payload",
+      "columns": {
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "enum_tocke_zgodbe_predlog",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "tocke_zgodbe_predlog_order_idx": {
+          "name": "tocke_zgodbe_predlog_order_idx",
+          "columns": [
+            {
+              "expression": "order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tocke_zgodbe_predlog_parent_idx": {
+          "name": "tocke_zgodbe_predlog_parent_idx",
+          "columns": [
+            {
+              "expression": "parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "tocke_zgodbe_predlog_parent_fk": {
+          "name": "tocke_zgodbe_predlog_parent_fk",
+          "tableFrom": "tocke_zgodbe_predlog",
+          "tableTo": "tocke",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.tocke_viri": {
+      "name": "tocke_viri",
+      "schema": "payload",
+      "columns": {
+        "_order": {
+          "name": "_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_parent_id": {
+          "name": "_parent_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "url": {
+          "name": "url",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "tocke_viri_order_idx": {
+          "name": "tocke_viri_order_idx",
+          "columns": [
+            {
+              "expression": "_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tocke_viri_parent_id_idx": {
+          "name": "tocke_viri_parent_id_idx",
+          "columns": [
+            {
+              "expression": "_parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "tocke_viri_parent_id_fk": {
+          "name": "tocke_viri_parent_id_fk",
+          "tableFrom": "tocke_viri",
+          "tableTo": "tocke",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "_parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.tocke": {
+      "name": "tocke",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "naziv": {
+          "name": "naziv",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "obmocje": {
+          "name": "obmocje",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vrsta": {
+          "name": "vrsta",
+          "type": "enum_tocke_vrsta",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vrsta_raw": {
+          "name": "vrsta_raw",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "esd": {
+          "name": "esd",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "esd_status": {
+          "name": "esd_status",
+          "type": "enum_tocke_esd_status",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'za-preverjanje'"
+        },
+        "iztocnica": {
+          "name": "iztocnica",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "kljucna_tema": {
+          "name": "kljucna_tema",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vkljucitev": {
+          "name": "vkljucitev",
+          "type": "enum_tocke_vkljucitev",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lat": {
+          "name": "lat",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lon": {
+          "name": "lon",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gps_zanesljivost": {
+          "name": "gps_zanesljivost",
+          "type": "enum_tocke_gps_zanesljivost",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'priblizek'"
+        },
+        "gps_vir": {
+          "name": "gps_vir",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gps_vir_id": {
+          "name": "gps_vir_id",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gps_vir_url": {
+          "name": "gps_vir_url",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gps_opomba": {
+          "name": "gps_opomba",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "etapa_id": {
+          "name": "etapa_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "zaporedje": {
+          "name": "zaporedje",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "besedilo_kratko": {
+          "name": "besedilo_kratko",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "besedilo_poglobljeno": {
+          "name": "besedilo_poglobljeno",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "v_pregledu": {
+          "name": "v_pregledu",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "status_izvedbe": {
+          "name": "status_izvedbe",
+          "type": "enum_tocke_status_izvedbe",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'predlog-preveriti'"
+        },
+        "odgovorna_oseba": {
+          "name": "odgovorna_oseba",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rok": {
+          "name": "rok",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "napredek": {
+          "name": "napredek",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "opombe": {
+          "name": "opombe",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "foto_pravice_status": {
+          "name": "foto_pravice_status",
+          "type": "enum_tocke_foto_pravice_status",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'ni-zaceto'"
+        },
+        "qr_generiran": {
+          "name": "qr_generiran",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "qr_tablica_namescena": {
+          "name": "qr_tablica_namescena",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "dovoljenje_qr": {
+          "name": "dovoljenje_qr",
+          "type": "enum_tocke_dovoljenje_qr",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'za-preverjanje'"
+        },
+        "strokovna_verifikacija": {
+          "name": "strokovna_verifikacija",
+          "type": "enum_tocke_strokovna_verifikacija",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'za-preverjanje'"
+        },
+        "kviz": {
+          "name": "kviz",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "_status": {
+          "name": "_status",
+          "type": "enum_tocke_status",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'draft'"
+        }
+      },
+      "indexes": {
+        "tocke_slug_idx": {
+          "name": "tocke_slug_idx",
+          "columns": [
+            {
+              "expression": "slug",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tocke_etapa_idx": {
+          "name": "tocke_etapa_idx",
+          "columns": [
+            {
+              "expression": "etapa_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tocke_updated_at_idx": {
+          "name": "tocke_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tocke_created_at_idx": {
+          "name": "tocke_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tocke__status_idx": {
+          "name": "tocke__status_idx",
+          "columns": [
+            {
+              "expression": "_status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "tocke_etapa_id_etape_id_fk": {
+          "name": "tocke_etapa_id_etape_id_fk",
+          "tableFrom": "tocke",
+          "tableTo": "etape",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "etapa_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.tocke_rels": {
+      "name": "tocke_rels",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "path": {
+          "name": "path",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "media_id": {
+          "name": "media_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "tocke_rels_order_idx": {
+          "name": "tocke_rels_order_idx",
+          "columns": [
+            {
+              "expression": "order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tocke_rels_parent_idx": {
+          "name": "tocke_rels_parent_idx",
+          "columns": [
+            {
+              "expression": "parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tocke_rels_path_idx": {
+          "name": "tocke_rels_path_idx",
+          "columns": [
+            {
+              "expression": "path",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "tocke_rels_media_id_idx": {
+          "name": "tocke_rels_media_id_idx",
+          "columns": [
+            {
+              "expression": "media_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "tocke_rels_parent_fk": {
+          "name": "tocke_rels_parent_fk",
+          "tableFrom": "tocke_rels",
+          "tableTo": "tocke",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "tocke_rels_media_fk": {
+          "name": "tocke_rels_media_fk",
+          "tableFrom": "tocke_rels",
+          "tableTo": "media",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload._tocke_v_version_zgodbe_predlog": {
+      "name": "_tocke_v_version_zgodbe_predlog",
+      "schema": "payload",
+      "columns": {
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "enum__tocke_v_version_zgodbe_predlog",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "_tocke_v_version_zgodbe_predlog_order_idx": {
+          "name": "_tocke_v_version_zgodbe_predlog_order_idx",
+          "columns": [
+            {
+              "expression": "order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_version_zgodbe_predlog_parent_idx": {
+          "name": "_tocke_v_version_zgodbe_predlog_parent_idx",
+          "columns": [
+            {
+              "expression": "parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "_tocke_v_version_zgodbe_predlog_parent_fk": {
+          "name": "_tocke_v_version_zgodbe_predlog_parent_fk",
+          "tableFrom": "_tocke_v_version_zgodbe_predlog",
+          "tableTo": "_tocke_v",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload._tocke_v_version_viri": {
+      "name": "_tocke_v_version_viri",
+      "schema": "payload",
+      "columns": {
+        "_order": {
+          "name": "_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_parent_id": {
+          "name": "_parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "url": {
+          "name": "url",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "_uuid": {
+          "name": "_uuid",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "_tocke_v_version_viri_order_idx": {
+          "name": "_tocke_v_version_viri_order_idx",
+          "columns": [
+            {
+              "expression": "_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_version_viri_parent_id_idx": {
+          "name": "_tocke_v_version_viri_parent_id_idx",
+          "columns": [
+            {
+              "expression": "_parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "_tocke_v_version_viri_parent_id_fk": {
+          "name": "_tocke_v_version_viri_parent_id_fk",
+          "tableFrom": "_tocke_v_version_viri",
+          "tableTo": "_tocke_v",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "_parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload._tocke_v": {
+      "name": "_tocke_v",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_naziv": {
+          "name": "version_naziv",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_slug": {
+          "name": "version_slug",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_obmocje": {
+          "name": "version_obmocje",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_vrsta": {
+          "name": "version_vrsta",
+          "type": "enum__tocke_v_version_vrsta",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_vrsta_raw": {
+          "name": "version_vrsta_raw",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_esd": {
+          "name": "version_esd",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_esd_status": {
+          "name": "version_esd_status",
+          "type": "enum__tocke_v_version_esd_status",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'za-preverjanje'"
+        },
+        "version_iztocnica": {
+          "name": "version_iztocnica",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_kljucna_tema": {
+          "name": "version_kljucna_tema",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_vkljucitev": {
+          "name": "version_vkljucitev",
+          "type": "enum__tocke_v_version_vkljucitev",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_lat": {
+          "name": "version_lat",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_lon": {
+          "name": "version_lon",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_gps_zanesljivost": {
+          "name": "version_gps_zanesljivost",
+          "type": "enum__tocke_v_version_gps_zanesljivost",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'priblizek'"
+        },
+        "version_gps_vir": {
+          "name": "version_gps_vir",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_gps_vir_id": {
+          "name": "version_gps_vir_id",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_gps_vir_url": {
+          "name": "version_gps_vir_url",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_gps_opomba": {
+          "name": "version_gps_opomba",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_etapa_id": {
+          "name": "version_etapa_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_zaporedje": {
+          "name": "version_zaporedje",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_besedilo_kratko": {
+          "name": "version_besedilo_kratko",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_besedilo_poglobljeno": {
+          "name": "version_besedilo_poglobljeno",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_v_pregledu": {
+          "name": "version_v_pregledu",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "version_status_izvedbe": {
+          "name": "version_status_izvedbe",
+          "type": "enum__tocke_v_version_status_izvedbe",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'predlog-preveriti'"
+        },
+        "version_odgovorna_oseba": {
+          "name": "version_odgovorna_oseba",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_rok": {
+          "name": "version_rok",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_napredek": {
+          "name": "version_napredek",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_opombe": {
+          "name": "version_opombe",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_foto_pravice_status": {
+          "name": "version_foto_pravice_status",
+          "type": "enum__tocke_v_version_foto_pravice_status",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'ni-zaceto'"
+        },
+        "version_qr_generiran": {
+          "name": "version_qr_generiran",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "version_qr_tablica_namescena": {
+          "name": "version_qr_tablica_namescena",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "version_dovoljenje_qr": {
+          "name": "version_dovoljenje_qr",
+          "type": "enum__tocke_v_version_dovoljenje_qr",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'za-preverjanje'"
+        },
+        "version_strokovna_verifikacija": {
+          "name": "version_strokovna_verifikacija",
+          "type": "enum__tocke_v_version_strokovna_verifikacija",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'za-preverjanje'"
+        },
+        "version_kviz": {
+          "name": "version_kviz",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_updated_at": {
+          "name": "version_updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version_created_at": {
+          "name": "version_created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "version__status": {
+          "name": "version__status",
+          "type": "enum__tocke_v_version_status",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'draft'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "latest": {
+          "name": "latest",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "_tocke_v_parent_idx": {
+          "name": "_tocke_v_parent_idx",
+          "columns": [
+            {
+              "expression": "parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_version_version_slug_idx": {
+          "name": "_tocke_v_version_version_slug_idx",
+          "columns": [
+            {
+              "expression": "version_slug",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_version_version_etapa_idx": {
+          "name": "_tocke_v_version_version_etapa_idx",
+          "columns": [
+            {
+              "expression": "version_etapa_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_version_version_updated_at_idx": {
+          "name": "_tocke_v_version_version_updated_at_idx",
+          "columns": [
+            {
+              "expression": "version_updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_version_version_created_at_idx": {
+          "name": "_tocke_v_version_version_created_at_idx",
+          "columns": [
+            {
+              "expression": "version_created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_version_version__status_idx": {
+          "name": "_tocke_v_version_version__status_idx",
+          "columns": [
+            {
+              "expression": "version__status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_created_at_idx": {
+          "name": "_tocke_v_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_updated_at_idx": {
+          "name": "_tocke_v_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_latest_idx": {
+          "name": "_tocke_v_latest_idx",
+          "columns": [
+            {
+              "expression": "latest",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "_tocke_v_parent_id_tocke_id_fk": {
+          "name": "_tocke_v_parent_id_tocke_id_fk",
+          "tableFrom": "_tocke_v",
+          "tableTo": "tocke",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "_tocke_v_version_etapa_id_etape_id_fk": {
+          "name": "_tocke_v_version_etapa_id_etape_id_fk",
+          "tableFrom": "_tocke_v",
+          "tableTo": "etape",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "version_etapa_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload._tocke_v_rels": {
+      "name": "_tocke_v_rels",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "path": {
+          "name": "path",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "media_id": {
+          "name": "media_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "_tocke_v_rels_order_idx": {
+          "name": "_tocke_v_rels_order_idx",
+          "columns": [
+            {
+              "expression": "order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_rels_parent_idx": {
+          "name": "_tocke_v_rels_parent_idx",
+          "columns": [
+            {
+              "expression": "parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_rels_path_idx": {
+          "name": "_tocke_v_rels_path_idx",
+          "columns": [
+            {
+              "expression": "path",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "_tocke_v_rels_media_id_idx": {
+          "name": "_tocke_v_rels_media_id_idx",
+          "columns": [
+            {
+              "expression": "media_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "_tocke_v_rels_parent_fk": {
+          "name": "_tocke_v_rels_parent_fk",
+          "tableFrom": "_tocke_v_rels",
+          "tableTo": "_tocke_v",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "_tocke_v_rels_media_fk": {
+          "name": "_tocke_v_rels_media_fk",
+          "tableFrom": "_tocke_v_rels",
+          "tableTo": "media",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.etape": {
+      "name": "etape",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "stevilka": {
+          "name": "stevilka",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "naziv": {
+          "name": "naziv",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "odsek": {
+          "name": "odsek",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "barva": {
+          "name": "barva",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "opis": {
+          "name": "opis",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vidna": {
+          "name": "vidna",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "etape_stevilka_idx": {
+          "name": "etape_stevilka_idx",
+          "columns": [
+            {
+              "expression": "stevilka",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "etape_updated_at_idx": {
+          "name": "etape_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "etape_created_at_idx": {
+          "name": "etape_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.media": {
+      "name": "media",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "podnapis": {
+          "name": "podnapis",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "avtor_vir": {
+          "name": "avtor_vir",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pravice": {
+          "name": "pravice",
+          "type": "enum_media_pravice",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tip": {
+          "name": "tip",
+          "type": "enum_media_tip",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'danes'"
+        },
+        "_objectkey": {
+          "name": "_objectkey",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "url": {
+          "name": "url",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "thumbnail_u_r_l": {
+          "name": "thumbnail_u_r_l",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "filename": {
+          "name": "filename",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mime_type": {
+          "name": "mime_type",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "filesize": {
+          "name": "filesize",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "width": {
+          "name": "width",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "height": {
+          "name": "height",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "focal_x": {
+          "name": "focal_x",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "focal_y": {
+          "name": "focal_y",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_kartica_url": {
+          "name": "sizes_kartica_url",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_kartica_width": {
+          "name": "sizes_kartica_width",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_kartica_height": {
+          "name": "sizes_kartica_height",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_kartica_mime_type": {
+          "name": "sizes_kartica_mime_type",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_kartica_filesize": {
+          "name": "sizes_kartica_filesize",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_kartica_filename": {
+          "name": "sizes_kartica_filename",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_naslovna_url": {
+          "name": "sizes_naslovna_url",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_naslovna_width": {
+          "name": "sizes_naslovna_width",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_naslovna_height": {
+          "name": "sizes_naslovna_height",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_naslovna_mime_type": {
+          "name": "sizes_naslovna_mime_type",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_naslovna_filesize": {
+          "name": "sizes_naslovna_filesize",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sizes_naslovna_filename": {
+          "name": "sizes_naslovna_filename",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "media_updated_at_idx": {
+          "name": "media_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "media_created_at_idx": {
+          "name": "media_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "media_filename_idx": {
+          "name": "media_filename_idx",
+          "columns": [
+            {
+              "expression": "filename",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "media_sizes_kartica_sizes_kartica_filename_idx": {
+          "name": "media_sizes_kartica_sizes_kartica_filename_idx",
+          "columns": [
+            {
+              "expression": "sizes_kartica_filename",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "media_sizes_naslovna_sizes_naslovna_filename_idx": {
+          "name": "media_sizes_naslovna_sizes_naslovna_filename_idx",
+          "columns": [
+            {
+              "expression": "sizes_naslovna_filename",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.users_sessions": {
+      "name": "users_sessions",
+      "schema": "payload",
+      "columns": {
+        "_order": {
+          "name": "_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "_parent_id": {
+          "name": "_parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "users_sessions_order_idx": {
+          "name": "users_sessions_order_idx",
+          "columns": [
+            {
+              "expression": "_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "users_sessions_parent_id_idx": {
+          "name": "users_sessions_parent_id_idx",
+          "columns": [
+            {
+              "expression": "_parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "users_sessions_parent_id_fk": {
+          "name": "users_sessions_parent_id_fk",
+          "tableFrom": "users_sessions",
+          "tableTo": "users",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "_parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.users": {
+      "name": "users",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "ime": {
+          "name": "ime",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "vloga": {
+          "name": "vloga",
+          "type": "enum_users_vloga",
+          "typeSchema": "payload",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'urednik'"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "reset_password_token": {
+          "name": "reset_password_token",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "reset_password_expiration": {
+          "name": "reset_password_expiration",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "salt": {
+          "name": "salt",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "hash": {
+          "name": "hash",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "reset_password_requested_at": {
+          "name": "reset_password_requested_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "login_attempts": {
+          "name": "login_attempts",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
+        },
+        "lock_until": {
+          "name": "lock_until",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "users_updated_at_idx": {
+          "name": "users_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "users_created_at_idx": {
+          "name": "users_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "users_email_idx": {
+          "name": "users_email_idx",
+          "columns": [
+            {
+              "expression": "email",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.payload_kv": {
+      "name": "payload_kv",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "key": {
+          "name": "key",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "data": {
+          "name": "data",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "payload_kv_key_idx": {
+          "name": "payload_kv_key_idx",
+          "columns": [
+            {
+              "expression": "key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.payload_locked_documents": {
+      "name": "payload_locked_documents",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "global_slug": {
+          "name": "global_slug",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "payload_locked_documents_global_slug_idx": {
+          "name": "payload_locked_documents_global_slug_idx",
+          "columns": [
+            {
+              "expression": "global_slug",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_locked_documents_updated_at_idx": {
+          "name": "payload_locked_documents_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_locked_documents_created_at_idx": {
+          "name": "payload_locked_documents_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.payload_locked_documents_rels": {
+      "name": "payload_locked_documents_rels",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "path": {
+          "name": "path",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tocke_id": {
+          "name": "tocke_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "etape_id": {
+          "name": "etape_id",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "media_id": {
+          "name": "media_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "users_id": {
+          "name": "users_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "payload_locked_documents_rels_order_idx": {
+          "name": "payload_locked_documents_rels_order_idx",
+          "columns": [
+            {
+              "expression": "order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_locked_documents_rels_parent_idx": {
+          "name": "payload_locked_documents_rels_parent_idx",
+          "columns": [
+            {
+              "expression": "parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_locked_documents_rels_path_idx": {
+          "name": "payload_locked_documents_rels_path_idx",
+          "columns": [
+            {
+              "expression": "path",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_locked_documents_rels_tocke_id_idx": {
+          "name": "payload_locked_documents_rels_tocke_id_idx",
+          "columns": [
+            {
+              "expression": "tocke_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_locked_documents_rels_etape_id_idx": {
+          "name": "payload_locked_documents_rels_etape_id_idx",
+          "columns": [
+            {
+              "expression": "etape_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_locked_documents_rels_media_id_idx": {
+          "name": "payload_locked_documents_rels_media_id_idx",
+          "columns": [
+            {
+              "expression": "media_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_locked_documents_rels_users_id_idx": {
+          "name": "payload_locked_documents_rels_users_id_idx",
+          "columns": [
+            {
+              "expression": "users_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "payload_locked_documents_rels_parent_fk": {
+          "name": "payload_locked_documents_rels_parent_fk",
+          "tableFrom": "payload_locked_documents_rels",
+          "tableTo": "payload_locked_documents",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "payload_locked_documents_rels_tocke_fk": {
+          "name": "payload_locked_documents_rels_tocke_fk",
+          "tableFrom": "payload_locked_documents_rels",
+          "tableTo": "tocke",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "tocke_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "payload_locked_documents_rels_etape_fk": {
+          "name": "payload_locked_documents_rels_etape_fk",
+          "tableFrom": "payload_locked_documents_rels",
+          "tableTo": "etape",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "etape_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "payload_locked_documents_rels_media_fk": {
+          "name": "payload_locked_documents_rels_media_fk",
+          "tableFrom": "payload_locked_documents_rels",
+          "tableTo": "media",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "media_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "payload_locked_documents_rels_users_fk": {
+          "name": "payload_locked_documents_rels_users_fk",
+          "tableFrom": "payload_locked_documents_rels",
+          "tableTo": "users",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "users_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.payload_preferences": {
+      "name": "payload_preferences",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "key": {
+          "name": "key",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "value": {
+          "name": "value",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "payload_preferences_key_idx": {
+          "name": "payload_preferences_key_idx",
+          "columns": [
+            {
+              "expression": "key",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_preferences_updated_at_idx": {
+          "name": "payload_preferences_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_preferences_created_at_idx": {
+          "name": "payload_preferences_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.payload_preferences_rels": {
+      "name": "payload_preferences_rels",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "parent_id": {
+          "name": "parent_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "path": {
+          "name": "path",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "users_id": {
+          "name": "users_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "payload_preferences_rels_order_idx": {
+          "name": "payload_preferences_rels_order_idx",
+          "columns": [
+            {
+              "expression": "order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_preferences_rels_parent_idx": {
+          "name": "payload_preferences_rels_parent_idx",
+          "columns": [
+            {
+              "expression": "parent_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_preferences_rels_path_idx": {
+          "name": "payload_preferences_rels_path_idx",
+          "columns": [
+            {
+              "expression": "path",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_preferences_rels_users_id_idx": {
+          "name": "payload_preferences_rels_users_id_idx",
+          "columns": [
+            {
+              "expression": "users_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "payload_preferences_rels_parent_fk": {
+          "name": "payload_preferences_rels_parent_fk",
+          "tableFrom": "payload_preferences_rels",
+          "tableTo": "payload_preferences",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "parent_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "payload_preferences_rels_users_fk": {
+          "name": "payload_preferences_rels_users_fk",
+          "tableFrom": "payload_preferences_rels",
+          "tableTo": "users",
+          "schemaTo": "payload",
+          "columnsFrom": [
+            "users_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "payload.payload_migrations": {
+      "name": "payload_migrations",
+      "schema": "payload",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "batch": {
+          "name": "batch",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp(3) with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "payload_migrations_updated_at_idx": {
+          "name": "payload_migrations_updated_at_idx",
+          "columns": [
+            {
+              "expression": "updated_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "payload_migrations_created_at_idx": {
+          "name": "payload_migrations_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "payload.enum_tocke_zgodbe_predlog": {
+      "name": "enum_tocke_zgodbe_predlog",
+      "schema": "payload",
+      "values": [
+        "mesto-v-zici",
+        "odpor",
+        "zrtve",
+        "talci",
+        "zeleznicarji",
+        "partizanske-enote",
+        "otroci-in-mladi",
+        "zenske-v-odporu",
+        "bombardiranje",
+        "osvoboditev"
+      ]
+    },
+    "payload.enum_tocke_vrsta": {
+      "name": "enum_tocke_vrsta",
+      "schema": "payload",
+      "values": [
+        "spomenik",
+        "plosca",
+        "grobnica",
+        "bunker",
+        "kraj-dogodka"
+      ]
+    },
+    "payload.enum_tocke_esd_status": {
+      "name": "enum_tocke_esd_status",
+      "schema": "payload",
+      "values": [
+        "za-preverjanje",
+        "vpisano",
+        "ni-esd",
+        "ni-relevantno"
+      ]
+    },
+    "payload.enum_tocke_vkljucitev": {
+      "name": "enum_tocke_vkljucitev",
+      "schema": "payload",
+      "values": [
+        "Osnovna pot",
+        "Osnovna pot / bližina",
+        "Bližina poti",
+        "Razširjeni zahodni krak",
+        "Razširjeni vzhodni krak",
+        "Razširjeni severni krak",
+        "Razširjeni severovzhodni krak"
+      ]
+    },
+    "payload.enum_tocke_gps_zanesljivost": {
+      "name": "enum_tocke_gps_zanesljivost",
+      "schema": "payload",
+      "values": [
+        "priblizek",
+        "zunanji_vir",
+        "terensko-izmerjeno",
+        "preverjeno-v-gis"
+      ]
+    },
+    "payload.enum_tocke_status_izvedbe": {
+      "name": "enum_tocke_status_izvedbe",
+      "schema": "payload",
+      "values": [
+        "predlog-preveriti",
+        "potrjeno-za-vkljucitev",
+        "terenski-popis",
+        "v-pripravi-vsebin",
+        "v-tehnicni-pripravi",
+        "objavljeno",
+        "izloceno-zamenjano"
+      ]
+    },
+    "payload.enum_tocke_foto_pravice_status": {
+      "name": "enum_tocke_foto_pravice_status",
+      "schema": "payload",
+      "values": [
+        "ni-zaceto",
+        "v-pripravi",
+        "za-preverjanje",
+        "koncano",
+        "ni-potrebno"
+      ]
+    },
+    "payload.enum_tocke_dovoljenje_qr": {
+      "name": "enum_tocke_dovoljenje_qr",
+      "schema": "payload",
+      "values": [
+        "za-preverjanje",
+        "pridobljeno",
+        "zavrnjeno",
+        "ni-potrebno"
+      ]
+    },
+    "payload.enum_tocke_strokovna_verifikacija": {
+      "name": "enum_tocke_strokovna_verifikacija",
+      "schema": "payload",
+      "values": [
+        "za-preverjanje",
+        "v-pregledu",
+        "potrjeno",
+        "potrebni-popravki"
+      ]
+    },
+    "payload.enum_tocke_status": {
+      "name": "enum_tocke_status",
+      "schema": "payload",
+      "values": [
+        "draft",
+        "published"
+      ]
+    },
+    "payload.enum__tocke_v_version_zgodbe_predlog": {
+      "name": "enum__tocke_v_version_zgodbe_predlog",
+      "schema": "payload",
+      "values": [
+        "mesto-v-zici",
+        "odpor",
+        "zrtve",
+        "talci",
+        "zeleznicarji",
+        "partizanske-enote",
+        "otroci-in-mladi",
+        "zenske-v-odporu",
+        "bombardiranje",
+        "osvoboditev"
+      ]
+    },
+    "payload.enum__tocke_v_version_vrsta": {
+      "name": "enum__tocke_v_version_vrsta",
+      "schema": "payload",
+      "values": [
+        "spomenik",
+        "plosca",
+        "grobnica",
+        "bunker",
+        "kraj-dogodka"
+      ]
+    },
+    "payload.enum__tocke_v_version_esd_status": {
+      "name": "enum__tocke_v_version_esd_status",
+      "schema": "payload",
+      "values": [
+        "za-preverjanje",
+        "vpisano",
+        "ni-esd",
+        "ni-relevantno"
+      ]
+    },
+    "payload.enum__tocke_v_version_vkljucitev": {
+      "name": "enum__tocke_v_version_vkljucitev",
+      "schema": "payload",
+      "values": [
+        "Osnovna pot",
+        "Osnovna pot / bližina",
+        "Bližina poti",
+        "Razširjeni zahodni krak",
+        "Razširjeni vzhodni krak",
+        "Razširjeni severni krak",
+        "Razširjeni severovzhodni krak"
+      ]
+    },
+    "payload.enum__tocke_v_version_gps_zanesljivost": {
+      "name": "enum__tocke_v_version_gps_zanesljivost",
+      "schema": "payload",
+      "values": [
+        "priblizek",
+        "zunanji_vir",
+        "terensko-izmerjeno",
+        "preverjeno-v-gis"
+      ]
+    },
+    "payload.enum__tocke_v_version_status_izvedbe": {
+      "name": "enum__tocke_v_version_status_izvedbe",
+      "schema": "payload",
+      "values": [
+        "predlog-preveriti",
+        "potrjeno-za-vkljucitev",
+        "terenski-popis",
+        "v-pripravi-vsebin",
+        "v-tehnicni-pripravi",
+        "objavljeno",
+        "izloceno-zamenjano"
+      ]
+    },
+    "payload.enum__tocke_v_version_foto_pravice_status": {
+      "name": "enum__tocke_v_version_foto_pravice_status",
+      "schema": "payload",
+      "values": [
+        "ni-zaceto",
+        "v-pripravi",
+        "za-preverjanje",
+        "koncano",
+        "ni-potrebno"
+      ]
+    },
+    "payload.enum__tocke_v_version_dovoljenje_qr": {
+      "name": "enum__tocke_v_version_dovoljenje_qr",
+      "schema": "payload",
+      "values": [
+        "za-preverjanje",
+        "pridobljeno",
+        "zavrnjeno",
+        "ni-potrebno"
+      ]
+    },
+    "payload.enum__tocke_v_version_strokovna_verifikacija": {
+      "name": "enum__tocke_v_version_strokovna_verifikacija",
+      "schema": "payload",
+      "values": [
+        "za-preverjanje",
+        "v-pregledu",
+        "potrjeno",
+        "potrebni-popravki"
+      ]
+    },
+    "payload.enum__tocke_v_version_status": {
+      "name": "enum__tocke_v_version_status",
+      "schema": "payload",
+      "values": [
+        "draft",
+        "published"
+      ]
+    },
+    "payload.enum_media_pravice": {
+      "name": "enum_media_pravice",
+      "schema": "payload",
+      "values": [
+        "lastno-delo",
+        "dovoljenje-pridobljeno",
+        "javna-domena",
+        "neznano"
+      ]
+    },
+    "payload.enum_media_tip": {
+      "name": "enum_media_tip",
+      "schema": "payload",
+      "values": [
+        "danes",
+        "arhivska"
+      ]
+    },
+    "payload.enum_users_vloga": {
+      "name": "enum_users_vloga",
+      "schema": "payload",
+      "values": [
+        "urednik",
+        "admin"
+      ]
+    }
+  },
+  "schemas": {
+    "payload": "payload"
+  },
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "id": "b387db27-1fb5-4f27-87ea-1d994dea7dd2",
+  "prevId": "00000000-0000-0000-0000-000000000000"
+}

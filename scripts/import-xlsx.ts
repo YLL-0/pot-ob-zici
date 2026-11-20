@@ -47,7 +47,9 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { readdirSync } from "node:fs";
 import { join } from "node:path";
-import * as XLSX from "xlsx";
+// Default import: under "type": "module" (Payload is ESM-only) the CJS
+// build's exports sit on the default export, not the namespace.
+import XLSX from "xlsx";
 import { slugify } from "../lib/slug";
 import { ETAPE_SEED, etapaIdIzStevilke } from "../lib/etape";
 import { dodeliZaporedje } from "../lib/zaporedjeEtap";
