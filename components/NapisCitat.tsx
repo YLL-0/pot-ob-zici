@@ -4,7 +4,8 @@ import { razcleniNapis } from "@/lib/napis";
  * A memorial inscription as a quote. Text is shown verbatim; the
  * register's markup is only styled apart (lib/napis.ts): symbol notes
  * such as »[zvezda]« small and muted, part labels such as »plošča na
- * levi strani:« as italic subheadings on their own line.
+ * levi strani:« and register descriptions such as »Imena 129 borcev« as
+ * italic muted lines of their own, dot-only separators as a thin rule.
  */
 export function NapisCitat({ napis }: { napis: string }) {
   const vrstice = razcleniNapis(napis);
@@ -12,7 +13,8 @@ export function NapisCitat({ napis }: { napis: string }) {
     <blockquote className="rounded-r-xl border-l-4 border-poudarek bg-povrsina px-5 py-4 text-base">
       {vrstice.map((v, i) => {
         if (v.vrsta === "prazna") return <span key={i} aria-hidden="true" className="block h-[0.75lh]" />;
-        if (v.vrsta === "podnaslov")
+        if (v.vrsta === "locilo") return <hr key={i} className="my-3 border-crta" />;
+        if (v.vrsta === "podnaslov" || v.vrsta === "opis")
           return (
             <span key={i} className={`block italic text-crnilo-mehko ${i > 0 ? "mt-2" : ""}`}>
               {v.besedilo}

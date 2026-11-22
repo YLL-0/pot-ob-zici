@@ -12,6 +12,10 @@
  *  - part labels, "plošča na levi strani:", "na dodani plošči:",
  *    "prva plošča", "Obelisk:" — which panel or object the following
  *    lines are on. A label at the start of a line is broken onto its own.
+ *  - register descriptions standing in for text it didn't transcribe,
+ *    "Imena 129 borcev" (NMZ-010) — not words on the plaque.
+ *  - part separators: a line of only dots, "." or "......" (shown as a
+ *    rule; the dots are the register's, not the object's).
  *
  * Inscriptions on the objects are in capitals, so a label must contain
  * lower-case letters; "BORCI:" stays inscription text. Sentence-case
@@ -22,6 +26,8 @@ export type DelVrstice = { vrsta: "besedilo" | "simbol"; besedilo: string };
 
 export type VrsticaNapisa =
   | { vrsta: "podnaslov"; besedilo: string }
+  | { vrsta: "opis"; besedilo: string }
+  | { vrsta: "locilo" }
   | { vrsta: "vrstica"; deli: DelVrstice[] }
   | { vrsta: "prazna" };
 
@@ -32,11 +38,20 @@ const GOL_SIMBOL = /^(?:zvezda|križ|srp in kladivo|peterokraka zvezda)$/;
 const DEL_OBELEZJA = "(?:plošč\\w*|spomeni\\w*|obelis\\w*|napis\\w*|stran\\w*)";
 // "prva plošča", "Osrednja plošča", "Leva plošča", "Prvotni spomenik", "Obelisk", "Novo izdelan spomenik"
 const KRATKA_OZNAKA = new RegExp(
-  `^(?:(?:prv|drug|tretj|četrt|osrednj|lev|desn|zgornj|spodnj|večj|manjš|prvotn|nov)\\w*\\s+(?:izdelan\\w*\\s+)?)?${DEL_OBELEZJA}$`,
+  `^(?:(?:prv|drug|tretj|četrt|osrednj|srednj|lev|desn|zgornj|spodnj|večj|manjš|prvotn|nov)\\w*\\s+(?:izdelan\\w*\\s+)?)?${DEL_OBELEZJA}$`,
   "i",
 );
 // "napis na obelisku", "plošča na levi strani", "na dodani plošči", "napis ob vznožju obeliska"
 const OPISNA_OZNAKA = new RegExp(`^(?:${DEL_OBELEZJA}|na|ob)\\s.*${DEL_OBELEZJA}`, "i");
+
+// "Imena 129 borcev", "Imena dveh talcev", "Imena 58 žrtev"
+const OPIS_REGISTRA = /^Imena\s+\S+(?:\s+\S+)*$/;
+const LOCILO = /^[.…·]+$/;
+
+function jeOpis(besedilo: string): boolean {
+  const t = besedilo.trim();
+  return OPIS_REGISTRA.test(t) && /[a-zčšžćđ]/.test(t.slice(1));
+}
 
 function jeOznaka(besedilo: string): boolean {
   const t = besedilo.trim().replace(/:$/, "").trim();
@@ -63,6 +78,14 @@ export function razcleniNapis(napis: string): VrsticaNapisa[] {
     const vrstica = surova.replace(/\s+$/, "");
     if (!vrstica.trim()) {
       izhod.push({ vrsta: "prazna" });
+      continue;
+    }
+    if (LOCILO.test(vrstica.trim())) {
+      izhod.push({ vrsta: "locilo" });
+      continue;
+    }
+    if (jeOpis(vrstica)) {
+      izhod.push({ vrsta: "opis", besedilo: vrstica.trim() });
       continue;
     }
     if (jeOznaka(vrstica)) {
