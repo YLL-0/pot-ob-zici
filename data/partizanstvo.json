@@ -1,0 +1,2396 @@
+{
+  "_opomba": "Referenčno gradivo iz javnega registra partizanstvo.si. NI za neposredno objavo — besedila in fotografije so avtorsko delo prispevateljev registra. Pred objavo uredi dovoljenja.",
+  "_preneseno": "2026-11-22T15:58:26.353Z",
+  "_stevilo": 50,
+  "obelezja": {
+    "NMZ-001": {
+      "vir": "partizanstvo.si",
+      "vir_id": 2453,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2453",
+      "naziv_v_registru": "Bunker na Drski",
+      "lat": 45.79948925681196,
+      "lon": 15.15623435357691,
+      "napis": "Protitankovski bunker iz 2. svetovne vojne\n\nNemški okupator je leta 1943 postavil bunker ob glavni cesti, ki je vodila v\ntakrat z bodečo žico obdano Novo mesto. Leta 1952 so krajani Drske na bunker\npostavili top iz 1. svetovne vojne. Leta 2008 ga je zaradi obnove prevzel\nvojaški muzej v Pivki kot edinega te vrste v Sloveniji. Nadomestil ga je z\nnemškim topom M38 PLT iz 2. svetovne voine.\n\nOhranjeno v spomin na trpeče someščane in osvoboditelje.\n\nKS Drska in KO ZB NOB DRSKA 2015",
+      "dostop": "Bunker stoji na Drski, nad staro cesto Novo mesto-Straža, ob stanovanjskih blokih na Šegovi ulici. V okolici spomenika je speljana pešpot. Vstop v bunker je možen po stopnicah na obeh vhodih. Bunker je eno od izhodišč vsakoletnega pohoda Novo mesto v žici.",
+      "vrsta": "spomenik lokalnega pomena",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "1484 Šmihel pri Novem mestu, parcela 1053/1, lastnik: MO Novo mesto",
+      "vnesel": "LH, 20.10.2017",
+      "povezave": [
+        "http://giskd2s.situla.org/rkd/opis.asp?esd=8708",
+        "https://zbdrska.wordpress.com/bunker-na-drski/"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2453/T2518_F19915_2453.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2453/T2518_F19915_2453.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2453/T2518_F19916_2453.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2453/T2518_F19916_2453.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2453/T2518_F19917_2453.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2453/T2518_F19917_2453.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-002": {
+      "vir": "partizanstvo.si",
+      "vir_id": 4041,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4041",
+      "naziv_v_registru": "Spomenik padlim domačinom v NOB - Drejčetova pot, Novo mesto",
+      "lat": 45.79562603045054,
+      "lon": 15.1877936380453,
+      "napis": "[zvezda]\n\nPADLI ZA SVOBODO\n22.10.1943\nGOLOB FRANC\nJAKOPIN MAKS\nRIFELJ FRANC\nKO ZB ŽABJA VAS",
+      "dostop": "Spomenik stoji na jugovzhodnem robu Žabje vasi, na koncu ulice Drejčetova pot v Novem mestu. Hiša v bližini: Drejčetova pot 33, Novo mesto",
+      "vrsta": "spomenik",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1482 Ragovo, parc. št. 292/8",
+      "vnesel": "L.H., 12.4.2019",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4041/T2518_F19915_4041_.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4041/T2518_F19915_4041_.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": null,
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-003": {
+      "vir": "partizanstvo.si",
+      "vir_id": 2856,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2856",
+      "naziv_v_registru": "Grobnica padlih med NOB v Žabji vasi",
+      "lat": 45.79929445242125,
+      "lon": 15.177795367622984,
+      "napis": "napis na obelisku\n\nPADLIM BORCEM IN ŽRTVAM ŽABJE VASI\n\nŽUPEVC ANTON   ŽUPEVC IVAN\n\nŽIBERT FRANC   GOLOB FRANC\n\nHOČEVAR JOŽE   MALNAR ANTON\n\nKNAFELJC JOŽE   NOVAK JOŽE\n\nPREŠERN FRANC   ŠAFAR LOJZE\n\nVIDIC ANTON\n\n.\n\nJAKOPIN MAKS   NOVAK FRANC\n\nKRAVCAR MINKA   KRAVCAR MAJDA\n\nGOLOB CVETA   JAKOPIN IVANA\n\nŽNIDARŠIČ RUDOLF\n\nHLEDE KAROLINA\n\nHLEDE SLAVICA\n\nMEDVEŠEK LJUBO\n\nGOLOB TOMISLAV\n\nnapis ob vznožju obeliska:\n\n3 NEZNANI\n\nPARTIZANI\n\nPADLI 1943",
+      "dostop": "Spomenik stoji ob Kandijski cesti, nasproti hiše Kandijska 55.",
+      "vrsta": "kostnica, spomenik",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "k.o. Kandija, št. 1287",
+      "vnesel": "L.H., 27.2.2018",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2856/T2518_F19915_2856.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2856/T2518_F19915_2856.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2856/2020_10_12_MK_8409.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2856/2020_10_12_MK_8409.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2856/2020_10_12_MK_8408.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2856/2020_10_12_MK_8408.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2856/2020_10_12_MK_8412.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2856/2020_10_12_MK_8412.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-004": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5755,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5755",
+      "naziv_v_registru": "Novo mesto, Spominska plošča Valantičevi družini",
+      "lat": 45.79842027988028,
+      "lon": 15.17247521629894,
+      "napis": "V TEJ HIŠI SO V NOČI 22-23 DECEMBRA 1943\n\nDOMOBRANSKI ZLOČINCI ZVERINSKO UMORILI\n\nVALANTIČEVO DRUŽINO\n\nOČE ALOJZIJ  MATI MARIJA R. ČERMELJ\n\nHČI ALMA,\n\nSIN ALOJZIJ.\n\nVIDA PARTIZANKA OD LETA 1942,\n\nJE PADLA ZA SVOBODO LETA 1944\n\nZVEZA BORCEV IV. TERENA      6. JULIJA 1952",
+      "dostop": "Plošča je pritrjena na stranski fasadi stanovanjske hiše Valantičevo 5, v kateri so Valantičevi živeli.",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1483 Kandija, parc. št. 1175",
+      "vnesel": "M. Kermavnar",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5755/2020_06_27_MK_7117.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5755/2020_06_27_MK_7117.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5755/2020_06_27_MK_7115.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5755/2020_06_27_MK_7115.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-005": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6718,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6718",
+      "naziv_v_registru": "Novo mesto, Grad Grm, plošča padlim gojencem kmetijske šole",
+      "lat": 45.79518816234317,
+      "lon": 15.171590185604583,
+      "napis": "SPOMINU\n\nGOJENCEV, KI SO V VRSTAH NARODNOOSVOBODILNE\n\nVOJSKE ŽIVLJENJA DALI ZA SREČO NAŠEGA LJUDSTVA.\n\nPOSTAVILA\n\nOB SVOJI SEDEMDESETLETNICI\n\nKMETIJSKA ŠOLA NA GRMU.\n\n18.11.1886     -     21.10.1956",
+      "dostop": "Novo mesto, grad Grm, v veži nekdanje kmetijske šole na Grmu, Skalickega 1",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1483 Kandija, parc. št. 1339",
+      "vnesel": "M. Kermavnar 8. 5. 2021",
+      "povezave": [
+        "https://www.slov.si/doc/novomeski_spomeniki.pdf",
+        "http://www.slov.si/doc/novomeski_spomeniki.pdf"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6718/P1170617.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6718/P1170617.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6718/Grm_Kmetijska_sola1.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6718/Grm_Kmetijska_sola1.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-006": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6719,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6719",
+      "naziv_v_registru": "Novo mesto, Grad Grm, plošča ob prvem praznovanju Dneva vstaje",
+      "lat": 45.79498517222112,
+      "lon": 15.171716568516638,
+      "napis": "[zvezda]\n\nS PESTJO SMO SE UPRLI.\n\nPRVO PRAZNOVANJE\n\nDNEVA VSTAJE",
+      "dostop": "Novo mesto, nad dvoriščnim portalom grada Grm, nekdanje kmetijske šole na Grmu, Skalickega 1",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1483 Kandija, parc. št. 1339",
+      "vnesel": "M. Kermavnar 8. 5. 2021",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6719/P1170613.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6719/P1170613.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6719/P1170614.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6719/P1170614.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6719/P1170616.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6719/P1170616.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-007": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6734,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6734",
+      "naziv_v_registru": "Novo mesto, Plošča na nekdanjem Sokolskem domu",
+      "lat": 45.802604,
+      "lon": 15.169634,
+      "napis": "[srp in kladivo]\nSOKOLSKA\nKNJIŽNICA\nJE BILA ŽARIŠČE\nKOMUNISTIČNE DEJAVNOSTI\nV LETIH 1935-1940\n\nOD L. 1935 JE IZPOSOJALA\nMARKSISTIČNO LITERATURO\nOD L. 1937 SO BILI V NJEJ\nORGANIZACIJSKI IN ŠTUDIJSKI\nSESTANKI SKOJ IN\nOD L. 1939 SESTANKI KPS\nIN ILEGALNE TEHNIKE\n\nZB III. TERENA 1953",
+      "dostop": "Novo mesto, Sokolska 3",
+      "vrsta": "plošča",
+      "nastanek": "1953",
+      "avtor_obelezja": "Miloš Lapajne",
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 1682",
+      "vnesel": "M. Kermavnar 9. 5. 2021",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6734/P1170608.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6734/P1170608.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6734/P1170609.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6734/P1170609.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6734/P1170611.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6734/P1170611.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6734/2026_03_02_MK_IMG_9434_Novo_mesto_Sokolski_dom.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6734/2026_03_02_MK_IMG_9434_Novo_mesto_Sokolski_dom.JPG",
+          "avtor": "M. Kermavnar",
+          "opis": "Novo mesto, Plošča na nekdanjem Sokolskem domu",
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": null,
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6734/2026_03_02_MK_IMG_9432_Novo_mesto_Sokolski_dom.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6734/2026_03_02_MK_IMG_9432_Novo_mesto_Sokolski_dom.JPG",
+          "avtor": "M. Kermavnar",
+          "opis": "Novo mesto, Plošča na nekdanjem Sokolskem domu",
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": null,
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-008": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6733,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6733",
+      "naziv_v_registru": "Novo mesto, Plošča okrožni tehniki",
+      "lat": 45.80293047777763,
+      "lon": 15.17017230277011,
+      "napis": "TU STA BILA OD JESENI\n\n1941 DO JULIJA 1942\n\nILEGALNA TEHNIKA\n\nIN TAJNO STANOVANJE\n\nSEKRETARJA OKROŽNEGA\n\nKOMITEJA KPS\n\nMO ZB",
+      "dostop": "Novo mesto, na hiši Glavni trg 21",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 1673",
+      "vnesel": "M. Kermavnar 9. 5. 2021",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6733/P1170599.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6733/P1170599.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6733/P1170600.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6733/P1170600.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-009": {
+      "vir": "partizanstvo.si",
+      "vir_id": 2832,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2832",
+      "naziv_v_registru": "Obešenima partizanoma, Glavni trg, Novo mesto",
+      "lat": 45.80377997227259,
+      "lon": 15.16977845037264,
+      "napis": "TU STA 30. XII. 1943 BILA\n\nOBEŠENA PARTIZANA\n\nJANC FRANC IN\n\nHACIN ALOJZIJ",
+      "dostop": "Glavni trg v Novem mestu (pri hišni št. 29), nasproti Rotovža",
+      "vrsta": "spomenik",
+      "nastanek": "1952",
+      "avtor_obelezja": "Marijan Mušič",
+      "kataster": "k.o. Novo mesto, 1643 (MONM)",
+      "vnesel": "L.H., 25.2.2018",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2832/T2518_F19915_2832.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2832/T2518_F19915_2832.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2832/T2518_F19916_2832.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2832/T2518_F19916_2832.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2832/T2518_F19917_2832.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2832/T2518_F19917_2832.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2832/2020_06_27_MK_7107.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2832/2020_06_27_MK_7107.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2832/2020_06_27_MK_7111.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2832/2020_06_27_MK_7111.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-010": {
+      "vir": "partizanstvo.si",
+      "vir_id": 2831,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2831",
+      "naziv_v_registru": "Novo mesto - Spomeniški kompleks Na vratih",
+      "lat": 45.8047608146006,
+      "lon": 15.166973794043704,
+      "napis": "ŽIVLJENJE SMO DALI VSE SMO ŽRTVOVALI KOT V TEŽKIH STA DNEH NAM VELEVALA\nDOLŽNOST IN ZAVEST V VAS DALJE ŽIVIMO\n\nKER VAŠA VSEŽIVA SMO VEST VSE DNI NAJ BO Z VAMI SPOMIN NAJ VAM DRAMI DA MISLI KI\nZ NJO SMO UMRLI OSTANE VSAK ZVEST\n\n.\n\nOsrednja plošča:\n\nNARODNI HEROJI\n\nDOLENJSKE\n\nJEREB DUŠAN-ŠTEFAN\n\nKOTAR MARTIN\n\nMAJCEN MILAN\n\nPADERŠIČ VINKO-\n\n-BATREJA\n\nSLAK JOŽE-SILVO\n\nSIMONČIČ VINKO-\n\n-GAŠPER\n\n.\n\nplošča na levi strani:\n\nPADLI BORCI 1941 – 1945\n\nImena 129 borcev\n\nplošča na desni strani:\n\nTALCI\n\nImena dveh talcev\n\nUBITI IN UMRLI\n\nImena 53 ubitih in umrlih\n\nŽRTVE BOMBNIH NAPADOV\n\nImena 58 žrtev",
+      "dostop": "Stoji na križišču Rozmanove ulice in Prešernovega trga pri Knjižnici Mirana Jarca v Novem mestu.",
+      "vrsta": "memorialna dediščina",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K.o. Novo mesto (1391-del,   1466-del,   1467,   1468-del,   1469-del,    1470)",
+      "vnesel": "L.H., 25.2.2018",
+      "povezave": [
+        "http://giskd2s.situla.org/rkd/opis.asp?esd=8722"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2831/T2518_F19915_2831.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2831/T2518_F19915_2831.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2831/T2518_F19916_2831.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2831/T2518_F19916_2831.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2831/T2518_F19917_2831.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2831/T2518_F19917_2831.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2831/2020_06_27_MK_7088.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2831/2020_06_27_MK_7088.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2831/P1170650.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2831/P1170650.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2831/P1170655.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2831/P1170655.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2831/P1170656.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2831/P1170656.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2831/P1170657.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2831/P1170657.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-011": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5761,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5761",
+      "naziv_v_registru": "Novo mesto, Spominska avla Dolenjskega muzeja",
+      "lat": 45.80287770104293,
+      "lon": 15.167855681471398,
+      "napis": null,
+      "dostop": "Muzejska avla predstavlja glavni vhod v osrednjo stavbo Dolenjskega muzeja, Muzejska ulica 7",
+      "vrsta": null,
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 1709",
+      "vnesel": "M. Kermavnar",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5761/2020_06_27_MK_7104.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5761/2020_06_27_MK_7104.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5761/2020_06_27_MK_7105.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5761/2020_06_27_MK_7105.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5761/2020_06_27_MK_7099.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5761/2020_06_27_MK_7099.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5761/2020_06_27_MK_7106.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5761/2020_06_27_MK_7106.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-012": {
+      "vir": "partizanstvo.si",
+      "vir_id": 8220,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=8220",
+      "naziv_v_registru": "Josip Broz Tito, Novo mesto",
+      "lat": 45.80269619746231,
+      "lon": 15.168256344858245,
+      "napis": null,
+      "dostop": "Novo mesto, na vrtu pred Ropasovo hišo, v okviru Dolenjskega muzeja, ob Mej vrti 2, Novo mesto",
+      "vrsta": "celopostavni kip",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 1708",
+      "vnesel": "M. Kermavnar, 2.4.2023",
+      "povezave": [
+        "https://kronika.zzds.si/kronika/issue/view/346/300"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/8220/Novo_mesto_vojasnica.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/8220/Novo_mesto_vojasnica.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/8220/2023_05_03_ML_IMG_141511-Tito_Novo_mesto.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/8220/2023_05_03_ML_IMG_141511-Tito_Novo_mesto.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-013": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6396,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6396",
+      "naziv_v_registru": "Novo mesto, Plošča na sodišču",
+      "lat": 45.8054448906392,
+      "lon": 15.168410700276578,
+      "napis": "NE POZABIMO\n\nTISTIH, KI SO JIH\n\nV LETIH 1941 - 1945\n\nODPELJALI\n\nIZ TEH ZAPOROV\n\nNA MORIŠČA,\n\nJEČE IN TABORIŠČA SMRTI\n\nZA ZMAGO LJUDSKE\n\nREVOLUCIJE",
+      "dostop": "Na vogalu zgradbe sodišča, Novo mesto, Jerebova 1",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 1246/1",
+      "vnesel": "M. Kermavnar",
+      "povezave": [
+        "http://www.slov.si/doc/novomeski_spomeniki.pdf"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6396/2021_02_23_MK_IMG_8938.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6396/2021_02_23_MK_IMG_8938.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6396/2021_02_23_MK_IMG_8937.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6396/2021_02_23_MK_IMG_8937.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-014": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6732,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6732",
+      "naziv_v_registru": "Novo mesto, Plošča žrtvam bombardiranja",
+      "lat": 45.80380463530894,
+      "lon": 15.16470192467653,
+      "napis": "OB NEMŠKEM LETALSKEM NAPADU NA\nNOVO MESTO 3 X 1943 SO BILI V TEM PO\nSLOPJU BOLNIŠNICE UBITI\n\nDR ŠTOLFA VERUŠA IZ LJUBLJANE ZDRAV\nNICA BOLNIŠNICE - GOLOB MARIJA DELAV\nKA BOLNIŠNICE IZ BRUSNIC - ARTAČ MARI\nJA IZ OČESLAVCEV - DOLENŠEK ANA IZ\nMOKRONOGA - GANGEL JAKOPINA IZ ME\nTLIKE - GANGEL TURK MARIJA IZ METLI\nKE - GAŠPERIČ AMALIJA IZ MIRNE - KO\nKOVICA ANA IZ NOVEGA MESTA - KOKOVI\nCA METKA IZ NOVEGA MESTA - KÜSSEL\nMARIJA IZ NOVEGA MESTA - LUZAR TE\nREZIJA IZ ŠENTJERNEJA - MAVSAR MARI\nJA IZ RUMANJE VASI - POVŠE MILKA IZ\nNOVEGA MESTA - RUS AMALIJA IZ ČRNO\nMLJA - TURK MARIJA IZ PREČNE - GREGO\nRIČ JOŽE IZ NOVEGA MESTA UMETNOST\nNI ZGODOVINAR PARTIZAN - STRAŽAR\n\nPRI IZVRŠEVANJU SVOJE DOLŽNOSTI JE\nBIL 14 IX 1943 SMRTNO ZADET ZDRAV\nNIK NOVOMEŠKE BOLNIŠNICE PARTIZAN\nDR VLADIMIR SAJE IZ NOVEGA MESTA\n\nOB OSEMDESETLETNICI OBSTOJA BOL\nNIŠNICE V NOVEM MESTU 1894 - 1974\n\nDELAVSKI SVET",
+      "dostop": "Novo mesto, Defranceschijeva ulica 1. Plošča ki je bila odkrita v avli bolnišnice. Sedanje nahajališče ni znano.",
+      "vrsta": "plošča",
+      "nastanek": "25. 10. 1974",
+      "avtor_obelezja": "Boris Kobe",
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 1340/2",
+      "vnesel": "M. Kermavnar 9. 5. 2021",
+      "povezave": [
+        "https://www.sistory.si/cdn/publikacije/41001-42000/41346/novo_mesto_med_drugo_svetovno_vojno.pdf"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6732/P1170645.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6732/P1170645.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6732/Novo_mesto_bolnica_Spominska_plosca.png",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6732/Novo_mesto_bolnica_Spominska_plosca.png",
+          "avtor": "Zavod za varstvo naravne in kulturne dediščine Novo mesto",
+          "opis": "Novo mesto, Plošča žrtvam bombardiranja",
+          "licenca_v_registru": "Copyright (poštena raba)",
+          "izvor_v_registru": null,
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6732/Novo_mesto_bolnica_Spominska_tabla_pred_obnovo.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6732/Novo_mesto_bolnica_Spominska_tabla_pred_obnovo.jpg",
+          "avtor": "neznan",
+          "opis": "Novo mesto, Plošča žrtvam bombardiranja",
+          "licenca_v_registru": "Copyright (poštena raba)",
+          "izvor_v_registru": null,
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-015": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5763,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5763",
+      "naziv_v_registru": "Novo mesto, Klet in spominska plošča talcem",
+      "lat": 45.807980501687766,
+      "lon": 15.16453165002491,
+      "napis": "V TEJ KLETI SO\n\nV LETIH 1943 - 1945 DOMAČI\n\nIZDAJALCI ZAPIRALI PRISTAŠE\n\nOSVOBODILNEGA GIBANJA\n\nIN IZMED NJIH IZBIRALI TALCE",
+      "dostop": "Klet je del hiše Ulica talcev 5, spominska plošča je vzidana nad kletnim vhodom na vzhodni strani hiše.",
+      "vrsta": "spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 1177/1",
+      "vnesel": "M. Kermavnar",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5763/2020_06_27_MK_7057.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5763/2020_06_27_MK_7057.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5763/2020_06_27_MK_7055.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5763/2020_06_27_MK_7055.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5763/2020_06_27_MK_7053.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5763/2020_06_27_MK_7053.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5763/2020_06_27_MK_7058.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5763/2020_06_27_MK_7058.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-016": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6563,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6563",
+      "naziv_v_registru": "Novo mesto, Plošča v gimnaziji 3 herojem in 48 dijakom",
+      "lat": 45.807519167469714,
+      "lon": 15.164257923485234,
+      "napis": "MLADI STE ŠLI V BOJ\n\nSTE ŠLI UMRET\n\nZA NAS ZA SVOBODO\n\nZA NOVI SVET\n\n.\n\nNARODNI HEROJ PADERŠIČ VINKO\n\nSLAK JOŽE   STARIHA JANKO\n\nBORCI    PROF. KRAJGER BOJAN\n\nDIJAKI   BRAJER ANTON   BOCK ERNEST\n\nBOLTAR JOŽE   BORŠTNIK STOJAN\n\nBURJA SREČKO   ČAMPELJ MARIJA\n\nČEMAS JANEZ   ČERNOŠ RAJKO\n\nDULAR BRANIMIR   FABJAN JANEZ\n\nFRANA LJUDMILA   FRFOLJA SLAVKO\n\nGROM SAVO   GROM SMILJAN\n\nGROZNIK VANJA   HVALA LUDVIK\n\nJUVANEC DARKO   KOSMAČ LEON\n\nKOŠIR LJUBOMIR   KOVAČ LADISLAV\n\nKOVAČIČ IVAN   KOVAČIČ STANISLAV\n\nKOMP VILJEM   KÜSSEL SMILJAN\n\nLAPAJNE ZLATKO   MAJNIK PAVEL\n\nMALEŠIČ IVAN   MERČJAK DRAGO\n\nMIHELČIČ IVAN   MUSET DRAGO\n\nPETRIČ MAKS   PETRIČ ŽARKO\n\nPLANINC FRANC   POGAČAR DUŠAN\n\nPOVŠE ALOJZIJ   POVŠE JOŽE\n\nSITAR STANKO   STIBRIČ JOŽE\n\nTOMŠE TUGOMIR   TRAVNIK CIRIL\n\nTURK DRAGO   UDERMAN LJUBOSLAV\n\nURBANIJA BORIS   VIŠNER KAREL\n\nVRANČIČ MIRAN   ZAJEC FELIKS\n\nŽIBERT FRANC\n\nUBITI PRI LETALSKEM NAPADU\n\nKILER MILENA\n\nSEDAJ LADISLAV   ŠKARJA DANICA\n\nUMRL NA POSLEDICAH INTERNIRANJA\n\nMARINČEK DRAGO\n\nBOREC   INTIHAR STANISLAV",
+      "dostop": "Novo mesto, Seidlova cesta 9, v avli gimnazije",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 1142",
+      "vnesel": "M. Kermavnar",
+      "povezave": [
+        "http://www.slov.si/doc/novomeski_spomeniki.pdf"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6563/2021_02_23_MK_IMG_9035.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6563/2021_02_23_MK_IMG_9035.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6563/2021_02_23_MK_IMG_9036.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6563/2021_02_23_MK_IMG_9036.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-017": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5760,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5760",
+      "naziv_v_registru": "Katja Rupena, Novo mesto",
+      "lat": 45.80698773262539,
+      "lon": 15.16425790480684,
+      "napis": "KATJA\nRUPENA\n1920 - 1945",
+      "dostop": "Doprsni kip stoji pred osnovno šolo Center, Seidlova 7.",
+      "vrsta": "doprsni kip",
+      "nastanek": "1985",
+      "avtor_obelezja": "S. Batič, J. Grobovšek",
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 1151",
+      "vnesel": "M. Kermavnar",
+      "povezave": [
+        "https://lokalno.svet24.si/2024/01/25/284543/clanek/katja_rupena_njej_v_spomin/"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5760/2020_06_27_MK_7044.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5760/2020_06_27_MK_7044.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5760/2020_06_27_MK_7047.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5760/2020_06_27_MK_7047.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5760/2020_06_27_MK_7042.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5760/2020_06_27_MK_7042.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-018": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6739,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6739",
+      "naziv_v_registru": "Novo mesto, Plošča padlim mojstrom, pomočnikom in učencem",
+      "lat": 45.80627982285266,
+      "lon": 15.164985655079041,
+      "napis": "V SLAVO IN ČAST POSTAVILI TO STAVBO VSEM MOJSTROM, POMOČNIKOM IN VAJENCEM, KI\nSO DALI SVOJE ŽIVLJENJE ZA ZMAGO LJUDSKE REVOLUCIJEODKRITA 29. OKTOBRA 1959",
+      "dostop": "Novo mesto, Ulica talcev 3, v avli sedanje Fakultete za organizacijske študije",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 1188",
+      "vnesel": "M. Kermavnar 9. 5. 2021",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6739/P1170588.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6739/P1170588.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-019": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6879,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6879",
+      "naziv_v_registru": "Stavka 1934",
+      "lat": 45.805816063286244,
+      "lon": 15.164650594287737,
+      "napis": "[srp in kladivo]\n\nV TEJ STAVBI SO\n\nOD 20. DO 25. SEPTEMBRA 1934\n\nDELAVKE TOVARNE PERILA\n\nJOŽKA POVHA\n\nV BOJU ZA BOLJŠI\n\nEKONOMSKI POLOŽAJ\n\nIZVEDLE STAVKO,\n\nKI JO JE ORGANIZIRAL\n\nOKROŽNI KOMITE KPJ\n\nNOVO MESTO\n\nXXX SVET\n\nZVEZE SINDIKATOV\n\nNOVO MESTO\n\n1964",
+      "dostop": "Rozmanova 38, Novo mesto",
+      "vrsta": "plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 1191",
+      "vnesel": "M. Hladnik",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6879/P1170664.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6879/P1170664.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6879/P1170666.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6879/P1170666.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-020": {
+      "vir": "partizanstvo.si",
+      "vir_id": 2833,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2833",
+      "naziv_v_registru": "Grob borcev Cankarjeve brigade na Marofu",
+      "lat": 45.81223218876946,
+      "lon": 15.15826631281466,
+      "napis": "Tu leži šest neznanih partizanov, borcev IV. bataljona brigade Ivana Cankarja\npadlih za svobodo 14. novembra 1943",
+      "dostop": "Grob je urejen na severozahodnem pobočju hriba Marof, ki blago pada proti Bršljinu.",
+      "vrsta": "grob, spomenik",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K.o. Novo mesto, parcela št.480",
+      "vnesel": "L.H., 25.2.2018",
+      "povezave": [
+        "http://giskd2s.situla.org/rkd/Opis.asp?Esd=4215"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2833/T2518_F19915_2833.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2833/T2518_F19915_2833.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/2833/T2518_F19916_2833.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/2833/T2518_F19916_2833.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-021": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5757,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5757",
+      "naziv_v_registru": "Novo mesto, Spominska plošča padlim iz Bršljina",
+      "lat": 45.81467182348057,
+      "lon": 15.148529138390998,
+      "napis": "ZA SVOBODO SO DAROVALI\n\nSVOJA ŽIVLJENJA\n\nBORCI                                    ŽRTVE\n\nBIVIČ JOSIP                       ČAMPA ANTON\n\nGRAMAR JOSIP                 KASTELIC DANICA\n\nGLOBEVNIK FRANC          KASTELIC DRAGI\n\nKLANJŠEK DUŠAN            KASTELIC FRANC\n\nKNAFELC JOSIP                KASTELIC JOŽICA\n\nKOČJAŽ ANTON                KUKMAN MIHA\n\nKRIŠTOF MIHA                  PEROCI ALBINA\n\nMESOJEDEC JOSIP          PLESKOVIČ ANICA\n\nPREŠEREN JOSIP             PEČAR ZORA\n\nSITAR STANKO                  RIFELJ MARIJA\n\nŠTIBRIČ JOSIP                  SAJE FRANC\n\nVIŠNAR DRAGO                ZIDAR MARIJA\n\nZIDAR STANKO                 ZUPANČIČ FRANC\n\nVEČNA JIM SLAVA!",
+      "dostop": "Bršljin 44. Plošča je pritrjena na vhodni fasadi nekdanjega zadružnega doma, danes trgovine Kmetijske zadruge.",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1455 Bršljin, parc. št. 128/10",
+      "vnesel": "M. Kermavnar",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5757/2020_06_27_MK_7027.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5757/2020_06_27_MK_7027.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5757/2020_06_27_MK_7025.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5757/2020_06_27_MK_7025.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5757/2020_06_27_MK_7024.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5757/2020_06_27_MK_7024.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-022": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5758,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5758",
+      "naziv_v_registru": "Novo mesto, Spominska plošča Kastelčevi družini",
+      "lat": 45.814073476391336,
+      "lon": 15.151308358038508,
+      "napis": "NEMŠKI OKUPATOR\n\nJE TUKAJ ZVERINSKO UMORIL\n\n23.X.1943\n\nOČETA FRANCA  KASTELICA\n\nNJEGOVE HČERE\n\nDRAGICO, JOŽICO IN DANICO\n\nTER VANA OBREZA",
+      "dostop": "Bršljin 1. Plošča je vzidana na obcestni fasadi.",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1455 Bršljin, parc. št. 1257/1",
+      "vnesel": "M. Kermavnar",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5758/2020_06_27_MK_7032.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5758/2020_06_27_MK_7032.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5758/2020_06_27_MK_7033.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5758/2020_06_27_MK_7033.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5758/2020_06_27_MK_7034.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5758/2020_06_27_MK_7034.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-023": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5756,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5756",
+      "naziv_v_registru": "Novo mesto, Spominska plošča padlim železničarjem",
+      "lat": 45.81103739685242,
+      "lon": 15.1558786865846,
+      "napis": "ZA SVOBODO SO DAROVALI SVOJA\n\nŽIVLJENJA BORCI ŽELEZNIČARJI\n\nBALANTIČ JOŽE          KOPLAN JOŽE\n\nČERVENKO IGNAC     PAVŠAR LOJZE\n\nDOLINAR FRANC       PREŠEREN JOŽE\n\nFINK ALOJZ                 PRPAR GREGOR\n\nFURLANIČ IVAN         PUNGERČAR JOŽE\n\nFURLANIČ MARJAN   FURLANIČ TINE\n\nGLOBEVNIK FRANC  STEPNIŠNIK ROMAN\n\nHACIN ALOJZ             TEKSTOR JOŽE\n\nKASTELIC JOŽE         URBANIJA ANTON\n\nKIC ALOJZ                  URBANIJABORIS\n\nKIC FRANC                VRANIČ MIRAN\n\nKIC JOŽE                    ZUPANČIČ IVAN\n\nKIRN JANEZ              ŽAGAR JOŽE\n\nKIRN TIHOMIL\n\nVEČNA JIM SLAVA",
+      "dostop": "Kolodvorska ulica 1. Plošča je pritrjena na jugozahodni strani stavbe železniške postaje v Bršljinu.",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 396",
+      "vnesel": "M. Kermavnar",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5756/2020_06_27_MK_7040.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5756/2020_06_27_MK_7040.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5756/2020_06_27_MK_7039.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5756/2020_06_27_MK_7039.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5756/2020_06_27_MK_7041.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5756/2020_06_27_MK_7041.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-024": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6394,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6394",
+      "naziv_v_registru": "Novo mesto, Spominska plošča na železniški kurilnici",
+      "lat": 45.811971712815954,
+      "lon": 15.153626145044218,
+      "napis": "ZLEPŠO BODOČNOST SO DALI\n\nŽIVLJENJE ŽELEZNIČARJI\n\nSEKCIJE ZA VLEKO NOVO MESTO\n\nBERUS MARTIN        KOČMAN JOŽE\n\nČAMPA LUŽAR         MAKS ANTON\n\nČAMPA JANEZ          MALI FRANC\n\nFINK ALOJZ              MEHLE JOŽE\n\nFINK JOŽE                 REZELJ ALOJZ\n\nGORNIK VIKTOR     STRNAD JANEZ\n\nGORJANC ANTON   TRATAR ANTON\n\nGRANDLJIČ ANTON  TRATAR ANTON\n\nJEVŠČEK AUGUST     TURK IVAN\n\nKOČJAŽ ANTON         ZIDAR STANKO",
+      "dostop": "Železniška postaja Novo mesto. Hiša v bližini Kurilniška ulica 9",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 420/1",
+      "vnesel": "M. Kermavnar",
+      "povezave": [
+        "http://www.slov.si/doc/novomeski_spomeniki.pdf"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6394/2021_02_23_MK_IMG_8929.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6394/2021_02_23_MK_IMG_8929.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6394/2021_02_23_MK_IMG_8930.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6394/2021_02_23_MK_IMG_8930.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6394/2021_02_23_MK_IMG_8932.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6394/2021_02_23_MK_IMG_8932.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-025": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6560,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6560",
+      "naziv_v_registru": "Milan Majcen, vojašnica v Novem mestu",
+      "lat": 45.815954201338016,
+      "lon": 15.144830166915886,
+      "napis": "MILAN MAJCEN",
+      "dostop": "Straška cesta 26, Novo mesto. Spomenik se nahaja v parku znotraj vojašnice Franca Uršiča. Prijazno osebje me je pospremilo do spomenika. Ob dnevu odprtih vrat vojašnice je spomenik dostopen tudi širši javnosti.",
+      "vrsta": "kip in infotabla",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1455 Bršljin, parc. št. 45/4",
+      "vnesel": "M. Kermavnar",
+      "povezave": [
+        "https://www.slov.si/doc/novomeski_spomeniki.pdf"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6560/2021_02_23_MK_IMG_8934.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6560/2021_02_23_MK_IMG_8934.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6560/2021_02_23_MK_IMG_8933.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6560/2021_02_23_MK_IMG_8933.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6560/2021_02_23_MK_IMG_8935.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6560/2021_02_23_MK_IMG_8935.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-026": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5764,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5764",
+      "naziv_v_registru": "Spomenik NOB, Velika Bučna vas",
+      "lat": 45.82685901297466,
+      "lon": 15.15566683697959,
+      "napis": "JUNAKOM\nVELIKE NARODNOOSVOBODILNE VOJNE\nPOSTAVILA ZVEZA BORCEV KAMENICE 1951\n\nBOHTE JOŽE · AVBAR JOZE · MEDVED JOŽE\nCVETAN MARIJA · CVETAN ALOJZ · GREBENC ANTON\nKOCJANČIČ JOŽE · ŠPELIČ FELIKS · KOCJANČIČ FRANC\n\nGERMOVŠEK FRANC · AVBAR ANTON · BERUS MARTIN\nZUPANČIČ FRANC · ZUPANČIČ FRANC · ZUPANČIČ ANICA\nSKUBIC ANTON · SKUBIC LOJZE · MOŽE JOŽE\nKIC JOŽE · KIC ALOJZ · GLAVIČ FRANC · FERBEŽAR FRANC\n\nKASTREVC ALOJZ · ANŽLOVAR ALOJZ · KASTREVC FRANC\nPOTOČAR FRANC · ŠETINA ANTON\nŠOŠTER MAKS · POTOČAR ANTON · PLESKOVEC FRANC\nPETRIČ JOŽE · TUŠAR JANEZ · ZUR ANTON\n\nGLAVIČ ALOJZ · DERGANC JANEZ · POTOČAR MARIJA\nKAVŠEK JANEZ · HERVOLJ ALOJZ · PLESKOVIC FRANC\nKASTREVC FRANC · REZELJ ALOJZ · KORACEN ALOJZ\nMOŽE JOŽE · MALI FRANC · MOŽE VIDA · POTOČAR  ALOJZ\nKIC FRANC · KOCMAN JOŽE · KUMER FRANC\nKIC IVAN · VRČEK ANTON",
+      "dostop": "Stoji nad cesto Novo mesto - Karteljevo v Veliki Bučni vasi, v severnem delu Novega mesta. Hiša v bližini: Ljubljanska 77",
+      "vrsta": "spomenik",
+      "nastanek": "29. 11. 1951",
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1454 Daljni vrh, parc. št. 778",
+      "vnesel": "M. Kermavnar 24. 5. 2020\r\nM. Hladnik 30.5.2022\r\nD. Divjak 10.2.2025",
+      "povezave": [
+        "https://geohub.gov.si/ghapp/giskd/?&amp;find=8707&amp;locale=sl"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5764/2020_06_27_MK_7013.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5764/2020_06_27_MK_7013.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5764/2020_06_27_MK_7005.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5764/2020_06_27_MK_7005.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5764/2020_06_27_MK_7015.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5764/2020_06_27_MK_7015.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5764/2020_06_27_MK_IMG_7006_Velika_Bucna_vas.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5764/2020_06_27_MK_IMG_7006_Velika_Bucna_vas.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-027": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6395,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6395",
+      "naziv_v_registru": "Velika Bučna vas plošča, Železničarski brigadi",
+      "lat": 45.82345443792754,
+      "lon": 15.155516183467682,
+      "napis": "V TEJ VASI JE BILA\n\n26.9.1942 USTANOVLJENA 14.\n\nBRIGADA ŽELEZNIČARSKA.\n\nBORCI ŽELEZNIČARJI\n\n1961",
+      "dostop": "Ljubljanska cesta 55, Novo mesto",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1454 Dalnji Vrh, parc. št. 908",
+      "vnesel": "M. Kermavnar",
+      "povezave": [
+        "http://www.slov.si/doc/novomeski_spomeniki.pdf"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6395/20221126_092446.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6395/20221126_092446.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-028": {
+      "vir": "partizanstvo.si",
+      "vir_id": 4965,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4965",
+      "naziv_v_registru": "Novo mesto, Grobnica NOB na pokopališču Ločna",
+      "lat": 45.8130204663023,
+      "lon": 15.173672618257015,
+      "napis": "KDOR PADE\n\nKOT STE PADLI VI\n\nTA ZMAGAL JE\n\nNAD SMRTJO IN USODO\n\nKO DAL SRCE JE\n\nIN POGUM IN KRI\n\nZA NAJBOLJ DRAGOCENO STVAR\n\nSVOBODO",
+      "dostop": "Stoji v vzhodnem vogalu pokopališča Ločna v Novem mestu. Hiša v bližini: Seidlova cesta 27",
+      "vrsta": "grobnica",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 917",
+      "vnesel": "Miloš Kermavnar, 25.1.2020",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4965/IMG_5098.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4965/IMG_5098.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4965/IMG_5094-m.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4965/IMG_5094-m.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4965/IMG_5093-m.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4965/IMG_5093-m.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4965/P1170560.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4965/P1170560.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4965/P1170561.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4965/P1170561.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-029": {
+      "vir": "partizanstvo.si",
+      "vir_id": 10390,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=10390",
+      "naziv_v_registru": "Novo mesto, Štrasner Anton",
+      "lat": 45.812896,
+      "lon": 15.172934,
+      "napis": "ŠTRASNER ANTON\n\nANTON   1927  -  1943",
+      "dostop": "Novo mesto, pokopališče Ločna. Lokacija zvezdice je približna. Hiša v bližini: Seidlova cesta 27",
+      "vrsta": "nagrobnik",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 NOVO MESTO, parc. št. 917",
+      "vnesel": "M.Kermavnar, 05.01.2026, po predlogi Zdenke Primožič",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/10390/POKOPALI%C5%A0%C4%8CE_NOVO_MESTO_%C5%A0TRASNER_ANTON.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/10390/POKOPALI%C5%A0%C4%8CE_NOVO_MESTO_%C5%A0TRASNER_ANTON.jpg",
+          "avtor": "Geneanet.org",
+          "opis": "Novo mesto, Štrasner Anton",
+          "licenca_v_registru": "Slike z Geneanet, komercialna raba ni dovoljena",
+          "izvor_v_registru": null,
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-030": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6738,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6738",
+      "naziv_v_registru": "Novo mesto, gasilcem",
+      "lat": 45.813526377408806,
+      "lon": 15.174022290072696,
+      "napis": "PROČ VRZIMO TRUDNE MISLI -\n\nNI JE SMRTI BREZ ŽIVLJENJA,\n\nNI SVOBODE BREZ TRPLJENJA,\n\nVSE PREŠLO BO KAKOR KALNA REKA.\n\nPROČ JO VRŽEŠ, ČE PRETESNA JE OBLEKA.\n\nČLOVEK, NOVI ČLOVEK VSTAL BO IZ ČLOVEKA!\n\n/KAJUH/\n\nOB 100 LETNICI GASILSKEGA DRUŠTVA NOVO MESTO\n\nIN OB 35 LETNICI VSTAJE\n\nV SPOMIN PADLIM ČLANOM\n\nGD NOVO MESTO\n\n1976",
+      "dostop": "Vir Vodnik po partizanskih poteh iz l. 1978 navaja naslov CESTA HEROJEV 27, Novo mesto. Danes te ulice ni. Gasilski dom je na Seidlovi cesti 29.",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1456 Novo mesto, parc. št. 813",
+      "vnesel": "M. Kermavnar 9. 5. 2021",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6738/P1170556.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6738/P1170556.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6738/P1170557.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6738/P1170557.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": "Register navaja lego pri pokopališču Ločna, naša evidenca Seidlovo cesto (gasilski dom)."
+    },
+    "NMZ-031": {
+      "vir": "partizanstvo.si",
+      "vir_id": 4964,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4964",
+      "naziv_v_registru": "Novo mesto, Grobnica NOB na pokopališču Šmihel",
+      "lat": 45.79700211143097,
+      "lon": 15.16217374803936,
+      "napis": "BORCI IN ŽRTVE PADLI\nZA SVOBODO     1941 - 1945\n\nBORCI:\nANTONIČ JOŽE,   BARLE GUSTAV,\nBELE ALOJZ,   BRULC MARTIN,\nBRUNSKOLE FRANC,   FINK JOŽE,\nFINK LOJZE,   FURLANIČ MARTIN,\n[zvezda]\nGERDENC FRANC,   GOLOB FRANC,\nHACIN ALOJZ,   HRASTAR FRANC,   HROVAT ANTON,\nHROVAT FRANC,   JAKOPIN MAKS,\nJAKOVČIČ JULIJ,   JAKŠE FRANC,   KALČIČ JOŽE,\nKEJŽAR PETER,   KIRN RUDOLF,   KLEINDIENST FRANCI,\nKNAFELC ANTON,   KOČEVAR JOŽE,   KOPITAR KRISTINA,\nKOŠIR METOD,   KOŠIR MILAN,   KOVAČIČ STANISLAV,\nKUMP VILJEM,   LAPANJA MARJAN,   LUKŠIČ FRANC,\nLUZAR MARIJA,   MALI IVAN,   MATOH FRANC,\nMATOH JANEZ,   MEGLIČ STANE,   MERČJAK MILAN,\nMIHELIČ FRANC,   MODIC MAKS,   NOVAK MARJAN,\nOPREŠNIK STOJAN,   PEKOLJ VIKTOR,   PETRIČ JOŽE,\nPODGORNIK RAJKO,   POGAČAR DUŠAN,   ROŽENBERGER FRANC,\nROŽENBERGER ROMAN,   ŠMAJDEK ALBIN,   ŠPRAJCER LOJZE,\nTRATAR ANTON,   UDERMAN LJUBO,   VALANTIČ VIDA,\nVIDIC ANTON,   ZUPANČIČ JOŽE,   ŽAGAR ALOJZ,\nŽIBERT FRANC,   ŽUPEVC ŽAN,   PETRIČ ŽARKO\n\nŽRTVE:\nBOŠTJANČIČ ANTON,   BRUDAR JOŽE,\nDINGHAUSER MARA,   ERAT ANTON,   FINK ALOJZIJ,   FRIC FRANC,\nFURLANIČ KOZMA,   FURLANIČ NINA,   GAŠPER FRANC,\nGAŠPER JANEZ,   GOLOB CVETA,   GOLOB TOMO,\nGORNIK VIKTOR,   HREN STANKO,   HROVAT JOŽE,\nHROVATIČ ANTON,   JERIČEK JOŽE,   JERMAN FRANCKA,\nKNAJTER ANTE,   KNAFELJC JANEZ,   KRAUCAR MAJDA,\nKRAUCAR MARIJA,   LEŠNJAK MARIJA,   MAROLT APOLONIJA,\nMAROLT FRANC,   MATKO JOŽE,   MURN RUDOLF,\nNOVAK FRANC,   OVNIČEK JANEZ,   OVNIČEK MARIJA,\nRAKOŠE NEŽA,   SEDLAR STANKA,\nMIŠJAK IVAN\n\nnapis na plošči desno od osrednje plošče:\nSTANIŠA IVAN\nSTANIŠA ZOFIJA\nŠETINA JANEZ\nŠTRAUS IVAN\nŠUŠTARŠIČ JOŽE\nTESTEN IVANA\nUDERMAN DUŠAN\nVALANTIČ ALMA\nVALANTIČ ALOJZ-ST.\nVALANTIČ ALOJZ-ML\nVALANTIČ MARIJA\nVESEL FRANC\nZUPANČIČ MARIJA\nZUPANČIČ PAVEL\nŽAGAR ANTON\n\nTER ŠE NEZNANI\nBORCI IN ŽRTVE\n\nPOSTAVLJENO 1. 11. 1957\nOBNOVLJENO 1. 11. 1986\nZB NOV NOVO MESTO",
+      "dostop": "Stoji na severnem vogalu pokopališča v Šmihelu. Hiša v bližini: Lebanova ulica 1",
+      "vrsta": "spomenik",
+      "nastanek": "postavljeno 1. 11. 1957   obnovljeno 1. 11. 1986",
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1484 Šmihel pri Novem mestu, parc. št. 451/4",
+      "vnesel": "Miloš Kermavnar, 25.1.2020.",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4964/IMG_5092.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4964/IMG_5092.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4964/IMG_5089.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4964/IMG_5089.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4964/IMG_5084.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4964/IMG_5084.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4964/Novo_mesto_Smihel_pokopalisce_grobnica_NOB.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4964/Novo_mesto_Smihel_pokopalisce_grobnica_NOB.jpg",
+          "avtor": "ZB Novo mesto",
+          "opis": null,
+          "licenca_v_registru": null,
+          "izvor_v_registru": "https://www.facebook.com/photo/?fbid=483446437152823&set=pb.100064624128873.-2207520000",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-032": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6874,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6874",
+      "naziv_v_registru": "OŠ Šmihel",
+      "lat": 45.7948645471701,
+      "lon": 15.163632741818887,
+      "napis": "[zvezda]\n\n1864 USTANOVLJENA ŠOLA\n\n1892 ZGRAJENA ŠOLSKA STAVBA\n\n1941--1945 MLADINA SODELOVALA V BOJIH ZA ZMAGO LJUDSKE REVOLUCIJE\n\n1948-1964 MLADINA SE UDELEŽEVALA DELOVNIH AKCIJ\n\n1964 PRENOVLJENA IN DOGRAJENA STAVBA OSEMLETKE",
+      "dostop": "Šmihel 2, obcestna fasada osnovne šole",
+      "vrsta": "plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": null,
+      "vnesel": "M. Hladnik",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6874/P1170633.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6874/P1170633.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6874/P1170634.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6874/P1170634.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-033": {
+      "vir": "partizanstvo.si",
+      "vir_id": 6875,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6875",
+      "naziv_v_registru": "Šmihel pokopališče",
+      "lat": 45.79639066973441,
+      "lon": 15.16219996981792,
+      "napis": "BRATA\nTURJAK-OVA\nMILAN\n* 19. 2. 1919 PADEL 21. 10. 1943\nDOMINIK\n* 2. 8. 1916 PADEL 30. 12. 1943\n\n......................................................\n\n[križ] V spomin [zvezda]\nZUPANČIČ JOŽE * 9. 4. 1918     + 28. 6. 1942\nGotna vas 38\nMIHELČIČ FRANC * 2. 12. 1914 + 28. 6. 1942\nRegerča vas 19\nŠMAJDEK ALBIN * 27. 5. 1913   + 28. 6. 1942\nRegerča vas 36\n\n......................................................\n\n[zvezda] BAŠIČEVI\n\n......................................................\n\nPETRIČEVI\nŽARKO POGREŠAN 14. 8. 1944\n\n......................................................\n\n[križ] VAMPELJ JOŽE  * 27. 9. 1907\nUBIT KOT TALEC V GRAMOZNI JAMI\nV LJUBLJANI 11. 7. 1943",
+      "dostop": "Pokopališče Šmihel pri Novem mestu",
+      "vrsta": "nagrobnik",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1484 Šmihel pri Novem mestu, parc. št. 451/4",
+      "vnesel": "M. Hladnik",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6875/P1170644.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6875/P1170644.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6875/P1170635.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6875/P1170635.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6875/P1170637.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6875/P1170637.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6875/P1170638.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6875/P1170638.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6875/P1170642.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6875/P1170642.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/6875/P1170643.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/6875/P1170643.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": "Na pokopališču Šmihel je več ločenih zapisov nekaj metrov narazen — preveri, ali je to skupinski sklop."
+    },
+    "NMZ-034": {
+      "vir": "partizanstvo.si",
+      "vir_id": 8412,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=8412",
+      "naziv_v_registru": "Valantič, Šmihel",
+      "lat": 45.796781412864426,
+      "lon": 15.162094195258746,
+      "napis": "KURIR LOJZEK\n\nVALANTIČ\n\n+ 24. 12. 1944",
+      "dostop": "Lokacija na pokopališču Šmihel pri Novem mestu ni natančno označena.",
+      "vrsta": "družinski nagrobnik",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1484 Šmihel pri Novem mestu, parc. št. 451/4",
+      "vnesel": "M. Hladnik po spletni strani QR-NOB (https://www.qr-nob.com/slovenija/spomenik-valantic/)",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/8412/valanti%C4%8D%20%C5%A1mihel%202.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/8412/valanti%C4%8D%20%C5%A1mihel%202.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/8412/valanti%C4%8D%20%C5%A1mihel%20IMG_20220411_140956.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/8412/valanti%C4%8D%20%C5%A1mihel%20IMG_20220411_140956.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": "Prav tako na pokopališču Šmihel, 45 m od NMZ-033; preveri, da ne gre za isto obeležje."
+    },
+    "NMZ-035": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5765,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5765",
+      "naziv_v_registru": "Novo mesto, Grobišče in spomenik NOB pri Sv. Roku",
+      "lat": 45.78220123007665,
+      "lon": 15.167227553401448,
+      "napis": "PADLI BORCI 1941 - 1945 LETA\n\n.\n\nRUNKO ZVONKO (PAVLE)          TRATAR ANTON\n\nSTRASNAR ANTON                     MIHELČIČ FRANC\n\nBRADAČ MILAN                           VONČINA ALOJZ\n\nMALEŠIČ IVAN                             ŠMAJDEK ALBIN\n\nSADAR JOŽE                                KOŠIR METOD\n\nŠTIH AVGUST                               VIDMAR FRANC\n\nROŽENBERGAR ROMAN            JAKŠE FRANC\n\nHRASTAR FRANC                        PETAN LEOPOLD\n\nDRAGMAN JOŽE                          BOH ANTON\n\nROŽENBERGAR FRANC             ŽAGAR ALOJZ\n\nKOBLER BOGOMIR                      BRULC MARTIN\n\nKLOBUČAR ANTON                      BELE ALOJZ\n\nMALEŠIČ JOŽE                             HROVAT FRANC\n\nMEGLIČ STANISLAV                     KLEMENČIČ BOGOMIR\n\nZUPANČIČ IVAN                            KLEMENČIČ FILIP\n\nZUPANČIČ JOSIP                          KLEMENČIČ FRANC\n\nKOŠIR MILAN                                OVNIČEK JANEZ\n\nKALČIČ JOŽE                                ANTONČIČ ANTON\n\nFURLANIČ MARTIN                      PODGORNIK RAJKO\n\nHROVAT ANTON                           PACEK FRANC\n\n.\n\nTALCI IN ŽRTVE 1941 - 1945 LETA\n\n.\n\nVESEL FRANC                              ŠUŠTARŠIČ JOŽE\n\nŠETINA JANEZ                              ZUPANČIČ PAVEL\n\nLESJAK MARIJA                            HROVATIČ ANTON\n\nHREN STANKO                              MIŠJAK IVAN\n\nLAPANJA MARJAN                        ŠTRAVS IVAN\n\nJERIČEK JOŽE                              BRUDAR JOŽE\n\nCUKJATI ZOFI                               TRATAR ANTON STAR.\n\nKNAFELJČ ANTON                        MATKO JOSIP\n\nDULAR JOŽE                                 FRITZ FRANC\n\nŠTAJNAR MARTIN                         ZUPANČIČ MARIJA\n\nOVNIČEK MARIJA                         TESTEN IVANA\n\nŠUŠTARŠIČ JOŽE                         BELE ALOJZ\n\nŽAGAR ANTON                              BOŠTJANČIČ ANTON\n\nFURLANIČ KOZMO                        FURLANIČ NINO\n\nIN NEPOZNANI PADLI BORCI\n\n.\n\n.   SLAVA PADLIM BORCEM IN ŽRTVAM TER TALCEM",
+      "dostop": "Spomenik stoji pod štirimi smrekami na travniku v bližini ceste in ruševin cerkve sv. Roka v Regrči vasi. Hiša v bližini: K Roku 157",
+      "vrsta": null,
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1485 Gotna vas, parc. št. 849",
+      "vnesel": "M. Kermavnar",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5765/2020_06_27_MK_7125.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5765/2020_06_27_MK_7125.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5765/2020_06_27_MK_7124.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5765/2020_06_27_MK_7124.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5765/2020_06_27_MK_7126.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5765/2020_06_27_MK_7126.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-036": {
+      "vir": "partizanstvo.si",
+      "vir_id": 4642,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4642",
+      "naziv_v_registru": "Prečna, spomenik aktivistu Čampa Antonu",
+      "lat": 45.81291265619338,
+      "lon": 15.12995940777878,
+      "napis": "DNE 24. 2. 1944\nSO NA TEM MESTU\nBELOGARDISTI UMORILI\nAKTIVISTA\nČAMPA ANTONA\nIZ CEGELNICE",
+      "dostop": "Spomenik stoji na robu gozda na levi strani ceste Novo mesto – Prečna, 450 m od krožišča pri podjetju Adria in ob robu poseke za daljnovod.",
+      "vrsta": "spomenik",
+      "nastanek": "1946",
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1455 Bršljin, parc. št. 422/6",
+      "vnesel": "Miloš Kermavnar, 28.10.2019",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4642/T2518_F19915_4642.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4642/T2518_F19915_4642.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4642/T2518_F19916_4642.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4642/T2518_F19916_4642.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4642/T2518_F19917_4642.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4642/T2518_F19917_4642.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-037": {
+      "vir": "partizanstvo.si",
+      "vir_id": 4644,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4644",
+      "naziv_v_registru": "Prečna, Grob s spomenikom talcem",
+      "lat": 45.8134580121315,
+      "lon": 15.12534012603118,
+      "napis": "OB TEM POKOPALIŠČU SO ITALIJANSKI FAŠISTI\n\n25. 6. 1942 USTRELILI 4 TALCE, KI SO\n\nJIH PRIPELJALI IZ NOVOMEŠKIH ZAPOROV\n\nTI SO BILI: JORDAN MARJAN-DOLŠCE\n\nKORAČIN JOŽE, SINTIČ JANEZ\n\nIN ŽARN JOŽE- AVGUŠTINE\n\nPREČNA 3. 11. 1984\n\nO.O.ZB NOV NOVO MESTO",
+      "dostop": "Grob stoji na vaškem pokopališču v Prečni ob pokopališkem zidu na prehodu iz starega pokopališča na novo.",
+      "vrsta": "Grob",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1448 Prečna, parc. št. 72/2",
+      "vnesel": "Miloš Kermavnar, 28.10.2019",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4644/T2518_F19915_4644.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4644/T2518_F19915_4644.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4644/T2518_F19916_4644.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4644/T2518_F19916_4644.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-038": {
+      "vir": "partizanstvo.si",
+      "vir_id": 4645,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4645",
+      "naziv_v_registru": "Prečna, Grobnica s spomenikom padlim",
+      "lat": 45.81357852952372,
+      "lon": 15.125347731447924,
+      "napis": "1941 – 1945\n\nBORCI, TALCI IN ŽRTVE\n\nBIVIČ JOSIP, COLJA ALOJZ st., COLJA ALOJZ ml., COLARIČ FRANC, COLARIČ NIKO,\nČAMPA DRAGO,\n\nČAMPA TONE, DRAGMAN ALOJZ, DERGANC DRAGO, GROBELNIK FRANC, GRAMAR JOSIP,\n\nHANDLER LOJZE, ILOVAR TONE, KASTELIC DANICA, KASTELIC DRAGICA,\n\nKASTELIC JOŽICA, KASTELIC FRANC, KLANJŠEK DUŠAN, KNAFELJC JOSIP,\n\nKREVS RUDOLF, KRISTOF MIHA, KOMAN FELIKS, KUKMAN MIHA, LUŽAR FRANC,\n\nMESOJEDEC JOSIP, MESOJEDEC TONE, MIŠIČ TONE, NOVAK LUDVIK,\n\nNOVAK MARJAN, PEČAR ZORA, PERUZI ALBINA, PETRIČ FRANC,\n\nPETRIČ SLAVKO, PLESKOVIČ ANICA, PODOBNIK DANILO, PREŠEREN JOSIP,\n\nRIFELJ MARIJA, SAJE FRANC, SITAR STANKO, SOMRAK ANDREJ,\n\nSOMRAK JANEZ, SOMRAK JOŽE, SAJEVEC DRAGO,\n\nSTIBRLE JOSIP, ŠALI ALOJZ st., ŠALI JOŽE, ŠALI KAREL,\n\nŠILER RUDOLF, ŠMALC TONE, VIŠNAR DRAGO,\n\nZIDAR MARIJA, ZIDAR STANKO, ZUPANČIČ FRANC,\n\nZUPANČIČ MARIJA, NEZNANA BORKA, POKOPANA\n\nNAD LUKNJO, NEZNAN BOREC POKOPAN\n\nNA KALU, KOCIJAŽ TONE",
+      "dostop": "Grobnica leži v severovzhodnem vogalu starega dela pokopališča v Prečni.",
+      "vrsta": "Grobnica",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1448 Prečna, parc. št. 72/2",
+      "vnesel": "Miloš Kermavnar, 28. 10. 2019",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4645/2019_10_26_MK_IMG_3297.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4645/2019_10_26_MK_IMG_3297.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4645/2019_10_26_MK_IMG_3295.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4645/2019_10_26_MK_IMG_3295.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4645/2019_10_26_MK_IMG_3296.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4645/2019_10_26_MK_IMG_3296.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-039": {
+      "vir": "partizanstvo.si",
+      "vir_id": 4643,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4643",
+      "naziv_v_registru": "Prečna, Grob borcev Dolenjskega odreda",
+      "lat": 45.81350757793362,
+      "lon": 15.12530310245217,
+      "napis": "BORCI 2. ČETE II. BAT.\nDOLENJSKEGA ODREDA\nPADLI PRI ČEŠČI VASI\n16. JULIJA 1942\nHANDLER ALOJZ\nR. 17. IX. 1922\nMESOJEDEC JOŽE\nR. 28. IV. 1925\nNOVAK MARJAN\nR. 31. VIII. 1927\nSLAVA NJIHOVEMU\nSPOMINU",
+      "dostop": "Grob stoji na vaškem pokopališču v Prečni na prostoru med prehodom med starim in novim pokopališčem ter grobnico padlim borcem.",
+      "vrsta": null,
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1448 Prečna, parc. št. 72/2",
+      "vnesel": "Miloš Kermavnar, 28.10.2019",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4643/T2518_F19915_4643.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4643/T2518_F19915_4643.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-040": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5091,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5091",
+      "naziv_v_registru": "Prečna, Spominska plošča Alojzu Colji",
+      "lat": 45.81392598763376,
+      "lon": 15.120494038986614,
+      "napis": "V TEM KRAJU JE V\n\nLETIH 1934 - 1942 ŽIVEL IN\n\nDELOVAL NAPREDNI KULTURNI\n\nDELAVEC IN AKTIVIST OF\n\nŠOLSKI UPRAVITELJ\n\nALOJZ COLJA,\n\nKI SO GA PO PRIHODU IZ\n\nITALIJANSKE INTERNACIJE\n\n2.12.1943 V LJUBLJANI\n\nUMORILI NAŠI IZDAJALCI.\n\n8.2.1983",
+      "dostop": "na vhodni fasadi doma kulture, ki stoji na naslovu Prečna 11",
+      "vrsta": "Spominska plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1448 Prečna, parc. št. 87/1",
+      "vnesel": "Miloš Kermavnar 26. 2. 2020",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5091/2021_02_23_MK_IMG_8940.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5091/2021_02_23_MK_IMG_8940.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5091/2021_02_23_MK_IMG_8942.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5091/2021_02_23_MK_IMG_8942.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5091/2025_04_10_ML_1000017165_Precna.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5091/2025_04_10_ML_1000017165_Precna.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-041": {
+      "vir": "partizanstvo.si",
+      "vir_id": 4262,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4262",
+      "naziv_v_registru": "Češča vas, Spominski park padlim borcem",
+      "lat": 45.802942301110136,
+      "lon": 15.126122936133006,
+      "napis": "Prva plošča:\n\nV BOJU ZA SVOBODO JE 16. JULIJA 1942\n\nJUNAŠKO PADLO 19 PARTIZANOV\n\n3. ČETE 2. BATALJONA KRŠKEGA ODREDA\n\nČEŠČA VAS 22. JUNIJA 1984\n\nOBČINSKI ODBOR ZZB NOV\n\nKS PREČNA\n\nDruga plošča:\n\nV SPOMIN PADLIM BORCEM NOV,\n\nIZ ČEŠČE VASI\n\n1941 – 1945\n\nDERGANC FRANC, MESOJEDEC\n\nANTON, SAJEVIC DRAGO,\n\nŠALI ALOJZ, ŠALI JOŽE,\n\nŠALI KAREL, ŠILER RUDOLF\n\nČEŠČA VAS 22. JUNIJA 1984\n\nOBČINSKI ODBOR ZZB NOV\n\nKS PREČNA",
+      "dostop": "Spominski park leži med potokom in cesto Novo mesto - Zalog, na blago padajočem pobočju proti jugozahodni strani. 90 metrov pred Češčo vasjo se odcepi kolovoz proti gozdu na desni strani. Na samem robu gozda se nahaja spominski park.",
+      "vrsta": "spominski park",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1447 Gorenja Straža, parc. št. 1693/2",
+      "vnesel": "M. Hladnik, Miloš Kermavnar, 28.10.2019",
+      "povezave": [
+        "https://www.slov.si/doc/novomeski_spomeniki.pdf",
+        "http://www.slov.si/doc/novomeski_spomeniki.pdf"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4262/T2518_F19915_4262.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4262/T2518_F19915_4262.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4262/T2518_F19916_4262.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4262/T2518_F19916_4262.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4262/T2518_F19917_4262.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4262/T2518_F19917_4262.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-042": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5093,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5093",
+      "naziv_v_registru": "Dolenje Kamence, grobišče 5 borcev NOV",
+      "lat": 45.82889860320754,
+      "lon": 15.147790503740023,
+      "napis": "Prvotni spomenik\n\nzvezda\n\nSKROMEN DOMEK\n\nPARTIZANOV\n\n.\n\nCRNIVŠEK ANTON\n\nBRSIN FRANC\n\nIN TRIJE NEZNANI\n\nPARTIZANI\n\n.\n\nNovo izdelan spomenik\n\nzvezda\n\nV SPOMIN PADLIM PARTIZANOM\n\nCRNIVŠEK ANTON\n\nBRSIN FRANC\n\nIN TRIJE NEZNANI PARTIZANI",
+      "dostop": "Grobišče leži na krajevnem pokopališču v Dolenjih Kamencah v zgornjem kotu pokopališča, ločeno od ostalih družinskih grobov. Prvotno je bil grob izven pokopališča. EŠD 4214",
+      "vrsta": "Nagrobnik",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K.o.: 1454 - DALJNJI VRH, št.parc.: 406",
+      "vnesel": "Miloš Kermavnar 26.2.2020\n16.9.2021 D.Divjak",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5093/2020_06_27_MK_7022.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5093/2020_06_27_MK_7022.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5093/2020_06_27_MK_7020.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5093/2020_06_27_MK_7020.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5093/2020_06_27_MK_7023.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5093/2020_06_27_MK_7023.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-043": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5072,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5072",
+      "naziv_v_registru": "Kuzarjev Kal",
+      "lat": 45.824105968107,
+      "lon": 15.114839152244665,
+      "napis": "SPOMINSKI PARK NOV\n\n1941 - 1945                                                           1981\n\n3 PADLI: Somrak Jože, Lužar Franc\n\nNovak Ludvik                                3 LIPE\n\n18 AKTIVNIH BORCEV NOV                                SMREKE\n\nOMORIKE\n\n7 DRUŽIN  :   Berus, Luštek, Lužar, Novak,       7 BOROV levo\n\n56 ČLANOV     Saje, Somrak, Željko              56 STEBRIČKOV\n\n7 enot NOV:     ZDO, 4. SNOUB \"M. Gubca\",\n\n5. SNOUB \"I. Cankar\", 10 in 12\nSNOUB,\n\n1SAB, ŠTAB 15. Divizije         7 BOROV desno\n\nPokrovitelj: GOZDNO GOSPODARSTVO\n\nNOVO MESTO\nVarstvo\n\nOOZSMS\n\nPrečna",
+      "dostop": "SV od vasi, v trikotnem prostoru, ki ga omejujeta dve vaški poti. Hiša v bližini: Kuzarjev Kal 8",
+      "vrsta": "spominski park",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1448 Prečna, parc. št.3103/3 in 3103/8",
+      "vnesel": "M. Hladnik",
+      "povezave": [
+        "https://www.dolenjskilist.si/media/arhiv-pdf/dl/1981/DL_1981_04_30_18_1655.pdf"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5072/2021_02_23_MK_IMG_9016.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5072/2021_02_23_MK_IMG_9016.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5072/IMG_9017-st.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5072/IMG_9017-st.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5072/2021_02_23_MK_IMG_9028.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5072/2021_02_23_MK_IMG_9028.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5072/2021_02_23_MK_IMG_9029.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5072/2021_02_23_MK_IMG_9029.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-044": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5071,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5071",
+      "naziv_v_registru": "Kuzarjev Kal, Grob Danila Podobnika in Slavka Petriča",
+      "lat": 45.8277959552631,
+      "lon": 15.12251337262889,
+      "napis": "PODOBNIK\n\nDANILO\n\nPETRIČ\n\nSLAVKO\n\nPADLA 17.5.1944",
+      "dostop": "V Kalinskem gozdu, slab kilometer pod Kuzarjevim Kalom, 100 - 150 m zahodno od ceste, ki vodi do naselja.",
+      "vrsta": "grob",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": null,
+      "vnesel": "M. Hladnik,",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5071/2021_02_23_MK_IMG_9031.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5071/2021_02_23_MK_IMG_9031.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5071/2021_02_23_MK_IMG_9030.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5071/2021_02_23_MK_IMG_9030.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5071/2021_02_23_MK_IMG_9033.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5071/2021_02_23_MK_IMG_9033.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-045": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5094,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5094",
+      "naziv_v_registru": "Smolenja vas, Grob s spomenikom padlim borcem in žrtvam NOB",
+      "lat": 45.81662944528166,
+      "lon": 15.2025389449163,
+      "napis": "V LJUDSKI\nREVOLUCIJI\n1941 - 1945\nPADLIM\nSLAVA\n\nŽRTVE IN TALCI\n1942   MALA CIKAVA   TURK IVAN   SMOLENJA VAS   MIHELIČ ANTON\n1943   KRKA   ERMAN RUDI   MEDVED JOŽE   MALA CIKAVA   ČAMPELJ\nSIMON   MALI SLATNIK   FLORJANČIČ HENRIK   MIKEC FRAN\nPOTOVRH   KOŠMRLJ FRANC   SELA LUZAR ANTON   LUZAR\nSLAVKO   SMOLENJA VAS   FINK JOŽE   SLADEK ALOJZ   VEL.\nSLATNIK   RADEŽ JOŽE  SREBRNJAK FRANC  VODOPIVEC JOŽE\n1944   MALI SLATNIK   KOŠMRLJ ANTON                      SMOLENJA VAS\nZUPANČIČ FRANC\n1945   SMOLENJA VAS   VIDRIH ANA\n\nBORCI\n1942 MALI SLATNIK SENIČAR ALOJZ   ŠENTJERNEJ MAJZELJ VIKTOR\n1943 MALI SLATNIK SENIČAR JOŽE  SENIČAR FRANC   SMOLENJA\nVAS FINK FRANC  VIDIC ANTON   NOVO MESTO BARTOLJ SLAVKO\n1944 MALA CIKAVA BOJANC ČAMAPELJ MARIJA   MALI SLATNIK\nOVNIČEK FRANC   POTOVRH TABORSKI FRANC   SMOLENJA\nVAS HREN FRANC  SLADEK FRANC  VEHAR STANKO  VIDRIH AN-\nTON   SELA ERJAVEC FRANC  ERJAVEC RUDI   VELIKI SLATNIK\nMAVSAR MIHA                          1945 SMOLENJA VAS BELE JANEZ\nIN ŠEST NEZNANIH BORCEV",
+      "dostop": "Smolenja vas, desno od vhoda na vaško pokopališče. Hiša v bližini: Smolenja vas 46",
+      "vrsta": "spomenik",
+      "nastanek": "1959",
+      "avtor_obelezja": "J. Zamljen",
+      "kataster": "K. o. 1481 Smolenja vas, parc. št. *61/1",
+      "vnesel": "Miloš Kermavnar",
+      "povezave": [
+        "https://geohub.gov.si/ghapp/giskd/?&amp;find=4229&amp;locale=sl"
+      ],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5094/2020_10_12_MK_8418.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5094/2020_10_12_MK_8418.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5094/2020_10_12_MK_8416.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5094/2020_10_12_MK_8416.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5094/2020_10_12_MK_8419.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5094/2020_10_12_MK_8419.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5094/2026_04_25_MK_IMG_5735_Smolenja_vas.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5094/2026_04_25_MK_IMG_5735_Smolenja_vas.jpg",
+          "avtor": "M. Kermavnar",
+          "opis": "Smolenja vas, padlim borcem in žrtvam NOB",
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": null,
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5094/2026_04_25_MK_IMG_5737_Smolenja_vas.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5094/2026_04_25_MK_IMG_5737_Smolenja_vas.JPG",
+          "avtor": "M. Kermavnar",
+          "opis": "Smolenja vas, padlim borcem in žrtvam NOB",
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": null,
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-046": {
+      "vir": "partizanstvo.si",
+      "vir_id": 4962,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4962",
+      "naziv_v_registru": "Mali Slatnik, Spomenik NOB",
+      "lat": 45.80867888651172,
+      "lon": 15.20478144480578,
+      "napis": "V SPOMIN PADLIM BORCEM V NOV 1941 - 1945\n\n.\n\nBORCI\n\n.\n\nSENIČAR ALOJZ          1929 - 1942\n\nHREN FRANC               1924 - 1944\n\nSLADEK FRANC           1923 - 1944\n\nČAMPEL MARIJA         1923 - 1944\n\nVIDRIH ANTON            1914 - 1944\n\nSENIČAR JOŽE            1912 - 1944\n\nOVNIČEK FRANC        1912 - 1944\n\nERJAVEC RUDOLF      1920 - 1944\n\nERJAVEC FRANC        1910 - 1944\n\nBELE JANEZ                 1925 - 1945\n\nBOJANC FRANC          1922 - 1944\n\nSLEJKOVEC JOŽE       1921 - 1944\n\nTEKSTOR VINKO         1921 - 1944\n\nMAVSAR MIHA             1922 - 1944\n\nTABORSKI FRANC       1922 - 1944\n\nVEHAR STANKO          1910 - 1944\n\nVIDIC ANTON               1920 - 1944\n\nTISOVEC RUDOLF       1910 - 1944\n\nBEZEG LUDVIK            1913 - 1944\n\nMAJZEL VIKTOR          1923 - 1942\n\n.\n\nTALCI\n\n.\n\nMIHALIČ ANTON          1903 - 1942\n\nNOVAK DRAGO           1919 - 1942\n\nFORŠČEK FRANC       1914 - 1942\n\nBRUDAR JANEZ          1913 - 1942\n\nSENIČAR FRANC         1926 - 1943\n\nFINK JOŽE                    1914 - 1943\n\nFINK FRANC                 1916 - 1943\n\nKOŠMRL FRANC          1919 - 1943\n\nMIKEC FRANC              1915 - 1943\n\nMEDVED JOŽE             1922 - 1943\n\nRADEŽ JOŽE                1897 - 1943\n\nSREBRNJAK FRANC    1900 - 1943\n\nSLADEK ALOJZ             1920 - 1943\n\nKLEVIŠAR JOŽE           1915 - 1943\n\nFLORJANČIČ HENRIK 1915 - 1943\n\nVODOPIVEC JOŽE       1911 - 1943\n\nŠKEDELJ MARTIN        1911 - 1943\n\nna dodani plošči:\n\nGREGORČIČ MIHAEL  1915 - 1943\n\nPETAN SILVESTER      1922 - 1943",
+      "dostop": "Spomenik stoji sredi vasi, ob križišču, kjer se od ceste Novo mesto - Šentjernej, odcepi cesta proti Velikemu Slatniku. Hiša v bližini: Mali Slatnik 5a",
+      "vrsta": "spomenik",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1480 Potov vrh, parc. št. 1727/5",
+      "vnesel": "Miloš Kermavnar, 25.1.2020",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4962/IMG_5106.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4962/IMG_5106.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4962/IMG_5103.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4962/IMG_5103.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/4962/IMG_5102.JPG",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/4962/IMG_5102.JPG",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-047": {
+      "vir": "partizanstvo.si",
+      "vir_id": 63,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=63",
+      "naziv_v_registru": "Otočec, grobnica na pokopališču",
+      "lat": 45.83457038432346,
+      "lon": 15.22338931063939,
+      "napis": "Obelisk:\n.\nV LETIH\n1941--1945\nPADLIM\nV HVALEŽEN\nSPOMIN\n.\nVečji spomenik:\n.\nLeva plošča:\n.\nBORCI\nBECELE MERI\nBECELE VIKTOR\nBENE IVAN\nBLAŽIČ ALOJZ\nBOJANC ŠTEFAN\nCUJNIK N\nGAČNIK TONE\nGRABNAR IVAN\nGRABNAR MIRKO\nGREGORČIČ ALOJZ\nHOČEVAR NACE\nIVANČIČ IVAN\nJANC MIHA\nJELENC MARJAN\nJERMAN FRANC\nJERMAN JOŽE\nKOS VINKO\nKOTAR JANEZ\nKRAŠEVEC JOŽE\nKUŽNIK ANDREJ\nLAKNER JOŽE\nMARTINČIČ FRANC\nMEDVED FRANC\nMIHALIČ RUDI\nMIKEC TONE\nMUHIČ FRANC\nPANJAN MARTIN\nPETEK STANE\nPOIANO GIORDANO\nPONIKVAR IVAN\nPOTOČAR ALOJZ\nREŽEK IVAN\nROZMAN IVAN\n.\nSrednja plošča\n.\nPADERŠIČ VINKO\nBATREJA\nNARODNI HEROJ\n.\nSAJE ALOJZ\nSEDLAR FRANC\nSELJAK VOJKO\nSLADIČ FRANC\nŠEGULA IVAN\nŠKLANDER JOŽE\nTRATNIK VINKO\nUMBERGAR DRAGO\nVIDIC IVAN\nVIRANT FANI\nVODOPIVEC ALOJZ\nŽIDANEK JOŽE\n.\nŽRTVE\n\nBARBO ANTON\nBECELE FRANC\nBECELE MARIJA\nBUČAR URŠA\nERŠTE FRANC\nERŠTE MARIJA\nGOLOB MILAN\nGORENC IVANKA\nGORENC JANEZ\nGORENC JANEZ\nGORENC JOŽE\nGOTLIB TONE\nGREGORČIČ TONE\nIVANČIČ ANTON\nJAKOPEC KAREL\n.\nDesna plošča\n.\nJERMAN ALOJZ\nJERMAN ANA\nJERMAN FRANC\nJERMAN JANEZ\nJERMAN MIHA\nKEBELJ NEŽA\nKOŠLJAR FRANC\nKOVAČIČ IVAN\nKREMŽAR ALOJZ\nKUKMAN IVANKA\nMEDVED MIHA\nPAVLIN MATIJA\nRAJKOVIČ ADOLF\nREPIČ MARIJA\nRIFELJ JOŽE\nSAJEVIC FRANC\nSAJEVIC FRANCKA\nSIMIČ ANTON\nŠKLANDER ALOJZIJA\nŽURA IVAN\nMIKLIČ POLDE\n.\nTALCI\n\nBLAŽIČ FRANC\nHOČEVAR CIRIL\nKRAGELJ MIRO\nKRESE TONE\nKRNC LUDVIK\nLINDIČ FRANC\nLUKEN RAFKO\nPERŠE JOŽE\nPLANINŠEK JAKOB\nŠTANCAR JOŽE\nPLANINŠEK RUDI\nZUPAN ALOJZ\n\nTER MNOGI NEPOZNANI\n.\nManjši spomenik:\n.\nVINKO PADERŠIČ\nVINKO KOS\nALOJZ GREGORČIČ\nMERI BECELE\nFANI VIRANT\nFRANC SAJEVIC\nFRANČIŠKA SAJEVIC",
+      "dostop": "Na pokopališču v Otočcu (vzhodni del vasi), pod cesto tik pokopališke vežice, na meji med starim in novim delom.",
+      "vrsta": "spomenik",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1460 Šentpeter, parc. št. 4/6",
+      "vnesel": "M. Hladnik 7. 1. 2020",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/63/IMG_20191222_121817.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/63/IMG_20191222_121817.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/63/IMG_20191222_121845.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/63/IMG_20191222_121845.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/63/IMG_20191222_121858.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/63/IMG_20191222_121858.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/63/spomenik_oto%C4%8Dec_1.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/63/spomenik_oto%C4%8Dec_1.jpg",
+          "avtor": "Saša Šest",
+          "opis": "Otočec",
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "e-pošta",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/63/spomenik_oto%C4%8Dec_4.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/63/spomenik_oto%C4%8Dec_4.jpg",
+          "avtor": "Saša Šest",
+          "opis": "Otočec",
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "e-pošta",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/63/spomenik_oto%C4%8Dec_6.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/63/spomenik_oto%C4%8Dec_6.jpg",
+          "avtor": "Saša Šest",
+          "opis": "Otočec",
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "e-pošta",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/63/spomenik_oto%C4%8Dec3.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/63/spomenik_oto%C4%8Dec3.jpg",
+          "avtor": "Saša Šest",
+          "opis": "Otočec",
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "e-pošta",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/63/vinko_pader%C5%A1i%C4%8D_idr.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/63/vinko_pader%C5%A1i%C4%8D_idr.jpg",
+          "avtor": "Saša Šest",
+          "opis": "Otočec",
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "e-pošta",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-048": {
+      "vir": "partizanstvo.si",
+      "vir_id": 50,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=50",
+      "naziv_v_registru": "Otočec, stara šola",
+      "lat": 45.83379798764895,
+      "lon": 15.22094666552605,
+      "napis": "MAJA 1941            PRVI OF ODBOR ZA ŠT-PETETER\n\n30.OKT. 1941        OSKRBI OF ODBOR PARTIZANE, KI 1. NOV. NAPADEJO BUČKO\n\n19. MARCA 1942 PRVI PARTIZANSKI MITING NA TRŠKI GORI\n\nMAJA 1942           VOLITVE V NOO\n\n6. JUNIJA 1942     ITALIJANI POŽGO MAČKOVEC\n\nAVGUSTA 1942   DELITEV GRAŠČINSKIH POSESTEV\n\n23. SEPT. 1942     ITALIJANI USTRELE VEČINO ČLANOV PODOKROŽJA UJETIH V BECELETOVI JAMI\n\n16. JULIJA 1943   V GOZDU BLIŠČI OKROŽNA KONFERENCA AFŽ\n\n9. SEPT. 1943      ITALIJANSKA VOJSKA POLOŽI OROŽJE\n\nOSVOBOJENO OZEMLJE\n\n23. OKT. 1943      VDOR NEMŠKE VOJSKE\n\n27. OKT. 1943      NEMCI UBIJEJO FRANCA BECELETA ČLANA PREDSEDSTVA KOČEVSKEGA ZBORA IN AVNOJ\n\n18. DEC. 1943      DOMOBRANCI UBIJEJO UČITELJA KARLA JAKOPCA\n\nMARCA 1944      HUDI BOJI NA TRŠKI GORI\n\n8. MAJA 1945      OSVOBODITEV\n\nZA ZMAGO REVOLUCIJE DALO SVOJA ŽIVLJENJA 98 OBČANOV\n\nOB STOLETNICI ŠOLE IN 20 LETNICI OSVOBODITVE   KRAJEVNI ODBOR ZZB",
+      "dostop": "Na severni fasadi nekdanje šole sredi vasi, Otočec 14.",
+      "vrsta": "plošča",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1460 Šentpeter, parc. št.",
+      "vnesel": "M. Hladnik 1. 7. 2020",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/50/IMG_20191222_121511.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/50/IMG_20191222_121511.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/50/IMG_20191222_121401.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/50/IMG_20191222_121401.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/50/%C5%A1ola_oto%C4%8Dec_1.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/50/%C5%A1ola_oto%C4%8Dec_1.jpg",
+          "avtor": "Saša Šest",
+          "opis": "Šola Otočec",
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": null,
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/50/%C5%A1ola_oto%C4%8Dec_2.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/50/%C5%A1ola_oto%C4%8Dec_2.jpg",
+          "avtor": "Saša Šest",
+          "opis": "Šola Otočec",
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": null,
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-049": {
+      "vir": "partizanstvo.si",
+      "vir_id": 1362,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=1362",
+      "naziv_v_registru": "Trška Gora - 2. četa 1. dolenjski bataljon",
+      "lat": 45.843545029476154,
+      "lon": 15.187816126477012,
+      "napis": "NA TEM MESTU SO BORCI 2.ČETE 1.DOLENJSKEGA BATALJONA 19.MARCA 1942 PO MAŠI\nPRIREDILI POLITIČNI MITING-NASTOP BORCEV IN GOVOR DRAGA FLORJANČIČA JE MED\nLJUDMI OKREPIL POMEN IN VLOGO OF IN POUDARIL NUJNOST OBOROŽENEGA BOJA PROTI\nOKUPATORJU.\n\n27.APRIL 1988-OBČINSKA KONFERENCA SZB NOVO MESTO\n\nV VARSTVO PREVZELA KS OTOČEC",
+      "dostop": "Dostop možen z avtomobilom, kolesom ali po pešpoti (Slakovi poti) iz več smeri (Paha,Grčevje).",
+      "vrsta": "skala s črno marmornato ploščo dim. 100 x 70,črke so vklesane",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": null,
+      "vnesel": "Sandi DROLE,10.04.2017",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/1362/T2518_F19915_1362.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/1362/T2518_F19915_1362.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/1362/T2518_F19916_1362.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/1362/T2518_F19916_1362.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    },
+    "NMZ-050": {
+      "vir": "partizanstvo.si",
+      "vir_id": 5601,
+      "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5601",
+      "naziv_v_registru": "Zagrad pri Otočcu, Beceletova jama s spominskima ploščama",
+      "lat": 45.847368882002854,
+      "lon": 15.205087215547936,
+      "napis": "prva plošča\n\nV TEJ JAMI SO BILI MED ITALIJANSKO\n\nOFENZIVO IZDANI IB SE BORILI:\n\nPADERŠIČ VINKO-BATREJA\n\nČLAN OKROŽNEGA ODBORA OF NOVO MESTO\n\nKOS VINKO\n\nČLAN PODOKROŽJA OF ŠMARJETA\n\nGREGORČIČ ALOJZ\n\nČLAN PODOKROŽNEGA KOMITEJA\n\nKPS ŠMARJETA IN SEKRETAR\n\nRAJONSKEGA KOMITEJA KPS ŠENTPETER\n\nSAJEVIC FRANČIŠKA\n\nSAJEVIC FRANC\n\nZ NJIMI SO BILI STRELJANI V BLIŽINI OTOČCA\n\n24. SEPTEMBRA 1942\n\nBECELE MERI     KRAŠOVEC FANI\n\nMEDVED FRANC     KOTAR JANEZ\n\nIN GRABNAR MIRKO\n\n.\n\ndruga plošča\n\nBATREJI\n\nIN NJEGOVIM\n\nTOVARIŠEM\n\nOB 20 LETNICI\n\nOSVOBODITVE\n\nJAMARSKI KLUB\n\nVINKA PADERŠIČ\n\nBATREJA\n\nNOVO MESTO\n\nIN ŠOLA OTOČEC\n\n1965",
+      "dostop": "Jama leži sredi zakraselega otoka v bližini Grčevja, severozahodno od Starega gradu. Hiša v bližini: Beceletova hiša, Zagrad pri Otočcu 4.",
+      "vrsta": "spominski park",
+      "nastanek": null,
+      "avtor_obelezja": null,
+      "kataster": "K. o. 1458 Črešnjice, parc. št. 1083/1",
+      "vnesel": "M. Kermavnar",
+      "povezave": [],
+      "slike": [
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5601/2021_02_23_MK_IMG_9054st.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5601/2021_02_23_MK_IMG_9054st.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5601/2021_02_23_MK_IMG_9051.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5601/2021_02_23_MK_IMG_9051.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5601/2021_02_23_MK_IMG_9048.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5601/2021_02_23_MK_IMG_9048.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        },
+        {
+          "url": "https://partizanstvo.si/media/partisanmemorial/5601/2021_02_23_MK_IMG_9050.jpg",
+          "thumb": "https://partizanstvo.si/media/thumb/partisanmemorial/5601/2021_02_23_MK_IMG_9050.jpg",
+          "avtor": null,
+          "opis": null,
+          "licenca_v_registru": "CC-BY 4.0 (privzeta licenca)",
+          "izvor_v_registru": "Preneseno iz Geopedije.",
+          "pravice": "NEUREJENO"
+        }
+      ],
+      "opozorilo": null
+    }
+  }
+}

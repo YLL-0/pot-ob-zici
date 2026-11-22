@@ -60,6 +60,23 @@ verjetno, ne zanesljivo (polje `gps_opomba`):
 | NMZ-033 | Spominski sklop NOB na pokopališču Šmihel | Na pokopališču je več ločenih zapisov; potrditi, da je to skupno obeležje, ne posamezen grob. |
 | NMZ-034 | Valantičevo obeležje | 45 m od NMZ-033, ločeno od NMZ-004 (Kandija); potrditi, da gre za tri različna obeležja. |
 
+### Gradivo iz registra partizanstvo.si
+
+`data/partizanstvo.json` vsebuje za vseh 50 obeležij gradivo iz registra: prepis napisa, opis lokacije
+in dostopa, katastrske podatke, avtorje vnosov in seznam fotografij. To je **referenčno gradivo za
+urednike, ne vsebina za objavo** — besedila in fotografije so avtorsko delo prispevateljev registra.
+Urednik ga vidi v adminu na zavihku »Vsebina« (plošča »Gradivo iz registra«); javna stran te datoteke
+ne bere. Vse fotografije so označene kot `pravice: "NEUREJENO"`.
+
+Datoteko zapiše skripta, ki se **zažene ročno, ne ob gradnji**:
+
+```bash
+npx tsx scripts/import-partizanstvo.ts
+```
+
+**Ponovni zagon datoteko v celoti prepiše.** Zato vanjo nikoli ne piši ničesar uredniškega —
+vse, kar urednik napiše ali odloči, sodi v admin.
+
 ### Kaj bo omogočilo urejanje vsebin (Faza 4)
 
 Ko bo osnovni zemljevid gotov, sledi preprost urejevalnik ("admin"), kjer bo lahko urednik
