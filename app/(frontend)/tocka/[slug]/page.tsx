@@ -14,6 +14,7 @@ import SiteHeader from "@/components/SiteHeader";
 import Nadnaslov from "@/components/Nadnaslov";
 import Obvestilo from "@/components/Obvestilo";
 import { NavedbaFoto } from "@/components/NavedbaFoto";
+import { NapisCitat } from "@/components/NapisCitat";
 
 /** Static per point; one published later renders on first visit (dynamicParams). */
 export async function generateStaticParams() {
@@ -158,9 +159,7 @@ export default async function TockaPage({ params }: PageProps) {
               Napis na obeležju
             </h2>
             <figure className="mt-3 space-y-2">
-              <blockquote className="whitespace-pre-line rounded-r-xl border-l-4 border-poudarek bg-povrsina px-5 py-4 text-base">
-                {tocka.napis}
-              </blockquote>
+              <NapisCitat napis={tocka.napis} />
               {tocka.napis_iz_registra && (
                 <figcaption className="text-sm text-crnilo-mehko">
                   Prepis napisa je prevzet iz registra{" "}
