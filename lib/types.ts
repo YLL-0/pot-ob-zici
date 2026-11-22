@@ -204,6 +204,12 @@ export interface Tocka {
   /** 800–1200 char short text. Null = not written yet -> "Vsebina v pripravi". */
   besedilo_kratko: string | null;
   besedilo_poglobljeno: string | null;
+  /**
+   * Verbatim inscription on the memorial, line breaks preserved. Taken
+   * from the partizanstvo.si register (shown with that attribution);
+   * null = not transcribed.
+   */
+  napis: string | null;
   foto: Foto[];
   kviz: KvizVprasanje[];
 

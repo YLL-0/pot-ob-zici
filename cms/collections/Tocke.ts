@@ -236,6 +236,18 @@ export const Tocke: CollectionConfig = {
             { name: "besedilo_kratko", type: "textarea", label: "Kratko besedilo" },
             { name: "besedilo_poglobljeno", type: "richText", label: "Poglobljeno besedilo" },
             {
+              name: "napis",
+              type: "textarea",
+              label: "Napis na obeležju",
+              admin: {
+                rows: 8,
+                description:
+                  "Dobesedni prepis napisa, vrstice ločene z novo vrstico. Prepis je prevzet iz registra " +
+                  "partizanstvo.si (glej »Gradivo iz registra« spodaj) — pred objavo ga preveri na terenu. " +
+                  "Na javni strani se izpiše kot citat z navedbo registra.",
+              },
+            },
+            {
               name: "zgodbe_predlog",
               type: "select",
               label: "Zgodbe",

@@ -183,7 +183,8 @@ function loadSeedPoints(): Tocka[] {
 function seedTocke(): Tocka[] {
   return loadSeedPoints()
     .filter((t) => t.status === "objavljeno")
-    .map((t) => ({ ...t, besedilo_poglobljeno: besediloVHtml(t.besedilo_poglobljeno) }));
+    // `napis ?? null`: seed files written before the field existed lack the key.
+    .map((t) => ({ ...t, besedilo_poglobljeno: besediloVHtml(t.besedilo_poglobljeno), napis: t.napis ?? null }));
 }
 
 async function lexicalVHtml() {

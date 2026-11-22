@@ -178,6 +178,10 @@ export interface Tocke {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Dobesedni prepis napisa, vrstice ločene z novo vrstico. Prepis je prevzet iz registra partizanstvo.si (glej »Gradivo iz registra« spodaj) — pred objavo ga preveri na terenu. Na javni strani se izpiše kot citat z navedbo registra.
+   */
+  napis?: string | null;
   zgodbe_predlog?:
     | (
         | 'mesto-v-zici'
@@ -449,6 +453,7 @@ export interface TockeSelect<T extends boolean = true> {
   zaporedje?: T;
   besedilo_kratko?: T;
   besedilo_poglobljeno?: T;
+  napis?: T;
   zgodbe_predlog?: T;
   viri?:
     | T

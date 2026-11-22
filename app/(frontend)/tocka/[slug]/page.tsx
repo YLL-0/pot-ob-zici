@@ -152,6 +152,31 @@ export default async function TockaPage({ params }: PageProps) {
           </div>
         )}
 
+        {tocka.napis && (
+          <section aria-labelledby="napis-naslov">
+            <h2 id="napis-naslov" className="font-heading text-xl font-semibold">
+              Napis na obeležju
+            </h2>
+            <figure className="mt-3 space-y-2">
+              <blockquote className="whitespace-pre-line rounded-r-xl border-l-4 border-poudarek bg-povrsina px-5 py-4 text-base">
+                {tocka.napis}
+              </blockquote>
+              <figcaption className="text-sm text-crnilo-mehko">
+                Prepis napisa je prevzet iz registra{" "}
+                <a
+                  href={tocka.gps_vir === "partizanstvo.si" && tocka.gps_vir_url ? tocka.gps_vir_url : "https://partizanstvo.si/"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-poudarek underline underline-offset-4"
+                >
+                  partizanstvo.si
+                </a>
+                .
+              </figcaption>
+            </figure>
+          </section>
+        )}
+
         <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-base text-crnilo-mehko">
           <dt className="font-medium">EŠD</dt>
           <dd>{tocka.esd ?? "Obeležje (še) nima EŠD številke."}</dd>

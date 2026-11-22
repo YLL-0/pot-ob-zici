@@ -77,6 +77,11 @@ npx tsx scripts/import-partizanstvo.ts
 **Ponovni zagon datoteko v celoti prepiše.** Zato vanjo nikoli ne piši ničesar uredniškega —
 vse, kar urednik napiše ali odloči, sodi v admin.
 
+Prepise napisov v polje »Napis na obeležju« prenese `npm run prenesi:napise` (brez zastavice le
+pokaže, kaj bi naredil; z `-- --zapisi` zapiše). Vsak napis shrani **kot osnutek** — javna stran
+ga pokaže šele, ko ga urednik preveri na terenu in obeležje objavi. Napisa, ki ga obeležje že ima,
+skripta nikoli ne prepiše.
+
 ### Kaj bo omogočilo urejanje vsebin (Faza 4)
 
 Ko bo osnovni zemljevid gotov, sledi preprost urejevalnik ("admin"), kjer bo lahko urednik
