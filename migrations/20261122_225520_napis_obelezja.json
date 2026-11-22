@@ -317,6 +317,13 @@
           "primaryKey": false,
           "notNull": false
         },
+        "napis_iz_registra": {
+          "name": "napis_iz_registra",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": true
+        },
         "v_pregledu": {
           "name": "v_pregledu",
           "type": "boolean",
@@ -981,6 +988,13 @@
           "type": "varchar",
           "primaryKey": false,
           "notNull": false
+        },
+        "version_napis_iz_registra": {
+          "name": "version_napis_iz_registra",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": true
         },
         "version_v_pregledu": {
           "name": "version_v_pregledu",
@@ -2975,6 +2989,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "2bd99abd-28a5-4859-be9e-8aa49d5ee778",
+  "id": "12bb0ca8-7fa4-476e-a842-9c3d81c19bdc",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }

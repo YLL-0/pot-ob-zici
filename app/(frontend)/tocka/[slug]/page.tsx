@@ -161,18 +161,20 @@ export default async function TockaPage({ params }: PageProps) {
               <blockquote className="whitespace-pre-line rounded-r-xl border-l-4 border-poudarek bg-povrsina px-5 py-4 text-base">
                 {tocka.napis}
               </blockquote>
-              <figcaption className="text-sm text-crnilo-mehko">
-                Prepis napisa je prevzet iz registra{" "}
-                <a
-                  href={tocka.gps_vir === "partizanstvo.si" && tocka.gps_vir_url ? tocka.gps_vir_url : "https://partizanstvo.si/"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-poudarek underline underline-offset-4"
-                >
-                  partizanstvo.si
-                </a>
-                .
-              </figcaption>
+              {tocka.napis_iz_registra && (
+                <figcaption className="text-sm text-crnilo-mehko">
+                  Prepis napisa je prevzet iz registra{" "}
+                  <a
+                    href={tocka.gps_vir === "partizanstvo.si" && tocka.gps_vir_url ? tocka.gps_vir_url : "https://partizanstvo.si/"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-poudarek underline underline-offset-4"
+                  >
+                    partizanstvo.si
+                  </a>
+                  .
+                </figcaption>
+              )}
             </figure>
           </section>
         )}

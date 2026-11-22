@@ -523,6 +523,7 @@ function rowToTocka(row: unknown[], existing: Map<string, Tocka>): Tocka {
     besedilo_kratko: prev?.besedilo_kratko ?? DEMO_BESEDILA[id]?.kratko ?? null,
     besedilo_poglobljeno: prev?.besedilo_poglobljeno ?? DEMO_BESEDILA[id]?.poglobljeno ?? null,
     napis: prev?.napis ?? null,
+    napis_iz_registra: prev?.napis_iz_registra ?? true,
     foto: prev?.foto ?? [],
     kviz: prev?.kviz ?? [],
 

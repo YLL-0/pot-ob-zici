@@ -1,16 +1,23 @@
 /**
  * Copies the transcribed inscriptions from data/partizanstvo.json into the
- * `napis` field of each point — AS A DRAFT, never published. The public
- * site keeps showing the published version until an editor checks the
- * inscription on site and publishes the point.
+ * `napis` field of each point's PUBLISHED version, so they show on the
+ * public site straight away — always with the register attribution
+ * (`napis_iz_registra`, default on), which the editor unticks only after
+ * checking and correcting the inscription on site.
  *
  *   npm run prenesi:napise            # dry run: prints what would happen
  *   npm run prenesi:napise -- --zapisi
  *
- * Never overwrites: a point whose latest version (draft or published)
- * already has an inscription is skipped, so an editor's correction is safe
- * and re-running is harmless. The draft is based on the latest version, so
- * an editor's unpublished draft keeps its other changes.
+ * Touches only `napis`. Skips, and reports:
+ *  - points that already have an inscription (never overwrites);
+ *  - points with an unpublished editor draft — Payload builds a publish on
+ *    the latest version, so writing would also publish that draft;
+ *  - points whose attribution is switched off (the register text must
+ *    never appear without the attribution).
+ *
+ * The public site's cache lives in the Next server, which this script
+ * can't reach: the inscriptions appear after the next deploy or when the
+ * point is next saved in the admin.
  */
 
 import { readFileSync } from "node:fs";
@@ -37,6 +44,9 @@ async function main() {
   const preneseno: string[] = [];
   const zeEnako: string[] = [];
   const zeDrugacno: string[] = [];
+  const osnutek: string[] = [];
+  const brezNavedbe: string[] = [];
+  const neobjavljeno: string[] = [];
   const brezNapisa: string[] = [];
   const manjka: string[] = [];
 
@@ -46,31 +56,62 @@ async function main() {
       brezNapisa.push(id);
       continue;
     }
-    // draft: true -> the latest version, which may be a newer draft.
-    const doc = await payload.findByID({ collection: "tocke", id, draft: true, depth: 0, disableErrors: true });
-    if (!doc) {
+    const objavljeno = await payload.findByID({ collection: "tocke", id, draft: false, depth: 0, disableErrors: true });
+    if (!objavljeno) {
       manjka.push(id);
       continue;
     }
-    const obstojeci = doc.napis?.trim();
+    if (objavljeno._status !== "published") {
+      neobjavljeno.push(id);
+      continue;
+    }
+    const obstojeci = objavljeno.napis?.trim();
     if (obstojeci) {
       (obstojeci === besedilo ? zeEnako : zeDrugacno).push(id);
       continue;
     }
+    const zadnja = await payload.findVersions({
+      collection: "tocke",
+      where: { parent: { equals: id }, latest: { equals: true } },
+      depth: 0,
+      limit: 1,
+    });
+    const zadnjaRazlicica = zadnja.docs[0]?.version as { _status?: string; napis?: string | null } | undefined;
+    if (zadnjaRazlicica?._status === "draft") {
+      osnutek.push(id);
+      continue;
+    }
+    if (objavljeno.napis_iz_registra === false) {
+      brezNavedbe.push(id);
+      continue;
+    }
     if (ZAPISI) {
-      // No _status in data + draft: true -> saved as a new draft version;
-      // the published document (what the public site reads) is untouched.
-      await payload.update({ collection: "tocke", id, data: { napis: besedilo }, draft: true, depth: 0 });
+      // No pending draft, so the latest version is the published one and
+      // only `napis` changes. `_status: "published"` keeps it published.
+      await payload.update({
+        collection: "tocke",
+        id,
+        data: { napis: besedilo, _status: "published" },
+        draft: false,
+        depth: 0,
+      });
     }
     preneseno.push(id);
   }
 
   const vrstica = (oznaka: string, ids: string[]) =>
     console.log(`${oznaka} (${ids.length})${ids.length ? ": " + ids.join(", ") : ""}`);
-  console.log(ZAPISI ? "\nZapisano kot osnutek, nič ni objavljeno:" : "\nPOSKUSNI ZAGON — nič ni zapisano. Za zapis dodaj --zapisi.");
+  console.log(
+    ZAPISI
+      ? "\nZapisano v objavljeno različico (z navedbo registra):"
+      : "\nPOSKUSNI ZAGON — nič ni zapisano. Za zapis dodaj --zapisi.",
+  );
   vrstica(ZAPISI ? "Preneseno" : "Bi preneslo", preneseno);
   vrstica("Že ima enak napis", zeEnako);
   vrstica("Že ima drugačen napis — ne prepišem", zeDrugacno);
+  vrstica("Ima neobjavljen osnutek — preskočeno, da ga ne objavim", osnutek);
+  vrstica("Navedba registra izklopljena — preskočeno", brezNavedbe);
+  vrstica("Obeležje ni objavljeno — preskočeno", neobjavljeno);
   vrstica("Register nima napisa", brezNapisa);
   if (manjka.length) vrstica("Obeležja ni v bazi", manjka);
   process.exit(0);

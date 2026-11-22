@@ -210,6 +210,8 @@ export interface Tocka {
    * null = not transcribed.
    */
   napis: string | null;
+  /** Show the register attribution under `napis`. Unticked once verified and corrected on site. */
+  napis_iz_registra: boolean;
   foto: Foto[];
   kviz: KvizVprasanje[];
 

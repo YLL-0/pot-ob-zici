@@ -182,6 +182,10 @@ export interface Tocke {
    * Dobesedni prepis napisa, vrstice ločene z novo vrstico. Prepis je prevzet iz registra partizanstvo.si (glej »Gradivo iz registra« spodaj) — pred objavo ga preveri na terenu. Na javni strani se izpiše kot citat z navedbo registra.
    */
   napis?: string | null;
+  /**
+   * Ko je vklopljeno, je pod napisom na javni strani navedba »Prepis napisa je prevzet iz registra partizanstvo.si«. Izklopi šele, ko napis preveriš na terenu in ga popraviš po obeležju.
+   */
+  napis_iz_registra?: boolean | null;
   zgodbe_predlog?:
     | (
         | 'mesto-v-zici'
@@ -454,6 +458,7 @@ export interface TockeSelect<T extends boolean = true> {
   besedilo_kratko?: T;
   besedilo_poglobljeno?: T;
   napis?: T;
+  napis_iz_registra?: T;
   zgodbe_predlog?: T;
   viri?:
     | T

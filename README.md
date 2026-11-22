@@ -78,9 +78,12 @@ npx tsx scripts/import-partizanstvo.ts
 vse, kar urednik napiše ali odloči, sodi v admin.
 
 Prepise napisov v polje »Napis na obeležju« prenese `npm run prenesi:napise` (brez zastavice le
-pokaže, kaj bi naredil; z `-- --zapisi` zapiše). Vsak napis shrani **kot osnutek** — javna stran
-ga pokaže šele, ko ga urednik preveri na terenu in obeležje objavi. Napisa, ki ga obeležje že ima,
-skripta nikoli ne prepiše.
+pokaže, kaj bi naredil; z `-- --zapisi` zapiše). Napis zapiše **v objavljeno različico**, zato je
+takoj na javni strani — vedno z navedbo »Prepis napisa je prevzet iz registra partizanstvo.si«
+(kljukica »Prepis napisa je iz registra«, privzeto vklopljena). Urednik jo izklopi šele, ko napis
+preveri na terenu in popravi. Skripta spremeni samo polje `napis`; obeležij, ki napis že imajo, ali
+imajo neobjavljen osnutek, ne spreminja. To je edina izjema od pravila, da se gradivo iz registra
+ne objavlja samodejno: napis je prepis javnega napisa, ne avtorsko besedilo registra.
 
 ### Kaj bo omogočilo urejanje vsebin (Faza 4)
 

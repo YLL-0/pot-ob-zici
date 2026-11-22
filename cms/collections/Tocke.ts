@@ -248,6 +248,17 @@ export const Tocke: CollectionConfig = {
               },
             },
             {
+              name: "napis_iz_registra",
+              type: "checkbox",
+              label: "Prepis napisa je iz registra partizanstvo.si",
+              defaultValue: true,
+              admin: {
+                description:
+                  "Ko je vklopljeno, je pod napisom na javni strani navedba »Prepis napisa je prevzet iz registra " +
+                  "partizanstvo.si«. Izklopi šele, ko napis preveriš na terenu in ga popraviš po obeležju.",
+              },
+            },
+            {
               name: "zgodbe_predlog",
               type: "select",
               label: "Zgodbe",
