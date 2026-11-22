@@ -80,7 +80,7 @@ export default function OProjektuPage() {
             <a href="https://partizanstvo.si/" target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">
               partizanstvo.si
             </a>{" "}
-            — register partizanskih spomenikov, vir koordinat obeležij
+            — register partizanskih spomenikov, vir koordinat obeležij in referenčnega gradiva za urednike
           </li>
           <li>
             <a href="https://www.novomesto.si/" target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">

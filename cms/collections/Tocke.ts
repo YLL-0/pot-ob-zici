@@ -261,6 +261,13 @@ export const Tocke: CollectionConfig = {
                 },
               ],
             },
+            // Read-only reference material from partizanstvo.si; stores nothing.
+            {
+              name: "gradivo_registra",
+              type: "ui",
+              label: "Gradivo iz registra",
+              admin: { components: { Field: "/cms/components/GradivoRegistra#GradivoRegistra" } },
+            },
           ],
         },
         {
