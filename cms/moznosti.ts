@@ -87,11 +87,12 @@ export const STATUS_IZVEDBE_MOZNOSTI = izTabele<StatusIzvedbe>({
   "izloceno-zamenjano": "Izločeno / zamenjano",
 });
 
-export type Pravice = "lastno-delo" | "dovoljenje-pridobljeno" | "javna-domena" | "neznano";
+export type Pravice = "lastno-delo" | "dovoljenje-pridobljeno" | "prosta-licenca" | "javna-domena" | "neznano";
 
 export const PRAVICE_MOZNOSTI = izTabele<Pravice>({
   "lastno-delo": "Lastno delo",
   "dovoljenje-pridobljeno": "Dovoljenje pridobljeno",
+  "prosta-licenca": "Prosta licenca — objava z navedbo vira",
   "javna-domena": "Javna domena",
   neznano: "Neznano",
 });

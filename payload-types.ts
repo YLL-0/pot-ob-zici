@@ -245,15 +245,15 @@ export interface Etape {
    * Trajni ID, npr. »etapa-3«. Po ustvarjenju ga ni mogoče spremeniti.
    */
   id: string;
+  /**
+   * Nova etapa dobi naslednjo prosto številko. Vrstni red spremeniš na seznamu etap (»Vrstni red etap«).
+   */
   stevilka: number;
   naziv: string;
   /**
    * Npr. »Šmihel – Drska«.
    */
   odsek?: string | null;
-  /**
-   * Barva oznak, črte in vrstice etape, v obliki #rrggbb.
-   */
   barva: string;
   opis?: string | null;
   vidna?: boolean | null;
@@ -271,7 +271,15 @@ export interface Media {
   /**
    * Fotografije z neznanimi pravicami ni mogoče pripeti na objavljeno obeležje.
    */
-  pravice: 'lastno-delo' | 'dovoljenje-pridobljeno' | 'javna-domena' | 'neznano';
+  pravice: 'lastno-delo' | 'dovoljenje-pridobljeno' | 'prosta-licenca' | 'javna-domena' | 'neznano';
+  /**
+   * Npr. »CC BY 4.0«. Obvezno pri prosti licenci.
+   */
+  licenca?: string | null;
+  /**
+   * Stran, s katere je fotografija prevzeta. Obvezno pri prosti licenci.
+   */
+  vir_url?: string | null;
   tip: 'danes' | 'arhivska';
   _objectKey?: string | null;
   updatedAt: string;
@@ -488,6 +496,8 @@ export interface MediaSelect<T extends boolean = true> {
   podnapis?: T;
   avtor_vir?: T;
   pravice?: T;
+  licenca?: T;
+  vir_url?: T;
   tip?: T;
   _objectKey?: T;
   updatedAt?: T;

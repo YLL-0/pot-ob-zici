@@ -50,6 +50,11 @@ function obvezno(sporocilo: string) {
   return (value: unknown) => (typeof value === "string" && value.trim().length > 0) || sporocilo;
 }
 
+const jeProstaLicenca = (siblingData: unknown) =>
+  (siblingData as { pravice?: unknown } | undefined)?.pravice === "prosta-licenca";
+
+const URL_VIRA = /^https?:\/\/\S+$/;
+
 /**
  * Photos. Caption, author/source and rights are required by validation on
  * every file — a public heritage site cannot carry images of unknown
@@ -107,6 +112,36 @@ export const Media: CollectionConfig = {
       options: PRAVICE_MOZNOSTI,
       admin: {
         description: "Fotografije z neznanimi pravicami ni mogoče pripeti na objavljeno obeležje.",
+      },
+    },
+    // A free licence is only honoured with a full attribution, so both the
+    // licence and the source link are required for that option — without
+    // them the rights are not "filled in" and the photo can't be saved.
+    {
+      name: "licenca",
+      type: "text",
+      label: "Licenca",
+      admin: {
+        description: "Npr. »CC BY 4.0«. Obvezno pri prosti licenci.",
+      },
+      validate: (value: string | null | undefined, { siblingData }: { siblingData: unknown }) =>
+        !jeProstaLicenca(siblingData) ||
+        (typeof value === "string" && value.trim().length > 0) ||
+        "Pri prosti licenci vpiši, za katero licenco gre (npr. »CC BY 4.0«).",
+    },
+    {
+      name: "vir_url",
+      type: "text",
+      label: "Povezava na vir",
+      admin: {
+        description: "Stran, s katere je fotografija prevzeta. Obvezno pri prosti licenci.",
+      },
+      validate: (value: string | null | undefined, { siblingData }: { siblingData: unknown }) => {
+        const imaVrednost = typeof value === "string" && value.trim().length > 0;
+        if (!imaVrednost) {
+          return !jeProstaLicenca(siblingData) || "Pri prosti licenci vpiši povezavo na vir fotografije.";
+        }
+        return URL_VIRA.test(value.trim()) || "Vpiši celotno povezavo, ki se začne s https://.";
       },
     },
     {

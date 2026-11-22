@@ -13,6 +13,7 @@ import TrackPointView from "@/components/TrackPointView";
 import SiteHeader from "@/components/SiteHeader";
 import Nadnaslov from "@/components/Nadnaslov";
 import Obvestilo from "@/components/Obvestilo";
+import { NavedbaFoto } from "@/components/NavedbaFoto";
 
 /** Static per point; one published later renders on first visit (dynamicParams). */
 export async function generateStaticParams() {
@@ -110,7 +111,8 @@ export default async function TockaPage({ params }: PageProps) {
           </div>
           <figcaption className="text-sm text-crnilo-mehko">
             {naslovna.opis}
-            {naslovna.avtor_vir && <> · Vir: {naslovna.avtor_vir}</>}
+            {naslovna.opis && (naslovna.avtor_vir || naslovna.vir_url || naslovna.licenca) ? " · " : null}
+            <NavedbaFoto foto={naslovna} />
           </figcaption>
         </figure>
       ) : (

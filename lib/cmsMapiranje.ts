@@ -67,11 +67,16 @@ function fotoIzMedie(fotografije: TockaDoc["fotografije"]): Foto[] {
   return (fotografije ?? [])
     .filter((m): m is MediaDoc => typeof m === "object" && m !== null)
     .filter((m) => m.pravice !== "neznano" && typeof m.url === "string")
+    // A free licence without its licence name or source is not a filled-in
+    // right (validated in cms/collections/Media.ts; second line here).
+    .filter((m) => m.pravice !== "prosta-licenca" || (!!m.licenca?.trim() && !!m.vir_url?.trim()))
     .map((m) => ({
       url: m.sizes?.naslovna?.url ?? m.url!,
       opis: m.podnapis,
       avtor_vir: m.avtor_vir,
       pravice: PRAVICE_OZNAKE.get(m.pravice) ?? m.pravice,
+      licenca: m.licenca?.trim() || null,
+      vir_url: m.vir_url?.trim() || null,
       tip: m.tip,
     }));
 }

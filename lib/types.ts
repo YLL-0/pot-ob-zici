@@ -120,6 +120,10 @@ export interface Foto {
    * site cannot carry images of unknown origin.
    */
   pravice: string | null;
+  /** Licence name for a free-licence photo, e.g. "CC BY 4.0". */
+  licenca: string | null;
+  /** Page the photo was taken from (attribution link). */
+  vir_url: string | null;
   tip: FotoTip;
 }
 
