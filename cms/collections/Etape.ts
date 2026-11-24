@@ -114,5 +114,12 @@ export const Etape: CollectionConfig = {
     },
     { name: "opis", type: "textarea", label: "Opis" },
     { name: "vidna", type: "checkbox", label: "Vidna na javni strani", defaultValue: true },
+    // Stores nothing on the stage; writes drafts of its memorials (cms/prenosRegistra.ts).
+    {
+      name: "prenos_registra",
+      type: "ui",
+      label: "Gradivo iz registra",
+      admin: { components: { Field: "/cms/components/PrenosEtape#PrenosEtape" } },
+    },
   ],
 };

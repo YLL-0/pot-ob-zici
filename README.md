@@ -63,10 +63,10 @@ verjetno, ne zanesljivo (polje `gps_opomba`):
 ### Gradivo iz registra partizanstvo.si
 
 `data/partizanstvo.json` vsebuje za vseh 50 obeležij gradivo iz registra: prepis napisa, opis lokacije
-in dostopa, katastrske podatke, avtorje vnosov in seznam fotografij. To je **referenčno gradivo za
-urednike, ne vsebina za objavo** — besedila in fotografije so avtorsko delo prispevateljev registra.
-Urednik ga vidi v adminu na zavihku »Vsebina« (plošča »Gradivo iz registra«); javna stran te datoteke
-ne bere. Vse fotografije so označene kot `pravice: "NEUREJENO"`.
+in dostopa, katastrske podatke, avtorje vnosov in seznam fotografij. Dovoljenje za uporabo besedil
+in fotografij registra je pridobljeno (`PROMPT_PRENOS.md`); oznaka `pravice: "NEUREJENO"` v datoteki
+je starejša od dovoljenja in se ne uporablja. Urednik gradivo vidi v adminu na zavihku »Vsebina«
+(plošča »Gradivo iz registra«); javna stran te datoteke ne bere.
 
 Datoteko zapiše skripta, ki se **zažene ročno, ne ob gradnji**:
 
@@ -84,6 +84,22 @@ takoj na javni strani — vedno z navedbo »Prepis napisa je prevzet iz registra
 preveri na terenu in popravi. Skripta spremeni samo polje `napis`; obeležij, ki napis že imajo, ali
 imajo neobjavljen osnutek, ne spreminja. To je edina izjema od pravila, da se gradivo iz registra
 ne objavlja samodejno: napis je prepis javnega napisa, ne avtorsko besedilo registra.
+
+#### »Prenesi iz registra« (admin)
+
+Gumb v plošči »Gradivo iz registra« na obeležju in v razdelku »Gradivo iz registra« na etapi (za vsa
+obeležja etape, eno za drugim) prenese v **osnutek** obeležja — nikoli v objavljeno različico:
+
+- napis (`napis`) in opis dostopa (`dostop`, na javni strani »Kako do obeležja«), le če sta prazna;
+- fotografije v zbirko Fotografije, pomanjšane na najdaljši rob 2000 px (JPEG, kakovost 82), s
+  pravicami »Dovoljenje pridobljeno«, avtorjem in licenco iz registra, povezavo na zapis v registru
+  ter mero in povezavo izvirnika. Pripete so za obstoječimi, največja prva.
+
+Ponovni zagon ničesar ne podvoji (fotografija se prepozna po `vir_url` + imenu datoteke v registru).
+Vrstico o dovoljenju, ki jo dobi vsaka uvožena fotografija, nastaviš v konstanti
+`DOVOLJENJE_OPOMBA` v `cms/prenosRegistra.ts`. Dokler so v njej oglati oklepaji, se fotografije ne
+uvažajo; po popravku jo ponovni zagon posodobi tudi na že uvoženih fotografijah. Uvoz se ustavi,
+preden bi shranjene fotografije presegle 600 MB (brezplačna shramba Supabase ima 1 GB).
 
 ### Kaj bo omogočilo urejanje vsebin (Faza 4)
 

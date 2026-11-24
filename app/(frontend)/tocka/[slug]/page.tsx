@@ -178,6 +178,15 @@ export default async function TockaPage({ params }: PageProps) {
           </section>
         )}
 
+        {tocka.dostop && (
+          <section aria-labelledby="dostop-naslov">
+            <h2 id="dostop-naslov" className="font-heading text-xl font-semibold">
+              Kako do obeležja
+            </h2>
+            <p className="mt-3 whitespace-pre-line">{tocka.dostop}</p>
+          </section>
+        )}
+
         <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 text-base text-crnilo-mehko">
           <dt className="font-medium">EŠD</dt>
           <dd>{tocka.esd ?? "Obeležje (še) nima EŠD številke."}</dd>

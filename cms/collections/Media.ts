@@ -152,5 +152,34 @@ export const Media: CollectionConfig = {
       defaultValue: "danes",
       options: FOTO_TIP_MOZNOSTI,
     },
+    {
+      name: "dovoljenje_opomba",
+      type: "text",
+      label: "Dovoljenje (kdo in kdaj)",
+      admin: { description: "Kdo je dovolil objavo in kdaj. Pri uvozu iz registra se izpolni samodejno." },
+    },
+    // Provenance of a photo imported from the register (cms/prenosRegistra.ts):
+    // only the resized copy is stored, so these say where the full-resolution
+    // original can always be fetched again.
+    {
+      type: "collapsible",
+      label: "Izvirnik v registru",
+      admin: { initCollapsed: true },
+      fields: [
+        {
+          name: "izvirnik_url",
+          type: "text",
+          label: "Izvirna datoteka",
+          admin: { readOnly: true, description: "Povezava na izvirno (nepomanjšano) datoteko v registru." },
+        },
+        {
+          type: "row",
+          fields: [
+            { name: "izvirnik_sirina", type: "number", label: "Širina izvirnika (px)", admin: { readOnly: true } },
+            { name: "izvirnik_visina", type: "number", label: "Višina izvirnika (px)", admin: { readOnly: true } },
+          ],
+        },
+      ],
+    },
   ],
 };

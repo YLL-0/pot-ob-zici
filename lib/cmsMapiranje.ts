@@ -116,6 +116,7 @@ export function tockaIzDokumenta(doc: TockaDoc, poglobljeno: (d: LexicalDokument
     besedilo_poglobljeno: poglobljeno(doc.besedilo_poglobljeno),
     napis: doc.napis?.trim() ? doc.napis.trim() : null,
     napis_iz_registra: doc.napis_iz_registra ?? true,
+    dostop: doc.dostop?.trim() ? doc.dostop.trim() : null,
     foto: fotoIzMedie(doc.fotografije),
     kviz: Array.isArray(doc.kviz) ? (doc.kviz as Tocka["kviz"]) : [],
     status: statusIzDokumenta(doc),

@@ -25,6 +25,7 @@ import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { GradivoRegistra as GradivoRegistra_fa13657c2686f9bb546cab3f1adcc903 } from '../../../cms/components/GradivoRegistra'
 import { BarvaEtapePolje as BarvaEtapePolje_4d2fd3eb4eb78b4c7808ec5ef40db626 } from '../../../cms/components/BarvaEtapePolje'
+import { PrenosEtape as PrenosEtape_705733fb1c1e66b908360b6b02d680f4 } from '../../../cms/components/PrenosEtape'
 import { VrstniRedEtap as VrstniRedEtap_675f436d4bd53320e79926291a34b8fe } from '../../../cms/components/VrstniRedEtap'
 import { TraseNavPovezava as TraseNavPovezava_84f5fabf9e75ba6b30c2874e6d754e8e } from '../../../cms/components/TraseNavPovezava'
 import { TraseView as TraseView_4cd761eb6ea9538d2f92dee99f369cdb } from '../../../cms/views/TraseView'
@@ -60,6 +61,7 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "/cms/components/GradivoRegistra#GradivoRegistra": GradivoRegistra_fa13657c2686f9bb546cab3f1adcc903,
   "/cms/components/BarvaEtapePolje#BarvaEtapePolje": BarvaEtapePolje_4d2fd3eb4eb78b4c7808ec5ef40db626,
+  "/cms/components/PrenosEtape#PrenosEtape": PrenosEtape_705733fb1c1e66b908360b6b02d680f4,
   "/cms/components/VrstniRedEtap#VrstniRedEtap": VrstniRedEtap_675f436d4bd53320e79926291a34b8fe,
   "/cms/components/TraseNavPovezava#TraseNavPovezava": TraseNavPovezava_84f5fabf9e75ba6b30c2874e6d754e8e,
   "/cms/views/TraseView#TraseView": TraseView_4cd761eb6ea9538d2f92dee99f369cdb,

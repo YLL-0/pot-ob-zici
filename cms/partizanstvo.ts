@@ -2,10 +2,11 @@
  * Reference material from the public register partizanstvo.si
  * (data/partizanstvo.json, written by scripts/import-partizanstvo.ts).
  *
- * ADMIN ONLY. The JSON is bundled into the admin at build time — nothing
- * here fetches partizanstvo.si, and nothing on the public site may import
- * this module: the texts and photos are the register contributors' work
- * and need permission before publication (PROMPT_PARTIZANSTVO.md).
+ * ADMIN ONLY. The JSON is bundled into the admin at build time, and
+ * nothing on the public site may import this module: register material
+ * reaches the site only through a memorial an editor has published.
+ * Permission to use it has been obtained (PROMPT_PRENOS.md); the
+ * `pravice: "NEUREJENO"` values in the JSON predate that and are not read.
  */
 
 import gradivo from "@/data/partizanstvo.json";
@@ -17,7 +18,7 @@ export interface SlikaRegistra {
   opis: string | null;
   licenca_v_registru: string | null;
   izvor_v_registru: string | null;
-  /** Always "NEUREJENO" until permission is actually obtained. */
+  /** Written as "NEUREJENO" by import-partizanstvo.ts before permission existed; not used. */
   pravice: string;
 }
 

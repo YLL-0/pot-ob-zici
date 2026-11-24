@@ -1,6 +1,7 @@
 import * as migration_20261120_125150_zacetna_shema from './20261120_125150_zacetna_shema';
 import * as migration_20261122_161601_licenca_in_vir_fotografij from './20261122_161601_licenca_in_vir_fotografij';
 import * as migration_20261122_225520_napis_obelezja from './20261122_225520_napis_obelezja';
+import * as migration_20261124_222109_prenos_iz_registra from './20261124_222109_prenos_iz_registra';
 
 export const migrations = [
   {
@@ -16,6 +17,11 @@ export const migrations = [
   {
     up: migration_20261122_225520_napis_obelezja.up,
     down: migration_20261122_225520_napis_obelezja.down,
-    name: '20261122_225520_napis_obelezja'
+    name: '20261122_225520_napis_obelezja',
+  },
+  {
+    up: migration_20261124_222109_prenos_iz_registra.up,
+    down: migration_20261124_222109_prenos_iz_registra.down,
+    name: '20261124_222109_prenos_iz_registra'
   },
 ];

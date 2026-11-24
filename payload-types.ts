@@ -186,6 +186,10 @@ export interface Tocke {
    * Ko je vklopljeno, je pod napisom na javni strani navedba »Prepis napisa je prevzet iz registra partizanstvo.si«. Izklopi šele, ko napis preveriš na terenu in ga popraviš po obeležju.
    */
   napis_iz_registra?: boolean | null;
+  /**
+   * Kje točno je obeležje in kako pride obiskovalec do njega, npr. »na stranski steni hiše na Valantičevi 5«. Na javni strani je pod napisom, z naslovom »Kako do obeležja«.
+   */
+  dostop?: string | null;
   zgodbe_predlog?:
     | (
         | 'mesto-v-zici'
@@ -289,6 +293,16 @@ export interface Media {
    */
   vir_url?: string | null;
   tip: 'danes' | 'arhivska';
+  /**
+   * Kdo je dovolil objavo in kdaj. Pri uvozu iz registra se izpolni samodejno.
+   */
+  dovoljenje_opomba?: string | null;
+  /**
+   * Povezava na izvirno (nepomanjšano) datoteko v registru.
+   */
+  izvirnik_url?: string | null;
+  izvirnik_sirina?: number | null;
+  izvirnik_visina?: number | null;
   _objectKey?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -459,6 +473,7 @@ export interface TockeSelect<T extends boolean = true> {
   besedilo_poglobljeno?: T;
   napis?: T;
   napis_iz_registra?: T;
+  dostop?: T;
   zgodbe_predlog?: T;
   viri?:
     | T
@@ -509,6 +524,10 @@ export interface MediaSelect<T extends boolean = true> {
   licenca?: T;
   vir_url?: T;
   tip?: T;
+  dovoljenje_opomba?: T;
+  izvirnik_url?: T;
+  izvirnik_sirina?: T;
+  izvirnik_visina?: T;
   _objectKey?: T;
   updatedAt?: T;
   createdAt?: T;

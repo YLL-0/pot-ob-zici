@@ -27,6 +27,7 @@ import { Tocke } from "@/cms/collections/Tocke";
 import { Users } from "@/cms/collections/Users";
 import { isEmailConfigured, isMediaStorageConfigured } from "@/lib/cms";
 import { PRIVZETO_IME_POSILJATELJA, resendAdapter } from "@/cms/email";
+import { prenosRegistraEndpoint } from "@/cms/prenosRegistra";
 import { preracunajTraseEndpoint } from "@/cms/trase";
 import { vrstniRedEtapEndpoint } from "@/cms/vrstniRedEtap";
 
@@ -66,7 +67,7 @@ export default buildConfig({
     fallbackLanguage: "sl",
   },
   collections: [Tocke, Etape, Media, Users],
-  endpoints: [preracunajTraseEndpoint, vrstniRedEtapEndpoint],
+  endpoints: [preracunajTraseEndpoint, vrstniRedEtapEndpoint, prenosRegistraEndpoint],
   editor: lexicalEditor(),
   // Password reset + invitations (cms/email.ts). Without it Payload only logs emails to the console.
   email: isEmailConfigured()

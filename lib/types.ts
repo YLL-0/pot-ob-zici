@@ -212,6 +212,12 @@ export interface Tocka {
   napis: string | null;
   /** Show the register attribution under `napis`. Unticked once verified and corrected on site. */
   napis_iz_registra: boolean;
+  /**
+   * Where exactly the memorial is and how a visitor reaches it ("on the
+   * side wall of the house at …"). Shown under »Kako do obeležja«; null =
+   * not written.
+   */
+  dostop: string | null;
   foto: Foto[];
   kviz: KvizVprasanje[];
 

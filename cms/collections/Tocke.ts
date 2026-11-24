@@ -259,6 +259,17 @@ export const Tocke: CollectionConfig = {
               },
             },
             {
+              name: "dostop",
+              type: "textarea",
+              label: "Kako do obeležja",
+              admin: {
+                rows: 4,
+                description:
+                  "Kje točno je obeležje in kako pride obiskovalec do njega, npr. »na stranski steni hiše na " +
+                  "Valantičevi 5«. Na javni strani je pod napisom, z naslovom »Kako do obeležja«.",
+              },
+            },
+            {
               name: "zgodbe_predlog",
               type: "select",
               label: "Zgodbe",

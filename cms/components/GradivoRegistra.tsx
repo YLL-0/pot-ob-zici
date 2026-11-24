@@ -2,15 +2,17 @@
  * Read-only »Gradivo iz registra« panel in a point's »Vsebina« tab:
  * reference material from partizanstvo.si (PROMPT_PARTIZANSTVO.md).
  *
- * Nothing here is published or saved. The data is bundled at build time
- * from data/partizanstvo.json; thumbnails are shown straight from the
- * register (never copied into our storage) and are all marked as having
- * unresolved rights.
+ * The panel itself saves nothing. The data is bundled at build time from
+ * data/partizanstvo.json; thumbnails are shown straight from the register.
+ * Permission to use the register's texts and photos has been obtained
+ * (PROMPT_PRENOS.md): »Prenesi iz registra« copies them into a DRAFT of
+ * this memorial (cms/prenosRegistra.ts), never into the published version.
  */
 
 import type { UIFieldServerProps } from "payload";
 import { PRENESENO, gradivoZaTocko, razcleniKataster } from "@/cms/partizanstvo";
 import { KopirajGumb, PrenesiNapisGumb } from "@/cms/components/GradivoRegistraOrodja";
+import { PrenesiIzRegistraGumb } from "@/cms/components/PrenosRegistraGumbi";
 
 const razmik = "calc(var(--base) * 0.5)";
 
@@ -97,11 +99,12 @@ export function GradivoRegistra({ data }: UIFieldServerProps) {
             partizanstvo.si (zapis {g.vir_id}
             {g.naziv_v_registru ? `: »${g.naziv_v_registru}«` : ""})
           </a>
-          {PRENESENO ? `, preneseno ${datum(PRENESENO)}` : ""}. <strong>Ni za objavo.</strong> Besedila in
-          fotografije so avtorsko delo prispevateljev registra — na javno stran gre le tisto, kar urednik zavestno
-          prenese in za kar je urejeno dovoljenje. Na tej plošči se nič ne shrani.
+          {PRENESENO ? `, preneseno ${datum(PRENESENO)}` : ""}. Dovoljenje za uporabo besedil in fotografij registra
+          je pridobljeno. Na javno stran gre le tisto, kar urednik pregleda in objavi.
         </p>
       </div>
+
+      {id ? <PrenesiIzRegistraGumb id={id} /> : null}
 
       {g.opozorilo ? (
         <p role="note" style={opozorilo}>
@@ -173,8 +176,8 @@ export function GradivoRegistra({ data }: UIFieldServerProps) {
       <div style={{ display: "grid", gap: razmik }}>
         <strong>Fotografije v registru ({g.slike.length})</strong>
         <p className="field-description" style={{ margin: 0 }}>
-          Pravice za nobeno od teh fotografij niso urejene. Fotografijo prenesi šele, ko imaš dovoljenje, in jo
-          naloži kot običajno v zbirko Mediji, kjer izpolniš pravice uporabe.
+          »Prenesi iz registra« jih uvozi v Fotografije (pomanjšane na najdaljši rob 2000 px), s pravicami »Dovoljenje
+          pridobljeno«, avtorjem in licenco iz registra. Uvožene so pripete na osnutek obeležja.
         </p>
         {g.slike.length ? (
           <ul
@@ -190,7 +193,7 @@ export function GradivoRegistra({ data }: UIFieldServerProps) {
             {g.slike.map((s, i) => (
               <li key={s.url} style={{ display: "grid", gap: "calc(var(--base) * 0.25)", alignContent: "start" }}>
                 <a href={g.vir_url} target="_blank" rel="noopener noreferrer">
-                  {/* eslint-disable-next-line @next/next/no-img-element -- hotlinked thumbnail, never stored */}
+                  {/* eslint-disable-next-line @next/next/no-img-element -- register thumbnail, shown for reference */}
                   <img
                     src={s.thumb ?? s.url}
                     alt={`Fotografija ${i + 1} v registru${s.opis ? `: ${s.opis}` : ""}`}
@@ -212,12 +215,12 @@ export function GradivoRegistra({ data }: UIFieldServerProps) {
                     fontWeight: 600,
                     padding: "0.1em 0.5em",
                     borderRadius: "var(--style-radius-s)",
-                    border: "1px solid var(--theme-error-500)",
-                    color: "var(--theme-error-750)",
-                    background: "var(--theme-error-50)",
+                    border: "1px solid var(--theme-success-500)",
+                    color: "var(--theme-success-750)",
+                    background: "var(--theme-success-50)",
                   }}
                 >
-                  pravice neurejene
+                  dovoljenje pridobljeno
                 </span>
                 <span style={{ fontSize: "0.9em" }}>Avtor: {s.avtor ?? "ni naveden"}</span>
                 {s.licenca_v_registru ? (
