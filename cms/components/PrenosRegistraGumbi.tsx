@@ -2,33 +2,148 @@
 
 /**
  * »Prenesi iz registra« buttons (PROMPT_PRENOS.md): on a memorial, and on a
- * stage for all its memorials in sequence. Both POST to
- * /api/tocke/prenos-registra (cms/prenosRegistra.ts), one memorial per
- * request. Nothing is published — the result is a new draft version.
+ * stage for all its memorials in sequence. Both drive the step endpoint
+ * /api/tocke/prenos-registra (cms/prenosRegistra.ts): one photo per
+ * request, called again until the memorial's »konec« step, so no single
+ * request runs into the hosting time limit. Nothing is published — the
+ * result is a new draft version.
  */
 
 import { useState } from "react";
 import { Button, useFormModified } from "@payloadcms/ui";
-import type { RezultatPrenosa, StanjeBesedila } from "@/cms/prenosRegistra";
+import type {
+  OdzivPrenosa,
+  PreskocenaFotografija,
+  StanjeBesedila,
+  ZahtevekPrenosa,
+} from "@/cms/prenosRegistra";
 
 const POT = "/api/tocke/prenos-registra";
+/** Guard against a loop that makes no progress; far above any memorial's photo count. */
+const NAJVEC_KORAKOV = 100;
 
-type Odziv = { ok: true; r: RezultatPrenosa } | { ok: false; id: string; napaka: string };
+/** One memorial's run, summed over its steps. */
+interface RezultatObelezja {
+  id: string;
+  naziv: string;
+  opozorilo: string | null;
+  /** null until the »konec« step arrived. */
+  napis: StanjeBesedila | null;
+  dostop: StanjeBesedila | null;
+  vRegistru: number | null;
+  uvozenih: number;
+  zePripetih: number;
+  pripetih: number;
+  posodobljenaOpomba: number;
+  preskocene: PreskocenaFotografija[];
+  shranjenoB: number;
+  skupajVShrambiB: number | null;
+  spremenjeno: boolean;
+  ustavljeno: string | null;
+  /** The run broke off (server error, no response). Running again continues where it stopped. */
+  napaka: string | null;
+}
 
-async function prenesi(id: string): Promise<Odziv> {
+export interface Napredek {
+  obdelanih: number;
+  skupaj: number;
+}
+
+async function korak(zahtevek: ZahtevekPrenosa): Promise<OdzivPrenosa | { napaka: string }> {
   try {
     const res = await fetch(POT, {
       method: "POST",
       credentials: "include",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ id }),
+      body: JSON.stringify(zahtevek),
     });
-    const o = (await res.json().catch(() => ({}))) as RezultatPrenosa & { napaka?: string };
-    if (!res.ok) return { ok: false, id, napaka: o.napaka ?? `Prenos ni uspel (HTTP ${res.status}).` };
-    return { ok: true, r: o };
+    const o = (await res.json().catch(() => ({}))) as OdzivPrenosa & { napaka?: string };
+    if (!res.ok) {
+      return {
+        napaka:
+          o.napaka ??
+          (res.status === 504
+            ? "Strežnik je predolgo obdeloval fotografijo."
+            : `Prenos ni uspel (HTTP ${res.status}).`),
+      };
+    }
+    return o;
   } catch {
-    return { ok: false, id, napaka: "Strežnik se ni odzval. Preveri povezavo in poskusi znova." };
+    return { napaka: "Strežnik se ni odzval. Preveri povezavo." };
   }
+}
+
+/** Calls the step endpoint until the memorial is finished. */
+async function prenesiObelezje(
+  id: string,
+  naziv: string,
+  obNapredku: (n: Napredek) => void,
+): Promise<RezultatObelezja> {
+  const r: RezultatObelezja = {
+    id,
+    naziv,
+    opozorilo: null,
+    napis: null,
+    dostop: null,
+    vRegistru: null,
+    uvozenih: 0,
+    zePripetih: 0,
+    pripetih: 0,
+    posodobljenaOpomba: 0,
+    preskocene: [],
+    shranjenoB: 0,
+    skupajVShrambiB: null,
+    spremenjeno: false,
+    ustavljeno: null,
+    napaka: null,
+  };
+  const preskoci: string[] = [];
+  let zakljuci = false;
+
+  for (let i = 0; i < NAJVEC_KORAKOV; i++) {
+    const o = await korak({ id, preskoci, zakljuci });
+    if ("napaka" in o) {
+      r.napaka = `${o.napaka} Že uvožene fotografije so shranjene — ponovni zagon nadaljuje, kjer se je ustavil.`;
+      return r;
+    }
+    r.naziv = o.naziv;
+    r.opozorilo = o.opozorilo;
+    r.skupajVShrambiB = o.skupajVShrambiB;
+
+    if (o.korak === "konec") {
+      r.napis = o.napis;
+      r.dostop = o.dostop;
+      r.vRegistru = o.vRegistru;
+      r.zePripetih = o.zePripetih;
+      r.pripetih = o.pripetih;
+      r.posodobljenaOpomba = o.posodobljenaOpomba;
+      r.preskocene.push(...o.preskocene);
+      r.spremenjeno = o.spremenjeno;
+      r.ustavljeno ??= o.ustavljeno;
+      return r;
+    }
+
+    if (o.uvozena) {
+      r.uvozenih++;
+      r.shranjenoB += o.uvozena.shranjenoB;
+    }
+    if (o.preskocena) {
+      r.preskocene.push(o.preskocena);
+      preskoci.push(o.preskocena.url);
+    }
+    if (o.ustavljeno) {
+      r.ustavljeno = o.ustavljeno;
+      zakljuci = true;
+    }
+    if (!o.uvozena && !o.preskocena && !o.ustavljeno) {
+      r.napaka = "Prenos ne napreduje — ustavljeno. Poskusi znova ali obvesti skrbnika.";
+      return r;
+    }
+    const obdelanih = r.uvozenih + r.preskocene.length;
+    obNapredku({ obdelanih, skupaj: obdelanih + o.preostalo });
+  }
+  r.napaka = "Preveč korakov — prenos je ustavljen. Ponovni zagon nadaljuje, kjer se je ustavil.";
+  return r;
 }
 
 export function mb(b: number): string {
@@ -41,17 +156,17 @@ const BESEDILO: Record<StanjeBesedila, string> = {
   "ni-v-registru": "register ga nima",
 };
 
-function niSprememb(r: RezultatPrenosa): boolean {
-  return !r.spremenjeno && r.fotografije.preskocene.length === 0 && r.fotografije.posodobljenaOpomba === 0;
+function niSprememb(r: RezultatObelezja): boolean {
+  return !r.napaka && !r.spremenjeno && r.preskocene.length === 0 && r.posodobljenaOpomba === 0;
 }
 
-function PodrobnostiRezultata({ r }: { r: RezultatPrenosa }) {
-  const f = r.fotografije;
-  const fotoDeli = [`uvoženih ${f.uvozenih}`];
-  if (f.zeUvozenih) fotoDeli.push(`že uvoženih ${f.zeUvozenih}`);
-  if (f.ponovnoPripetih) fotoDeli.push(`ponovno pripetih ${f.ponovnoPripetih}`);
-  if (f.posodobljenaOpomba) fotoDeli.push(`posodobljeno dovoljenje pri ${f.posodobljenaOpomba}`);
-  fotoDeli.push(`preskočenih ${f.preskocene.length}`);
+function PodrobnostiRezultata({ r }: { r: RezultatObelezja }) {
+  const ponovnoPripetih = Math.max(0, r.pripetih - r.uvozenih);
+  const fotoDeli = [`uvoženih ${r.uvozenih}`];
+  if (r.zePripetih) fotoDeli.push(`že prej uvoženih ${r.zePripetih}`);
+  if (ponovnoPripetih) fotoDeli.push(`ponovno pripetih ${ponovnoPripetih}`);
+  if (r.posodobljenaOpomba) fotoDeli.push(`posodobljeno dovoljenje pri ${r.posodobljenaOpomba}`);
+  fotoDeli.push(`preskočenih ${r.preskocene.length}`);
   return (
     <div style={{ display: "grid", gap: "calc(var(--base) * 0.25)" }}>
       {r.opozorilo ? (
@@ -59,17 +174,15 @@ function PodrobnostiRezultata({ r }: { r: RezultatPrenosa }) {
           <strong>Ujemanje z registrom ni zanesljivo:</strong> {r.opozorilo}
         </p>
       ) : null}
-      {niSprememb(r) ? (
-        <p style={{ margin: 0 }}>Ni sprememb — vse gradivo iz registra je že v zapisu.</p>
-      ) : null}
+      {niSprememb(r) ? <p style={{ margin: 0 }}>Ni sprememb — vse gradivo iz registra je že v zapisu.</p> : null}
       <ul style={{ margin: 0, paddingLeft: "1.25em" }}>
-        <li>Napis: {BESEDILO[r.napis]}</li>
-        <li>Kako do obeležja: {BESEDILO[r.dostop]}</li>
+        <li>Napis: {r.napis ? BESEDILO[r.napis] : "ni obdelan (prenos se je prekinil)"}</li>
+        <li>Kako do obeležja: {r.dostop ? BESEDILO[r.dostop] : "ni obdelano (prenos se je prekinil)"}</li>
         <li>
-          Fotografije ({f.vRegistru} v registru): {fotoDeli.join(", ")}
-          {f.preskocene.length > 0 ? (
+          Fotografije{r.vRegistru !== null ? ` (${r.vRegistru} v registru)` : ""}: {fotoDeli.join(", ")}
+          {r.preskocene.length > 0 ? (
             <ul style={{ margin: 0, paddingLeft: "1.25em" }}>
-              {f.preskocene.map((p) => (
+              {r.preskocene.map((p) => (
                 <li key={p.url} style={{ overflowWrap: "anywhere" }}>
                   {p.url.split("/").pop()}: {p.razlog}
                 </li>
@@ -77,32 +190,46 @@ function PodrobnostiRezultata({ r }: { r: RezultatPrenosa }) {
             </ul>
           ) : null}
         </li>
-        <li>Shranjeno: {mb(r.shranjenoB)} (vse fotografije v shrambi: {mb(r.skupajVShrambiB)})</li>
+        <li>
+          Shranjeno: {mb(r.shranjenoB)}
+          {r.skupajVShrambiB !== null ? ` (vse fotografije v shrambi: ${mb(r.skupajVShrambiB)})` : ""}
+        </li>
       </ul>
       {r.ustavljeno ? (
         <p role="alert" style={{ margin: 0, color: "var(--theme-error-750)" }}>
           {r.ustavljeno}
         </p>
       ) : null}
+      {r.napaka ? (
+        <p role="alert" style={{ margin: 0, color: "var(--theme-error-750)" }}>
+          {r.napaka}
+        </p>
+      ) : null}
     </div>
   );
+}
+
+function besediloNapredka(n: Napredek | null): string {
+  if (!n || n.skupaj === 0) return "Pripravljam …";
+  return `Fotografija ${Math.min(n.obdelanih + 1, n.skupaj)} od ${n.skupaj} …`;
 }
 
 /** On a memorial, inside the »Gradivo iz registra« panel. */
 export function PrenesiIzRegistraGumb({ id }: { id: string }) {
   const spremenjeno = useFormModified();
   const [poteka, setPoteka] = useState(false);
-  const [odziv, setOdziv] = useState<Odziv | null>(null);
+  const [napredek, setNapredek] = useState<Napredek | null>(null);
+  const [rezultat, setRezultat] = useState<RezultatObelezja | null>(null);
 
   async function zazeni() {
     setPoteka(true);
-    setOdziv(null);
-    const o = await prenesi(id);
-    setOdziv(o);
+    setRezultat(null);
+    setNapredek(null);
+    setRezultat(await prenesiObelezje(id, id, setNapredek));
     setPoteka(false);
   }
 
-  const novOsnutek = odziv?.ok && odziv.r.spremenjeno;
+  const novOsnutek = Boolean(rezultat?.spremenjeno);
 
   return (
     <div style={{ display: "grid", gap: "calc(var(--base) * 0.5)", justifyItems: "start" }}>
@@ -116,7 +243,7 @@ export function PrenesiIzRegistraGumb({ id }: { id: string }) {
           size="small"
           margin={false}
           onClick={zazeni}
-          disabled={poteka || spremenjeno || Boolean(novOsnutek)}
+          disabled={poteka || spremenjeno || novOsnutek}
           aria-busy={poteka}
         >
           {poteka ? "Prenašam iz registra …" : "Prenesi iz registra"}
@@ -127,14 +254,17 @@ export function PrenesiIzRegistraGumb({ id }: { id: string }) {
           Obrazec ima neshranjene spremembe. Najprej jih shrani ali zavrzi, sicer bi jih prenos prepisal.
         </p>
       ) : null}
+      {poteka && napredek && napredek.skupaj > 0 ? (
+        <progress
+          max={napredek.skupaj}
+          value={napredek.obdelanih}
+          aria-label="Napredek prenosa fotografij"
+          style={{ width: "100%", maxWidth: "32rem" }}
+        />
+      ) : null}
       <div role="status" aria-live="polite">
-        {poteka ? <p style={{ margin: 0 }}>Fotografije se prenašajo ena za drugo — to lahko traja pol minute.</p> : null}
-        {odziv && !odziv.ok ? (
-          <p role="alert" style={{ margin: 0, color: "var(--theme-error-750)" }}>
-            {odziv.napaka}
-          </p>
-        ) : null}
-        {odziv?.ok ? <PodrobnostiRezultata r={odziv.r} /> : null}
+        {poteka ? <p style={{ margin: 0 }}>{besediloNapredka(napredek)}</p> : null}
+        {rezultat ? <PodrobnostiRezultata r={rezultat} /> : null}
       </div>
       {novOsnutek ? (
         <div style={{ display: "grid", gap: "calc(var(--base) * 0.25)" }}>
@@ -157,32 +287,37 @@ export function PrenosEtapeGumb({ tocke }: { tocke: { id: string; naziv: string;
   const zRegistrom = tocke.filter((t) => t.vRegistru);
   const [poteka, setPoteka] = useState(false);
   const [trenutna, setTrenutna] = useState(0);
-  const [odzivi, setOdzivi] = useState<Odziv[]>([]);
+  const [napredek, setNapredek] = useState<Napredek | null>(null);
+  const [rezultati, setRezultati] = useState<RezultatObelezja[]>([]);
 
   async function zazeni() {
     setPoteka(true);
-    setOdzivi([]);
-    const zbrani: Odziv[] = [];
+    setRezultati([]);
+    const zbrani: RezultatObelezja[] = [];
     for (let i = 0; i < zRegistrom.length; i++) {
+      const t = zRegistrom[i]!;
       setTrenutna(i + 1);
+      setNapredek(null);
       // A failure on one memorial is reported and the run continues.
-      zbrani.push(await prenesi(zRegistrom[i]!.id));
-      setOdzivi([...zbrani]);
+      zbrani.push(await prenesiObelezje(t.id, t.naziv, setNapredek));
+      setRezultati([...zbrani]);
+      // After a storage stop the bucket is full for every memorial: don't keep downloading.
+      if (zbrani.at(-1)?.ustavljeno?.startsWith("Uvoz je ustavljen")) break;
     }
     setPoteka(false);
   }
 
-  const uspesni = odzivi.filter((o): o is Extract<Odziv, { ok: true }> => o.ok).map((o) => o.r);
   const vsota = {
-    napisov: uspesni.filter((r) => r.napis === "preneseno").length,
-    dostopov: uspesni.filter((r) => r.dostop === "preneseno").length,
-    uvozenih: uspesni.reduce((s, r) => s + r.fotografije.uvozenih, 0),
-    preskocenih: uspesni.reduce((s, r) => s + r.fotografije.preskocene.length, 0),
-    shranjeno: uspesni.reduce((s, r) => s + r.shranjenoB, 0),
-    novihOsnutkov: uspesni.filter((r) => r.spremenjeno).length,
-    neuspelih: odzivi.length - uspesni.length,
+    napisov: rezultati.filter((r) => r.napis === "preneseno").length,
+    dostopov: rezultati.filter((r) => r.dostop === "preneseno").length,
+    uvozenih: rezultati.reduce((s, r) => s + r.uvozenih, 0),
+    preskocenih: rezultati.reduce((s, r) => s + r.preskocene.length, 0),
+    shranjeno: rezultati.reduce((s, r) => s + r.shranjenoB, 0),
+    novihOsnutkov: rezultati.filter((r) => r.spremenjeno).length,
+    neuspelih: rezultati.filter((r) => r.napaka).length,
   };
-  const skupajVShrambi = uspesni.at(-1)?.skupajVShrambiB;
+  const skupajVShrambi = [...rezultati].reverse().find((r) => r.skupajVShrambiB !== null)?.skupajVShrambiB;
+  const trenutnaTocka = zRegistrom[trenutna - 1];
 
   return (
     <div style={{ display: "grid", gap: "calc(var(--base) * 0.5)" }}>
@@ -204,45 +339,40 @@ export function PrenosEtapeGumb({ tocke }: { tocke: { id: string; naziv: string;
           {poteka ? `Prenašam ${trenutna} od ${zRegistrom.length} …` : "Prenesi iz registra za vsa obeležja etape"}
         </Button>
       </div>
-      {poteka || odzivi.length > 0 ? (
+      {poteka || rezultati.length > 0 ? (
         <progress
           max={zRegistrom.length}
-          value={odzivi.length}
-          aria-label="Napredek prenosa"
+          value={rezultati.length}
+          aria-label="Napredek prenosa po obeležjih"
           style={{ width: "100%", maxWidth: "32rem" }}
         />
       ) : null}
       <div role="status" aria-live="polite">
-        {!poteka && odzivi.length > 0 ? (
+        {poteka && trenutnaTocka ? (
           <p style={{ margin: 0 }}>
-            <strong>Končano.</strong> Obeležij: {odzivi.length}, novih osnutkov: {vsota.novihOsnutkov}, napisov:{" "}
+            {trenutnaTocka.id} {trenutnaTocka.naziv}: {besediloNapredka(napredek)}
+          </p>
+        ) : null}
+        {!poteka && rezultati.length > 0 ? (
+          <p style={{ margin: 0 }}>
+            <strong>Končano.</strong> Obeležij: {rezultati.length}, novih osnutkov: {vsota.novihOsnutkov}, napisov:{" "}
             {vsota.napisov}, opisov dostopa: {vsota.dostopov}, uvoženih fotografij: {vsota.uvozenih}, preskočenih:{" "}
             {vsota.preskocenih}, shranjeno {mb(vsota.shranjeno)}
-            {skupajVShrambi !== undefined ? ` (vse fotografije v shrambi: ${mb(skupajVShrambi)})` : ""}
-            {vsota.neuspelih ? `, neuspelih obeležij: ${vsota.neuspelih}` : ""}.
+            {skupajVShrambi != null ? ` (vse fotografije v shrambi: ${mb(skupajVShrambi)})` : ""}
+            {vsota.neuspelih ? `, prekinjenih obeležij: ${vsota.neuspelih}` : ""}.
           </p>
         ) : null}
       </div>
-      {odzivi.length > 0 ? (
+      {rezultati.length > 0 ? (
         <ol style={{ margin: 0, paddingLeft: "1.25em", display: "grid", gap: "calc(var(--base) * 0.5)" }}>
-          {odzivi.map((o) => {
-            const id = o.ok ? o.r.id : o.id;
-            const naziv = o.ok ? o.r.naziv : tocke.find((t) => t.id === id)?.naziv;
-            return (
-              <li key={id}>
-                <a href={`/admin/collections/tocke/${id}`}>
-                  {id} {naziv}
-                </a>
-                {o.ok ? (
-                  <PodrobnostiRezultata r={o.r} />
-                ) : (
-                  <p role="alert" style={{ margin: 0, color: "var(--theme-error-750)" }}>
-                    {o.napaka}
-                  </p>
-                )}
-              </li>
-            );
-          })}
+          {rezultati.map((r) => (
+            <li key={r.id}>
+              <a href={`/admin/collections/tocke/${r.id}`}>
+                {r.id} {r.naziv}
+              </a>
+              <PodrobnostiRezultata r={r} />
+            </li>
+          ))}
         </ol>
       ) : null}
     </div>

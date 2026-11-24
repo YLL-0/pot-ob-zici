@@ -4,18 +4,22 @@
  * partizanstvo.si into one memorial — as a DRAFT version. Nothing here
  * publishes; an editor reviews and publishes as usual.
  *
- * Server-only. Used by the endpoint POST /api/tocke/prenos-registra
- * (one memorial per request; the stage action in the admin calls it once
- * per memorial, in sequence, so it can show progress).
+ * Server-only. Endpoint POST /api/tocke/prenos-registra works in STEPS so
+ * no request runs long (serverless time limits): each call either imports
+ * ONE photo into `media` (step »fotografija«), or — once no photo is left
+ * to import — finishes the memorial (step »konec«): fills the empty text
+ * fields and attaches every imported photo, largest first, in a single
+ * draft version. The admin buttons call it repeatedly until »konec«.
  *
- * Idempotent: text fields are only filled when empty, and a photo is
- * matched on `vir_url` + register file name, so re-running changes nothing.
+ * Idempotent and resumable: a photo is matched on `vir_url` + register
+ * file name, so an interrupted run just continues where it stopped, and
+ * re-running a finished memorial changes nothing.
  */
 
 import type { Endpoint, Payload, PayloadRequest } from "payload";
 import sharp from "sharp";
 import type { Media, Tocke } from "@/payload-types";
-import { gradivoZaTocko, type GradivoRegistra, type SlikaRegistra } from "@/cms/partizanstvo";
+import { gradivoZaTocko, type GradivoRegistra } from "@/cms/partizanstvo";
 import { isMediaStorageConfigured } from "@/lib/cms";
 
 /**
@@ -37,8 +41,7 @@ const CAS_PRENOSA_MS = 30_000;
 /** Rough share the two derived WebP sizes add on top of the stored JPEG, for the pre-check only. */
 const DELEZ_IZPELJANK = 0.5;
 
-export const SPOROCILO_ZAMENJAJ_OPOMBO =
-  "Fotografije niso uvožene: v cms/prenosRegistra.ts je treba v DOVOLJENJE_OPOMBA vpisati, kdo je dal dovoljenje in kdaj.";
+const OPOMBA_NI_VPISANA = DOVOLJENJE_OPOMBA.includes("[");
 
 export type StanjeBesedila = "preneseno" | "ze-izpolnjeno" | "ni-v-registru";
 
@@ -61,33 +64,53 @@ export interface PreskocenaFotografija {
   razlog: string;
 }
 
-export interface RezultatPrenosa {
+/** Request body. `preskoci`: register photo URLs that failed earlier in this run — not retried. */
+export interface ZahtevekPrenosa {
+  id: string;
+  preskoci?: string[];
+  /** Import no more photos; go straight to »konec« (after a storage stop). */
+  zakljuci?: boolean;
+}
+
+interface OsnovaOdziva {
   id: string;
   naziv: string;
-  napis: StanjeBesedila;
-  dostop: StanjeBesedila;
-  fotografije: {
-    vRegistru: number;
-    uvozenih: number;
-    /** Already imported and attached — nothing to do. */
-    zeUvozenih: number;
-    /** Imported earlier but no longer attached to the memorial: attached again, not downloaded again. */
-    ponovnoPripetih: number;
-    /** Already imported photos whose provenance line was updated to the current DOVOLJENJE_OPOMBA. */
-    posodobljenaOpomba: number;
-    preskocene: PreskocenaFotografija[];
-  };
-  /** Bytes newly written to storage by this run (stored JPEG + derived sizes). */
-  shranjenoB: number;
-  /** All of `media` in storage after this run. */
-  skupajVShrambiB: number;
-  /** A new draft version was saved. */
-  spremenjeno: boolean;
   /** Probable, not certain register match (NMZ-030, NMZ-033, NMZ-034). */
   opozorilo: string | null;
-  /** Why the photo import stopped early, if it did (storage limit, missing configuration). */
+  /** All of `media` in storage after this step. */
+  skupajVShrambiB: number;
+}
+
+/** One photo handled. The caller calls again (adding a failed URL to `preskoci`). */
+export interface KorakFotografija extends OsnovaOdziva {
+  korak: "fotografija";
+  uvozena: { url: string; shranjenoB: number } | null;
+  preskocena: PreskocenaFotografija | null;
+  /** Photos still to import after this one (not counting those in `preskoci`). */
+  preostalo: number;
+  /** The storage limit was reached: call once more with `zakljuci: true`. */
   ustavljeno: string | null;
 }
+
+/** The memorial is finished. */
+export interface KorakKonec extends OsnovaOdziva {
+  korak: "konec";
+  napis: StanjeBesedila;
+  dostop: StanjeBesedila;
+  vRegistru: number;
+  /** Already attached before this run. */
+  zePripetih: number;
+  /** Attached by this step (imported in this run, or imported earlier and not attached). */
+  pripetih: number;
+  posodobljenaOpomba: number;
+  /** Photos not imported for a reason decided here (permission line missing, storage, stopped run). */
+  preskocene: PreskocenaFotografija[];
+  /** A new draft version was saved. */
+  spremenjeno: boolean;
+  ustavljeno: string | null;
+}
+
+export type OdzivPrenosa = KorakFotografija | KorakKonec;
 
 // --- requests to partizanstvo.si: one at a time, with a pause ------------
 
@@ -154,15 +177,8 @@ function napakaBesedilo(err: unknown): string {
   return String(err);
 }
 
-interface PripravljenaSlika {
-  slika: SlikaRegistra;
-  jpeg: Buffer;
-  sirina: number;
-  visina: number;
-}
-
 /** Original dimensions (EXIF orientation applied) and the resized JPEG to store. */
-async function pripravi(slika: SlikaRegistra, izvirnik: Buffer): Promise<PripravljenaSlika> {
+async function pripravi(izvirnik: Buffer): Promise<{ jpeg: Buffer; sirina: number; visina: number }> {
   const meta = await sharp(izvirnik).metadata();
   if (!meta.width || !meta.height) throw new Error("datoteka ni prepoznana kot slika");
   const zasukana = (meta.orientation ?? 1) >= 5;
@@ -171,15 +187,12 @@ async function pripravi(slika: SlikaRegistra, izvirnik: Buffer): Promise<Priprav
     .resize({ width: NAJDALJSI_ROB_PX, height: NAJDALJSI_ROB_PX, fit: "inside", withoutEnlargement: true })
     .jpeg({ quality: KAKOVOST_JPEG, mozjpeg: true })
     .toBuffer();
-  return {
-    slika,
-    jpeg,
-    sirina: zasukana ? meta.height : meta.width,
-    visina: zasukana ? meta.width : meta.height,
-  };
+  return { jpeg, sirina: zasukana ? meta.height : meta.width, visina: zasukana ? meta.width : meta.height };
 }
 
-// --- one memorial ---------------------------------------------------------
+const ploscina = (m: Media) => (m.izvirnik_sirina ?? m.width ?? 0) * (m.izvirnik_visina ?? m.height ?? 0);
+
+// --- one step ---------------------------------------------------------------
 
 const vTeku = new Set<string>();
 
@@ -192,8 +205,10 @@ export class NapakaPrenosa extends Error {
   }
 }
 
-export async function prenesiIzRegistra(req: PayloadRequest, id: string): Promise<RezultatPrenosa> {
+export async function korakPrenosa(req: PayloadRequest, zahtevek: ZahtevekPrenosa): Promise<OdzivPrenosa> {
   const { payload } = req;
+  const { id } = zahtevek;
+  const preskoci = new Set(zahtevek.preskoci ?? []);
   const g: GradivoRegistra | null = gradivoZaTocko(id);
   if (!g) throw new NapakaPrenosa(`Za obeležje ${id} ni zapisa iz registra partizanstvo.si.`, 404);
   if (vTeku.has(id)) throw new NapakaPrenosa(`Prenos za ${id} že teče. Počakaj, da se konča.`, 409);
@@ -210,34 +225,7 @@ export async function prenesiIzRegistra(req: PayloadRequest, id: string): Promis
     })) as Tocke | null;
     if (!tocka) throw new NapakaPrenosa(`Obeležja ${id} ni v bazi.`, 404);
 
-    const napis = odlocitevBesedila(g.napis, tocka.napis);
-    const dostop = odlocitevBesedila(g.dostop, tocka.dostop);
-
-    const rezultat: RezultatPrenosa = {
-      id,
-      naziv: tocka.naziv,
-      napis: napis.stanje,
-      dostop: dostop.stanje,
-      fotografije: {
-        vRegistru: g.slike.length,
-        uvozenih: 0,
-        zeUvozenih: 0,
-        ponovnoPripetih: 0,
-        posodobljenaOpomba: 0,
-        preskocene: [],
-      },
-      shranjenoB: 0,
-      skupajVShrambiB: 0,
-      spremenjeno: false,
-      opozorilo: g.opozorilo,
-      ustavljeno: null,
-    };
-    const f = rezultat.fotografije;
-
-    const pripete = (tocka.fotografije ?? []).map(mediaId).filter((x): x is number => x !== null);
-    const nove: number[] = [];
-
-    // Photos already imported from this register record, keyed by register file name.
+    // Photos already imported from this register record, by register file name.
     const { docs: obstojece } = await payload.find({
       collection: "media",
       where: { vir_url: { equals: g.vir_url } },
@@ -250,92 +238,113 @@ export async function prenesiIzRegistra(req: PayloadRequest, id: string): Promis
     for (const m of obstojece as Media[]) {
       if (m.izvirnik_url) poImenu.set(imeDatoteke(m.izvirnik_url), m);
     }
+    const neuvozene = g.slike.filter((s) => !poImenu.has(imeDatoteke(s.url)));
+    const naVrsti = neuvozene.filter((s) => !preskoci.has(s.url));
 
-    const zaPrenos: SlikaRegistra[] = [];
-    for (const s of g.slike) {
-      const m = poImenu.get(imeDatoteke(s.url));
-      if (!m) {
-        zaPrenos.push(s);
-        continue;
+    const osnova = { id, naziv: tocka.naziv, opozorilo: g.opozorilo };
+    const skupaj = await shranjenoVShrambi(payload, req);
+
+    const lahkoUvaza = !OPOMBA_NI_VPISANA && isMediaStorageConfigured();
+    const slika = naVrsti[0];
+    if (slika && lahkoUvaza && !zahtevek.zakljuci) {
+      const korak: KorakFotografija = {
+        ...osnova,
+        korak: "fotografija",
+        uvozena: null,
+        preskocena: null,
+        preostalo: naVrsti.length - 1,
+        ustavljeno: null,
+        skupajVShrambiB: skupaj,
+      };
+      let p: Awaited<ReturnType<typeof pripravi>>;
+      try {
+        p = await pripravi(await prenesiSliko(slika.url));
+      } catch (err) {
+        korak.preskocena = { url: slika.url, razlog: `prenos ni uspel: ${napakaBesedilo(err)}` };
+        return korak;
       }
-      if (pripete.includes(m.id)) f.zeUvozenih++;
-      else {
-        nove.push(m.id);
-        f.ponovnoPripetih++;
+      if (skupaj + p.jpeg.length * (1 + DELEZ_IZPELJANK) > MEJA_SHRAMBE_B) {
+        korak.preostalo = naVrsti.length;
+        korak.ustavljeno =
+          `Uvoz je ustavljen: shranjene fotografije bi presegle ${MEJA_SHRAMBE_B / 1024 / 1024} MB ` +
+          `(zdaj ${(skupaj / 1024 / 1024).toFixed(1)} MB).`;
+        return korak;
       }
-      if (m.dovoljenje_opomba !== DOVOLJENJE_OPOMBA && !DOVOLJENJE_OPOMBA.includes("[")) {
+      try {
+        const m = (await payload.create({
+          collection: "media",
+          data: {
+            podnapis: slika.opis?.trim() || tocka.naziv,
+            avtor_vir: slika.avtor?.trim() || "partizanstvo.si",
+            pravice: "dovoljenje-pridobljeno",
+            licenca: slika.licenca_v_registru ?? null,
+            vir_url: g.vir_url,
+            tip: "danes",
+            dovoljenje_opomba: DOVOLJENJE_OPOMBA,
+            izvirnik_url: slika.url,
+            izvirnik_sirina: p.sirina,
+            izvirnik_visina: p.visina,
+          },
+          file: { data: p.jpeg, mimetype: "image/jpeg", name: vJpgIme(imeDatoteke(slika.url)), size: p.jpeg.length },
+          depth: 0,
+          req,
+        })) as Media;
+        const bajtov = velikostMedie(m);
+        korak.uvozena = { url: slika.url, shranjenoB: bajtov };
+        korak.skupajVShrambiB = skupaj + bajtov;
+      } catch (err) {
+        korak.preskocena = { url: slika.url, razlog: `shranjevanje ni uspelo: ${napakaBesedilo(err)}` };
+      }
+      return korak;
+    }
+
+    // --- konec: texts + attach everything, one draft version -------------
+    const konec: KorakKonec = {
+      ...osnova,
+      korak: "konec",
+      napis: "ni-v-registru",
+      dostop: "ni-v-registru",
+      vRegistru: g.slike.length,
+      zePripetih: 0,
+      pripetih: 0,
+      posodobljenaOpomba: 0,
+      preskocene: [],
+      spremenjeno: false,
+      ustavljeno: null,
+      skupajVShrambiB: skupaj,
+    };
+
+    if (naVrsti.length > 0) {
+      const razlog = OPOMBA_NI_VPISANA
+        ? "dovoljenje še ni vpisano"
+        : !isMediaStorageConfigured()
+          ? "shramba ni nastavljena"
+          : "uvoz ustavljen";
+      konec.ustavljeno = OPOMBA_NI_VPISANA
+        ? "Fotografije niso uvožene: v cms/prenosRegistra.ts je treba v DOVOLJENJE_OPOMBA vpisati, kdo je dal dovoljenje in kdaj."
+        : !isMediaStorageConfigured()
+          ? "Fotografije niso uvožene: v tem okolju ni nastavljena shramba fotografij (S3_* v okolju strežnika)."
+          : null;
+      for (const s of naVrsti) konec.preskocene.push({ url: s.url, razlog });
+    }
+
+    if (!OPOMBA_NI_VPISANA) {
+      for (const m of poImenu.values()) {
+        if (m.dovoljenje_opomba === DOVOLJENJE_OPOMBA) continue;
         await payload.update({ collection: "media", id: m.id, data: { dovoljenje_opomba: DOVOLJENJE_OPOMBA }, req });
-        f.posodobljenaOpomba++;
+        konec.posodobljenaOpomba++;
       }
     }
 
-    let skupaj = await shranjenoVShrambi(payload, req);
+    const pripete = (tocka.fotografije ?? []).map(mediaId).filter((x): x is number => x !== null);
+    const zaPripeti = [...poImenu.values()].filter((m) => !pripete.includes(m.id)).sort((a, b) => ploscina(b) - ploscina(a));
+    konec.zePripetih = poImenu.size - zaPripeti.length;
+    konec.pripetih = zaPripeti.length;
 
-    if (zaPrenos.length > 0) {
-      if (DOVOLJENJE_OPOMBA.includes("[")) {
-        rezultat.ustavljeno = SPOROCILO_ZAMENJAJ_OPOMBO;
-        for (const s of zaPrenos) f.preskocene.push({ url: s.url, razlog: "dovoljenje še ni vpisano" });
-      } else if (!isMediaStorageConfigured()) {
-        rezultat.ustavljeno =
-          "Fotografije niso uvožene: v tem okolju ni nastavljena shramba fotografij (S3_* v okolju strežnika).";
-        for (const s of zaPrenos) f.preskocene.push({ url: s.url, razlog: "shramba ni nastavljena" });
-      } else {
-        // Download and resize all first, so they can be attached largest first.
-        const pripravljene: PripravljenaSlika[] = [];
-        for (const s of zaPrenos) {
-          try {
-            pripravljene.push(await pripravi(s, await prenesiSliko(s.url)));
-          } catch (err) {
-            f.preskocene.push({ url: s.url, razlog: `prenos ni uspel: ${napakaBesedilo(err)}` });
-          }
-        }
-        pripravljene.sort((a, b) => b.sirina * b.visina - a.sirina * a.visina);
-
-        for (const p of pripravljene) {
-          if (rezultat.ustavljeno) {
-            f.preskocene.push({ url: p.slika.url, razlog: "ustavljeno zaradi omejitve shrambe" });
-            continue;
-          }
-          const ocena = p.jpeg.length * (1 + DELEZ_IZPELJANK);
-          if (skupaj + ocena > MEJA_SHRAMBE_B) {
-            rezultat.ustavljeno =
-              `Uvoz je ustavljen: shranjene fotografije bi presegle ${MEJA_SHRAMBE_B / 1024 / 1024} MB ` +
-              `(zdaj ${(skupaj / 1024 / 1024).toFixed(1)} MB).`;
-            f.preskocene.push({ url: p.slika.url, razlog: "ustavljeno zaradi omejitve shrambe" });
-            continue;
-          }
-          try {
-            const ime = vJpgIme(imeDatoteke(p.slika.url));
-            const m = (await payload.create({
-              collection: "media",
-              data: {
-                podnapis: p.slika.opis?.trim() || tocka.naziv,
-                avtor_vir: p.slika.avtor?.trim() || "partizanstvo.si",
-                pravice: "dovoljenje-pridobljeno",
-                licenca: p.slika.licenca_v_registru ?? null,
-                vir_url: g.vir_url,
-                tip: "danes",
-                dovoljenje_opomba: DOVOLJENJE_OPOMBA,
-                izvirnik_url: p.slika.url,
-                izvirnik_sirina: p.sirina,
-                izvirnik_visina: p.visina,
-              },
-              file: { data: p.jpeg, mimetype: "image/jpeg", name: ime, size: p.jpeg.length },
-              depth: 0,
-              req,
-            })) as Media;
-            const bajtov = velikostMedie(m);
-            rezultat.shranjenoB += bajtov;
-            skupaj += bajtov;
-            nove.push(m.id);
-            f.uvozenih++;
-          } catch (err) {
-            f.preskocene.push({ url: p.slika.url, razlog: `shranjevanje ni uspelo: ${napakaBesedilo(err)}` });
-          }
-        }
-      }
-    }
-    rezultat.skupajVShrambiB = skupaj;
+    const napis = odlocitevBesedila(g.napis, tocka.napis);
+    const dostop = odlocitevBesedila(g.dostop, tocka.dostop);
+    konec.napis = napis.stanje;
+    konec.dostop = dostop.stanje;
 
     const data: Partial<Tocke> = {};
     if (napis.besedilo) {
@@ -344,40 +353,42 @@ export async function prenesiIzRegistra(req: PayloadRequest, id: string): Promis
       data.napis_iz_registra = true;
     }
     if (dostop.besedilo) data.dostop = dostop.besedilo;
-    if (nove.length > 0) data.fotografije = [...pripete, ...nove];
+    if (zaPripeti.length > 0) data.fotografije = [...pripete, ...zaPripeti.map((m) => m.id)];
 
     if (Object.keys(data).length > 0) {
       // draft: true saves a new draft version on top of the latest one; the
       // published version (and the public site) stays exactly as it was.
       await payload.update({ collection: "tocke", id, data, draft: true, depth: 0, req });
-      rezultat.spremenjeno = true;
+      konec.spremenjeno = true;
     }
-    return rezultat;
+    return konec;
   } finally {
     vTeku.delete(id);
   }
 }
 
 /**
- * POST /api/tocke/prenos-registra  body `{ "id": "NMZ-017" }`
- * Any logged-in editor (urednik, admin). Returns a RezultatPrenosa.
+ * POST /api/tocke/prenos-registra  body ZahtevekPrenosa, e.g. `{ "id": "NMZ-017" }`.
+ * Any logged-in editor (urednik, admin). Returns one OdzivPrenosa step.
  */
 export const prenosRegistraEndpoint: Endpoint = {
   path: "/tocke/prenos-registra",
   method: "post",
   handler: async (req) => {
     if (!req.user) return Response.json({ napaka: "Za prenos se moraš prijaviti." }, { status: 401 });
-    let id: unknown;
+    let telo: Partial<ZahtevekPrenosa> | undefined;
     try {
-      id = ((await req.json?.()) as { id?: unknown } | undefined)?.id;
+      telo = (await req.json?.()) as Partial<ZahtevekPrenosa> | undefined;
     } catch {
       // handled below
     }
+    const id = telo?.id;
     if (typeof id !== "string" || !/^NMZ-\d{3}$/.test(id)) {
       return Response.json({ napaka: "Manjka ID obeležja (npr. »NMZ-017«)." }, { status: 400 });
     }
+    const preskoci = Array.isArray(telo?.preskoci) ? telo.preskoci.filter((u): u is string => typeof u === "string") : [];
     try {
-      return Response.json(await prenesiIzRegistra(req, id));
+      return Response.json(await korakPrenosa(req, { id, preskoci, zakljuci: telo?.zakljuci === true }));
     } catch (err) {
       if (err instanceof NapakaPrenosa) return Response.json({ napaka: err.message }, { status: err.status });
       req.payload.logger.error({ err, msg: `prenos iz registra ${id}` });

@@ -95,7 +95,11 @@ obeležja etape, eno za drugim) prenese v **osnutek** obeležja — nikoli v obj
   pravicami »Dovoljenje pridobljeno«, avtorjem in licenco iz registra, povezavo na zapis v registru
   ter mero in povezavo izvirnika. Pripete so za obstoječimi, največja prva.
 
-Ponovni zagon ničesar ne podvoji (fotografija se prepozna po `vir_url` + imenu datoteke v registru).
+Vsak zahtevek obdela največ eno fotografijo; gumb ga kliče znova, dokler niso vse prenesene, in
+sproti kaže napredek, zato nobena zahteva ne preseže časovne omejitve strežnika (Vercel). Napis,
+dostop in vse fotografije se pripnejo šele v zadnjem koraku, v enem samem osnutku.
+Ponovni zagon ničesar ne podvoji (fotografija se prepozna po `vir_url` + imenu datoteke v registru),
+prekinjen prenos pa nadaljuje, kjer se je ustavil.
 Vrstico o dovoljenju, ki jo dobi vsaka uvožena fotografija, nastaviš v konstanti
 `DOVOLJENJE_OPOMBA` v `cms/prenosRegistra.ts`. Dokler so v njej oglati oklepaji, se fotografije ne
 uvažajo; po popravku jo ponovni zagon posodobi tudi na že uvoženih fotografijah. Uvoz se ustavi,
