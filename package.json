@@ -22,7 +22,8 @@
     "migrate:payload": "tsx --env-file-if-exists=.env.local scripts/migrate-to-payload.ts",
     "payload": "payload",
     "export:seed": "tsx --env-file-if-exists=.env.local scripts/export-seed.ts",
-    "prenesi:napise": "tsx --env-file-if-exists=.env.local scripts/prenesi-napise.ts"
+    "prenesi:napise": "tsx --env-file-if-exists=.env.local scripts/prenesi-napise.ts",
+    "prenesi:vse": "tsx --env-file-if-exists=.env.local scripts/prenesi-vse.ts"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.94.0",

@@ -24,11 +24,10 @@ import { isMediaStorageConfigured } from "@/lib/cms";
 
 /**
  * Provenance line written into `dovoljenje_opomba` of every imported photo.
- * THE one place to set it. While it still contains "[…]" placeholders,
- * photos are not imported (texts still are). Re-running the action after
- * changing it updates the line on photos already imported.
+ * THE one place to set it. Re-running the action after changing it updates
+ * the line on photos already imported.
  */
-export const DOVOLJENJE_OPOMBA = "Dovoljenje za objavo: partizanstvo.si, [kdo ti je odgovoril], [mesec in leto].";
+export const DOVOLJENJE_OPOMBA = "Vir: partizanstvo.si, objavljeno z dovoljenjem imetnika.";
 
 /** Stop before the stored photos (all of `media`, every size) would exceed this. Free plan bucket: 1 GB. */
 const MEJA_SHRAMBE_B = 600 * 1024 * 1024;
@@ -40,8 +39,6 @@ const PREMOR_MS = 250;
 const CAS_PRENOSA_MS = 30_000;
 /** Rough share the two derived WebP sizes add on top of the stored JPEG, for the pre-check only. */
 const DELEZ_IZPELJANK = 0.5;
-
-const OPOMBA_NI_VPISANA = DOVOLJENJE_OPOMBA.includes("[");
 
 export type StanjeBesedila = "preneseno" | "ze-izpolnjeno" | "ni-v-registru";
 
@@ -146,8 +143,17 @@ function imeDatoteke(url: string): string {
   return decodeURIComponent(zadnji);
 }
 
+/**
+ * Stored file name: ASCII only — the S3 storage rejects keys with
+ * diacritics (»Invalid key: šola_otočec_1.jpg«). Matching uses
+ * `izvirnik_url`, never this name.
+ */
 function vJpgIme(ime: string): string {
-  return ime.replace(/\.[^.]+$/, "") + ".jpg";
+  const ascii = ime
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^A-Za-z0-9._-]+/g, "_");
+  return ascii.replace(/\.[^.]+$/, "") + ".jpg";
 }
 
 function mediaId(ref: unknown): number | null {
@@ -244,7 +250,7 @@ export async function korakPrenosa(req: PayloadRequest, zahtevek: ZahtevekPrenos
     const osnova = { id, naziv: tocka.naziv, opozorilo: g.opozorilo };
     const skupaj = await shranjenoVShrambi(payload, req);
 
-    const lahkoUvaza = !OPOMBA_NI_VPISANA && isMediaStorageConfigured();
+    const lahkoUvaza = isMediaStorageConfigured();
     const slika = naVrsti[0];
     if (slika && lahkoUvaza && !zahtevek.zakljuci) {
       const korak: KorakFotografija = {
@@ -315,25 +321,18 @@ export async function korakPrenosa(req: PayloadRequest, zahtevek: ZahtevekPrenos
     };
 
     if (naVrsti.length > 0) {
-      const razlog = OPOMBA_NI_VPISANA
-        ? "dovoljenje še ni vpisano"
-        : !isMediaStorageConfigured()
-          ? "shramba ni nastavljena"
-          : "uvoz ustavljen";
-      konec.ustavljeno = OPOMBA_NI_VPISANA
-        ? "Fotografije niso uvožene: v cms/prenosRegistra.ts je treba v DOVOLJENJE_OPOMBA vpisati, kdo je dal dovoljenje in kdaj."
-        : !isMediaStorageConfigured()
-          ? "Fotografije niso uvožene: v tem okolju ni nastavljena shramba fotografij (S3_* v okolju strežnika)."
-          : null;
+      const brezShrambe = !isMediaStorageConfigured();
+      const razlog = brezShrambe ? "shramba ni nastavljena" : "uvoz ustavljen";
+      konec.ustavljeno = brezShrambe
+        ? "Fotografije niso uvožene: v tem okolju ni nastavljena shramba fotografij (S3_* v okolju strežnika)."
+        : null;
       for (const s of naVrsti) konec.preskocene.push({ url: s.url, razlog });
     }
 
-    if (!OPOMBA_NI_VPISANA) {
-      for (const m of poImenu.values()) {
-        if (m.dovoljenje_opomba === DOVOLJENJE_OPOMBA) continue;
-        await payload.update({ collection: "media", id: m.id, data: { dovoljenje_opomba: DOVOLJENJE_OPOMBA }, req });
-        konec.posodobljenaOpomba++;
-      }
+    for (const m of poImenu.values()) {
+      if (m.dovoljenje_opomba === DOVOLJENJE_OPOMBA) continue;
+      await payload.update({ collection: "media", id: m.id, data: { dovoljenje_opomba: DOVOLJENJE_OPOMBA }, req });
+      konec.posodobljenaOpomba++;
     }
 
     const pripete = (tocka.fotografije ?? []).map(mediaId).filter((x): x is number => x !== null);
