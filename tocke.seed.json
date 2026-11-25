@@ -33,10 +33,39 @@
     "besedilo_poglobljeno": "[DEMO BESEDILO — ni zgodovinski vir] Poglobljeno besedilo je namenjeno obiskovalcem, ki si želijo več konteksta kot ga ponuja kratek uvod. V končni različici bo ta razdelek predstavil širši okupacijski obrambni sistem, umestil bunker v ta sistem in navedel, na podlagi katerih virov (arhivski dokumenti, terenski pregled, pričevanja) je bila vsebina pripravljena.\n\nTrenutno besedilo služi le preizkusu postavitve: dolžine odstavkov, preloma vrstic in prostora za slikovno gradivo. Ne vsebuje nobenega dejanskega datuma, imena ali števila žrtev — vse tovrstne podatke bo pred objavo potrdil strokovni partner projekta, kot določa postopek verifikacije v projektni dokumentaciji.",
     "napis": "Protitankovski bunker iz 2. svetovne vojne\n\nNemški okupator je leta 1943 postavil bunker ob glavni cesti, ki je vodila v\ntakrat z bodečo žico obdano Novo mesto. Leta 1952 so krajani Drske na bunker\npostavili top iz 1. svetovne vojne. Leta 2008 ga je zaradi obnove prevzel\nvojaški muzej v Pivki kot edinega te vrste v Sloveniji. Nadomestil ga je z\nnemškim topom M38 PLT iz 2. svetovne voine.\n\nOhranjeno v spomin na trpeče someščane in osvoboditelje.\n\nKS Drska in KO ZB NOB DRSKA 2015",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Bunker stoji na Drski, nad staro cesto Novo mesto-Straža, ob stanovanjskih blokih na Šegovi ulici. V okolici spomenika je speljana pešpot. Vstop v bunker je možen po stopnicah na obeh vhodih. Bunker je eno od izhodišč vsakoletnega pohoda Novo mesto v žici.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19916_2453.jpg",
+        "opis": "Bunker na Drski",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2453",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19915_2453.jpg",
+        "opis": "Bunker na Drski",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2453",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19917_2453.jpg",
+        "opis": "Bunker na Drski",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2453",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:17.422Z",
+    "updated_at": "2026-11-25T16:22:38.594Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -83,10 +112,21 @@
     "besedilo_poglobljeno": null,
     "napis": "[zvezda]\n\nPADLI ZA SVOBODO\n22.10.1943\nGOLOB FRANC\nJAKOPIN MAKS\nRIFELJ FRANC\nKO ZB ŽABJA VAS",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Spomenik stoji na jugovzhodnem robu Žabje vasi, na koncu ulice Drejčetova pot v Novem mestu. Hiša v bližini: Drejčetova pot 33, Novo mesto",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19915_4041_.jpg",
+        "opis": "Spomenik padlim domačinom – Drejčetova pot",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4041",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:18.374Z",
+    "updated_at": "2026-11-25T16:22:41.624Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -133,10 +173,48 @@
     "besedilo_poglobljeno": null,
     "napis": "napis na obelisku\n\nPADLIM BORCEM IN ŽRTVAM ŽABJE VASI\n\nŽUPEVC ANTON   ŽUPEVC IVAN\n\nŽIBERT FRANC   GOLOB FRANC\n\nHOČEVAR JOŽE   MALNAR ANTON\n\nKNAFELJC JOŽE   NOVAK JOŽE\n\nPREŠERN FRANC   ŠAFAR LOJZE\n\nVIDIC ANTON\n\n.\n\nJAKOPIN MAKS   NOVAK FRANC\n\nKRAVCAR MINKA   KRAVCAR MAJDA\n\nGOLOB CVETA   JAKOPIN IVANA\n\nŽNIDARŠIČ RUDOLF\n\nHLEDE KAROLINA\n\nHLEDE SLAVICA\n\nMEDVEŠEK LJUBO\n\nGOLOB TOMISLAV\n\nnapis ob vznožju obeliska:\n\n3 NEZNANI\n\nPARTIZANI\n\nPADLI 1943",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Spomenik stoji ob Kandijski cesti, nasproti hiše Kandijska 55.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_10_12_MK_8412-1600x1067.webp",
+        "opis": "Grobnica padlih med NOB v Žabji vasi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2856",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_10_12_MK_8408-1600x1067.webp",
+        "opis": "Grobnica padlih med NOB v Žabji vasi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2856",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_10_12_MK_8409.jpg",
+        "opis": "Grobnica padlih med NOB v Žabji vasi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2856",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19915_2856.jpg",
+        "opis": "Grobnica padlih med NOB v Žabji vasi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2856",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:19.297Z",
+    "updated_at": "2026-11-25T16:22:48.186Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -182,10 +260,30 @@
     "besedilo_poglobljeno": null,
     "napis": "V TEJ HIŠI SO V NOČI 22-23 DECEMBRA 1943\n\nDOMOBRANSKI ZLOČINCI ZVERINSKO UMORILI\n\nVALANTIČEVO DRUŽINO\n\nOČE ALOJZIJ  MATI MARIJA R. ČERMELJ\n\nHČI ALMA,\n\nSIN ALOJZIJ.\n\nVIDA PARTIZANKA OD LETA 1942,\n\nJE PADLA ZA SVOBODO LETA 1944\n\nZVEZA BORCEV IV. TERENA      6. JULIJA 1952",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Plošča je pritrjena na stranski fasadi stanovanjske hiše Valantičevo 5, v kateri so Valantičevi živeli.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7115-1600x854.webp",
+        "opis": "Spominska plošča Valantičevi družini",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5755",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7117-1600x1067.webp",
+        "opis": "Spominska plošča Valantičevi družini",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5755",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:20.216Z",
+    "updated_at": "2026-11-25T16:22:52.513Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -231,10 +329,30 @@
     "besedilo_poglobljeno": null,
     "napis": "SPOMINU\n\nGOJENCEV, KI SO V VRSTAH NARODNOOSVOBODILNE\n\nVOJSKE ŽIVLJENJA DALI ZA SREČO NAŠEGA LJUDSTVA.\n\nPOSTAVILA\n\nOB SVOJI SEDEMDESETLETNICI\n\nKMETIJSKA ŠOLA NA GRMU.\n\n18.11.1886     -     21.10.1956",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Novo mesto, grad Grm, v veži nekdanje kmetijske šole na Grmu, Skalickega 1",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170617-1600x901.webp",
+        "opis": "Grad Grm – plošča padlim gojencem kmetijske šole",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6718",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/Grm_Kmetijska_sola1.jpg",
+        "opis": "Grad Grm – plošča padlim gojencem kmetijske šole",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6718",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:21.133Z",
+    "updated_at": "2026-11-25T16:22:56.346Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -278,10 +396,39 @@
     "besedilo_poglobljeno": null,
     "napis": "[zvezda]\n\nS PESTJO SMO SE UPRLI.\n\nPRVO PRAZNOVANJE\n\nDNEVA VSTAJE",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Novo mesto, nad dvoriščnim portalom grada Grm, nekdanje kmetijske šole na Grmu, Skalickega 1",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170616-1600x901.webp",
+        "opis": "Grad Grm – plošča ob prvem praznovanju Dneva vstaje",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6719",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170614-1600x901.webp",
+        "opis": "Grad Grm – plošča ob prvem praznovanju Dneva vstaje",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6719",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170613-1600x901.webp",
+        "opis": "Grad Grm – plošča ob prvem praznovanju Dneva vstaje",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6719",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:22.052Z",
+    "updated_at": "2026-11-25T16:23:01.677Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -327,10 +474,57 @@
     "besedilo_poglobljeno": null,
     "napis": "[srp in kladivo]\nSOKOLSKA\nKNJIŽNICA\nJE BILA ŽARIŠČE\nKOMUNISTIČNE DEJAVNOSTI\nV LETIH 1935-1940\n\nOD L. 1935 JE IZPOSOJALA\nMARKSISTIČNO LITERATURO\nOD L. 1937 SO BILI V NJEJ\nORGANIZACIJSKI IN ŠTUDIJSKI\nSESTANKI SKOJ IN\nOD L. 1939 SESTANKI KPS\nIN ILEGALNE TEHNIKE\n\nZB III. TERENA 1953",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Novo mesto, Sokolska 3",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2026_03_02_MK_IMG_9432_Novo_mesto_Sokolski_dom-1600x1200.webp",
+        "opis": "Novo mesto, Plošča na nekdanjem Sokolskem domu",
+        "avtor_vir": "M. Kermavnar",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6734",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2026_03_02_MK_IMG_9434_Novo_mesto_Sokolski_dom-1600x1200.webp",
+        "opis": "Novo mesto, Plošča na nekdanjem Sokolskem domu",
+        "avtor_vir": "M. Kermavnar",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6734",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170611-1600x901.webp",
+        "opis": "Plošča na nekdanjem Sokolskem domu",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6734",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170609-1600x901.webp",
+        "opis": "Plošča na nekdanjem Sokolskem domu",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6734",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170608-1600x901.webp",
+        "opis": "Plošča na nekdanjem Sokolskem domu",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6734",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:22.876Z",
+    "updated_at": "2026-11-25T16:23:10.246Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -376,10 +570,30 @@
     "besedilo_poglobljeno": null,
     "napis": "TU STA BILA OD JESENI\n\n1941 DO JULIJA 1942\n\nILEGALNA TEHNIKA\n\nIN TAJNO STANOVANJE\n\nSEKRETARJA OKROŽNEGA\n\nKOMITEJA KPS\n\nMO ZB",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Novo mesto, na hiši Glavni trg 21",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170600-1600x901.webp",
+        "opis": "Plošča okrožni tehniki",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6733",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170599-1600x901.webp",
+        "opis": "Plošča okrožni tehniki",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6733",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:23.788Z",
+    "updated_at": "2026-11-25T16:23:14.295Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -426,10 +640,57 @@
     "besedilo_poglobljeno": null,
     "napis": "TU STA 30. XII. 1943 BILA\n\nOBEŠENA PARTIZANA\n\nJANC FRANC IN\n\nHACIN ALOJZIJ",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Glavni trg v Novem mestu (pri hišni št. 29), nasproti Rotovža",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7111-1600x982.webp",
+        "opis": "Spomenik obešenima partizanoma",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2832",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7107-1600x1110.webp",
+        "opis": "Spomenik obešenima partizanoma",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2832",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19917_2832.jpg",
+        "opis": "Spomenik obešenima partizanoma",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2832",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19915_2832.jpg",
+        "opis": "Spomenik obešenima partizanoma",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2832",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19916_2832.jpg",
+        "opis": "Spomenik obešenima partizanoma",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2832",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:24.696Z",
+    "updated_at": "2026-11-25T16:23:21.503Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -474,10 +735,84 @@
     "besedilo_poglobljeno": null,
     "napis": "ŽIVLJENJE SMO DALI VSE SMO ŽRTVOVALI KOT V TEŽKIH STA DNEH NAM VELEVALA\nDOLŽNOST IN ZAVEST V VAS DALJE ŽIVIMO\n\nKER VAŠA VSEŽIVA SMO VEST VSE DNI NAJ BO Z VAMI SPOMIN NAJ VAM DRAMI DA MISLI KI\nZ NJO SMO UMRLI OSTANE VSAK ZVEST\n\n.\n\nOsrednja plošča:\n\nNARODNI HEROJI\n\nDOLENJSKE\n\nJEREB DUŠAN-ŠTEFAN\n\nKOTAR MARTIN\n\nMAJCEN MILAN\n\nPADERŠIČ VINKO-\n\n-BATREJA\n\nSLAK JOŽE-SILVO\n\nSIMONČIČ VINKO-\n\n-GAŠPER\n\n.\n\nplošča na levi strani:\n\nPADLI BORCI 1941 – 1945\n\nImena 129 borcev\n\nplošča na desni strani:\n\nTALCI\n\nImena dveh talcev\n\nUBITI IN UMRLI\n\nImena 53 ubitih in umrlih\n\nŽRTVE BOMBNIH NAPADOV\n\nImena 58 žrtev",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Stoji na križišču Rozmanove ulice in Prešernovega trga pri Knjižnici Mirana Jarca v Novem mestu.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7088-1600x762.webp",
+        "opis": "Spomeniški kompleks Na vratih / Loža herojev",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2831",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170657-1600x901.webp",
+        "opis": "Spomeniški kompleks Na vratih / Loža herojev",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2831",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170656-1600x901.webp",
+        "opis": "Spomeniški kompleks Na vratih / Loža herojev",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2831",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170655-1600x901.webp",
+        "opis": "Spomeniški kompleks Na vratih / Loža herojev",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2831",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170650-1600x901.webp",
+        "opis": "Spomeniški kompleks Na vratih / Loža herojev",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2831",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19916_2831.jpg",
+        "opis": "Spomeniški kompleks Na vratih / Loža herojev",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2831",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19917_2831.jpg",
+        "opis": "Spomeniški kompleks Na vratih / Loža herojev",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2831",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19915_2831.jpg",
+        "opis": "Spomeniški kompleks Na vratih / Loža herojev",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2831",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:25.600Z",
+    "updated_at": "2026-11-25T16:23:32.149Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -521,10 +856,48 @@
     "besedilo_poglobljeno": null,
     "napis": null,
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Muzejska avla predstavlja glavni vhod v osrednjo stavbo Dolenjskega muzeja, Muzejska ulica 7",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7105-1600x1067.webp",
+        "opis": "Spominska avla Dolenjskega muzeja",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5761",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7104-1600x883.webp",
+        "opis": "Spominska avla Dolenjskega muzeja",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5761",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7106-1600x807.webp",
+        "opis": "Spominska avla Dolenjskega muzeja",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5761",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7099-1600x726.webp",
+        "opis": "Spominska avla Dolenjskega muzeja",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5761",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-20T14:06:15.612Z",
+    "updated_at": "2026-11-25T16:23:39.094Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -568,10 +941,30 @@
     "besedilo_poglobljeno": null,
     "napis": null,
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Novo mesto, na vrtu pred Ropasovo hišo, v okviru Dolenjskega muzeja, ob Mej vrti 2, Novo mesto",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2023_05_03_ML_IMG_141511-Tito_Novo_mesto-1600x902.webp",
+        "opis": "Kip Josipa Broza Tita v vrtu Dolenjskega muzeja",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=8220",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/Novo_mesto_vojasnica.jpg",
+        "opis": "Kip Josipa Broza Tita v vrtu Dolenjskega muzeja",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=8220",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-20T14:06:15.923Z",
+    "updated_at": "2026-11-25T16:23:43.092Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -617,10 +1010,30 @@
     "besedilo_poglobljeno": null,
     "napis": "NE POZABIMO\n\nTISTIH, KI SO JIH\n\nV LETIH 1941 - 1945\n\nODPELJALI\n\nIZ TEH ZAPOROV\n\nNA MORIŠČA,\n\nJEČE IN TABORIŠČA SMRTI\n\nZA ZMAGO LJUDSKE\n\nREVOLUCIJE",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Na vogalu zgradbe sodišča, Novo mesto, Jerebova 1",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_8937-1600x1210.webp",
+        "opis": "Spominska plošča na sodišču",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6396",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_8938-1600x1156.webp",
+        "opis": "Spominska plošča na sodišču",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6396",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:26.432Z",
+    "updated_at": "2026-11-25T16:23:48.081Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -667,10 +1080,39 @@
     "besedilo_poglobljeno": null,
     "napis": "OB NEMŠKEM LETALSKEM NAPADU NA\nNOVO MESTO 3 X 1943 SO BILI V TEM PO\nSLOPJU BOLNIŠNICE UBITI\n\nDR ŠTOLFA VERUŠA IZ LJUBLJANE ZDRAV\nNICA BOLNIŠNICE - GOLOB MARIJA DELAV\nKA BOLNIŠNICE IZ BRUSNIC - ARTAČ MARI\nJA IZ OČESLAVCEV - DOLENŠEK ANA IZ\nMOKRONOGA - GANGEL JAKOPINA IZ ME\nTLIKE - GANGEL TURK MARIJA IZ METLI\nKE - GAŠPERIČ AMALIJA IZ MIRNE - KO\nKOVICA ANA IZ NOVEGA MESTA - KOKOVI\nCA METKA IZ NOVEGA MESTA - KÜSSEL\nMARIJA IZ NOVEGA MESTA - LUZAR TE\nREZIJA IZ ŠENTJERNEJA - MAVSAR MARI\nJA IZ RUMANJE VASI - POVŠE MILKA IZ\nNOVEGA MESTA - RUS AMALIJA IZ ČRNO\nMLJA - TURK MARIJA IZ PREČNE - GREGO\nRIČ JOŽE IZ NOVEGA MESTA UMETNOST\nNI ZGODOVINAR PARTIZAN - STRAŽAR\n\nPRI IZVRŠEVANJU SVOJE DOLŽNOSTI JE\nBIL 14 IX 1943 SMRTNO ZADET ZDRAV\nNIK NOVOMEŠKE BOLNIŠNICE PARTIZAN\nDR VLADIMIR SAJE IZ NOVEGA MESTA\n\nOB OSEMDESETLETNICI OBSTOJA BOL\nNIŠNICE V NOVEM MESTU 1894 - 1974\n\nDELAVSKI SVET",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Novo mesto, Defranceschijeva ulica 1. Plošča ki je bila odkrita v avli bolnišnice. Sedanje nahajališče ni znano.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/Novo_mesto_bolnica_Spominska_plosca-1600x1614.webp",
+        "opis": "Novo mesto, Plošča žrtvam bombardiranja",
+        "avtor_vir": "Zavod za varstvo naravne in kulturne dediščine Novo mesto",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "Copyright (poštena raba)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6732",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/Novo_mesto_bolnica_Spominska_tabla_pred_obnovo.jpg",
+        "opis": "Novo mesto, Plošča žrtvam bombardiranja",
+        "avtor_vir": "neznan",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "Copyright (poštena raba)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6732",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170645-1600x901.webp",
+        "opis": "Plošča žrtvam bombardiranja Novega mesta",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6732",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:27.348Z",
+    "updated_at": "2026-11-25T16:23:53.581Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -717,10 +1159,48 @@
     "besedilo_poglobljeno": null,
     "napis": "V TEJ KLETI SO\n\nV LETIH 1943 - 1945 DOMAČI\n\nIZDAJALCI ZAPIRALI PRISTAŠE\n\nOSVOBODILNEGA GIBANJA\n\nIN IZMED NJIH IZBIRALI TALCE",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Klet je del hiše Ulica talcev 5, spominska plošča je vzidana nad kletnim vhodom na vzhodni strani hiše.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7053-1600x1067.webp",
+        "opis": "Klet in spominska plošča talcem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5763",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7055-1600x1067.webp",
+        "opis": "Klet in spominska plošča talcem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5763",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7058-1600x946.webp",
+        "opis": "Klet in spominska plošča talcem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5763",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7057-1600x1066.webp",
+        "opis": "Klet in spominska plošča talcem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5763",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:28.259Z",
+    "updated_at": "2026-11-25T16:24:00.894Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -767,10 +1247,30 @@
     "besedilo_poglobljeno": "[DEMO BESEDILO — ni zgodovinski vir] V dokončni različici bo ta razdelek povezal zgodbo šole s širšim dogajanjem v Novem mestu med okupacijo in odporom, z navedbo virov (šolska kronika, pričevanja, arhivsko gradivo). Besedilo, ki ga vidite zdaj, je samo ponazoritev dolžine in oblike — brez izmišljenih podatkov o konkretnih osebah.",
     "napis": "MLADI STE ŠLI V BOJ\n\nSTE ŠLI UMRET\n\nZA NAS ZA SVOBODO\n\nZA NOVI SVET\n\n.\n\nNARODNI HEROJ PADERŠIČ VINKO\n\nSLAK JOŽE   STARIHA JANKO\n\nBORCI    PROF. KRAJGER BOJAN\n\nDIJAKI   BRAJER ANTON   BOCK ERNEST\n\nBOLTAR JOŽE   BORŠTNIK STOJAN\n\nBURJA SREČKO   ČAMPELJ MARIJA\n\nČEMAS JANEZ   ČERNOŠ RAJKO\n\nDULAR BRANIMIR   FABJAN JANEZ\n\nFRANA LJUDMILA   FRFOLJA SLAVKO\n\nGROM SAVO   GROM SMILJAN\n\nGROZNIK VANJA   HVALA LUDVIK\n\nJUVANEC DARKO   KOSMAČ LEON\n\nKOŠIR LJUBOMIR   KOVAČ LADISLAV\n\nKOVAČIČ IVAN   KOVAČIČ STANISLAV\n\nKOMP VILJEM   KÜSSEL SMILJAN\n\nLAPAJNE ZLATKO   MAJNIK PAVEL\n\nMALEŠIČ IVAN   MERČJAK DRAGO\n\nMIHELČIČ IVAN   MUSET DRAGO\n\nPETRIČ MAKS   PETRIČ ŽARKO\n\nPLANINC FRANC   POGAČAR DUŠAN\n\nPOVŠE ALOJZIJ   POVŠE JOŽE\n\nSITAR STANKO   STIBRIČ JOŽE\n\nTOMŠE TUGOMIR   TRAVNIK CIRIL\n\nTURK DRAGO   UDERMAN LJUBOSLAV\n\nURBANIJA BORIS   VIŠNER KAREL\n\nVRANČIČ MIRAN   ZAJEC FELIKS\n\nŽIBERT FRANC\n\nUBITI PRI LETALSKEM NAPADU\n\nKILER MILENA\n\nSEDAJ LADISLAV   ŠKARJA DANICA\n\nUMRL NA POSLEDICAH INTERNIRANJA\n\nMARINČEK DRAGO\n\nBOREC   INTIHAR STANISLAV",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Novo mesto, Seidlova cesta 9, v avli gimnazije",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9036-1600x1200.webp",
+        "opis": "Gimnazija – plošča trem herojem in 48 dijakom",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6563",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9035-1600x1200.webp",
+        "opis": "Gimnazija – plošča trem herojem in 48 dijakom",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6563",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:29.166Z",
+    "updated_at": "2026-11-25T16:24:05.302Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -818,10 +1318,39 @@
     "besedilo_poglobljeno": null,
     "napis": "KATJA\nRUPENA\n1920 - 1945",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Doprsni kip stoji pred osnovno šolo Center, Seidlova 7.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7042-1600x1067.webp",
+        "opis": "Spomenik Katji Rupena",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5760",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7047-1600x970.webp",
+        "opis": "Spomenik Katji Rupena",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5760",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7044-1600x1067.webp",
+        "opis": "Spomenik Katji Rupena",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5760",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:30.077Z",
+    "updated_at": "2026-11-25T16:24:11.808Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -867,10 +1396,21 @@
     "besedilo_poglobljeno": null,
     "napis": "V SLAVO IN ČAST POSTAVILI TO STAVBO VSEM MOJSTROM, POMOČNIKOM IN VAJENCEM, KI\nSO DALI SVOJE ŽIVLJENJE ZA ZMAGO LJUDSKE REVOLUCIJEODKRITA 29. OKTOBRA 1959",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Novo mesto, Ulica talcev 3, v avli sedanje Fakultete za organizacijske študije",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170588-1600x901.webp",
+        "opis": "Plošča padlim mojstrom, pomočnikom in učencem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6739",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:30.989Z",
+    "updated_at": "2026-11-25T16:24:14.606Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -916,10 +1456,30 @@
     "besedilo_poglobljeno": null,
     "napis": "[srp in kladivo]\n\nV TEJ STAVBI SO\n\nOD 20. DO 25. SEPTEMBRA 1934\n\nDELAVKE TOVARNE PERILA\n\nJOŽKA POVHA\n\nV BOJU ZA BOLJŠI\n\nEKONOMSKI POLOŽAJ\n\nIZVEDLE STAVKO,\n\nKI JO JE ORGANIZIRAL\n\nOKROŽNI KOMITE KPJ\n\nNOVO MESTO\n\nXXX SVET\n\nZVEZE SINDIKATOV\n\nNOVO MESTO\n\n1964",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Rozmanova 38, Novo mesto",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170666-1600x901.webp",
+        "opis": "Spominsko obeležje Stavka 1934",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6879",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170664-1600x901.webp",
+        "opis": "Spominsko obeležje Stavka 1934",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6879",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:31.901Z",
+    "updated_at": "2026-11-25T16:24:18.599Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -966,10 +1526,30 @@
     "besedilo_poglobljeno": null,
     "napis": "Tu leži šest neznanih partizanov, borcev IV. bataljona brigade Ivana Cankarja\npadlih za svobodo 14. novembra 1943",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Grob je urejen na severozahodnem pobočju hriba Marof, ki blago pada proti Bršljinu.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19916_2833.jpg",
+        "opis": "Grob borcev Cankarjeve brigade na Marofu",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2833",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19915_2833.jpg",
+        "opis": "Grob borcev Cankarjeve brigade na Marofu",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=2833",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:32.809Z",
+    "updated_at": "2026-11-25T16:24:22.025Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1017,10 +1597,39 @@
     "besedilo_poglobljeno": null,
     "napis": "ZA SVOBODO SO DAROVALI\n\nSVOJA ŽIVLJENJA\n\nBORCI                                    ŽRTVE\n\nBIVIČ JOSIP                       ČAMPA ANTON\n\nGRAMAR JOSIP                 KASTELIC DANICA\n\nGLOBEVNIK FRANC          KASTELIC DRAGI\n\nKLANJŠEK DUŠAN            KASTELIC FRANC\n\nKNAFELC JOSIP                KASTELIC JOŽICA\n\nKOČJAŽ ANTON                KUKMAN MIHA\n\nKRIŠTOF MIHA                  PEROCI ALBINA\n\nMESOJEDEC JOSIP          PLESKOVIČ ANICA\n\nPREŠEREN JOSIP             PEČAR ZORA\n\nSITAR STANKO                  RIFELJ MARIJA\n\nŠTIBRIČ JOSIP                  SAJE FRANC\n\nVIŠNAR DRAGO                ZIDAR MARIJA\n\nZIDAR STANKO                 ZUPANČIČ FRANC\n\nVEČNA JIM SLAVA!",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Bršljin 44. Plošča je pritrjena na vhodni fasadi nekdanjega zadružnega doma, danes trgovine Kmetijske zadruge.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7024-1600x1067.webp",
+        "opis": "Spominska plošča padlim iz Bršljina",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5757",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7025-1600x1067.webp",
+        "opis": "Spominska plošča padlim iz Bršljina",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5757",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7027-1600x1067.webp",
+        "opis": "Spominska plošča padlim iz Bršljina",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5757",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:33.713Z",
+    "updated_at": "2026-11-25T16:24:27.796Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1068,10 +1677,39 @@
     "besedilo_poglobljeno": null,
     "napis": "NEMŠKI OKUPATOR\n\nJE TUKAJ ZVERINSKO UMORIL\n\n23.X.1943\n\nOČETA FRANCA  KASTELICA\n\nNJEGOVE HČERE\n\nDRAGICO, JOŽICO IN DANICO\n\nTER VANA OBREZA",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Bršljin 1. Plošča je vzidana na obcestni fasadi.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7033-1600x1067.webp",
+        "opis": "Spominska plošča Kastelčevi družini",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5758",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7034-1600x842.webp",
+        "opis": "Spominska plošča Kastelčevi družini",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5758",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7032-1600x1067.webp",
+        "opis": "Spominska plošča Kastelčevi družini",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5758",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:34.624Z",
+    "updated_at": "2026-11-25T16:24:33.770Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1118,10 +1756,39 @@
     "besedilo_poglobljeno": "[DEMO BESEDILO — ni zgodovinski vir] Poglobljeno besedilo bo v končni različici umestilo delovanje železničarjev v širši kontekst ilegalnega dela in logistične podpore odporniškemu gibanju, z navedbo virov. Trenutno besedilo služi le preizkusu dolžine in oblikovanja strani.",
     "napis": "ZA SVOBODO SO DAROVALI SVOJA\n\nŽIVLJENJA BORCI ŽELEZNIČARJI\n\nBALANTIČ JOŽE          KOPLAN JOŽE\n\nČERVENKO IGNAC     PAVŠAR LOJZE\n\nDOLINAR FRANC       PREŠEREN JOŽE\n\nFINK ALOJZ                 PRPAR GREGOR\n\nFURLANIČ IVAN         PUNGERČAR JOŽE\n\nFURLANIČ MARJAN   FURLANIČ TINE\n\nGLOBEVNIK FRANC  STEPNIŠNIK ROMAN\n\nHACIN ALOJZ             TEKSTOR JOŽE\n\nKASTELIC JOŽE         URBANIJA ANTON\n\nKIC ALOJZ                  URBANIJABORIS\n\nKIC FRANC                VRANIČ MIRAN\n\nKIC JOŽE                    ZUPANČIČ IVAN\n\nKIRN JANEZ              ŽAGAR JOŽE\n\nKIRN TIHOMIL\n\nVEČNA JIM SLAVA",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Kolodvorska ulica 1. Plošča je pritrjena na jugozahodni strani stavbe železniške postaje v Bršljinu.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7040-1600x1067.webp",
+        "opis": "Spominska plošča padlim železničarjem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5756",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7041-1600x986.webp",
+        "opis": "Spominska plošča padlim železničarjem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5756",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7039-1600x964.webp",
+        "opis": "Spominska plošča padlim železničarjem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5756",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:35.533Z",
+    "updated_at": "2026-11-25T16:24:39.482Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1168,10 +1835,39 @@
     "besedilo_poglobljeno": null,
     "napis": "ZLEPŠO BODOČNOST SO DALI\n\nŽIVLJENJE ŽELEZNIČARJI\n\nSEKCIJE ZA VLEKO NOVO MESTO\n\nBERUS MARTIN        KOČMAN JOŽE\n\nČAMPA LUŽAR         MAKS ANTON\n\nČAMPA JANEZ          MALI FRANC\n\nFINK ALOJZ              MEHLE JOŽE\n\nFINK JOŽE                 REZELJ ALOJZ\n\nGORNIK VIKTOR     STRNAD JANEZ\n\nGORJANC ANTON   TRATAR ANTON\n\nGRANDLJIČ ANTON  TRATAR ANTON\n\nJEVŠČEK AUGUST     TURK IVAN\n\nKOČJAŽ ANTON         ZIDAR STANKO",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Železniška postaja Novo mesto. Hiša v bližini Kurilniška ulica 9",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_8929-1600x1156.webp",
+        "opis": "Spominska plošča na železniški kurilnici",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6394",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_8932-1600x1020.webp",
+        "opis": "Spominska plošča na železniški kurilnici",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6394",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_8930-1600x981.webp",
+        "opis": "Spominska plošča na železniški kurilnici",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6394",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:36.444Z",
+    "updated_at": "2026-11-25T16:24:45.831Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1217,10 +1913,39 @@
     "besedilo_poglobljeno": null,
     "napis": "MILAN MAJCEN",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Straška cesta 26, Novo mesto. Spomenik se nahaja v parku znotraj vojašnice Franca Uršiča. Prijazno osebje me je pospremilo do spomenika. Ob dnevu odprtih vrat vojašnice je spomenik dostopen tudi širši javnosti.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_8933-1600x1200.webp",
+        "opis": "Spomenik Milanu Majcnu",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6560",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_8935-1600x1178.webp",
+        "opis": "Spomenik Milanu Majcnu",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6560",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_8934.jpg",
+        "opis": "Spomenik Milanu Majcnu",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6560",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:37.356Z",
+    "updated_at": "2026-11-25T16:24:52.156Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1268,10 +1993,48 @@
     "besedilo_poglobljeno": null,
     "napis": "JUNAKOM\nVELIKE NARODNOOSVOBODILNE VOJNE\nPOSTAVILA ZVEZA BORCEV KAMENICE 1951\n\nBOHTE JOŽE · AVBAR JOZE · MEDVED JOŽE\nCVETAN MARIJA · CVETAN ALOJZ · GREBENC ANTON\nKOCJANČIČ JOŽE · ŠPELIČ FELIKS · KOCJANČIČ FRANC\n\nGERMOVŠEK FRANC · AVBAR ANTON · BERUS MARTIN\nZUPANČIČ FRANC · ZUPANČIČ FRANC · ZUPANČIČ ANICA\nSKUBIC ANTON · SKUBIC LOJZE · MOŽE JOŽE\nKIC JOŽE · KIC ALOJZ · GLAVIČ FRANC · FERBEŽAR FRANC\n\nKASTREVC ALOJZ · ANŽLOVAR ALOJZ · KASTREVC FRANC\nPOTOČAR FRANC · ŠETINA ANTON\nŠOŠTER MAKS · POTOČAR ANTON · PLESKOVEC FRANC\nPETRIČ JOŽE · TUŠAR JANEZ · ZUR ANTON\n\nGLAVIČ ALOJZ · DERGANC JANEZ · POTOČAR MARIJA\nKAVŠEK JANEZ · HERVOLJ ALOJZ · PLESKOVIC FRANC\nKASTREVC FRANC · REZELJ ALOJZ · KORACEN ALOJZ\nMOŽE JOŽE · MALI FRANC · MOŽE VIDA · POTOČAR  ALOJZ\nKIC FRANC · KOCMAN JOŽE · KUMER FRANC\nKIC IVAN · VRČEK ANTON",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Stoji nad cesto Novo mesto - Karteljevo v Veliki Bučni vasi, v severnem delu Novega mesta. Hiša v bližini: Ljubljanska 77",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7015-1600x1067.webp",
+        "opis": "Spomenik NOB v Veliki Bučni vasi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5764",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7005-1600x1067.webp",
+        "opis": "Spomenik NOB v Veliki Bučni vasi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5764",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_IMG_7006_Velika_Bucna_vas.jpg",
+        "opis": "Spomenik NOB v Veliki Bučni vasi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5764",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7013.jpg",
+        "opis": "Spomenik NOB v Veliki Bučni vasi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5764",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:38.272Z",
+    "updated_at": "2026-11-25T16:24:59.515Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1319,10 +2082,21 @@
     "besedilo_poglobljeno": null,
     "napis": "V TEJ VASI JE BILA\n\n26.9.1942 USTANOVLJENA 14.\n\nBRIGADA ŽELEZNIČARSKA.\n\nBORCI ŽELEZNIČARJI\n\n1961",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Ljubljanska cesta 55, Novo mesto",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/20221126_092446.jpg",
+        "opis": "Plošča Železničarski brigadi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6395",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:39.184Z",
+    "updated_at": "2026-11-25T16:25:02.814Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1369,10 +2143,57 @@
     "besedilo_poglobljeno": null,
     "napis": "KDOR PADE\n\nKOT STE PADLI VI\n\nTA ZMAGAL JE\n\nNAD SMRTJO IN USODO\n\nKO DAL SRCE JE\n\nIN POGUM IN KRI\n\nZA NAJBOLJ DRAGOCENO STVAR\n\nSVOBODO",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Stoji v vzhodnem vogalu pokopališča Ločna v Novem mestu. Hiša v bližini: Seidlova cesta 27",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_5093-m-1600x944.webp",
+        "opis": "Grobnica NOB na pokopališču Ločna",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4965",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_5094-m.jpg",
+        "opis": "Grobnica NOB na pokopališču Ločna",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4965",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170561-1600x901.webp",
+        "opis": "Grobnica NOB na pokopališču Ločna",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4965",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170560-1600x901.webp",
+        "opis": "Grobnica NOB na pokopališču Ločna",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4965",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_5098.jpg",
+        "opis": "Grobnica NOB na pokopališču Ločna",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4965",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:40.091Z",
+    "updated_at": "2026-11-25T16:25:10.918Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1418,10 +2239,21 @@
     "besedilo_poglobljeno": null,
     "napis": "ŠTRASNER ANTON\n\nANTON   1927  -  1943",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Novo mesto, pokopališče Ločna. Lokacija zvezdice je približna. Hiša v bližini: Seidlova cesta 27",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/POKOPALISCE_NOVO_MESTO_STRASNER_ANTON.jpg",
+        "opis": "Novo mesto, Štrasner Anton",
+        "avtor_vir": "Geneanet.org",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "Slike z Geneanet, komercialna raba ni dovoljena",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=10390",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:41.004Z",
+    "updated_at": "2026-11-25T16:28:02.488Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1467,10 +2299,30 @@
     "besedilo_poglobljeno": null,
     "napis": "PROČ VRZIMO TRUDNE MISLI -\n\nNI JE SMRTI BREZ ŽIVLJENJA,\n\nNI SVOBODE BREZ TRPLJENJA,\n\nVSE PREŠLO BO KAKOR KALNA REKA.\n\nPROČ JO VRŽEŠ, ČE PRETESNA JE OBLEKA.\n\nČLOVEK, NOVI ČLOVEK VSTAL BO IZ ČLOVEKA!\n\n/KAJUH/\n\nOB 100 LETNICI GASILSKEGA DRUŠTVA NOVO MESTO\n\nIN OB 35 LETNICI VSTAJE\n\nV SPOMIN PADLIM ČLANOM\n\nGD NOVO MESTO\n\n1976",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Vir Vodnik po partizanskih poteh iz l. 1978 navaja naslov CESTA HEROJEV 27, Novo mesto. Danes te ulice ni. Gasilski dom je na Seidlovi cesti 29.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170557-1600x901.webp",
+        "opis": "Spominska plošča padlim gasilcem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6738",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170556-1600x901.webp",
+        "opis": "Spominska plošča padlim gasilcem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6738",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:41.908Z",
+    "updated_at": "2026-11-25T16:25:17.231Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1516,10 +2368,48 @@
     "besedilo_poglobljeno": null,
     "napis": "BORCI IN ŽRTVE PADLI\nZA SVOBODO     1941 - 1945\n\nBORCI:\nANTONIČ JOŽE,   BARLE GUSTAV,\nBELE ALOJZ,   BRULC MARTIN,\nBRUNSKOLE FRANC,   FINK JOŽE,\nFINK LOJZE,   FURLANIČ MARTIN,\n[zvezda]\nGERDENC FRANC,   GOLOB FRANC,\nHACIN ALOJZ,   HRASTAR FRANC,   HROVAT ANTON,\nHROVAT FRANC,   JAKOPIN MAKS,\nJAKOVČIČ JULIJ,   JAKŠE FRANC,   KALČIČ JOŽE,\nKEJŽAR PETER,   KIRN RUDOLF,   KLEINDIENST FRANCI,\nKNAFELC ANTON,   KOČEVAR JOŽE,   KOPITAR KRISTINA,\nKOŠIR METOD,   KOŠIR MILAN,   KOVAČIČ STANISLAV,\nKUMP VILJEM,   LAPANJA MARJAN,   LUKŠIČ FRANC,\nLUZAR MARIJA,   MALI IVAN,   MATOH FRANC,\nMATOH JANEZ,   MEGLIČ STANE,   MERČJAK MILAN,\nMIHELIČ FRANC,   MODIC MAKS,   NOVAK MARJAN,\nOPREŠNIK STOJAN,   PEKOLJ VIKTOR,   PETRIČ JOŽE,\nPODGORNIK RAJKO,   POGAČAR DUŠAN,   ROŽENBERGER FRANC,\nROŽENBERGER ROMAN,   ŠMAJDEK ALBIN,   ŠPRAJCER LOJZE,\nTRATAR ANTON,   UDERMAN LJUBO,   VALANTIČ VIDA,\nVIDIC ANTON,   ZUPANČIČ JOŽE,   ŽAGAR ALOJZ,\nŽIBERT FRANC,   ŽUPEVC ŽAN,   PETRIČ ŽARKO\n\nŽRTVE:\nBOŠTJANČIČ ANTON,   BRUDAR JOŽE,\nDINGHAUSER MARA,   ERAT ANTON,   FINK ALOJZIJ,   FRIC FRANC,\nFURLANIČ KOZMA,   FURLANIČ NINA,   GAŠPER FRANC,\nGAŠPER JANEZ,   GOLOB CVETA,   GOLOB TOMO,\nGORNIK VIKTOR,   HREN STANKO,   HROVAT JOŽE,\nHROVATIČ ANTON,   JERIČEK JOŽE,   JERMAN FRANCKA,\nKNAJTER ANTE,   KNAFELJC JANEZ,   KRAUCAR MAJDA,\nKRAUCAR MARIJA,   LEŠNJAK MARIJA,   MAROLT APOLONIJA,\nMAROLT FRANC,   MATKO JOŽE,   MURN RUDOLF,\nNOVAK FRANC,   OVNIČEK JANEZ,   OVNIČEK MARIJA,\nRAKOŠE NEŽA,   SEDLAR STANKA,\nMIŠJAK IVAN\n\nnapis na plošči desno od osrednje plošče:\nSTANIŠA IVAN\nSTANIŠA ZOFIJA\nŠETINA JANEZ\nŠTRAUS IVAN\nŠUŠTARŠIČ JOŽE\nTESTEN IVANA\nUDERMAN DUŠAN\nVALANTIČ ALMA\nVALANTIČ ALOJZ-ST.\nVALANTIČ ALOJZ-ML\nVALANTIČ MARIJA\nVESEL FRANC\nZUPANČIČ MARIJA\nZUPANČIČ PAVEL\nŽAGAR ANTON\n\nTER ŠE NEZNANI\nBORCI IN ŽRTVE\n\nPOSTAVLJENO 1. 11. 1957\nOBNOVLJENO 1. 11. 1986\nZB NOV NOVO MESTO",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Stoji na severnem vogalu pokopališča v Šmihelu. Hiša v bližini: Lebanova ulica 1",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_5084-1600x1067.webp",
+        "opis": "Grobnica NOB na pokopališču Šmihel",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4964",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_5092.jpg",
+        "opis": "Grobnica NOB na pokopališču Šmihel",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4964",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/Novo_mesto_Smihel_pokopalisce_grobnica_NOB-1600x1200.webp",
+        "opis": "Grobnica NOB na pokopališču Šmihel",
+        "avtor_vir": "ZB Novo mesto",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": null,
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4964",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_5089-1600x1067.webp",
+        "opis": "Grobnica NOB na pokopališču Šmihel",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4964",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:42.823Z",
+    "updated_at": "2026-11-25T16:25:25.585Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1565,10 +2455,30 @@
     "besedilo_poglobljeno": null,
     "napis": "[zvezda]\n\n1864 USTANOVLJENA ŠOLA\n\n1892 ZGRAJENA ŠOLSKA STAVBA\n\n1941--1945 MLADINA SODELOVALA V BOJIH ZA ZMAGO LJUDSKE REVOLUCIJE\n\n1948-1964 MLADINA SE UDELEŽEVALA DELOVNIH AKCIJ\n\n1964 PRENOVLJENA IN DOGRAJENA STAVBA OSEMLETKE",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Šmihel 2, obcestna fasada osnovne šole",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170634-1600x901.webp",
+        "opis": "NOB obeležje pri OŠ Šmihel",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6874",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170633-1600x901.webp",
+        "opis": "NOB obeležje pri OŠ Šmihel",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6874",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:43.732Z",
+    "updated_at": "2026-11-25T16:25:29.430Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1614,10 +2524,66 @@
     "besedilo_poglobljeno": null,
     "napis": "BRATA\nTURJAK-OVA\nMILAN\n* 19. 2. 1919 PADEL 21. 10. 1943\nDOMINIK\n* 2. 8. 1916 PADEL 30. 12. 1943\n\n......................................................\n\n[križ] V spomin [zvezda]\nZUPANČIČ JOŽE * 9. 4. 1918     + 28. 6. 1942\nGotna vas 38\nMIHELČIČ FRANC * 2. 12. 1914 + 28. 6. 1942\nRegerča vas 19\nŠMAJDEK ALBIN * 27. 5. 1913   + 28. 6. 1942\nRegerča vas 36\n\n......................................................\n\n[zvezda] BAŠIČEVI\n\n......................................................\n\nPETRIČEVI\nŽARKO POGREŠAN 14. 8. 1944\n\n......................................................\n\n[križ] VAMPELJ JOŽE  * 27. 9. 1907\nUBIT KOT TALEC V GRAMOZNI JAMI\nV LJUBLJANI 11. 7. 1943",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Pokopališče Šmihel pri Novem mestu",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170643-1600x901.webp",
+        "opis": "Spominski sklop NOB na pokopališču Šmihel",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6875",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170642-1600x901.webp",
+        "opis": "Spominski sklop NOB na pokopališču Šmihel",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6875",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170638-1600x901.webp",
+        "opis": "Spominski sklop NOB na pokopališču Šmihel",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6875",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170637-1600x901.webp",
+        "opis": "Spominski sklop NOB na pokopališču Šmihel",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6875",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170635-1600x901.webp",
+        "opis": "Spominski sklop NOB na pokopališču Šmihel",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6875",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/P1170644-1600x901.webp",
+        "opis": "Spominski sklop NOB na pokopališču Šmihel",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=6875",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:44.643Z",
+    "updated_at": "2026-11-25T16:25:38.923Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1663,10 +2629,30 @@
     "besedilo_poglobljeno": null,
     "napis": "KURIR LOJZEK\n\nVALANTIČ\n\n+ 24. 12. 1944",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Lokacija na pokopališču Šmihel pri Novem mestu ni natančno označena.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/valantic_smihel_IMG_20220411_140956.jpg",
+        "opis": "Valantičevo obeležje",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=8412",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/valantic_smihel_2.jpg",
+        "opis": "Valantičevo obeležje",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=8412",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:45.552Z",
+    "updated_at": "2026-11-25T16:28:07.770Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1713,10 +2699,39 @@
     "besedilo_poglobljeno": null,
     "napis": "PADLI BORCI 1941 - 1945 LETA\n\n.\n\nRUNKO ZVONKO (PAVLE)          TRATAR ANTON\n\nSTRASNAR ANTON                     MIHELČIČ FRANC\n\nBRADAČ MILAN                           VONČINA ALOJZ\n\nMALEŠIČ IVAN                             ŠMAJDEK ALBIN\n\nSADAR JOŽE                                KOŠIR METOD\n\nŠTIH AVGUST                               VIDMAR FRANC\n\nROŽENBERGAR ROMAN            JAKŠE FRANC\n\nHRASTAR FRANC                        PETAN LEOPOLD\n\nDRAGMAN JOŽE                          BOH ANTON\n\nROŽENBERGAR FRANC             ŽAGAR ALOJZ\n\nKOBLER BOGOMIR                      BRULC MARTIN\n\nKLOBUČAR ANTON                      BELE ALOJZ\n\nMALEŠIČ JOŽE                             HROVAT FRANC\n\nMEGLIČ STANISLAV                     KLEMENČIČ BOGOMIR\n\nZUPANČIČ IVAN                            KLEMENČIČ FILIP\n\nZUPANČIČ JOSIP                          KLEMENČIČ FRANC\n\nKOŠIR MILAN                                OVNIČEK JANEZ\n\nKALČIČ JOŽE                                ANTONČIČ ANTON\n\nFURLANIČ MARTIN                      PODGORNIK RAJKO\n\nHROVAT ANTON                           PACEK FRANC\n\n.\n\nTALCI IN ŽRTVE 1941 - 1945 LETA\n\n.\n\nVESEL FRANC                              ŠUŠTARŠIČ JOŽE\n\nŠETINA JANEZ                              ZUPANČIČ PAVEL\n\nLESJAK MARIJA                            HROVATIČ ANTON\n\nHREN STANKO                              MIŠJAK IVAN\n\nLAPANJA MARJAN                        ŠTRAVS IVAN\n\nJERIČEK JOŽE                              BRUDAR JOŽE\n\nCUKJATI ZOFI                               TRATAR ANTON STAR.\n\nKNAFELJČ ANTON                        MATKO JOSIP\n\nDULAR JOŽE                                 FRITZ FRANC\n\nŠTAJNAR MARTIN                         ZUPANČIČ MARIJA\n\nOVNIČEK MARIJA                         TESTEN IVANA\n\nŠUŠTARŠIČ JOŽE                         BELE ALOJZ\n\nŽAGAR ANTON                              BOŠTJANČIČ ANTON\n\nFURLANIČ KOZMO                        FURLANIČ NINO\n\nIN NEPOZNANI PADLI BORCI\n\n.\n\n.   SLAVA PADLIM BORCEM IN ŽRTVAM TER TALCEM",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Spomenik stoji pod štirimi smrekami na travniku v bližini ceste in ruševin cerkve sv. Roka v Regrči vasi. Hiša v bližini: K Roku 157",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7126-1600x1067.webp",
+        "opis": "Spomenik NOB pri sv. Roku",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5765",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7124-1600x1800.webp",
+        "opis": "Spomenik NOB pri sv. Roku",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5765",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7125.jpg",
+        "opis": "Spomenik NOB pri sv. Roku",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5765",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:46.465Z",
+    "updated_at": "2026-11-25T16:25:48.756Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1762,10 +2777,39 @@
     "besedilo_poglobljeno": null,
     "napis": "DNE 24. 2. 1944\nSO NA TEM MESTU\nBELOGARDISTI UMORILI\nAKTIVISTA\nČAMPA ANTONA\nIZ CEGELNICE",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Spomenik stoji na robu gozda na levi strani ceste Novo mesto – Prečna, 450 m od krožišča pri podjetju Adria in ob robu poseke za daljnovod.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19916_4642.jpg",
+        "opis": "Spomenik aktivistu Antonu Čampi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4642",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19917_4642.jpg",
+        "opis": "Spomenik aktivistu Antonu Čampi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4642",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19915_4642.jpg",
+        "opis": "Spomenik aktivistu Antonu Čampi",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4642",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:47.380Z",
+    "updated_at": "2026-11-25T16:25:53.321Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1811,10 +2855,30 @@
     "besedilo_poglobljeno": null,
     "napis": "OB TEM POKOPALIŠČU SO ITALIJANSKI FAŠISTI\n\n25. 6. 1942 USTRELILI 4 TALCE, KI SO\n\nJIH PRIPELJALI IZ NOVOMEŠKIH ZAPOROV\n\nTI SO BILI: JORDAN MARJAN-DOLŠCE\n\nKORAČIN JOŽE, SINTIČ JANEZ\n\nIN ŽARN JOŽE- AVGUŠTINE\n\nPREČNA 3. 11. 1984\n\nO.O.ZB NOV NOVO MESTO",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Grob stoji na vaškem pokopališču v Prečni ob pokopališkem zidu na prehodu iz starega pokopališča na novo.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19916_4644.jpg",
+        "opis": "Grob s spomenikom štirim talcem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4644",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19915_4644.jpg",
+        "opis": "Grob s spomenikom štirim talcem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4644",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:48.288Z",
+    "updated_at": "2026-11-25T16:25:57.184Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1860,10 +2924,39 @@
     "besedilo_poglobljeno": null,
     "napis": "1941 – 1945\n\nBORCI, TALCI IN ŽRTVE\n\nBIVIČ JOSIP, COLJA ALOJZ st., COLJA ALOJZ ml., COLARIČ FRANC, COLARIČ NIKO,\nČAMPA DRAGO,\n\nČAMPA TONE, DRAGMAN ALOJZ, DERGANC DRAGO, GROBELNIK FRANC, GRAMAR JOSIP,\n\nHANDLER LOJZE, ILOVAR TONE, KASTELIC DANICA, KASTELIC DRAGICA,\n\nKASTELIC JOŽICA, KASTELIC FRANC, KLANJŠEK DUŠAN, KNAFELJC JOSIP,\n\nKREVS RUDOLF, KRISTOF MIHA, KOMAN FELIKS, KUKMAN MIHA, LUŽAR FRANC,\n\nMESOJEDEC JOSIP, MESOJEDEC TONE, MIŠIČ TONE, NOVAK LUDVIK,\n\nNOVAK MARJAN, PEČAR ZORA, PERUZI ALBINA, PETRIČ FRANC,\n\nPETRIČ SLAVKO, PLESKOVIČ ANICA, PODOBNIK DANILO, PREŠEREN JOSIP,\n\nRIFELJ MARIJA, SAJE FRANC, SITAR STANKO, SOMRAK ANDREJ,\n\nSOMRAK JANEZ, SOMRAK JOŽE, SAJEVEC DRAGO,\n\nSTIBRLE JOSIP, ŠALI ALOJZ st., ŠALI JOŽE, ŠALI KAREL,\n\nŠILER RUDOLF, ŠMALC TONE, VIŠNAR DRAGO,\n\nZIDAR MARIJA, ZIDAR STANKO, ZUPANČIČ FRANC,\n\nZUPANČIČ MARIJA, NEZNANA BORKA, POKOPANA\n\nNAD LUKNJO, NEZNAN BOREC POKOPAN\n\nNA KALU, KOCIJAŽ TONE",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Grobnica leži v severovzhodnem vogalu starega dela pokopališča v Prečni.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2019_10_26_MK_IMG_3297-1600x1067.webp",
+        "opis": "Grobnica s spomenikom padlim",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4645",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2019_10_26_MK_IMG_3295-1600x1066.webp",
+        "opis": "Grobnica s spomenikom padlim",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4645",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2019_10_26_MK_IMG_3296-1600x1038.webp",
+        "opis": "Grobnica s spomenikom padlim",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4645",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:49.195Z",
+    "updated_at": "2026-11-25T16:26:04.323Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1910,10 +3003,21 @@
     "besedilo_poglobljeno": null,
     "napis": "BORCI 2. ČETE II. BAT.\nDOLENJSKEGA ODREDA\nPADLI PRI ČEŠČI VASI\n16. JULIJA 1942\nHANDLER ALOJZ\nR. 17. IX. 1922\nMESOJEDEC JOŽE\nR. 28. IV. 1925\nNOVAK MARJAN\nR. 31. VIII. 1927\nSLAVA NJIHOVEMU\nSPOMINU",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Grob stoji na vaškem pokopališču v Prečni na prostoru med prehodom med starim in novim pokopališčem ter grobnico padlim borcem.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19915_4643.jpg",
+        "opis": "Grob borcev Dolenjskega odreda",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4643",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:50.103Z",
+    "updated_at": "2026-11-25T16:26:07.217Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1959,10 +3063,39 @@
     "besedilo_poglobljeno": null,
     "napis": "V TEM KRAJU JE V\n\nLETIH 1934 - 1942 ŽIVEL IN\n\nDELOVAL NAPREDNI KULTURNI\n\nDELAVEC IN AKTIVIST OF\n\nŠOLSKI UPRAVITELJ\n\nALOJZ COLJA,\n\nKI SO GA PO PRIHODU IZ\n\nITALIJANSKE INTERNACIJE\n\n2.12.1943 V LJUBLJANI\n\nUMORILI NAŠI IZDAJALCI.\n\n8.2.1983",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "na vhodni fasadi doma kulture, ki stoji na naslovu Prečna 11",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_8942-1600x1067.webp",
+        "opis": "Spominska plošča Alojzu Colji",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5091",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2025_04_10_ML_1000017165_Precna-1600x1218.webp",
+        "opis": "Spominska plošča Alojzu Colji",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5091",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_8940-1600x1059.webp",
+        "opis": "Spominska plošča Alojzu Colji",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5091",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:51.012Z",
+    "updated_at": "2026-11-25T16:26:13.535Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2008,10 +3141,39 @@
     "besedilo_poglobljeno": null,
     "napis": "Prva plošča:\n\nV BOJU ZA SVOBODO JE 16. JULIJA 1942\n\nJUNAŠKO PADLO 19 PARTIZANOV\n\n3. ČETE 2. BATALJONA KRŠKEGA ODREDA\n\nČEŠČA VAS 22. JUNIJA 1984\n\nOBČINSKI ODBOR ZZB NOV\n\nKS PREČNA\n\nDruga plošča:\n\nV SPOMIN PADLIM BORCEM NOV,\n\nIZ ČEŠČE VASI\n\n1941 – 1945\n\nDERGANC FRANC, MESOJEDEC\n\nANTON, SAJEVIC DRAGO,\n\nŠALI ALOJZ, ŠALI JOŽE,\n\nŠALI KAREL, ŠILER RUDOLF\n\nČEŠČA VAS 22. JUNIJA 1984\n\nOBČINSKI ODBOR ZZB NOV\n\nKS PREČNA",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Spominski park leži med potokom in cesto Novo mesto - Zalog, na blago padajočem pobočju proti jugozahodni strani. 90 metrov pred Češčo vasjo se odcepi kolovoz proti gozdu na desni strani. Na samem robu gozda se nahaja spominski park.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19917_4262.jpg",
+        "opis": "Spominski park padlim borcem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4262",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19915_4262.jpg",
+        "opis": "Spominski park padlim borcem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4262",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19916_4262.jpg",
+        "opis": "Spominski park padlim borcem",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4262",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:51.916Z",
+    "updated_at": "2026-11-25T16:26:18.836Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2057,10 +3219,39 @@
     "besedilo_poglobljeno": null,
     "napis": "Prvotni spomenik\n\nzvezda\n\nSKROMEN DOMEK\n\nPARTIZANOV\n\n.\n\nCRNIVŠEK ANTON\n\nBRSIN FRANC\n\nIN TRIJE NEZNANI\n\nPARTIZANI\n\n.\n\nNovo izdelan spomenik\n\nzvezda\n\nV SPOMIN PADLIM PARTIZANOM\n\nCRNIVŠEK ANTON\n\nBRSIN FRANC\n\nIN TRIJE NEZNANI PARTIZANI",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Grobišče leži na krajevnem pokopališču v Dolenjih Kamencah v zgornjem kotu pokopališča, ločeno od ostalih družinskih grobov. Prvotno je bil grob izven pokopališča. EŠD 4214",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7022-1600x1261.webp",
+        "opis": "Grobišče petih borcev NOV",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5093",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7023-1600x1067.webp",
+        "opis": "Grobišče petih borcev NOV",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5093",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_06_27_MK_7020-1600x1067.webp",
+        "opis": "Grobišče petih borcev NOV",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5093",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:52.827Z",
+    "updated_at": "2026-11-25T16:26:27.137Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2106,10 +3297,48 @@
     "besedilo_poglobljeno": null,
     "napis": "SPOMINSKI PARK NOV\n\n1941 - 1945                                                           1981\n\n3 PADLI: Somrak Jože, Lužar Franc\n\nNovak Ludvik                                3 LIPE\n\n18 AKTIVNIH BORCEV NOV                                SMREKE\n\nOMORIKE\n\n7 DRUŽIN  :   Berus, Luštek, Lužar, Novak,       7 BOROV levo\n\n56 ČLANOV     Saje, Somrak, Željko              56 STEBRIČKOV\n\n7 enot NOV:     ZDO, 4. SNOUB \"M. Gubca\",\n\n5. SNOUB \"I. Cankar\", 10 in 12\nSNOUB,\n\n1SAB, ŠTAB 15. Divizije         7 BOROV desno\n\nPokrovitelj: GOZDNO GOSPODARSTVO\n\nNOVO MESTO\nVarstvo\n\nOOZSMS\n\nPrečna",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "SV od vasi, v trikotnem prostoru, ki ga omejujeta dve vaški poti. Hiša v bližini: Kuzarjev Kal 8",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9029-1600x1200.webp",
+        "opis": "Spominsko obeležje Kuzarjev Kal",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5072",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9028-1600x990.webp",
+        "opis": "Spominsko obeležje Kuzarjev Kal",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5072",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9016-1600x770.webp",
+        "opis": "Spominsko obeležje Kuzarjev Kal",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5072",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_9017-st-1600x418.webp",
+        "opis": "Spominsko obeležje Kuzarjev Kal",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5072",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:53.739Z",
+    "updated_at": "2026-11-25T16:26:35.267Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2155,10 +3384,39 @@
     "besedilo_poglobljeno": null,
     "napis": "PODOBNIK\n\nDANILO\n\nPETRIČ\n\nSLAVKO\n\nPADLA 17.5.1944",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "V Kalinskem gozdu, slab kilometer pod Kuzarjevim Kalom, 100 - 150 m zahodno od ceste, ki vodi do naselja.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9033-1600x1200.webp",
+        "opis": "Grob Danila Podobnika in Slavka Petriča",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5071",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9030-1600x1200.webp",
+        "opis": "Grob Danila Podobnika in Slavka Petriča",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5071",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9031-1600x991.webp",
+        "opis": "Grob Danila Podobnika in Slavka Petriča",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5071",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:54.643Z",
+    "updated_at": "2026-11-25T16:26:43.256Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2204,10 +3462,57 @@
     "besedilo_poglobljeno": null,
     "napis": "V LJUDSKI\nREVOLUCIJI\n1941 - 1945\nPADLIM\nSLAVA\n\nŽRTVE IN TALCI\n1942   MALA CIKAVA   TURK IVAN   SMOLENJA VAS   MIHELIČ ANTON\n1943   KRKA   ERMAN RUDI   MEDVED JOŽE   MALA CIKAVA   ČAMPELJ\nSIMON   MALI SLATNIK   FLORJANČIČ HENRIK   MIKEC FRAN\nPOTOVRH   KOŠMRLJ FRANC   SELA LUZAR ANTON   LUZAR\nSLAVKO   SMOLENJA VAS   FINK JOŽE   SLADEK ALOJZ   VEL.\nSLATNIK   RADEŽ JOŽE  SREBRNJAK FRANC  VODOPIVEC JOŽE\n1944   MALI SLATNIK   KOŠMRLJ ANTON                      SMOLENJA VAS\nZUPANČIČ FRANC\n1945   SMOLENJA VAS   VIDRIH ANA\n\nBORCI\n1942 MALI SLATNIK SENIČAR ALOJZ   ŠENTJERNEJ MAJZELJ VIKTOR\n1943 MALI SLATNIK SENIČAR JOŽE  SENIČAR FRANC   SMOLENJA\nVAS FINK FRANC  VIDIC ANTON   NOVO MESTO BARTOLJ SLAVKO\n1944 MALA CIKAVA BOJANC ČAMAPELJ MARIJA   MALI SLATNIK\nOVNIČEK FRANC   POTOVRH TABORSKI FRANC   SMOLENJA\nVAS HREN FRANC  SLADEK FRANC  VEHAR STANKO  VIDRIH AN-\nTON   SELA ERJAVEC FRANC  ERJAVEC RUDI   VELIKI SLATNIK\nMAVSAR MIHA                          1945 SMOLENJA VAS BELE JANEZ\nIN ŠEST NEZNANIH BORCEV",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Smolenja vas, desno od vhoda na vaško pokopališče. Hiša v bližini: Smolenja vas 46",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_10_12_MK_8419-1600x1067.webp",
+        "opis": "Grob s spomenikom padlim borcem in žrtvam NOB",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5094",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_10_12_MK_8416-1600x1067.webp",
+        "opis": "Grob s spomenikom padlim borcem in žrtvam NOB",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5094",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2020_10_12_MK_8418-1600x1066.webp",
+        "opis": "Grob s spomenikom padlim borcem in žrtvam NOB",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5094",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2026_04_25_MK_IMG_5735_Smolenja_vas-1600x499.webp",
+        "opis": "Smolenja vas, padlim borcem in žrtvam NOB",
+        "avtor_vir": "M. Kermavnar",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5094",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2026_04_25_MK_IMG_5737_Smolenja_vas-1600x1027.webp",
+        "opis": "Smolenja vas, padlim borcem in žrtvam NOB",
+        "avtor_vir": "M. Kermavnar",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5094",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:55.551Z",
+    "updated_at": "2026-11-25T16:26:53.469Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2254,10 +3559,39 @@
     "besedilo_poglobljeno": null,
     "napis": "V SPOMIN PADLIM BORCEM V NOV 1941 - 1945\n\n.\n\nBORCI\n\n.\n\nSENIČAR ALOJZ          1929 - 1942\n\nHREN FRANC               1924 - 1944\n\nSLADEK FRANC           1923 - 1944\n\nČAMPEL MARIJA         1923 - 1944\n\nVIDRIH ANTON            1914 - 1944\n\nSENIČAR JOŽE            1912 - 1944\n\nOVNIČEK FRANC        1912 - 1944\n\nERJAVEC RUDOLF      1920 - 1944\n\nERJAVEC FRANC        1910 - 1944\n\nBELE JANEZ                 1925 - 1945\n\nBOJANC FRANC          1922 - 1944\n\nSLEJKOVEC JOŽE       1921 - 1944\n\nTEKSTOR VINKO         1921 - 1944\n\nMAVSAR MIHA             1922 - 1944\n\nTABORSKI FRANC       1922 - 1944\n\nVEHAR STANKO          1910 - 1944\n\nVIDIC ANTON               1920 - 1944\n\nTISOVEC RUDOLF       1910 - 1944\n\nBEZEG LUDVIK            1913 - 1944\n\nMAJZEL VIKTOR          1923 - 1942\n\n.\n\nTALCI\n\n.\n\nMIHALIČ ANTON          1903 - 1942\n\nNOVAK DRAGO           1919 - 1942\n\nFORŠČEK FRANC       1914 - 1942\n\nBRUDAR JANEZ          1913 - 1942\n\nSENIČAR FRANC         1926 - 1943\n\nFINK JOŽE                    1914 - 1943\n\nFINK FRANC                 1916 - 1943\n\nKOŠMRL FRANC          1919 - 1943\n\nMIKEC FRANC              1915 - 1943\n\nMEDVED JOŽE             1922 - 1943\n\nRADEŽ JOŽE                1897 - 1943\n\nSREBRNJAK FRANC    1900 - 1943\n\nSLADEK ALOJZ             1920 - 1943\n\nKLEVIŠAR JOŽE           1915 - 1943\n\nFLORJANČIČ HENRIK 1915 - 1943\n\nVODOPIVEC JOŽE       1911 - 1943\n\nŠKEDELJ MARTIN        1911 - 1943\n\nna dodani plošči:\n\nGREGORČIČ MIHAEL  1915 - 1943\n\nPETAN SILVESTER      1922 - 1943",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Spomenik stoji sredi vasi, ob križišču, kjer se od ceste Novo mesto - Šentjernej, odcepi cesta proti Velikemu Slatniku. Hiša v bližini: Mali Slatnik 5a",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_5102-1600x1067.webp",
+        "opis": "Spomenik NOB",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4962",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_5103-1600x1067.webp",
+        "opis": "Spomenik NOB",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4962",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_5106-1600x1067.webp",
+        "opis": "Spomenik NOB",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=4962",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:56.455Z",
+    "updated_at": "2026-11-25T16:26:59.294Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2303,10 +3637,84 @@
     "besedilo_poglobljeno": null,
     "napis": "Obelisk:\n.\nV LETIH\n1941--1945\nPADLIM\nV HVALEŽEN\nSPOMIN\n.\nVečji spomenik:\n.\nLeva plošča:\n.\nBORCI\nBECELE MERI\nBECELE VIKTOR\nBENE IVAN\nBLAŽIČ ALOJZ\nBOJANC ŠTEFAN\nCUJNIK N\nGAČNIK TONE\nGRABNAR IVAN\nGRABNAR MIRKO\nGREGORČIČ ALOJZ\nHOČEVAR NACE\nIVANČIČ IVAN\nJANC MIHA\nJELENC MARJAN\nJERMAN FRANC\nJERMAN JOŽE\nKOS VINKO\nKOTAR JANEZ\nKRAŠEVEC JOŽE\nKUŽNIK ANDREJ\nLAKNER JOŽE\nMARTINČIČ FRANC\nMEDVED FRANC\nMIHALIČ RUDI\nMIKEC TONE\nMUHIČ FRANC\nPANJAN MARTIN\nPETEK STANE\nPOIANO GIORDANO\nPONIKVAR IVAN\nPOTOČAR ALOJZ\nREŽEK IVAN\nROZMAN IVAN\n.\nSrednja plošča\n.\nPADERŠIČ VINKO\nBATREJA\nNARODNI HEROJ\n.\nSAJE ALOJZ\nSEDLAR FRANC\nSELJAK VOJKO\nSLADIČ FRANC\nŠEGULA IVAN\nŠKLANDER JOŽE\nTRATNIK VINKO\nUMBERGAR DRAGO\nVIDIC IVAN\nVIRANT FANI\nVODOPIVEC ALOJZ\nŽIDANEK JOŽE\n.\nŽRTVE\n\nBARBO ANTON\nBECELE FRANC\nBECELE MARIJA\nBUČAR URŠA\nERŠTE FRANC\nERŠTE MARIJA\nGOLOB MILAN\nGORENC IVANKA\nGORENC JANEZ\nGORENC JANEZ\nGORENC JOŽE\nGOTLIB TONE\nGREGORČIČ TONE\nIVANČIČ ANTON\nJAKOPEC KAREL\n.\nDesna plošča\n.\nJERMAN ALOJZ\nJERMAN ANA\nJERMAN FRANC\nJERMAN JANEZ\nJERMAN MIHA\nKEBELJ NEŽA\nKOŠLJAR FRANC\nKOVAČIČ IVAN\nKREMŽAR ALOJZ\nKUKMAN IVANKA\nMEDVED MIHA\nPAVLIN MATIJA\nRAJKOVIČ ADOLF\nREPIČ MARIJA\nRIFELJ JOŽE\nSAJEVIC FRANC\nSAJEVIC FRANCKA\nSIMIČ ANTON\nŠKLANDER ALOJZIJA\nŽURA IVAN\nMIKLIČ POLDE\n.\nTALCI\n\nBLAŽIČ FRANC\nHOČEVAR CIRIL\nKRAGELJ MIRO\nKRESE TONE\nKRNC LUDVIK\nLINDIČ FRANC\nLUKEN RAFKO\nPERŠE JOŽE\nPLANINŠEK JAKOB\nŠTANCAR JOŽE\nPLANINŠEK RUDI\nZUPAN ALOJZ\n\nTER MNOGI NEPOZNANI\n.\nManjši spomenik:\n.\nVINKO PADERŠIČ\nVINKO KOS\nALOJZ GREGORČIČ\nMERI BECELE\nFANI VIRANT\nFRANC SAJEVIC\nFRANČIŠKA SAJEVIC",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Na pokopališču v Otočcu (vzhodni del vasi), pod cesto tik pokopališke vežice, na meji med starim in novim delom.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_20191222_121858.jpg",
+        "opis": "Grobnica padlih in žrtev NOB",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=63",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_20191222_121845.jpg",
+        "opis": "Grobnica padlih in žrtev NOB",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=63",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_20191222_121817.jpg",
+        "opis": "Grobnica padlih in žrtev NOB",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=63",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/spomenik_otocec_4.jpg",
+        "opis": "Otočec",
+        "avtor_vir": "Saša Šest",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=63",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/vinko_padersic_idr.jpg",
+        "opis": "Otočec",
+        "avtor_vir": "Saša Šest",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=63",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/spomenik_otocec3.jpg",
+        "opis": "Otočec",
+        "avtor_vir": "Saša Šest",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=63",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/spomenik_otocec_6.jpg",
+        "opis": "Otočec",
+        "avtor_vir": "Saša Šest",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=63",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/spomenik_otocec_1.jpg",
+        "opis": "Otočec",
+        "avtor_vir": "Saša Šest",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=63",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:57.371Z",
+    "updated_at": "2026-11-25T16:28:18.394Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2352,10 +3760,48 @@
     "besedilo_poglobljeno": null,
     "napis": "MAJA 1941            PRVI OF ODBOR ZA ŠT-PETETER\n\n30.OKT. 1941        OSKRBI OF ODBOR PARTIZANE, KI 1. NOV. NAPADEJO BUČKO\n\n19. MARCA 1942 PRVI PARTIZANSKI MITING NA TRŠKI GORI\n\nMAJA 1942           VOLITVE V NOO\n\n6. JUNIJA 1942     ITALIJANI POŽGO MAČKOVEC\n\nAVGUSTA 1942   DELITEV GRAŠČINSKIH POSESTEV\n\n23. SEPT. 1942     ITALIJANI USTRELE VEČINO ČLANOV PODOKROŽJA UJETIH V BECELETOVI JAMI\n\n16. JULIJA 1943   V GOZDU BLIŠČI OKROŽNA KONFERENCA AFŽ\n\n9. SEPT. 1943      ITALIJANSKA VOJSKA POLOŽI OROŽJE\n\nOSVOBOJENO OZEMLJE\n\n23. OKT. 1943      VDOR NEMŠKE VOJSKE\n\n27. OKT. 1943      NEMCI UBIJEJO FRANCA BECELETA ČLANA PREDSEDSTVA KOČEVSKEGA ZBORA IN AVNOJ\n\n18. DEC. 1943      DOMOBRANCI UBIJEJO UČITELJA KARLA JAKOPCA\n\nMARCA 1944      HUDI BOJI NA TRŠKI GORI\n\n8. MAJA 1945      OSVOBODITEV\n\nZA ZMAGO REVOLUCIJE DALO SVOJA ŽIVLJENJA 98 OBČANOV\n\nOB STOLETNICI ŠOLE IN 20 LETNICI OSVOBODITVE   KRAJEVNI ODBOR ZZB",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Na severni fasadi nekdanje šole sredi vasi, Otočec 14.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_20191222_121401.jpg",
+        "opis": "NOB obeležje pri stari šoli",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=50",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/IMG_20191222_121511.jpg",
+        "opis": "NOB obeležje pri stari šoli",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=50",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/sola_otocec_2.jpg",
+        "opis": "Šola Otočec",
+        "avtor_vir": "Saša Šest",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=50",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/sola_otocec_1.jpg",
+        "opis": "Šola Otočec",
+        "avtor_vir": "Saša Šest",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=50",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:58.287Z",
+    "updated_at": "2026-11-25T16:28:21.941Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2401,10 +3847,30 @@
     "besedilo_poglobljeno": null,
     "napis": "NA TEM MESTU SO BORCI 2.ČETE 1.DOLENJSKEGA BATALJONA 19.MARCA 1942 PO MAŠI\nPRIREDILI POLITIČNI MITING-NASTOP BORCEV IN GOVOR DRAGA FLORJANČIČA JE MED\nLJUDMI OKREPIL POMEN IN VLOGO OF IN POUDARIL NUJNOST OBOROŽENEGA BOJA PROTI\nOKUPATORJU.\n\n27.APRIL 1988-OBČINSKA KONFERENCA SZB NOVO MESTO\n\nV VARSTVO PREVZELA KS OTOČEC",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Dostop možen z avtomobilom, kolesom ali po pešpoti (Slakovi poti) iz več smeri (Paha,Grčevje).",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19916_1362.jpg",
+        "opis": "Spominsko obeležje 2. četi 1. dolenjskega bataljona",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=1362",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/T2518_F19915_1362.jpg",
+        "opis": "Spominsko obeležje 2. četi 1. dolenjskega bataljona",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=1362",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:57:59.196Z",
+    "updated_at": "2026-11-25T16:27:16.371Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2448,10 +3914,48 @@
     "besedilo_poglobljeno": null,
     "napis": "prva plošča\n\nV TEJ JAMI SO BILI MED ITALIJANSKO\n\nOFENZIVO IZDANI IB SE BORILI:\n\nPADERŠIČ VINKO-BATREJA\n\nČLAN OKROŽNEGA ODBORA OF NOVO MESTO\n\nKOS VINKO\n\nČLAN PODOKROŽJA OF ŠMARJETA\n\nGREGORČIČ ALOJZ\n\nČLAN PODOKROŽNEGA KOMITEJA\n\nKPS ŠMARJETA IN SEKRETAR\n\nRAJONSKEGA KOMITEJA KPS ŠENTPETER\n\nSAJEVIC FRANČIŠKA\n\nSAJEVIC FRANC\n\nZ NJIMI SO BILI STRELJANI V BLIŽINI OTOČCA\n\n24. SEPTEMBRA 1942\n\nBECELE MERI     KRAŠOVEC FANI\n\nMEDVED FRANC     KOTAR JANEZ\n\nIN GRABNAR MIRKO\n\n.\n\ndruga plošča\n\nBATREJI\n\nIN NJEGOVIM\n\nTOVARIŠEM\n\nOB 20 LETNICI\n\nOSVOBODITVE\n\nJAMARSKI KLUB\n\nVINKA PADERŠIČ\n\nBATREJA\n\nNOVO MESTO\n\nIN ŠOLA OTOČEC\n\n1965",
     "napis_iz_registra": true,
-    "foto": [],
+    "dostop": "Jama leži sredi zakraselega otoka v bližini Grčevja, severozahodno od Starega gradu. Hiša v bližini: Beceletova hiša, Zagrad pri Otočcu 4.",
+    "foto": [
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9050-1600x1192.webp",
+        "opis": "Beceletova jama s spominskima ploščama",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5601",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9048-1600x987.webp",
+        "opis": "Beceletova jama s spominskima ploščama",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5601",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9051-1600x925.webp",
+        "opis": "Beceletova jama s spominskima ploščama",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5601",
+        "tip": "danes"
+      },
+      {
+        "url": "https://onnwhmlmdfmzwbrdjyts.storage.supabase.co/storage/v1/object/public/media/2021_02_23_MK_IMG_9054st-1600x766.webp",
+        "opis": "Beceletova jama s spominskima ploščama",
+        "avtor_vir": "partizanstvo.si",
+        "pravice": "Dovoljenje pridobljeno",
+        "licenca": "CC-BY 4.0 (privzeta licenca)",
+        "vir_url": "https://partizanstvo.si/sl/zemljevid/?layer=partisanmemorial&id=5601",
+        "tip": "danes"
+      }
+    ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-22T22:58:00.110Z",
+    "updated_at": "2026-11-25T16:27:24.589Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
