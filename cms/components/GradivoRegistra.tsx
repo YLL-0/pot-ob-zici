@@ -79,7 +79,7 @@ export function GradivoRegistra({ data }: UIFieldServerProps) {
           Gradivo iz registra
         </h3>
         <p className="field-description" style={{ margin: 0 }}>
-          Za to obeležje ni zapisa iz registra partizanstvo.si.
+          Za to obeležje ni zapisa iz registra.
         </p>
       </section>
     );
@@ -94,12 +94,12 @@ export function GradivoRegistra({ data }: UIFieldServerProps) {
           Gradivo iz registra
         </h3>
         <p className="field-description" style={{ margin: 0 }}>
-          Referenčno gradivo iz javnega registra{" "}
+          Referenčno gradivo iz javnega registra (
           <a href={g.vir_url} target="_blank" rel="noopener noreferrer">
-            partizanstvo.si (zapis {g.vir_id}
-            {g.naziv_v_registru ? `: »${g.naziv_v_registru}«` : ""})
+            zapis {g.vir_id}
+            {g.naziv_v_registru ? `: »${g.naziv_v_registru}«` : ""}
           </a>
-          {PRENESENO ? `, preneseno ${datum(PRENESENO)}` : ""}. Dovoljenje za uporabo besedil in fotografij registra
+          ){PRENESENO ? `, preneseno ${datum(PRENESENO)}` : ""}. Dovoljenje za uporabo besedil in fotografij registra
           je pridobljeno. Na javno stran gre le tisto, kar urednik pregleda in objavi.
         </p>
       </div>

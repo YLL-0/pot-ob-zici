@@ -33,7 +33,7 @@ export const ZGODBA_MOZNOSTI = izTabele(ZGODBA_LABELS);
 
 export const GPS_ZANESLJIVOST_MOZNOSTI = izTabele<GpsZanesljivost>({
   priblizek: "Približek (iz Excela)",
-  zunanji_vir: "Zunanji vir (partizanstvo.si), ni terensko preverjeno",
+  zunanji_vir: "Zunanji vir (register), ni terensko preverjeno",
   "terensko-izmerjeno": "Terensko izmerjeno",
   "preverjeno-v-gis": "Preverjeno v GIS",
 });

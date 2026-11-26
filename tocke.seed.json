@@ -25,8 +25,7 @@
       "mesto-v-zici"
     ],
     "viri": [
-      "https://www.zb-nob-nm.si/wp-content/uploads/2019/08/Novo-mesto-v-zici-Zlozenka.pdf",
-      "https://partizanstvo.si/sl/podrobno/partizanskispomenik/6875/"
+      "https://www.zb-nob-nm.si/wp-content/uploads/2019/08/Novo-mesto-v-zici-Zlozenka.pdf"
     ],
     "qr_url": "",
     "besedilo_kratko": "[DEMO BESEDILO — ni zgodovinski vir] Ta odstavek prikazuje, kako bo videti izpolnjeno kratko besedilo, ko ga pripravijo zgodovinarji društva ZZB NOB Novo mesto. Bunker na Drski je eden redkeje ohranjenih objektov, povezanih z okupacijskim obrambnim sistemom okoli Novega mesta — mrežo utrdb, opazovalnic in žičnih ovir, po kateri je pot dobila ime. Namesto tega odstavka bo dokončno besedilo vsebovalo preverjene podatke o gradnji, uporabi in današnjem stanju objekta, z navedbo virov in strokovnega pregleda ZVKDS oziroma Dolenjskega muzeja. Ta stran do takrat ne trdi ničesar konkretnega o datumih, osebah ali dogodkih — gre izključno za ponazoritev postavitve strani za predstavitev naročniku in financerju projekta.",
@@ -65,7 +64,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:22:38.594Z",
+    "updated_at": "2026-11-26T15:55:28.271Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -104,7 +103,6 @@
       "zrtve"
     ],
     "viri": [
-      "https://partizanstvo.si/",
       "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/"
     ],
     "qr_url": "",
@@ -126,7 +124,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:22:41.624Z",
+    "updated_at": "2026-11-26T15:55:29.307Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -165,7 +163,6 @@
       "zrtve"
     ],
     "viri": [
-      "https://partizanstvo.si/",
       "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/"
     ],
     "qr_url": "",
@@ -214,7 +211,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:22:48.186Z",
+    "updated_at": "2026-11-26T15:55:30.271Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -252,9 +249,7 @@
     "zgodbe_predlog": [
       "zrtve"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -283,7 +278,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:22:52.513Z",
+    "updated_at": "2026-11-26T15:55:31.240Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -321,9 +316,7 @@
     "zgodbe_predlog": [
       "otroci-in-mladi"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -352,7 +345,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:22:56.346Z",
+    "updated_at": "2026-11-26T15:55:32.113Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -388,9 +381,7 @@
     "iztocnica": "Obeležje, povezano s prvim praznovanjem Dneva vstaje.",
     "kljucna_tema": "Spomin; povojna kultura spominjanja",
     "zgodbe_predlog": [],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -428,7 +419,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:23:01.677Z",
+    "updated_at": "2026-11-26T15:55:32.992Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -466,9 +457,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -524,7 +513,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:23:10.246Z",
+    "updated_at": "2026-11-26T15:55:33.782Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -562,9 +551,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -593,7 +580,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:23:14.295Z",
+    "updated_at": "2026-11-26T15:55:34.653Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -632,8 +619,7 @@
       "talci"
     ],
     "viri": [
-      "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/",
-      "https://partizanstvo.si/"
+      "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/"
     ],
     "qr_url": "",
     "besedilo_kratko": null,
@@ -690,7 +676,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:23:21.503Z",
+    "updated_at": "2026-11-26T15:55:35.528Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -727,8 +713,7 @@
     "kljucna_tema": "Narodni heroji; kolektivni spomin",
     "zgodbe_predlog": [],
     "viri": [
-      "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/",
-      "https://partizanstvo.si/"
+      "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/"
     ],
     "qr_url": "",
     "besedilo_kratko": null,
@@ -812,7 +797,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:23:32.149Z",
+    "updated_at": "2026-11-26T15:55:36.493Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1002,9 +987,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -1033,7 +1016,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:23:48.081Z",
+    "updated_at": "2026-11-26T15:55:37.455Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1072,9 +1055,7 @@
       "bombardiranje",
       "zrtve"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -1112,7 +1093,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:23:53.581Z",
+    "updated_at": "2026-11-26T15:55:38.329Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1151,8 +1132,7 @@
       "talci"
     ],
     "viri": [
-      "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/",
-      "https://partizanstvo.si/"
+      "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/"
     ],
     "qr_url": "",
     "besedilo_kratko": null,
@@ -1200,7 +1180,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:00.894Z",
+    "updated_at": "2026-11-26T15:55:39.207Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1239,9 +1219,7 @@
       "otroci-in-mladi",
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": "[DEMO BESEDILO — ni zgodovinski vir] Vzorčno besedilo za obeležje na novomeški gimnaziji. Plošča spominja na vlogo šole in njenih dijakov med drugo svetovno vojno — natančno besedilo o osebah in dogodkih bo dodano po pregledu virov, ki ga opravi strokovni partner projekta. Ta odstavek ne navaja nobenih konkretnih imen, datumov ali številk, ki bi jih bilo mogoče zamenjati za preverjeno zgodovinsko dejstvo — namenjen je izključno predstavitvi videza strani.",
     "besedilo_poglobljeno": "[DEMO BESEDILO — ni zgodovinski vir] V dokončni različici bo ta razdelek povezal zgodbo šole s širšim dogajanjem v Novem mestu med okupacijo in odporom, z navedbo virov (šolska kronika, pričevanja, arhivsko gradivo). Besedilo, ki ga vidite zdaj, je samo ponazoritev dolžine in oblike — brez izmišljenih podatkov o konkretnih osebah.",
@@ -1270,7 +1248,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:05.302Z",
+    "updated_at": "2026-11-26T15:55:40.159Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1310,7 +1288,6 @@
       "odpor"
     ],
     "viri": [
-      "https://partizanstvo.si/",
       "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/"
     ],
     "qr_url": "",
@@ -1350,7 +1327,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:11.808Z",
+    "updated_at": "2026-11-26T15:55:41.040Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1388,9 +1365,7 @@
     "zgodbe_predlog": [
       "otroci-in-mladi"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -1410,7 +1385,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:14.606Z",
+    "updated_at": "2026-11-26T15:55:42.006Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1448,9 +1423,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -1479,7 +1452,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:18.599Z",
+    "updated_at": "2026-11-26T15:55:42.877Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1518,9 +1491,7 @@
       "partizanske-enote",
       "zrtve"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -1549,7 +1520,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:22.025Z",
+    "updated_at": "2026-11-26T15:55:43.762Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1589,7 +1560,6 @@
       "odpor"
     ],
     "viri": [
-      "https://partizanstvo.si/",
       "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/"
     ],
     "qr_url": "",
@@ -1629,7 +1599,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:27.796Z",
+    "updated_at": "2026-11-26T15:55:44.633Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1669,7 +1639,6 @@
       "odpor"
     ],
     "viri": [
-      "https://partizanstvo.si/",
       "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/"
     ],
     "qr_url": "",
@@ -1709,7 +1678,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:33.770Z",
+    "updated_at": "2026-11-26T15:55:45.625Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1748,9 +1717,7 @@
       "zeleznicarji",
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": "[DEMO BESEDILO — ni zgodovinski vir] Vzorčno besedilo za spominsko ploščo padlim železničarjem. Dokončna vsebina bo opisala vlogo železničarjev pri odporu proti okupatorju na podlagi preverjenih virov. Ta odstavek je samo demonstracija postavitve strani in ne vsebuje nobenih dejanskih imen, datumov ali dogodkov.",
     "besedilo_poglobljeno": "[DEMO BESEDILO — ni zgodovinski vir] Poglobljeno besedilo bo v končni različici umestilo delovanje železničarjev v širši kontekst ilegalnega dela in logistične podpore odporniškemu gibanju, z navedbo virov. Trenutno besedilo služi le preizkusu dolžine in oblikovanja strani.",
@@ -1788,7 +1755,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:39.482Z",
+    "updated_at": "2026-11-26T15:55:46.588Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1827,9 +1794,7 @@
       "zeleznicarji",
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -1867,7 +1832,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:45.831Z",
+    "updated_at": "2026-11-26T15:55:47.485Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1905,9 +1870,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -1945,7 +1908,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:52.156Z",
+    "updated_at": "2026-11-26T15:55:48.352Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -1985,8 +1948,7 @@
       "odpor"
     ],
     "viri": [
-      "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/",
-      "https://partizanstvo.si/"
+      "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/"
     ],
     "qr_url": "",
     "besedilo_kratko": null,
@@ -2034,7 +1996,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:24:59.515Z",
+    "updated_at": "2026-11-26T15:55:49.220Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2074,9 +2036,7 @@
       "partizanske-enote",
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -2096,7 +2056,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:25:02.814Z",
+    "updated_at": "2026-11-26T15:55:50.180Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2135,7 +2095,6 @@
       "zrtve"
     ],
     "viri": [
-      "https://partizanstvo.si/",
       "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/"
     ],
     "qr_url": "",
@@ -2193,7 +2152,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:25:10.918Z",
+    "updated_at": "2026-11-26T15:55:51.055Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2231,9 +2190,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -2253,7 +2210,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:28:02.488Z",
+    "updated_at": "2026-11-26T15:55:52.027Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2291,9 +2248,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -2322,7 +2277,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:25:17.231Z",
+    "updated_at": "2026-11-26T15:55:52.905Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2360,9 +2315,7 @@
     "zgodbe_predlog": [
       "zrtve"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -2409,7 +2362,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:25:25.585Z",
+    "updated_at": "2026-11-26T15:55:53.776Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2447,9 +2400,7 @@
     "zgodbe_predlog": [
       "otroci-in-mladi"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -2478,7 +2429,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:25:29.430Z",
+    "updated_at": "2026-11-26T15:55:54.656Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2516,9 +2467,7 @@
     "zgodbe_predlog": [
       "zrtve"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -2583,7 +2532,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:25:38.923Z",
+    "updated_at": "2026-11-26T15:55:55.530Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2621,9 +2570,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -2652,7 +2599,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:28:07.770Z",
+    "updated_at": "2026-11-26T15:55:56.404Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2691,8 +2638,7 @@
       "odpor"
     ],
     "viri": [
-      "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/",
-      "https://partizanstvo.si/"
+      "https://www.novomesto.si/dolenjski-uradni-list/dul-objave/2017110308141094/odlok_o_razglasitvi__nepremicnih_kulturnih_spomenikov_lokalnega_pomena_na_obmocju_mestne_obcine_novo_mesto/"
     ],
     "qr_url": "",
     "besedilo_kratko": null,
@@ -2731,7 +2677,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:25:48.756Z",
+    "updated_at": "2026-11-26T15:55:57.281Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2769,9 +2715,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/sl/podrobno/partizanskispomenik/4642/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -2809,7 +2753,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:25:53.321Z",
+    "updated_at": "2026-11-26T15:55:58.244Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2847,9 +2791,7 @@
     "zgodbe_predlog": [
       "talci"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -2878,7 +2820,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:25:57.184Z",
+    "updated_at": "2026-11-26T15:55:59.111Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2916,9 +2858,7 @@
     "zgodbe_predlog": [
       "zrtve"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -2956,7 +2896,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:26:04.323Z",
+    "updated_at": "2026-11-26T15:55:59.980Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -2995,9 +2935,7 @@
       "partizanske-enote",
       "zrtve"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3017,7 +2955,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:26:07.217Z",
+    "updated_at": "2026-11-26T15:56:00.848Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -3055,9 +2993,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3095,7 +3031,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:26:13.535Z",
+    "updated_at": "2026-11-26T15:56:01.715Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -3133,9 +3069,7 @@
     "zgodbe_predlog": [
       "zrtve"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3173,7 +3107,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:26:18.836Z",
+    "updated_at": "2026-11-26T15:56:02.573Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -3211,9 +3145,7 @@
     "zgodbe_predlog": [
       "zrtve"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3251,7 +3183,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:26:27.137Z",
+    "updated_at": "2026-11-26T15:56:03.446Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -3289,9 +3221,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3338,7 +3268,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:26:35.267Z",
+    "updated_at": "2026-11-26T15:56:04.319Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -3376,9 +3306,7 @@
     "zgodbe_predlog": [
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3416,7 +3344,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:26:43.256Z",
+    "updated_at": "2026-11-26T15:56:05.195Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -3454,9 +3382,7 @@
     "zgodbe_predlog": [
       "zrtve"
     ],
-    "viri": [
-      "https://partizanstvo.si/sl/podrobno/partizanskispomenik/5094/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3512,7 +3438,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:26:53.469Z",
+    "updated_at": "2026-11-26T15:56:06.073Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -3551,9 +3477,7 @@
       "zrtve",
       "odpor"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3591,7 +3515,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:26:59.294Z",
+    "updated_at": "2026-11-26T15:56:06.947Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -3629,9 +3553,7 @@
     "zgodbe_predlog": [
       "zrtve"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3714,7 +3636,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:28:18.394Z",
+    "updated_at": "2026-11-26T15:56:07.815Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -3752,9 +3674,7 @@
     "zgodbe_predlog": [
       "otroci-in-mladi"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3801,7 +3721,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:28:21.941Z",
+    "updated_at": "2026-11-26T15:56:08.695Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -3839,9 +3759,7 @@
     "zgodbe_predlog": [
       "partizanske-enote"
     ],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3870,7 +3788,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:27:16.371Z",
+    "updated_at": "2026-11-26T15:56:09.570Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,
@@ -3906,9 +3824,7 @@
     "iztocnica": "Lokacija Beceletove jame z dvema spominskima ploščama.",
     "kljucna_tema": "Dogodki NOB; spomin v krajini",
     "zgodbe_predlog": [],
-    "viri": [
-      "https://partizanstvo.si/"
-    ],
+    "viri": [],
     "qr_url": "",
     "besedilo_kratko": null,
     "besedilo_poglobljeno": null,
@@ -3955,7 +3871,7 @@
     ],
     "kviz": [],
     "status": "objavljeno",
-    "updated_at": "2026-11-25T16:27:24.589Z",
+    "updated_at": "2026-11-26T15:56:10.444Z",
     "updated_by": null,
     "foto_pravice_status": "ni-zaceto",
     "qr_generiran": false,

@@ -216,7 +216,7 @@ export async function korakPrenosa(req: PayloadRequest, zahtevek: ZahtevekPrenos
   const { id } = zahtevek;
   const preskoci = new Set(zahtevek.preskoci ?? []);
   const g: GradivoRegistra | null = gradivoZaTocko(id);
-  if (!g) throw new NapakaPrenosa(`Za obeležje ${id} ni zapisa iz registra partizanstvo.si.`, 404);
+  if (!g) throw new NapakaPrenosa(`Za obeležje ${id} ni zapisa iz registra.`, 404);
   if (vTeku.has(id)) throw new NapakaPrenosa(`Prenos za ${id} že teče. Počakaj, da se konča.`, 409);
   vTeku.add(id);
   try {

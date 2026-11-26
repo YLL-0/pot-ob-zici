@@ -243,19 +243,19 @@ export const Tocke: CollectionConfig = {
                 rows: 8,
                 description:
                   "Dobesedni prepis napisa, vrstice ločene z novo vrstico. Prepis je prevzet iz registra " +
-                  "partizanstvo.si (glej »Gradivo iz registra« spodaj) — pred objavo ga preveri na terenu. " +
-                  "Na javni strani se izpiše kot citat z navedbo registra.",
+                  "(glej »Gradivo iz registra« spodaj) — pred objavo ga preveri na terenu. " +
+                  "Na javni strani se izpiše kot citat.",
               },
             },
             {
               name: "napis_iz_registra",
               type: "checkbox",
-              label: "Prepis napisa je iz registra partizanstvo.si",
+              label: "Prepis napisa je iz registra",
               defaultValue: true,
               admin: {
                 description:
-                  "Ko je vklopljeno, je pod napisom na javni strani navedba »Prepis napisa je prevzet iz registra " +
-                  "partizanstvo.si«. Izklopi šele, ko napis preveriš na terenu in ga popraviš po obeležju.",
+                  "Označuje, da je prepis prevzet iz registra in še ni preverjen. Izklopi, ko napis preveriš na " +
+                  "terenu in ga popraviš po obeležju. Na javni strani se ne prikaže.",
               },
             },
             {
