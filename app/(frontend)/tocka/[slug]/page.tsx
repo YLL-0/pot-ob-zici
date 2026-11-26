@@ -13,7 +13,6 @@ import TrackPointView from "@/components/TrackPointView";
 import SiteHeader from "@/components/SiteHeader";
 import Nadnaslov from "@/components/Nadnaslov";
 import Obvestilo from "@/components/Obvestilo";
-import { NavedbaFoto } from "@/components/NavedbaFoto";
 import { NapisCitat } from "@/components/NapisCitat";
 
 /** Static per point; one published later renders on first visit (dynamicParams). */
@@ -110,11 +109,9 @@ export default async function TockaPage({ params }: PageProps) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={naslovna.url} alt={naslovna.opis ?? ""} className="h-full w-full object-cover" />
           </div>
-          <figcaption className="text-sm text-crnilo-mehko">
-            {naslovna.opis}
-            {naslovna.opis && (naslovna.avtor_vir || naslovna.vir_url || naslovna.licenca) ? " · " : null}
-            <NavedbaFoto foto={naslovna} />
-          </figcaption>
+          {naslovna.opis ? (
+            <figcaption className="text-sm text-crnilo-mehko">{naslovna.opis}</figcaption>
+          ) : null}
         </figure>
       ) : (
         <div className="h-56 overflow-hidden rounded-xl sm:h-80">
