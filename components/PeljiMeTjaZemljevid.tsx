@@ -59,7 +59,7 @@ export default function PeljiMeTjaZemljevid({ tocka, barva }: { tocka: Tocka; ba
           </>
         )}
         {oznaka.besedilo.endsWith(".") ? "" : "."}
-        {oznaka.ujemanjeNepotrjeno && " Ujemanje z zapisom v registru je treba še potrditi na terenu."}
+        {oznaka.ujemanjeNepotrjeno && " Natančno lego je treba še potrditi na terenu."}
       </p>
 
       <div className="h-64 overflow-hidden rounded-lg border border-crta">

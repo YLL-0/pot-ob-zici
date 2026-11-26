@@ -47,11 +47,7 @@ export default function OProjektuPage() {
       <section className="max-w-besedilo">
         <h2 className="font-heading text-2xl font-semibold">GPS koordinate in trase</h2>
         <p className="mt-3 text-lg leading-relaxed">
-          Koordinate obeležij so prevzete iz javnega registra partizanskih spomenikov{" "}
-          <a href="https://partizanstvo.si/" target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">
-            partizanstvo.si
-          </a>
-          ; na strani posameznega obeležja je povezava na njegov zapis v registru. Terensko še niso
+          Koordinate obeležij so približne in terensko še niso
           preverjene — to bo storjeno pred namestitvijo QR-tablic. Trase etap so iz teh lokacij izračunane po javno
           dostopnih poteh (OpenStreetMap); kjer to ni mogoče, so prikazane kot črtkana shematska povezava.
           Nobena ni uradno označena pot. Obroč nekdanje obrambne žice iz let 1942–43 je shematski: prikazuje
@@ -75,12 +71,6 @@ export default function OProjektuPage() {
               zb-nob-nm.si
             </a>{" "}
             — ZZB NOB Novo mesto
-          </li>
-          <li>
-            <a href="https://partizanstvo.si/" target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">
-              partizanstvo.si
-            </a>{" "}
-            — register partizanskih spomenikov, vir koordinat obeležij in referenčnega gradiva za urednike
           </li>
           <li>
             <a href="https://www.novomesto.si/" target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">

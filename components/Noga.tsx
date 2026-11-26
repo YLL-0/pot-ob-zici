@@ -70,12 +70,6 @@ export default function Noga() {
               avtorji OpenStreetMap
             </a>
           </span>
-          <span>
-            Koordinate:{" "}
-            <a href="https://partizanstvo.si/" target="_blank" rel="noopener noreferrer" className={zunanjaPovezava}>
-              partizanstvo.si
-            </a>
-          </span>
         </p>
       </div>
     </footer>

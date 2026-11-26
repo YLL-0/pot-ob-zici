@@ -56,6 +56,8 @@ export default async function TockaPage({ params }: PageProps) {
   const etapa = findEtapa(etape, tocka.etapa);
   const naslovna = tocka.foto[0] ?? null;
   const barva = getEtapaBarva(etape, tocka.etapa);
+  // The register partizanstvo.si is not cited on the public site.
+  const viri = tocka.viri.filter((v) => !/partizanstvo\.si/i.test(v));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -64,7 +66,7 @@ export default async function TockaPage({ params }: PageProps) {
     description: tocka.iztocnica,
     address: { "@type": "PostalAddress", addressLocality: tocka.obmocje, addressCountry: "SI" },
     geo: { "@type": "GeoCoordinates", latitude: tocka.lat, longitude: tocka.lon },
-    ...(tocka.viri.length > 0 ? { sameAs: tocka.viri } : {}),
+    ...(viri.length > 0 ? { sameAs: viri } : {}),
   };
 
   return (
@@ -157,20 +159,6 @@ export default async function TockaPage({ params }: PageProps) {
             </h2>
             <figure className="mt-3 space-y-2">
               <NapisCitat napis={tocka.napis} />
-              {tocka.napis_iz_registra && (
-                <figcaption className="text-sm text-crnilo-mehko">
-                  Prepis napisa je prevzet iz registra{" "}
-                  <a
-                    href={tocka.gps_vir === "partizanstvo.si" && tocka.gps_vir_url ? tocka.gps_vir_url : "https://partizanstvo.si/"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-poudarek underline underline-offset-4"
-                  >
-                    partizanstvo.si
-                  </a>
-                  .
-                </figcaption>
-              )}
             </figure>
           </section>
         )}
@@ -189,11 +177,11 @@ export default async function TockaPage({ params }: PageProps) {
           <dd>{tocka.esd ?? "Obeležje (še) nima EŠD številke."}</dd>
         </dl>
 
-        {tocka.viri.length > 0 && (
+        {viri.length > 0 && (
           <div>
             <h2 className="font-heading text-xl font-semibold">Viri</h2>
             <ul className="mt-2 list-inside list-disc text-base">
-              {tocka.viri.map((v) => (
+              {viri.map((v) => (
                 <li key={v} className="truncate">
                   <a href={v} target="_blank" rel="noopener noreferrer" className="text-poudarek underline underline-offset-4">
                     {v}

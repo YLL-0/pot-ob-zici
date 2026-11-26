@@ -24,8 +24,8 @@ export function gpsOznaka(t: GpsPolja): GpsOznaka {
   switch (t.gps_zanesljivost) {
     case "zunanji_vir":
       return {
-        besedilo: `Lokacija iz registra ${t.gps_vir ?? "partizanstvo.si"} — terensko še ni preverjena`,
-        povezava: t.gps_vir_url ? { href: t.gps_vir_url, besedilo: "Zapis v registru" } : null,
+        besedilo: "Lokacija še ni terensko preverjena.",
+        povezava: null,
         ujemanjeNepotrjeno,
       };
     case "terensko-izmerjeno":
